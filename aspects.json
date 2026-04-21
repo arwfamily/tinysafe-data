@@ -1,0 +1,202 @@
+{
+  "version": "1.0",
+  "updated": "2026-04-21",
+  "product_mapping": {
+    "1": "Thinkbaby Safe Sunscreen SPF 50+",
+    "2": "Mustela Baby Mineral Sunscreen Lotion SPF 50",
+    "3": "Blue Lizard Baby Mineral Sunscreen Lotion SPF 50",
+    "4": "Babo Botanicals Sheer Mineral Sunscreen Lotion SPF 30 Extra Sensitve Skin"
+  },
+  "data": {
+    "1": {
+      "Sun protection": {
+        "total": 494,
+        "positive": 408,
+        "negative": 86,
+        "ratio": 82.59,
+        "sentiment": "Positive"
+      },
+      "Fragrance": {
+        "total": 425,
+        "positive": 368,
+        "negative": 57,
+        "ratio": 86.59,
+        "sentiment": "Positive"
+      },
+      "Quality": {
+        "total": 365,
+        "positive": 348,
+        "negative": 17,
+        "ratio": 95.34,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 334,
+        "positive": 299,
+        "negative": 35,
+        "ratio": 89.52,
+        "sentiment": "Positive"
+      },
+      "Skin compatibility": {
+        "total": 181,
+        "positive": 128,
+        "negative": 53,
+        "ratio": 70.72,
+        "sentiment": "Positive"
+      },
+      "White cast": {
+        "total": 244,
+        "positive": 101,
+        "negative": 143,
+        "ratio": 41.39,
+        "sentiment": "Mixed"
+      },
+      "Non-greasy": {
+        "total": 190,
+        "positive": 118,
+        "negative": 72,
+        "ratio": 62.11,
+        "sentiment": "Mixed"
+      },
+      "Thickness": {
+        "total": 168,
+        "positive": 70,
+        "negative": 98,
+        "ratio": 41.67,
+        "sentiment": "Mixed"
+      }
+    },
+    "2": {
+      "Sun protection": {
+        "total": 87,
+        "positive": 75,
+        "negative": 12,
+        "ratio": 86.21,
+        "sentiment": "Positive"
+      },
+      "Skin sensitivity": {
+        "total": 30,
+        "positive": 20,
+        "negative": 10,
+        "ratio": 66.67,
+        "sentiment": "Mixed"
+      },
+      "Non-greasy": {
+        "total": 28,
+        "positive": 17,
+        "negative": 11,
+        "ratio": 60.71,
+        "sentiment": "Mixed"
+      }
+    },
+    "3": {
+      "Sun protection": {
+        "total": 245,
+        "positive": 240,
+        "negative": 5,
+        "ratio": 97.96,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 181,
+        "positive": 161,
+        "negative": 20,
+        "ratio": 88.95,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 109,
+        "positive": 105,
+        "negative": 4,
+        "ratio": 96.33,
+        "sentiment": "Positive"
+      },
+      "Skin sensitivity": {
+        "total": 104,
+        "positive": 87,
+        "negative": 17,
+        "ratio": 83.65,
+        "sentiment": "Positive"
+      },
+      "Longevity": {
+        "total": 49,
+        "positive": 39,
+        "negative": 10,
+        "ratio": 79.59,
+        "sentiment": "Positive"
+      },
+      "White cast": {
+        "total": 88,
+        "positive": 38,
+        "negative": 50,
+        "ratio": 43.18,
+        "sentiment": "Mixed"
+      },
+      "Non-greasy": {
+        "total": 49,
+        "positive": 37,
+        "negative": 17,
+        "ratio": 68.52,
+        "sentiment": "Mixed"
+      }
+    },
+    "4": {
+      "Sun protection": {
+        "total": 172,
+        "positive": 145,
+        "negative": 27,
+        "ratio": 84.3,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 88,
+        "positive": 63,
+        "negative": 25,
+        "ratio": 71.59,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 66,
+        "positive": 55,
+        "negative": 11,
+        "ratio": 83.33,
+        "sentiment": "Positive"
+      },
+      "Ingredients": {
+        "total": 61,
+        "positive": 50,
+        "negative": 11,
+        "ratio": 81.97,
+        "sentiment": "Positive"
+      },
+      "White cast": {
+        "total": 110,
+        "positive": 58,
+        "negative": 52,
+        "ratio": 52.73,
+        "sentiment": "Mixed"
+      },
+      "Non-greasy": {
+        "total": 74,
+        "positive": 41,
+        "negative": 33,
+        "ratio": 55.41,
+        "sentiment": "Mixed"
+      },
+      "Fragrance": {
+        "total": 59,
+        "positive": 31,
+        "negative": 28,
+        "ratio": 52.54,
+        "sentiment": "Mixed"
+      },
+      "Skin sensitivity": {
+        "total": 50,
+        "positive": 31,
+        "negative": 19,
+        "ratio": 62.0,
+        "sentiment": "Mixed"
+      }
+    }
+  }
+}
