@@ -1,0 +1,684 @@
+{
+  "version": "2.0",
+  "updated": "2026-04-28",
+  "product_mapping": {
+    "1": "Thinkbaby Safe Sunscreen SPF 50+",
+    "2": "Mustela Baby Mineral Sunscreen Lotion SPF 50",
+    "3": "Blue Lizard Baby Mineral Sunscreen Lotion SPF 50",
+    "22": "Babo Super Shield Sunscreen Lotion SPF50",
+    "5": "Badger Kids Mineral Sunscreen Cream SPF 40",
+    "6": "All Good Kids Sunscreen SPF 30",
+    "7": "Active Skin Hydrating Daily Mineral Sunscreen",
+    "8": "Alba Botanica Baby Sunscreen SPF 50",
+    "9": "Alba Botanica Sunscreen Lotion, Sensitive Mineral, SPF 30",
+    "10": "Alba Botanica Kids Sunscreen Body Lotion SPF 50",
+    "11": "All Good Baby & Kids Sunscreen Lotion for Face & Body - UVA/UVB Broad Spectrum, SPF 30",
+    "14": "Aveeno Baby Continuous Protection Zinc Oxide Sunscreen Lotion for Sensitive Skin SPF 50",
+    "19": "Babo Botanicals Sensitive Baby Mineral SPF 50"
+  },
+  "data": {
+    "1": {
+      "Sun protection": {
+        "total": 494,
+        "positive": 408,
+        "negative": 86,
+        "ratio": 82.59,
+        "sentiment": "Positive"
+      },
+      "Fragrance": {
+        "total": 425,
+        "positive": 368,
+        "negative": 57,
+        "ratio": 86.59,
+        "sentiment": "Positive"
+      },
+      "Quality": {
+        "total": 365,
+        "positive": 348,
+        "negative": 17,
+        "ratio": 95.34,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 334,
+        "positive": 299,
+        "negative": 35,
+        "ratio": 89.52,
+        "sentiment": "Positive"
+      },
+      "Skin compatibility": {
+        "total": 181,
+        "positive": 128,
+        "negative": 53,
+        "ratio": 70.72,
+        "sentiment": "Positive"
+      },
+      "White cast": {
+        "total": 244,
+        "positive": 101,
+        "negative": 143,
+        "ratio": 41.39,
+        "sentiment": "Mixed"
+      },
+      "Non-greasy": {
+        "total": 190,
+        "positive": 118,
+        "negative": 72,
+        "ratio": 62.11,
+        "sentiment": "Mixed"
+      },
+      "Thickness": {
+        "total": 168,
+        "positive": 70,
+        "negative": 98,
+        "ratio": 41.67,
+        "sentiment": "Mixed"
+      }
+    },
+    "2": {
+      "Sun protection": {
+        "total": 87,
+        "positive": 75,
+        "negative": 12,
+        "ratio": 86.21,
+        "sentiment": "Positive"
+      },
+      "Skin sensitivity": {
+        "total": 30,
+        "positive": 20,
+        "negative": 10,
+        "ratio": 66.67,
+        "sentiment": "Mixed"
+      },
+      "Non-greasy": {
+        "total": 28,
+        "positive": 17,
+        "negative": 11,
+        "ratio": 60.71,
+        "sentiment": "Mixed"
+      }
+    },
+    "3": {
+      "Sun protection": {
+        "total": 245,
+        "positive": 240,
+        "negative": 5,
+        "ratio": 97.96,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 181,
+        "positive": 161,
+        "negative": 20,
+        "ratio": 88.95,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 109,
+        "positive": 105,
+        "negative": 4,
+        "ratio": 96.33,
+        "sentiment": "Positive"
+      },
+      "Skin sensitivity": {
+        "total": 104,
+        "positive": 87,
+        "negative": 17,
+        "ratio": 83.65,
+        "sentiment": "Positive"
+      },
+      "Longevity": {
+        "total": 49,
+        "positive": 39,
+        "negative": 10,
+        "ratio": 79.59,
+        "sentiment": "Positive"
+      },
+      "White cast": {
+        "total": 88,
+        "positive": 38,
+        "negative": 50,
+        "ratio": 43.18,
+        "sentiment": "Mixed"
+      },
+      "Non-greasy": {
+        "total": 49,
+        "positive": 37,
+        "negative": 17,
+        "ratio": 68.52,
+        "sentiment": "Mixed"
+      }
+    },
+    "22": {
+      "Sun protection": {
+        "total": 172,
+        "positive": 145,
+        "negative": 27,
+        "ratio": 84.3,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 88,
+        "positive": 63,
+        "negative": 25,
+        "ratio": 71.59,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 66,
+        "positive": 55,
+        "negative": 11,
+        "ratio": 83.33,
+        "sentiment": "Positive"
+      },
+      "Ingredients": {
+        "total": 61,
+        "positive": 50,
+        "negative": 11,
+        "ratio": 81.97,
+        "sentiment": "Positive"
+      },
+      "White cast": {
+        "total": 110,
+        "positive": 58,
+        "negative": 52,
+        "ratio": 52.73,
+        "sentiment": "Mixed"
+      },
+      "Non-greasy": {
+        "total": 74,
+        "positive": 41,
+        "negative": 33,
+        "ratio": 55.41,
+        "sentiment": "Mixed"
+      },
+      "Fragrance": {
+        "total": 59,
+        "positive": 31,
+        "negative": 28,
+        "ratio": 52.54,
+        "sentiment": "Mixed"
+      },
+      "Skin sensitivity": {
+        "total": 50,
+        "positive": 31,
+        "negative": 19,
+        "ratio": 62.0,
+        "sentiment": "Mixed"
+      }
+    },
+    "5": {
+      "Sun protection": {
+        "total": 327,
+        "positive": 285,
+        "negative": 42,
+        "ratio": 87.16,
+        "sentiment": "Positive"
+      },
+      "Fragrance": {
+        "total": 210,
+        "positive": 195,
+        "negative": 15,
+        "ratio": 92.86,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 131,
+        "positive": 114,
+        "negative": 17,
+        "ratio": 87.02,
+        "sentiment": "Positive"
+      },
+      "Ingredients": {
+        "total": 107,
+        "positive": 106,
+        "negative": 1,
+        "ratio": 99.07,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 95,
+        "positive": 67,
+        "negative": 28,
+        "ratio": 70.53,
+        "sentiment": "Positive"
+      },
+      "Thickness": {
+        "total": 127,
+        "positive": 41,
+        "negative": 86,
+        "ratio": 32.28,
+        "sentiment": "Negative"
+      },
+      "Ease of Application": {
+        "total": 114,
+        "positive": 62,
+        "negative": 52,
+        "ratio": 54.39,
+        "sentiment": "Mixed"
+      },
+      "Greasiness": {
+        "total": 89,
+        "positive": 32,
+        "negative": 57,
+        "ratio": 35.96,
+        "sentiment": "Negative"
+      }
+    },
+    "6": {
+      "Sun protection": {
+        "total": 89,
+        "positive": 79,
+        "negative": 10,
+        "ratio": 88.76,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 72,
+        "positive": 61,
+        "negative": 11,
+        "ratio": 84.72,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 37,
+        "positive": 32,
+        "negative": 5,
+        "ratio": 86.49,
+        "sentiment": "Positive"
+      },
+      "White cast": {
+        "total": 28,
+        "positive": 20,
+        "negative": 8,
+        "ratio": 71.43,
+        "sentiment": "Positive"
+      },
+      "Longevity": {
+        "total": 17,
+        "positive": 13,
+        "negative": 4,
+        "ratio": 76.47,
+        "sentiment": "Positive"
+      },
+      "Safety": {
+        "total": 14,
+        "positive": 14,
+        "negative": 0,
+        "ratio": 100.0,
+        "sentiment": "Positive"
+      },
+      "Thickness": {
+        "total": 14,
+        "positive": 10,
+        "negative": 4,
+        "ratio": 71.43,
+        "sentiment": "Positive"
+      },
+      "Fragrance": {
+        "total": 31,
+        "positive": 20,
+        "negative": 11,
+        "ratio": 64.52,
+        "sentiment": "Mixed"
+      }
+    },
+    "7": {
+      "Hydration": {
+        "total": 23,
+        "positive": 22,
+        "negative": 1,
+        "ratio": 95.65,
+        "sentiment": "Positive"
+      },
+      "Non-greasy": {
+        "total": 22,
+        "positive": 20,
+        "negative": 2,
+        "ratio": 90.91,
+        "sentiment": "Positive"
+      },
+      "Sun protection": {
+        "total": 16,
+        "positive": 16,
+        "negative": 0,
+        "ratio": 100.0,
+        "sentiment": "Positive"
+      },
+      "Ingredients": {
+        "total": 15,
+        "positive": 15,
+        "negative": 0,
+        "ratio": 100.0,
+        "sentiment": "Positive"
+      },
+      "White cast": {
+        "total": 14,
+        "positive": 1,
+        "negative": 0,
+        "ratio": 100.0,
+        "sentiment": "Positive"
+      },
+      "Lightweight": {
+        "total": 12,
+        "positive": 12,
+        "negative": 0,
+        "ratio": 100.0,
+        "sentiment": "Positive"
+      },
+      "Skin Feel": {
+        "total": 9,
+        "positive": 9,
+        "negative": 0,
+        "ratio": 100.0,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 8,
+        "positive": 8,
+        "negative": 0,
+        "ratio": 100.0,
+        "sentiment": "Positive"
+      }
+    },
+    "8": {
+      "Effectiveness": {
+        "total": 11,
+        "positive": 8,
+        "negative": 3,
+        "ratio": 72.73,
+        "sentiment": "Positive"
+      },
+      "Skin Irritation": {
+        "total": 8,
+        "positive": 6,
+        "negative": 2,
+        "ratio": 75.0,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 14,
+        "positive": 9,
+        "negative": 5,
+        "ratio": 64.29,
+        "sentiment": "Mixed"
+      },
+      "White cast": {
+        "total": 11,
+        "positive": 2,
+        "negative": 9,
+        "ratio": 18.18,
+        "sentiment": "Negative"
+      }
+    },
+    "9": {
+      "Sun protection": {
+        "total": 452,
+        "positive": 388,
+        "negative": 64,
+        "ratio": 85.84,
+        "sentiment": "Positive"
+      },
+      "Fragrance-free": {
+        "total": 108,
+        "positive": 84,
+        "negative": 24,
+        "ratio": 77.78,
+        "sentiment": "Positive"
+      },
+      "Skin Irritation": {
+        "total": 103,
+        "positive": 73,
+        "negative": 30,
+        "ratio": 70.87,
+        "sentiment": "Positive"
+      },
+      "Value for Money": {
+        "total": 88,
+        "positive": 80,
+        "negative": 8,
+        "ratio": 90.91,
+        "sentiment": "Positive"
+      },
+      "White cast": {
+        "total": 237,
+        "positive": 112,
+        "negative": 125,
+        "ratio": 47.26,
+        "sentiment": "Mixed"
+      },
+      "Greasiness": {
+        "total": 164,
+        "positive": 80,
+        "negative": 84,
+        "ratio": 48.78,
+        "sentiment": "Mixed"
+      },
+      "Application": {
+        "total": 154,
+        "positive": 70,
+        "negative": 84,
+        "ratio": 45.45,
+        "sentiment": "Mixed"
+      },
+      "Thickness": {
+        "total": 174,
+        "positive": 41,
+        "negative": 133,
+        "ratio": 23.56,
+        "sentiment": "Negative"
+      }
+    },
+    "10": {
+      "Fragrance": {
+        "total": 126,
+        "positive": 109,
+        "negative": 17,
+        "ratio": 86.51,
+        "sentiment": "Positive"
+      },
+      "Sun protection": {
+        "total": 114,
+        "positive": 107,
+        "negative": 7,
+        "ratio": 93.86,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 103,
+        "positive": 93,
+        "negative": 10,
+        "ratio": 90.29,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 70,
+        "positive": 68,
+        "negative": 2,
+        "ratio": 97.14,
+        "sentiment": "Positive"
+      },
+      "Non-greasy": {
+        "total": 56,
+        "positive": 45,
+        "negative": 11,
+        "ratio": 80.36,
+        "sentiment": "Positive"
+      },
+      "No-white residue": {
+        "total": 40,
+        "positive": 31,
+        "negative": 9,
+        "ratio": 77.5,
+        "sentiment": "Positive"
+      },
+      "Ingredients": {
+        "total": 26,
+        "positive": 21,
+        "negative": 5,
+        "ratio": 80.77,
+        "sentiment": "Positive"
+      },
+      "Skin irritation": {
+        "total": 100,
+        "positive": 56,
+        "negative": 44,
+        "ratio": 56.0,
+        "sentiment": "Mixed"
+      }
+    },
+    "11": {
+      "Sun protection": {
+        "total": 89,
+        "positive": 79,
+        "negative": 10,
+        "ratio": 88.76,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 72,
+        "positive": 61,
+        "negative": 11,
+        "ratio": 84.72,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 37,
+        "positive": 32,
+        "negative": 5,
+        "ratio": 86.49,
+        "sentiment": "Positive"
+      },
+      "White cast": {
+        "total": 28,
+        "positive": 20,
+        "negative": 8,
+        "ratio": 71.43,
+        "sentiment": "Positive"
+      },
+      "Longevity": {
+        "total": 17,
+        "positive": 13,
+        "negative": 4,
+        "ratio": 76.47,
+        "sentiment": "Positive"
+      },
+      "Safety": {
+        "total": 14,
+        "positive": 14,
+        "negative": 0,
+        "ratio": 100.0,
+        "sentiment": "Positive"
+      },
+      "Thickness": {
+        "total": 14,
+        "positive": 10,
+        "negative": 4,
+        "ratio": 71.43,
+        "sentiment": "Positive"
+      },
+      "Fragrance": {
+        "total": 31,
+        "positive": 20,
+        "negative": 11,
+        "ratio": 64.52,
+        "sentiment": "Mixed"
+      }
+    },
+    "14": {
+      "Sun protection": {
+        "total": 115,
+        "positive": 103,
+        "negative": 12,
+        "ratio": 89.57,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 43,
+        "positive": 42,
+        "negative": 1,
+        "ratio": 97.67,
+        "sentiment": "Positive"
+      },
+      "Skin compatibility": {
+        "total": 33,
+        "positive": 24,
+        "negative": 9,
+        "ratio": 72.73,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 47,
+        "positive": 23,
+        "negative": 24,
+        "ratio": 48.94,
+        "sentiment": "Mixed"
+      },
+      "Thickness": {
+        "total": 40,
+        "positive": 14,
+        "negative": 26,
+        "ratio": 35.0,
+        "sentiment": "Negative"
+      }
+    },
+    "19": {
+      "Sun protection": {
+        "total": 197,
+        "positive": 163,
+        "negative": 34,
+        "ratio": 82.74,
+        "sentiment": "Positive"
+      },
+      "Skin sensitivity": {
+        "total": 75,
+        "positive": 59,
+        "negative": 16,
+        "ratio": 78.67,
+        "sentiment": "Positive"
+      },
+      "Effectiveness": {
+        "total": 73,
+        "positive": 61,
+        "negative": 12,
+        "ratio": 83.56,
+        "sentiment": "Positive"
+      },
+      "Application": {
+        "total": 68,
+        "positive": 60,
+        "negative": 8,
+        "ratio": 88.24,
+        "sentiment": "Positive"
+      },
+      "ingredients": {
+        "total": 64,
+        "positive": 60,
+        "negative": 4,
+        "ratio": 93.75,
+        "sentiment": "Positive"
+      },
+      "Rubs in": {
+        "total": 39,
+        "positive": 31,
+        "negative": 8,
+        "ratio": 79.49,
+        "sentiment": "Positive"
+      },
+      "White cast": {
+        "total": 74,
+        "positive": 44,
+        "negative": 30,
+        "ratio": 59.46,
+        "sentiment": "Mixed"
+      },
+      "Fragrance": {
+        "total": 61,
+        "positive": 38,
+        "negative": 23,
+        "ratio": 62.3,
+        "sentiment": "Mixed"
+      }
+    }
+  }
+}
