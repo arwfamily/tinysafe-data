@@ -1,0 +1,41 @@
+name: TinySafe Recall Sync (daily)
+
+on:
+  schedule:
+    - cron: '0 12 * * *'   # 08:00 America/New_York (UTC 12:00) daily
+  workflow_dispatch:        # allow manual run from the Actions tab
+
+permissions:
+  contents: write           # needed to commit the updated JSON back
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pandas openpyxl
+
+      - name: Run daily sync (FDA datatables + CPSC)
+        run: python sync_recalls.py
+
+      - name: Commit changes if any
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "TinySafe Sync Bot"
+          git add recalls_unified.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "chore: daily recall sync ($(date -u +%Y-%m-%d))"
+            git push
+          fi
