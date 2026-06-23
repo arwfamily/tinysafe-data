@@ -10,13 +10,32 @@ TinySafe recall sync — datatables (FDA timely) + CPSC API.
 Sources confirmed reachable via plain GET (no bot wall):
   FDA datatables xlsx, CPSC saferproducts.gov API.
 """
-import os, io, json, re, hashlib, datetime, sys
+import os, io, json, re, hashlib, datetime, sys, time
 
 import requests
 import pandas as pd
 
 DB_PATH = os.environ.get("DB_PATH", "recalls_unified.json")
-UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36")
+# Full browser-like header set — bot detectors check more than User-Agent.
+BROWSER_HEADERS = {
+    "User-Agent": UA,
+    "Accept": ("text/html,application/xhtml+xml,application/xml;q=0.9,"
+               "image/avif,image/webp,*/*;q=0.8"),
+    "Accept-Language": "en-US,en;q=0.9",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Referer": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+    "Sec-Ch-Ua": '"Google Chrome";v="149", "Chromium";v="149", "Not)A;Brand";v="24"',
+    "Sec-Ch-Ua-Mobile": "?0",
+    "Sec-Ch-Ua-Platform": '"macOS"',
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin",
+    "X-Requested-With": "XMLHttpRequest",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+}
 FDA_KEYWORDS = ["baby", "infant", "toddler", "newborn"]
 CPSC_LOOKBACK_DAYS = 120  # CPSC status never flips; 3-year window handled downstream
 
@@ -157,16 +176,33 @@ def display_name_from(product_name):
 # ----------------------------------------------------------------------------
 def fetch_fda_datatables():
     out = {}
+    session = requests.Session()
+    session.headers.update(BROWSER_HEADERS)
+    # Warm-up: hit the human page first so the session looks like a real visit,
+    # then request the data endpoint (some bot filters key off this sequence).
+    try:
+        session.get("https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+                    timeout=45)
+    except Exception:
+        pass
     for kw in FDA_KEYWORDS:
         url = ("https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/"
                f"datatables-data?_format=xlsx&search_api_fulltext={kw}"
                "&field_regulated_product_field=All&field_terminated_recall=All")
-        try:
-            r = requests.get(url, headers={"User-Agent": UA}, timeout=45)
-            r.raise_for_status()
-            df = pd.read_excel(io.BytesIO(r.content), dtype=str).fillna("")
-        except Exception as e:
-            print(f"[!] datatables fetch failed ({kw}): {e}", file=sys.stderr)
+        df = None
+        for attempt in range(3):
+            try:
+                r = session.get(url, timeout=45)
+                if r.status_code == 200 and "abuse-detection" not in r.url:
+                    df = pd.read_excel(io.BytesIO(r.content), dtype=str).fillna("")
+                    break
+                print(f"[!] datatables {kw} attempt {attempt+1}: status={r.status_code} url={r.url[:60]}",
+                      file=sys.stderr)
+            except Exception as e:
+                print(f"[!] datatables {kw} attempt {attempt+1}: {e}", file=sys.stderr)
+            time.sleep(3 * (attempt + 1))   # back off: 3s, 6s, 9s
+        if df is None:
+            print(f"[!] datatables fetch gave up ({kw})", file=sys.stderr)
             continue
         for _, row in df.iterrows():
             brand = row.get("Brand-Names", "")
