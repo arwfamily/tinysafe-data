@@ -140,8 +140,27 @@ BABYFOOD_RESCUE = re.compile(
     r"plum organics|gerber|beech-?nut|earth.?s best|happy ?baby|good & gather baby|"
     r"heb baby|h-e-b baby|sprout organic|once upon a farm|cerebelly|tippy toes)", re.I)
 
+# Noise: explicit adult products + general consumer goods that are not baby items.
+# Bed rails without a baby/toddler/crib signal are adult bed rails.
+# (No trailing \b on terms that pluralize, so "bottles"/"rails" still match.)
+NOISE_NAME_RE = re.compile(
+    r"(\badult\b|bed rail|water bottle|generator|patio door|sliding patio|\bpatio\b|"
+    r"coffeemaker|coffee maker|\bcooler|vaporizer|firework|pool drain|spa drain|"
+    r"chainsaw|space heater|power bank|e-?bike|turpentine|\bgrill|chess|"
+    r"woven (sofa|chair|patio))", re.I)
+# Protects genuine baby gear from the noise filter (e.g. a crib bed rail, bassinet).
+BABY_PROTECT_RE = re.compile(
+    r"\b(bassinet|crib|cradle|baby|babies|infant|newborn|toddler|nursery|nursing|"
+    r"childcare|child care|pacifier|diaper|stroller|car seat|teether|teething|"
+    r"swaddle|onesie|sippy|high ?chair|playpen|rattle|bib|formula)\b", re.I)
+
 def is_child_product(text):
     blob = (text or "").lower()
+    # Noise exclusion runs FIRST and is decisive: explicit adult/general goods are
+    # blocked even though words like "bottle" or "bed rail" are child keywords.
+    # Only a strong, unambiguous baby signal can rescue them.
+    if NOISE_NAME_RE.search(blob) and not BABY_PROTECT_RE.search(blob):
+        return False
     # Hard produce exclusion, unless clearly a baby-food product
     if (PRODUCE_RE.search(blob) or SALAD_RE.search(blob)) and not BABYFOOD_RESCUE.search(blob):
         if not re.search(r"\b(baby food|infant|formula)\b", blob):
@@ -378,3 +397,4 @@ if __name__ == "__main__":
     with open(DB_PATH, "w", encoding="utf-8") as f:
         json.dump(db, f, ensure_ascii=False, indent=2)
     print("[*] done.")
+
