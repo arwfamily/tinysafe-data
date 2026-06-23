@@ -71,6 +71,35 @@ def derive_hazard(text):
             return name
     return ""
 
+# Lethal (death-associated) hazards drive the "Most urgent" section.
+# Rank: lower = more lethal, surfaced first.
+LETHAL_HAZARDS = {"suffocation", "strangulation", "botulism", "bacteria",
+                  "contamination", "battery", "choking", "magnet", "mold"}
+LETHAL_RANK = {"botulism": 1, "suffocation": 2, "strangulation": 2,
+               "battery": 3, "bacteria": 3, "contamination": 3,
+               "choking": 4, "magnet": 4, "mold": 5}
+
+def compute_urgent(rec):
+    """Most urgent = FDA Class I within 730d (FDA's death-probability grade),
+    OR a lethal hazard within 30 days. Returns (is_urgent, urgent_rank)."""
+    if rec.get("display_category") == "Medical":
+        return False, 99
+    cls = (rec.get("classification") or "").strip().lower()
+    haz = rec.get("hazard", "")
+    da = _days_since(rec.get("recall_date", ""))
+    is_class_i = cls == "class i" or (cls.startswith("class i") and "ii" not in cls and "iii" not in cls)
+    if is_class_i and da <= 730:
+        return True, LETHAL_RANK.get(haz, 6)
+    if da <= 30 and haz in LETHAL_HAZARDS:
+        return True, LETHAL_RANK.get(haz, 6)
+    return False, 99
+
+def _days_since(ds):
+    try:
+        return (datetime.datetime.now() - datetime.datetime.strptime(str(ds), "%Y%m%d")).days
+    except Exception:
+        return 99999
+
 CATEGORY_PATTERNS = [
     ("Food & Formula", r"formula|baby food|puree|pouch|cereal|snack|yogurt|milk|juice|puff"),
     ("Wipes", r"\bwipe"),
@@ -141,24 +170,36 @@ BABYFOOD_RESCUE = re.compile(
     r"heb baby|h-e-b baby|sprout organic|once upon a farm|cerebelly|tippy toes)", re.I)
 
 # Noise: explicit adult products + general consumer goods that are not baby items.
-# Bed rails without a baby/toddler/crib signal are adult bed rails.
-# (No trailing \b on terms that pluralize, so "bottles"/"rails" still match.)
+# No trailing \b on pluralizing terms so "coolers"/"rails"/"bottles" still match.
+# These are checked against display_name (the product itself) so a stray word in
+# the reason text (e.g. "violates children's sleepwear standard" on a cooler)
+# does not rescue a non-baby product.
+STRONG_NOISE_RE = re.compile(
+    r"(coffee ?maker|coffeemaker|espresso|kettle|toaster|blender|microwave|"
+    r"air ?fryer|pressure washer|power washer|vacuum cleaner|\bgenerator|"
+    r"space heater|chainsaw|lawn ?mower|treadmill|\bcooler|water bottle|"
+    r"above-?ground pool|bicycle helmet|\bhelmet|bed rail|portable bed rail|"
+    r"patio door|sliding patio|turpentine|gum spirits|kerosene|sodium hydroxide|"
+    r"caustic|heater fluid|\b1-k\b)", re.I)
 NOISE_NAME_RE = re.compile(
-    r"(\badult\b|bed rail|water bottle|generator|patio door|sliding patio|\bpatio\b|"
-    r"coffeemaker|coffee maker|\bcooler|vaporizer|firework|pool drain|spa drain|"
-    r"chainsaw|space heater|power bank|e-?bike|turpentine|\bgrill|chess|"
-    r"woven (sofa|chair|patio))", re.I)
-# Protects genuine baby gear from the noise filter (e.g. a crib bed rail, bassinet).
+    r"(\badult\b|vaporizer|firework|pool drain|spa drain|\bpatio\b|"
+    r"woven (sofa|chair|patio)|\bladder\b)", re.I)
+# Protects genuine baby gear from the noise filter.
 BABY_PROTECT_RE = re.compile(
     r"\b(bassinet|crib|cradle|baby|babies|infant|newborn|toddler|nursery|nursing|"
-    r"childcare|child care|pacifier|diaper|stroller|car seat|teether|teething|"
-    r"swaddle|onesie|sippy|high ?chair|playpen|rattle|bib|formula)\b", re.I)
+    r"childcare|child care|pacifier|diaper|stroller|car seat|teeth|teether|teething|"
+    r"swaddle|onesie|sippy|high ?chair|playpen|rattle|\bbib\b|formula|scooter|"
+    r"tricycle|ride-?on|magnet|chess|\btoy|game|fidget|pajama|sleepwear)\b", re.I)
 
-def is_child_product(text):
+def is_child_product(text, name=None):
     blob = (text or "").lower()
-    # Noise exclusion runs FIRST and is decisive: explicit adult/general goods are
-    # blocked even though words like "bottle" or "bed rail" are child keywords.
-    # Only a strong, unambiguous baby signal can rescue them.
+    # Strong noise (appliances, coolers, helmets, pools, bed rails) is decisive and
+    # checked against the product name when available, so a stray word in the reason
+    # text cannot rescue a non-baby product. Not overridable by BABY_PROTECT.
+    name_blob = (name or text or "").lower()
+    if STRONG_NOISE_RE.search(name_blob):
+        return False
+    # Softer noise (explicit "adult", patio, fireworks) — rescuable by a baby signal.
     if NOISE_NAME_RE.search(blob) and not BABY_PROTECT_RE.search(blob):
         return False
     # Hard produce exclusion, unless clearly a baby-food product
@@ -230,7 +271,7 @@ def fetch_fda_datatables():
             reason = row.get("Recall-Reason-Description", "")
             date_raw = row.get("Date", "")
             blob = f"{brand} {desc} {company} {reason}"
-            if not is_child_product(blob):
+            if not is_child_product(blob, name=f"{brand} {desc}"):
                 continue
             rid = "dt-" + hashlib.md5(squash(f"{date_raw}{company}{desc}").encode()).hexdigest()[:12]
             if rid in out:
@@ -302,7 +343,7 @@ def fetch_cpsc():
         desc = str(it.get("Description", ""))
         product = _first(it.get("Products", []), "Name")
         blob = f"{title} {desc} {product}"
-        if not is_child_product(blob):
+        if not is_child_product(blob, name=f"{title} {product}"):
             continue
         rid = str(it.get("RecallNumber", "")).strip()
         if not rid:
@@ -381,9 +422,15 @@ def merge(db, fresh):
         added += 1
 
     db["recalls"] = list(by_id.values())
+    # (Re)compute urgent flags for every record so the app can read them directly.
+    for r in db["recalls"]:
+        u, rank = compute_urgent(r)
+        r["is_urgent"] = u
+        r["urgent_rank"] = rank
     db["total"] = len(db["recalls"])
     db["updated"] = datetime.datetime.utcnow().isoformat() + "Z"
-    print(f"[+] added={added} status_updated={updated} total={db['total']}")
+    print(f"[+] added={added} status_updated={updated} total={db['total']} "
+          f"urgent={sum(1 for r in db['recalls'] if r.get('is_urgent'))}")
     return db
 
 # ----------------------------------------------------------------------------
@@ -397,4 +444,5 @@ if __name__ == "__main__":
     with open(DB_PATH, "w", encoding="utf-8") as f:
         json.dump(db, f, ensure_ascii=False, indent=2)
     print("[*] done.")
+
 
