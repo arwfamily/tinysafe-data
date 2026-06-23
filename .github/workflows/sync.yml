@@ -2,7 +2,7 @@ name: Tinysafe Hybrid Sync Automation
 
 on:
   schedule:
-    - cron: '0 18 * * *' # 매일 한국 시간 새벽 3시 (UTC 18:00) 무인 자동 실행
+    - cron: '0 12 * * *' # 매일 뉴욕 시간 아침 8시 (UTC 12:00) 무인 자동 실행
   workflow_dispatch: # 개발자가 필요할 때 수동으로 버튼 눌러 실행 가능
 
 jobs:
