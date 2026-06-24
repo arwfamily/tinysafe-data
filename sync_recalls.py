@@ -202,7 +202,11 @@ STRONG_NOISE_RE = re.compile(
     r"space heater|chainsaw|lawn ?mower|treadmill|\bcooler|water bottle|"
     r"above-?ground pool|bicycle helmet|\bhelmet|bed rail|portable bed rail|"
     r"patio door|sliding patio|turpentine|gum spirits|kerosene|sodium hydroxide|"
-    r"caustic|heater fluid|\b1-k\b)", re.I)
+    r"caustic|heater fluid|\b1-k\b|"
+    r"lithium coin batter|coin batter|button cell|"
+    r"bunk bed|utility bunk|loft bed|youth clothing|youth sweatshirt|"
+    r"\bbadminton\b|mario kart|tonka)",
+    re.I)
 NOISE_NAME_RE = re.compile(
     r"(\badult\b|vaporizer|firework|pool drain|spa drain|\bpatio\b|"
     r"woven (sofa|chair|patio)|\bladder\b)", re.I)
