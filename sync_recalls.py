@@ -80,17 +80,28 @@ LETHAL_RANK = {"botulism": 1, "suffocation": 2, "strangulation": 2,
                "choking": 4, "magnet": 4, "mold": 5}
 
 def compute_urgent(rec):
-    """Most urgent = FDA Class I within 730d (FDA's death-probability grade),
-    OR a lethal hazard within 30 days. Returns (is_urgent, urgent_rank)."""
+    """is_urgent = this recall is death-associated and still active.
+    Severity only — the APP decides section placement by age
+    (New <=7d, Most urgent 7-90d + Class I to 730d, Ongoing after).
+    Returns (is_urgent, urgent_rank).
+    - Medical is excluded (handled by the Medical chip).
+    - Terminated / no-longer-active recalls are NOT urgent, so when the
+      monthly enforcement cross-check flips a status to Terminated, the
+      recall drops out of Most urgent automatically on the next sync.
+    """
     if rec.get("display_category") == "Medical":
+        return False, 99
+    status = (rec.get("status") or "").strip().lower()
+    if status in ("terminated", "completed", "closed"):
         return False, 99
     cls = (rec.get("classification") or "").strip().lower()
     haz = rec.get("hazard", "")
-    da = _days_since(rec.get("recall_date", ""))
     is_class_i = cls == "class i" or (cls.startswith("class i") and "ii" not in cls and "iii" not in cls)
-    if is_class_i and da <= 730:
+    # FDA Class I = death-probability grade -> urgent regardless of age (app caps at 730d).
+    if is_class_i:
         return True, LETHAL_RANK.get(haz, 6)
-    if da <= 30 and haz in LETHAL_HAZARDS:
+    # Otherwise: a death-associated hazard -> urgent (app caps at 90d window).
+    if haz in LETHAL_HAZARDS:
         return True, LETHAL_RANK.get(haz, 6)
     return False, 99
 
@@ -101,14 +112,25 @@ def _days_since(ds):
         return 99999
 
 CATEGORY_PATTERNS = [
-    ("Food & Formula", r"formula|baby food|puree|pouch|cereal|snack|yogurt|milk|juice|puff"),
+    # Ingestibles first so "purified water"/"probiotic" never fall through to Toys.
+    ("Medications", r"\bdrops\b|medication|acetaminophen|ibuprofen|gripe water|"
+                    r"\bsupplement|multivitamin|\bvitamin|probiotic|electrolyte|"
+                    r"gas relief|colic|teething gel|ointment|\biron\b"),
+    ("Food & Formula", r"formula|baby food|puree|pouch|cereal|snack|yogurt|milk|"
+                       r"juice|puff|purified water|drinking water|water with fluoride|"
+                       r"infant water|nursery water|beverage|electrolyte drink"),
     ("Wipes", r"\bwipe"),
-    ("Skincare", r"lotion|sunscreen|baby oil|diaper cream|balm|shampoo|baby wash|powder"),
+    ("Baby Sunscreen", r"sunscreen|spf\b|sun ?block|mineral sun|uv protect"),
+    ("Skincare", r"lotion|baby oil|diaper cream|balm|shampoo|baby wash|"
+                 r"\bpowder|moisturiz"),
     ("Oral Care", r"toothpaste|teether|teething|toothbrush|pacifier"),
-    ("Medications", r"\bdrops\b|medication|acetaminophen|ibuprofen|gripe water|supplement|vitamin"),
-    ("Toys & Gear", r"toy|stroller|car seat|crib|bassinet|lounger|nursing pillow|bottle|"
-                    r"high ?chair|playpen|play yard|rattle|walker|bouncer|swing|carrier|"
-                    r"changing table|dresser|bed rail|helmet|harness|stool|tent|chair"),
+    # Water TOYS (balloons, water tables, squirters) stay in Toys, distinct from
+    # drinking water above which already matched Food.
+    ("Toys & Gear", r"\btoy|stroller|car seat|crib|bassinet|lounger|nursing pillow|"
+                    r"\bbottle|high ?chair|playpen|play yard|rattle|walker|bouncer|"
+                    r"swing|carrier|changing table|dresser|bed rail|harness|stool|"
+                    r"tent|chair|water balloon|water table|squirt|magnet|chess|fidget|"
+                    r"doll|game|block|puzzle|ride-?on|tricycle|scooter|thermos"),
 ]
 
 def derive_category(text):
@@ -330,12 +352,24 @@ def fetch_cpsc():
     start = (datetime.date.today() - datetime.timedelta(days=CPSC_LOOKBACK_DAYS)).isoformat()
     url = ("https://www.saferproducts.gov/RestWebServices/Recall"
            f"?format=json&RecallDateStart={start}")
-    try:
-        r = requests.get(url, headers={"User-Agent": UA}, timeout=45)
-        r.raise_for_status()
-        data = r.json()
-    except Exception as e:
-        print(f"[!] CPSC fetch failed: {e}", file=sys.stderr)
+    data = None
+    for attempt in range(3):
+        try:
+            r = requests.get(url, headers={"User-Agent": UA}, timeout=45)
+            r.raise_for_status()
+            parsed = r.json()
+            # Guard against a transient empty response: a 120-day window should
+            # never legitimately be empty, so treat [] as a failure and retry.
+            if isinstance(parsed, list) and len(parsed) > 0:
+                data = parsed
+                break
+            print(f"[!] CPSC attempt {attempt+1}: empty response, retrying", file=sys.stderr)
+        except Exception as e:
+            print(f"[!] CPSC attempt {attempt+1}: {e}", file=sys.stderr)
+        time.sleep(3 * (attempt + 1))
+    if data is None:
+        print("[!] CPSC fetch gave up after retries — keeping existing CPSC records",
+              file=sys.stderr)
         return []
     out = []
     for it in data:
@@ -444,5 +478,3 @@ if __name__ == "__main__":
     with open(DB_PATH, "w", encoding="utf-8") as f:
         json.dump(db, f, ensure_ascii=False, indent=2)
     print("[*] done.")
-
-
