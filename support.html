@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TinySafe — Support</title>
+<style>
+  :root{
+    --ink:#1b3a5b; --ink2:#2c5780; --muted:#6b93b8;
+    --gold:#f3a526; --gold-deep:#e08a12;
+    --glass:rgba(255,255,255,0.42); --glass2:rgba(255,255,255,0.28);
+    --stroke:rgba(255,255,255,0.55); --shadow:rgba(70,110,150,0.28);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); min-height:100vh; overflow-x:hidden;
+    background:linear-gradient(165deg,#bfe2fb 0%,#a9d4f5 35%,#cfe4f3 70%,#e7d9f0 100%);
+    background-attachment:fixed; position:relative;
+  }
+  /* ambient floating orbs */
+  .orb{position:fixed; border-radius:50%; filter:blur(42px); opacity:0.55; z-index:0; animation:drift 18s ease-in-out infinite;}
+  .orb.sun{width:280px;height:280px;top:-60px;right:-40px;
+    background:radial-gradient(circle,#ffe39a 0%,#f9bf5a 55%,rgba(249,191,90,0) 72%); animation-delay:0s;}
+  .orb.blue{width:340px;height:340px;bottom:-80px;left:-90px;
+    background:radial-gradient(circle,#9cc8f0 0%,rgba(156,200,240,0) 70%); animation-delay:-6s;}
+  .orb.lilac{width:240px;height:240px;top:40%;left:60%;
+    background:radial-gradient(circle,#d6c3ec 0%,rgba(214,195,236,0) 70%); animation-delay:-11s;}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(24px,-30px) scale(1.06);}66%{transform:translate(-20px,20px) scale(0.96);}}
+
+  .wrap{position:relative; z-index:1; max-width:680px; margin:0 auto; padding:0 20px 90px;}
+
+  /* hero */
+  header{text-align:center; padding:70px 18px 26px;}
+  .badge{
+    width:108px;height:108px;border-radius:50%;margin:0 auto 26px;position:relative;
+    background:radial-gradient(circle at 50% 38%,#ffffff 0%,#fdf3e0 58%,#f7e1bc 100%);
+    box-shadow:0 0 50px rgba(245,166,35,0.45), 0 14px 34px rgba(180,130,40,0.32), inset 0 2px 6px rgba(255,255,255,0.9);
+    display:flex;align-items:center;justify-content:center;
+    animation:bob 5s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+  .badge::after{content:"";position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle at 50% 40%,rgba(255,255,255,0.5),transparent 60%);}
+  .badge svg{width:56px;height:56px;position:relative;z-index:1;filter:drop-shadow(0 3px 4px rgba(190,130,30,0.35));}
+  h1{font-size:38px;font-weight:800;letter-spacing:-0.5px;
+    background:linear-gradient(180deg,#21456c,#3a6b96);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .tag{margin-top:10px;font-size:17px;color:var(--ink2);font-weight:500;}
+  .tag .accent{color:var(--gold-deep);font-weight:700;}
+
+  /* glass card */
+  .card{
+    background:linear-gradient(160deg,var(--glass),var(--glass2));
+    border:1px solid var(--stroke);
+    border-radius:26px; padding:30px 26px; margin:20px 0;
+    backdrop-filter:blur(22px) saturate(140%); -webkit-backdrop-filter:blur(22px) saturate(140%);
+    box-shadow:0 12px 40px var(--shadow), inset 0 1px 1px rgba(255,255,255,0.65), inset 0 -2px 6px rgba(120,150,190,0.12);
+    position:relative; overflow:hidden;
+  }
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:50%;
+    background:linear-gradient(180deg,rgba(255,255,255,0.35),transparent);pointer-events:none;}
+  .card h2{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-weight:700;position:relative;}
+  .lead{font-size:16px;line-height:1.6;color:var(--ink2);position:relative;}
+
+  /* contact buttons */
+  .actions{display:flex;flex-direction:column;gap:12px;position:relative;}
+  .btn{
+    display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);
+    background:linear-gradient(160deg,rgba(255,255,255,0.55),rgba(255,255,255,0.32));
+    border:1px solid rgba(255,255,255,0.6);border-radius:16px;padding:16px 18px;
+    box-shadow:0 4px 14px rgba(90,130,170,0.16), inset 0 1px 1px rgba(255,255,255,0.7);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(90,130,170,0.24), inset 0 1px 1px rgba(255,255,255,0.8);}
+  .btn .ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    background:radial-gradient(circle at 40% 35%,#ffe7b0,#f5a623);box-shadow:0 4px 10px rgba(230,150,30,0.35);}
+  .btn .ic svg{width:21px;height:21px;}
+  .btn .txt{display:flex;flex-direction:column;}
+  .btn .txt b{font-size:16px;font-weight:600;}
+  .btn .txt span{font-size:13px;color:var(--muted);}
+  .btn .arrow{margin-left:auto;color:var(--muted);font-size:18px;}
+
+  /* faq */
+  details{border-bottom:1px solid rgba(90,130,170,0.18);padding:6px 0;position:relative;}
+  details:last-child{border-bottom:none;}
+  summary{cursor:pointer;list-style:none;padding:15px 2px;font-size:16px;font-weight:600;color:var(--ink);
+    display:flex;align-items:center;justify-content:space-between;}
+  summary::-webkit-details-marker{display:none;}
+  summary .plus{color:var(--gold-deep);font-size:22px;font-weight:400;transition:transform .25s ease;line-height:1;}
+  details[open] summary .plus{transform:rotate(45deg);}
+  details p{padding:0 2px 16px;font-size:15px;line-height:1.6;color:var(--ink2);}
+
+  footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 18px 0;position:relative;z-index:1;}
+  footer a{color:var(--gold-deep);text-decoration:none;font-weight:600;}
+  @media (prefers-reduced-motion: reduce){.orb,.badge{animation:none;}}
+</style>
+</head>
+<body>
+<div class="orb sun"></div><div class="orb blue"></div><div class="orb lilac"></div>
+
+<div class="wrap">
+  <header>
+    <div class="badge">
+      <svg viewBox="0 0 100 100"><defs><radialGradient id="s" cx="0.5" cy="0.4" r="0.62"><stop offset="0%" stop-color="#FFE08C"/><stop offset="68%" stop-color="#F3A526"/><stop offset="100%" stop-color="#E08A12"/></radialGradient></defs><path d="M50 8 L82 20 V46 C82 68 68 84 50 92 C32 84 18 68 18 46 V20 Z" fill="url(#s)"/><path d="M50 8 L82 20 V32 C69 26 58 23 50 23 C42 23 31 26 19 32 V20 Z" fill="rgba(255,255,255,0.32)"/></svg>
+    </div>
+    <h1>How can we help?</h1>
+    <p class="tag">Support for <span class="accent">TinySafe</span> — baby safety, made simpler.</p>
+  </header>
+
+  <div class="card">
+    <h2>Get in touch</h2>
+    <div class="actions">
+      <a class="btn" href="mailto:tinysafeapp@gmail.com">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+        <span class="txt"><b>Email us</b><span>tinysafeapp@gmail.com</span></span>
+        <span class="arrow">›</span>
+      </a>
+    </div>
+    <p class="lead" style="margin-top:16px;">We're a small team and we read every message. We aim to reply within 1–2 business days.</p>
+  </div>
+
+  <div class="card">
+    <h2>Frequently asked</h2>
+    <details><summary>What is TinySafe?<span class="plus">+</span></summary>
+      <p>TinySafe helps parents keep track of baby product recalls. We check recall data from the FDA and CPSC every day and flag recalls that match the brands you follow. Ingredient analysis, grounded in established dermatological and pharmaceutical standards, is coming soon.</p></details>
+    <details><summary>Is TinySafe free?<span class="plus">+</span></summary>
+      <p>Yes. You can browse recalls and follow brands for free, no account required for browsing. Signing in (with Apple or Google) unlocks personalized alerts for the brands you follow.</p></details>
+    <details><summary>How do you protect my family's privacy?<span class="plus">+</span></summary>
+      <p>Your child's name and exact date of birth never leave your device — we never send them to our servers. We only use a general stage and age range to personalize what you see. You can read the full details in our Privacy Policy.</p></details>
+    <details><summary>Why does TinySafe ask for my location?<span class="plus">+</span></summary>
+      <p>It's optional. If you share your location, we use only a general region to help make your recall alerts smarter over time. We never collect precise GPS coordinates, and the app works fully without it.</p></details>
+    <details><summary>How do notifications work?<span class="plus">+</span></summary>
+      <p>When you follow a brand, we send a push notification when a new recall matches it. We check FDA and CPSC feeds every day. You can manage notifications anytime in your device Settings.</p></details>
+    <details><summary>How do I delete my account?<span class="plus">+</span></summary>
+      <p>Open the app, go to Settings, and tap "Delete account." This permanently removes your account and data from our servers and wipes your local data. It can't be undone.</p></details>
+    <details><summary>Where does the recall data come from?<span class="plus">+</span></summary>
+      <p>From official public sources: the U.S. Food and Drug Administration (FDA) and the U.S. Consumer Product Safety Commission (CPSC). TinySafe is for general awareness and isn't an official government source — always verify critical details with the manufacturer or the relevant authority.</p></details>
+  </div>
+
+  <footer>
+    <p>Need anything else? <a href="mailto:tinysafeapp@gmail.com">Email us</a> · <a href="privacy.html#privacy">Privacy Policy</a> · <a href="privacy.html#terms">Terms</a></p>
+    <p style="margin-top:10px;">© 2026 Angela Lee · TinySafe</p>
+  </footer>
+</div>
+</body>
+</html>
