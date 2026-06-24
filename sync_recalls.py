@@ -214,16 +214,42 @@ NOISE_NAME_RE = re.compile(
 BABY_PROTECT_RE = re.compile(
     r"\b(bassinet|crib|cradle|baby|babies|infant|newborn|toddler|nursery|nursing|"
     r"childcare|child care|pacifier|diaper|stroller|car seat|teeth|teether|teething|"
-    r"swaddle|onesie|sippy|high ?chair|playpen|rattle|\bbib\b|formula|scooter|"
-    r"tricycle|ride-?on|magnet|chess|\btoy|game|fidget|pajama|sleepwear)\b", re.I)
+    r"swaddle|onesie|sippy|high ?chair|playpen|rattle|\bbib\b|formula|"
+    r"tricycle|magnet|chess|\btoy|game|pajama|sleepwear)\b", re.I)
+
+# Age noise: items aimed at older kids / adults that a 0-4 child does not use.
+# Curated for the 0-4 (esp. newborn) parent audience.
+AGE_NOISE_RE = re.compile(
+    r"\b(fidget|spinner|racket|badminton|tennis|golf|skateboard|hoverboard|"
+    r"promotional|desk toy|executive|office|\bzen\b|stress ball|"
+    r"tip restraint|furniture anchor|anti-?tip|"
+    r"bicycle|\bbike\b|scooter|\bATV\b|all-?terrain|go-?kart|"
+    r"bunk bed|loft bed|"
+    r"bowling|basketball|soccer|football|baseball|hockey|"
+    r"slap bracelet|light-?up ring|light-?up bracelet|jelly ring|"
+    r"tumbler|sport bottle|sipper|"
+    r"backpack|lunch box|water gun|nerf|"
+    r"trampoline|pogo|ride-?on racer|\bdrone\b|"
+    r"craft kit|science kit|chemistry|assay|"
+    r"youth|teen|tween)\b", re.I)
+# But keep genuine infant magnet toys (ingestion is a top infant hazard):
+# magnet blocks, chess, building sticks, stackers — a 0-4 child can reach these.
+INFANT_MAGNET_SAVE = re.compile(
+    r"\b(magnet|magnetic)\b.*\b(block|chess|building|stick|stack|tile|set|toy)\b|"
+    r"\b(block|chess|building|stacker|tile)\b.*\bmagnet", re.I)
 
 def is_child_product(text, name=None):
     blob = (text or "").lower()
-    # Strong noise (appliances, coolers, helmets, pools, bed rails) is decisive and
-    # checked against the product name when available, so a stray word in the reason
-    # text cannot rescue a non-baby product. Not overridable by BABY_PROTECT.
     name_blob = (name or text or "").lower()
+    # Strong noise (appliances, coolers, helmets, pools, bed rails, lithium coin
+    # batteries, bunk beds, etc.) — decisive, checked against product name.
     if STRONG_NOISE_RE.search(name_blob):
+        return False
+    # Age noise (0-4 focus): big-kid / adult items a 0-4 child does not use.
+    # Checked against the product NAME so a stray reason word can't rescue them,
+    # but genuine infant magnet toys (chess, blocks, building sticks) are kept
+    # because magnet ingestion is a top infant hazard.
+    if AGE_NOISE_RE.search(name_blob) and not INFANT_MAGNET_SAVE.search(name_blob):
         return False
     # Softer noise (explicit "adult", patio, fireworks) — rescuable by a baby signal.
     if NOISE_NAME_RE.search(blob) and not BABY_PROTECT_RE.search(blob):
