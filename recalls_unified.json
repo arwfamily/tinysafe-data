@@ -1,6 +1,6 @@
 {
   "version": "4.7",
-  "updated": "2026-06-30T13:50:54.831557Z",
+  "updated": "2026-07-01T14:02:22.099725Z",
   "description": "TinySafe unified baby/kids recall DB — all categories (FDA drugs/sunscreen/skincare/oral/meds, food/formula, cosmetics + CPSC physical products). Comprehensive baby safety scope. Veterinary excluded.",
   "sources": [
     "FDA Enforcement Reports (drug/food/device, 2003-2026)",
@@ -8,7 +8,7 @@
     "FDA datatables press releases (baby food/cosmetic outbreak)",
     "CPSC SaferProducts (baby & kids physical products)"
   ],
-  "total": 854,
+  "total": 855,
   "recalls": [
     {
       "source": "CPSC",
@@ -26322,6 +26322,35 @@
       "match_words": "shield line llc southern telecom expands recall of lomi waxing kits due to risk of serious injury or shield line recalls medpride baby oil bottles due to risk of serious injury or death from child poisoning; violate mandatory standard for child-resistant packaging",
       "is_urgent": false,
       "urgent_rank": 99
+    },
+    {
+      "source": "CPSC",
+      "category": "Baby & Kids",
+      "recall_id": "26-579",
+      "product_name": "Montessori Busy Board Toys Recalled Due to Risk of Serious Injury or Death from Magnet Ingestion; Violate Mandatory Standard for Toys; Sold on Amazon by Small Fish",
+      "brand": "Lesonic Technology Co.",
+      "recall_date": "20260625",
+      "reason": "The busy boards violate the mandatory safety standard for toys because magnets can detach, posing a deadly ingestion hazard. When high-powered magnets are swallowed, the ingested magnets can attract each other, or other metal objects and become lodged in the digestive system. This can result in perforations, twisting, and/or blockage of the intestines, blood poisoning and death.",
+      "classification": "",
+      "status": "Recalled",
+      "url": "https://www.cpsc.gov/Recalls/2026/Montessori-Busy-Board-Toys-Recalled-Due-to-Risk-of-Serious-Injury-or-Death-from-Magnet-Ingestion-Violate-Mandatory-Standard-for-Toys-Sold-on-Amazon-by-Small-Fish",
+      "display_category": "Toys & Gear",
+      "display_name": "Montessori Busy Board Toys",
+      "hazard": "magnet",
+      "action": "Consumers should stop using the recalled busy boards and immediately take them away from children. Consumers can contact Small Fish for information on how to receive a full refund. Consumers will be asked to throw away the recalled busy board and email a photo of the disposed product to smallfishrecall@163.com.",
+      "product_count": 1,
+      "grouped_products": [],
+      "plain_reason": "Contains magnets that can be swallowed.",
+      "needs_review": false,
+      "is_enforced": true,
+      "match_brand": "lesonic technology co.",
+      "match_text": "lesonic technology co. montessori busy board toys recalled due to risk of serious injury or death from magnet ingestion; violate mandatory standard for toys; sold on amazon by small fish",
+      "match_ndc": "",
+      "match_squash": "lesonictechnologycomontessoribusyboardtoysrecalledduetoriskofseriousinjuryordeathfrommagnetingestionviolatemandatorystandardfortoyssoldonamazonbysmallfish",
+      "match_brand_squash": "lesonictechnologyco",
+      "match_words": "lesonic technology co. montessori busy board toys recalled due to risk of serious injury or death from magnet ingestion; violate mandatory standard for toys; sold on amazon by small fish",
+      "is_urgent": true,
+      "urgent_rank": 4
     }
   ],
   "categories": [
