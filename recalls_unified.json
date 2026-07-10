@@ -1,6 +1,6 @@
 {
   "version": "4.7",
-  "updated": "2026-07-09T14:25:05.057893Z",
+  "updated": "2026-07-10T13:51:41.191157Z",
   "description": "TinySafe unified baby/kids recall DB — all categories (FDA drugs/sunscreen/skincare/oral/meds, food/formula, cosmetics + CPSC physical products). Comprehensive baby safety scope. Veterinary excluded.",
   "sources": [
     "FDA Enforcement Reports (drug/food/device, 2003-2026)",
@@ -8,7 +8,7 @@
     "FDA datatables press releases (baby food/cosmetic outbreak)",
     "CPSC SaferProducts (baby & kids physical products)"
   ],
-  "total": 853,
+  "total": 854,
   "recalls": [
     {
       "source": "CPSC",
@@ -26299,6 +26299,35 @@
       "match_words": "sanven technology ltd. vevor recalls baby loungers due to risk of serious injury or death from entrapment and fall hazards; violate mandatory standard for infant sleep products",
       "is_urgent": true,
       "urgent_rank": 2
+    },
+    {
+      "source": "CPSC",
+      "category": "Baby & Kids",
+      "recall_id": "26-609",
+      "product_name": "WonderStone Infant Walkers Recalled Due to Risk of Serious Injury or Death from Fall Hazard; Violate Mandatory Standard for Infant Walkers; Sold on Walmart.com by Wonder Stone Toys",
+      "brand": "Zhangzhoushi Jingqu Trading Co.",
+      "recall_date": "20260709",
+      "reason": "The recalled infant walkers violate the mandatory standard for infant walkers because they can fit through a standard doorway and fail to stop at the edge of a step, posing a risk of serious injury or death due to a fall hazard.",
+      "classification": "",
+      "status": "Recalled",
+      "url": "https://www.cpsc.gov/Recalls/2026/WonderStone-Infant-Walkers-Recalled-Due-to-Risk-of-Serious-Injury-or-Death-from-Fall-Hazard-Violate-Mandatory-Standard-for-Infant-Walkers-Sold-on-Walmart-com-by-Wonder-Stone-Toys",
+      "display_category": "Toys & Gear",
+      "display_name": "WonderStone Infant Walkers",
+      "hazard": "choking",
+      "action": "Consumers should stop using the recalled infant walkers immediately and contact Wonder Stone Toys for a full refund. Consumers will be asked to disassemble the walker, remove and cut the fabric seat, write \"Recalled\" on the top of the tray in permanent marker and send a photo of the disassembled infant walker showing the cut seat and marked tray to wonderstonerecall@outlook.com.",
+      "product_count": 1,
+      "grouped_products": [],
+      "plain_reason": "Contains small parts that can detach and pose a choking risk.",
+      "needs_review": false,
+      "is_enforced": true,
+      "match_brand": "zhangzhoushi jingqu trading co.",
+      "match_text": "zhangzhoushi jingqu trading co. wonderstone infant walkers recalled due to risk of serious injury or death from fall hazard; violate mandatory standard for infant walkers; sold on walmart.com by wonder stone toys",
+      "match_ndc": "",
+      "match_squash": "zhangzhoushijingqutradingcowonderstoneinfantwalkersrecalledduetoriskofseriousinjuryordeathfromfallhazardviolatemandatorystandardforinfantwalkerssoldonwalmartcombywonderstonetoys",
+      "match_brand_squash": "zhangzhoushijingqutradingco",
+      "match_words": "zhangzhoushi jingqu trading co. wonderstone infant walkers recalled due to risk of serious injury or death from fall hazard; violate mandatory standard for infant walkers; sold on walmart.com by wonder stone toys",
+      "is_urgent": true,
+      "urgent_rank": 4
     }
   ],
   "categories": [
