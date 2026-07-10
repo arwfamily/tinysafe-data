@@ -1,857 +1,897 @@
 [
-  {
-    "name": "ATTITUDE",
-    "sq": "attitude",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Alba Botanica",
-    "sq": "albabotanica",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "All Good",
-    "sq": "allgood",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Allure",
-    "sq": "allure",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Aloe",
-    "sq": "aloe",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Aloe Care",
-    "sq": "aloecare",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "American Consumer",
-    "sq": "americanconsumer",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Anicare Pharmaceuticals",
-    "sq": "anicarepharmaceuticals",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Aquaphor",
-    "sq": "aquaphor",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Arbonne",
-    "sq": "arbonne",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Aruba Aloe",
-    "sq": "arubaaloe",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Astivita",
-    "sq": "astivita",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Aveeno",
-    "sq": "aveeno",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Aveeno Baby",
-    "sq": "aveenobaby",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Aveeno Kids",
-    "sq": "aveenokids",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Babo Botanicals",
-    "sq": "babobotanicals",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Baby Anti Monkey Butt",
-    "sq": "babyantimonkeybutt",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Baby Bum",
-    "sq": "babybum",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Baby Magic",
-    "sq": "babymagic",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Babydonna",
-    "sq": "babydonna",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Babyganics",
-    "sq": "babyganics",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Badger",
-    "sq": "badger",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Balmex",
-    "sq": "balmex",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Banana Boat",
-    "sq": "bananaboat",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Bare Republic",
-    "sq": "barerepublic",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Baxter Laberatories",
-    "sq": "baxterlaberatories",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Beech-Nut",
-    "sq": "beechnut",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Bio Earth Manufacturing (Pty)",
-    "sq": "bioearthmanufacturing(pty)",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Biological Health",
-    "sq": "biologicalhealth",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Black Girl Sunscreen",
-    "sq": "blackgirlsunscreen",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Blue Lizard",
-    "sq": "bluelizard",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Bobbie",
-    "sq": "bobbie",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Boudreauxs",
-    "sq": "boudreauxs",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Brickell",
-    "sq": "brickell",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Burt's Bees Baby",
-    "sq": "burtsbeesbaby",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Burts Bees Baby",
-    "sq": "burtsbeesbaby",
-    "cat": "Skincare"
-  },
-  {
-    "name": "ByHeart",
-    "sq": "byheart",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "C.A Pharm",
-    "sq": "capharm",
-    "cat": "Skincare"
-  },
-  {
-    "name": "CERAVE",
-    "sq": "cerave",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Cadey S.R.L",
-    "sq": "cadeysrl",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Caldesene",
-    "sq": "caldesene",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Cetaphil Baby",
-    "sq": "cetaphilbaby",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Coola",
-    "sq": "coola",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Coppertone",
-    "sq": "coppertone",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Coppertone Pure",
-    "sq": "coppertonepure",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Coterie",
-    "sq": "coterie",
-    "cat": "Wipes"
-  },
-  {
-    "name": "Crayola",
-    "sq": "crayola",
-    "cat": "Toys & Gear"
-  },
-  {
-    "name": "Cvs",
-    "sq": "cvs",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Davion",
-    "sq": "davion",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Delta &",
-    "sq": "delta",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Delta Ecommerce",
-    "sq": "deltaecommerce",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Deserving Health",
-    "sq": "deservinghealth",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Desitin",
-    "sq": "desitin",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Dolgencorp",
-    "sq": "dolgencorp",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Dr. Brown's",
-    "sq": "drbrowns",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Earth Baby",
-    "sq": "earthbaby",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Earth Mama",
-    "sq": "earthmama",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Earth's Best",
-    "sq": "earthsbest",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Eden",
-    "sq": "eden",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Emilia Personal Care",
-    "sq": "emiliapersonalcare",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Enfamil",
-    "sq": "enfamil",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Eucerin Baby",
-    "sq": "eucerinbaby",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Expro3",
-    "sq": "expro3",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Fallien Cosmeceuticals",
-    "sq": "falliencosmeceuticals",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Fischer Pharmaceuticals",
-    "sq": "fischerpharmaceuticals",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Fisher-Price",
-    "sq": "fisherprice",
-    "cat": "Toys & Gear"
-  },
-  {
-    "name": "Fmg",
-    "sq": "fmg",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Foundation Commerce",
-    "sq": "foundationcommerce",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Fruit Of The Earth",
-    "sq": "fruitoftheearth",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Gerber",
-    "sq": "gerber",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Goddess Garden",
-    "sq": "goddessgarden",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Good Weather",
-    "sq": "goodweather",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Greenbrier",
-    "sq": "greenbrier",
-    "cat": "Skincare"
-  },
-  {
-    "name": "H.E.B",
-    "sq": "heb",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Happy Baby",
-    "sq": "happybaby",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Hello Bello",
-    "sq": "hellobello",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Hi Papa",
-    "sq": "hipapa",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "HiPP",
-    "sq": "hipp",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Hiya Health",
-    "sq": "hiyahealth",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Holle",
-    "sq": "holle",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Honest Company",
-    "sq": "honestcompany",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Huggies",
-    "sq": "huggies",
-    "cat": "Wipes"
-  },
-  {
-    "name": "Johnsons Baby",
-    "sq": "johnsonsbaby",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Jordan Fat Kids",
-    "sq": "jordanfatkids",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Joyspring",
-    "sq": "joyspring",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Kareway",
-    "sq": "kareway",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Kendamil",
-    "sq": "kendamil",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Kenvue",
-    "sq": "kenvue",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Kirkland Signature",
-    "sq": "kirklandsignature",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Kudos",
-    "sq": "kudos",
-    "cat": "Wipes"
-  },
-  {
-    "name": "Laboratory",
-    "sq": "laboratory",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Lansinoh",
-    "sq": "lansinoh",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Laorganic",
-    "sq": "laorganic",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Lg H&H",
-    "sq": "lghh",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "MUSTELA",
-    "sq": "mustela",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Mama Bear",
-    "sq": "mamabear",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Matys Healthy",
-    "sq": "matyshealthy",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Mdsolarsciences",
-    "sq": "mdsolarsciences",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Medtech",
-    "sq": "medtech",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Meijer",
-    "sq": "meijer",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Meijer Distributing",
-    "sq": "meijerdistributing",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Meijer Distribution",
-    "sq": "meijerdistribution",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Munchkin",
-    "sq": "munchkin",
-    "cat": "Toys & Gear"
-  },
-  {
-    "name": "Mustela",
-    "sq": "mustela",
-    "cat": "Skincare"
-  },
-  {
-    "name": "NUK",
-    "sq": "nuk",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Nanda",
-    "sq": "nanda",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Neutrogena",
-    "sq": "neutrogena",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Neutrogena Pure",
-    "sq": "neutrogenapure",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Nidaria Technology",
-    "sq": "nidariatechnology",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Normalest",
-    "sq": "normalest",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Oberon Cosmetic",
-    "sq": "oberoncosmetic",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Olen Skin Care",
-    "sq": "olenskincare",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Organic & Sustainable Beauty",
-    "sq": "organicsustainablebeauty",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Pacifica Beauty",
-    "sq": "pacificabeauty",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Pampers",
-    "sq": "pampers",
-    "cat": "Wipes"
-  },
-  {
-    "name": "Panergytek",
-    "sq": "panergytek",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Parent's Choice",
-    "sq": "parentschoice",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Peer Pharm",
-    "sq": "peerpharm",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Personal Care",
-    "sq": "personalcare",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Philips Avent",
-    "sq": "philipsavent",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Pipette",
-    "sq": "pipette",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Plum Organics",
-    "sq": "plumorganics",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Pml Nyc",
-    "sq": "pmlnyc",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Prime Enterprises",
-    "sq": "primeenterprises",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Private Label",
-    "sq": "privatelabel",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Propolis Nasal Plus",
-    "sq": "propolisnasalplus",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Raw Elements",
-    "sq": "rawelements",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Renu",
-    "sq": "renu",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Rite Aid",
-    "sq": "riteaid",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Roe Wellness",
-    "sq": "roewellness",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "S&C Hampton Sun",
-    "sq": "schamptonsun",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "SPF Ventures",
-    "sq": "spfventures",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Sasa Cosmetics",
-    "sq": "sasacosmetics",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Scerene Healthcare",
-    "sq": "scerenehealthcare",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Senmai",
-    "sq": "senmai",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Seventh Generation",
-    "sq": "seventhgeneration",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Shaklee",
-    "sq": "shaklee",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Similac",
-    "sq": "similac",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Skin Sciences Laboratory",
-    "sq": "skinscienceslaboratory",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Sqween",
-    "sq": "sqween",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Stream2Sea",
-    "sq": "stream2sea",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Sun Zapper",
-    "sq": "sunzapper",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Taylor James",
-    "sq": "taylorjames",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Tekt Tone",
-    "sq": "tekttone",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Tellurian",
-    "sq": "tellurian",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Tender Moments",
-    "sq": "tendermoments",
-    "cat": "Skincare"
-  },
-  {
-    "name": "The Green Beaver",
-    "sq": "thegreenbeaver",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "The Hain Celestial",
-    "sq": "thehaincelestial",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "The Natural Skn",
-    "sq": "thenaturalskn",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "The Seaweed Bath",
-    "sq": "theseaweedbath",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Thinkbaby",
-    "sq": "thinkbaby",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Thinksport",
-    "sq": "thinksport",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Tommee Tippee",
-    "sq": "tommeetippee",
-    "cat": "Food & Formula"
-  },
-  {
-    "name": "Tonymoly",
-    "sq": "tonymoly",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Topco Associates",
-    "sq": "topcoassociates",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "True Nature",
-    "sq": "truenature",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Tubby Todd",
-    "sq": "tubbytodd",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Up & Up",
-    "sq": "upup",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Uv Natural Pty",
-    "sq": "uvnaturalpty",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Veganicskn",
-    "sq": "veganicskn",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Vitabath",
-    "sq": "vitabath",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Wal-Mart Stores",
-    "sq": "walmartstores",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Walgreens",
-    "sq": "walgreens",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "WaterWipes",
-    "sq": "waterwipes",
-    "cat": "Wipes"
-  },
-  {
-    "name": "Wegman",
-    "sq": "wegman",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Whole Foods Market",
-    "sq": "wholefoodsmarket",
-    "cat": "Skincare"
-  },
-  {
-    "name": "Windmill Health",
-    "sq": "windmillhealth",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Yaya Organics",
-    "sq": "yayaorganics",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Zero To Seven",
-    "sq": "zerotoseven",
-    "cat": "Baby Sunscreen"
-  },
-  {
-    "name": "Ziva Wetwipes Fzco",
-    "sq": "zivawetwipesfzco",
-    "cat": "Skincare"
-  },
-  {
-    "name": "doTERRA",
-    "sq": "doterra",
-    "cat": "Skincare"
-  }
+ {
+  "name": "ATTITUDE",
+  "sq": "attitude",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Alba Botanica",
+  "sq": "albabotanica",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "All Good",
+  "sq": "allgood",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Allure",
+  "sq": "allure",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Aloe Up",
+  "sq": "aloeup",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Aloe Care",
+  "sq": "aloecare",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "American Consumer",
+  "sq": "americanconsumer",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Anicare Pharmaceuticals",
+  "sq": "anicarepharmaceuticals",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Aquaphor",
+  "sq": "aquaphor",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Arbonne",
+  "sq": "arbonne",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Aruba Aloe",
+  "sq": "arubaaloe",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Astivita",
+  "sq": "astivita",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Aveeno",
+  "sq": "aveeno",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Aveeno Baby",
+  "sq": "aveenobaby",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Aveeno Kids",
+  "sq": "aveenokids",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Babo Botanicals",
+  "sq": "babobotanicals",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Baby Anti Monkey Butt",
+  "sq": "babyantimonkeybutt",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Baby Bum",
+  "sq": "babybum",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Baby Magic",
+  "sq": "babymagic",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Babydonna",
+  "sq": "babydonna",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Babyganics",
+  "sq": "babyganics",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Badger",
+  "sq": "badger",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Balmex",
+  "sq": "balmex",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Banana Boat",
+  "sq": "bananaboat",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Bare Republic",
+  "sq": "barerepublic",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Beech-Nut",
+  "sq": "beechnut",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Bio Earth Manufacturing (Pty)",
+  "sq": "bioearthmanufacturing(pty)",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Biological Health",
+  "sq": "biologicalhealth",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Black Girl Sunscreen",
+  "sq": "blackgirlsunscreen",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Blue Lizard",
+  "sq": "bluelizard",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Bobbie",
+  "sq": "bobbie",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Boudreauxs",
+  "sq": "boudreauxs",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Brickell",
+  "sq": "brickell",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Burt's Bees Baby",
+  "sq": "burtsbeesbaby",
+  "cat": "Skincare"
+ },
+ {
+  "name": "ByHeart",
+  "sq": "byheart",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "C.A Pharm",
+  "sq": "capharm",
+  "cat": "Skincare"
+ },
+ {
+  "name": "CERAVE",
+  "sq": "cerave",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Cadey S.R.L",
+  "sq": "cadeysrl",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Caldesene",
+  "sq": "caldesene",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Cetaphil Baby",
+  "sq": "cetaphilbaby",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Coola",
+  "sq": "coola",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Coppertone",
+  "sq": "coppertone",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Coppertone Pure",
+  "sq": "coppertonepure",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Coterie",
+  "sq": "coterie",
+  "cat": "Wipes"
+ },
+ {
+  "name": "Crayola",
+  "sq": "crayola",
+  "cat": "Toys & Gear"
+ },
+ {
+  "name": "Cvs",
+  "sq": "cvs",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Davion",
+  "sq": "davion",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Delta Ecommerce",
+  "sq": "deltaecommerce",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Deserving Health",
+  "sq": "deservinghealth",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Desitin",
+  "sq": "desitin",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Dolgencorp",
+  "sq": "dolgencorp",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Dr. Brown's",
+  "sq": "drbrowns",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Earth Baby",
+  "sq": "earthbaby",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Earth Mama",
+  "sq": "earthmama",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Earth's Best",
+  "sq": "earthsbest",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Eden",
+  "sq": "eden",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Emilia Personal Care",
+  "sq": "emiliapersonalcare",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Enfamil",
+  "sq": "enfamil",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Eucerin Baby",
+  "sq": "eucerinbaby",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Expro3",
+  "sq": "expro3",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Fallien Cosmeceuticals",
+  "sq": "falliencosmeceuticals",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Fischer Pharmaceuticals",
+  "sq": "fischerpharmaceuticals",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Fisher-Price",
+  "sq": "fisherprice",
+  "cat": "Toys & Gear"
+ },
+ {
+  "name": "Fmg",
+  "sq": "fmg",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Foundation Commerce",
+  "sq": "foundationcommerce",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Fruit Of The Earth",
+  "sq": "fruitoftheearth",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Gerber",
+  "sq": "gerber",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Goddess Garden",
+  "sq": "goddessgarden",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Good Weather",
+  "sq": "goodweather",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Greenbrier",
+  "sq": "greenbrier",
+  "cat": "Skincare"
+ },
+ {
+  "name": "H.E.B",
+  "sq": "heb",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Happy Baby",
+  "sq": "happybaby",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Hello Bello",
+  "sq": "hellobello",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Hi Papa",
+  "sq": "hipapa",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "HiPP",
+  "sq": "hipp",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Hiya Health",
+  "sq": "hiyahealth",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Holle",
+  "sq": "holle",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Honest Company",
+  "sq": "honestcompany",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Huggies",
+  "sq": "huggies",
+  "cat": "Wipes"
+ },
+ {
+  "name": "Johnsons Baby",
+  "sq": "johnsonsbaby",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Jordan Fat Kids",
+  "sq": "jordanfatkids",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Joyspring",
+  "sq": "joyspring",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Kareway",
+  "sq": "kareway",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Kendamil",
+  "sq": "kendamil",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Kenvue",
+  "sq": "kenvue",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Kirkland Signature",
+  "sq": "kirklandsignature",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Kudos",
+  "sq": "kudos",
+  "cat": "Wipes"
+ },
+ {
+  "name": "Lansinoh",
+  "sq": "lansinoh",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Laorganic",
+  "sq": "laorganic",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Lg H&H",
+  "sq": "lghh",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Mama Bear",
+  "sq": "mamabear",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Matys Healthy",
+  "sq": "matyshealthy",
+  "cat": "Skincare"
+ },
+ {
+  "name": "MDSolarSciences",
+  "sq": "mdsolarsciences",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Medtech",
+  "sq": "medtech",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Meijer",
+  "sq": "meijer",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Meijer Distributing",
+  "sq": "meijerdistributing",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Meijer Distribution",
+  "sq": "meijerdistribution",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Munchkin",
+  "sq": "munchkin",
+  "cat": "Toys & Gear"
+ },
+ {
+  "name": "Mustela",
+  "sq": "mustela",
+  "cat": "Skincare"
+ },
+ {
+  "name": "NUK",
+  "sq": "nuk",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Nanda",
+  "sq": "nanda",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Neutrogena",
+  "sq": "neutrogena",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Neutrogena Pure",
+  "sq": "neutrogenapure",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Nidaria Technology",
+  "sq": "nidariatechnology",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Normalest",
+  "sq": "normalest",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Oberon Cosmetic",
+  "sq": "oberoncosmetic",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Olen Skin Care",
+  "sq": "olenskincare",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Organic & Sustainable Beauty",
+  "sq": "organicsustainablebeauty",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Pacifica Beauty",
+  "sq": "pacificabeauty",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Pampers",
+  "sq": "pampers",
+  "cat": "Wipes"
+ },
+ {
+  "name": "Panergytek",
+  "sq": "panergytek",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Parent's Choice",
+  "sq": "parentschoice",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Peer Pharm",
+  "sq": "peerpharm",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Personal Care",
+  "sq": "personalcare",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Philips Avent",
+  "sq": "philipsavent",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Pipette",
+  "sq": "pipette",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Plum Organics",
+  "sq": "plumorganics",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Pml Nyc",
+  "sq": "pmlnyc",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Prime Enterprises",
+  "sq": "primeenterprises",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Private Label",
+  "sq": "privatelabel",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Propolis Nasal Plus",
+  "sq": "propolisnasalplus",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Raw Elements",
+  "sq": "rawelements",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Renu",
+  "sq": "renu",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Rite Aid",
+  "sq": "riteaid",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Roe Wellness",
+  "sq": "roewellness",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "S&C Hampton Sun",
+  "sq": "schamptonsun",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "SPF Ventures",
+  "sq": "spfventures",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Sasa Cosmetics",
+  "sq": "sasacosmetics",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Scerene Healthcare",
+  "sq": "scerenehealthcare",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Senmai",
+  "sq": "senmai",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Seventh Generation",
+  "sq": "seventhgeneration",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Shaklee",
+  "sq": "shaklee",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Similac",
+  "sq": "similac",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Skin Sciences Laboratory",
+  "sq": "skinscienceslaboratory",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Sqween",
+  "sq": "sqween",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Stream2Sea",
+  "sq": "stream2sea",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Sun Zapper",
+  "sq": "sunzapper",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Taylor James",
+  "sq": "taylorjames",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Tekt Tone",
+  "sq": "tekttone",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Tellurian",
+  "sq": "tellurian",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Tender Moments",
+  "sq": "tendermoments",
+  "cat": "Skincare"
+ },
+ {
+  "name": "The Green Beaver",
+  "sq": "thegreenbeaver",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "The Hain Celestial",
+  "sq": "thehaincelestial",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "The Natural Skn",
+  "sq": "thenaturalskn",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "The Seaweed Bath",
+  "sq": "theseaweedbath",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Thinkbaby",
+  "sq": "thinkbaby",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Thinksport",
+  "sq": "thinksport",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Tommee Tippee",
+  "sq": "tommeetippee",
+  "cat": "Food & Formula"
+ },
+ {
+  "name": "Tonymoly",
+  "sq": "tonymoly",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Topco Associates",
+  "sq": "topcoassociates",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "True Nature",
+  "sq": "truenature",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Tubby Todd",
+  "sq": "tubbytodd",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Up & Up",
+  "sq": "upup",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Uv Natural Pty",
+  "sq": "uvnaturalpty",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Veganicskn",
+  "sq": "veganicskn",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Vitabath",
+  "sq": "vitabath",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Wal-Mart Stores",
+  "sq": "walmartstores",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Walgreens",
+  "sq": "walgreens",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "WaterWipes",
+  "sq": "waterwipes",
+  "cat": "Wipes"
+ },
+ {
+  "name": "Wegman",
+  "sq": "wegman",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Whole Foods Market",
+  "sq": "wholefoodsmarket",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Windmill Health",
+  "sq": "windmillhealth",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Yaya Organics",
+  "sq": "yayaorganics",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Zero To Seven",
+  "sq": "zerotoseven",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Ziva Wetwipes Fzco",
+  "sq": "zivawetwipesfzco",
+  "cat": "Skincare"
+ },
+ {
+  "name": "doTERRA",
+  "sq": "doterra",
+  "cat": "Skincare"
+ },
+ {
+  "name": "Sky and Sol",
+  "sq": "skyandsol",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Evereden",
+  "sq": "evereden",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Laspa",
+  "sq": "laspa",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "TiZO",
+  "sq": "tizo",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "EltaMD",
+  "sq": "eltamd",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Unsun",
+  "sq": "unsun",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Reef Repair",
+  "sq": "reefrepair",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "The Beach People",
+  "sq": "thebeachpeople",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Coral Isle",
+  "sq": "coralisle",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Zoey Naturals",
+  "sq": "zoeynaturals",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Land Shark",
+  "sq": "landshark",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "Ceile",
+  "sq": "ceile",
+  "cat": "Baby Sunscreen"
+ },
+ {
+  "name": "365 Everyday Value",
+  "sq": "365everydayvalue",
+  "cat": "Baby Sunscreen"
+ }
 ]
