@@ -53,12 +53,17 @@ HAZARD_PATTERNS = [
     ("mold", r"\bmold\b|mould"),
     ("battery", r"button (cell|battery)|coin (cell|battery)|lithium|battery ingestion"),
     ("magnet", r"\bmagnet"),
-    ("choking", r"chok|small part|detach"),
-    ("suffocation", r"suffocat|entrap"),
+    ("suffocation", r"suffocat"),
     ("strangulation", r"strangulat|cord around"),
+    # Physical-injury recalls name the hazard explicitly ("posing a fall hazard"),
+    # so fall/entrapment are evaluated BEFORE choking. Previously "detach" sat in
+    # the choking pattern and "entrap" folded into suffocation, which mislabeled
+    # 46 records (tower stools, high chairs, walkers, loungers, safety gates).
+    ("fall", r"\bfall\b|tip ?over|tip-over|topple"),
+    ("entrapment", r"entrap"),
+    ("choking", r"chok|small part"),
     ("flammable", r"flammab"),
     ("fire", r"\bfire\b|burn hazard|overheat|igni"),
-    ("fall", r"\bfall\b|tip ?over|tip-over|topple"),
     ("laceration", r"lacerat|sharp|cut hazard"),
     ("asbestos", r"asbestos"),
     ("chemical", r"chemical|toxic|formaldehyde|phthalate|benzene"),
@@ -73,9 +78,9 @@ def derive_hazard(text):
 
 # Lethal (death-associated) hazards drive the "Most urgent" section.
 # Rank: lower = more lethal, surfaced first.
-LETHAL_HAZARDS = {"suffocation", "strangulation", "botulism", "bacteria",
+LETHAL_HAZARDS = {"suffocation", "entrapment", "strangulation", "botulism", "bacteria",
                   "contamination", "battery", "choking", "magnet", "mold"}
-LETHAL_RANK = {"botulism": 1, "suffocation": 2, "strangulation": 2,
+LETHAL_RANK = {"botulism": 1, "suffocation": 2, "entrapment": 2, "strangulation": 2,
                "battery": 3, "bacteria": 3, "contamination": 3,
                "choking": 4, "magnet": 4, "mold": 5}
 
