@@ -175,7 +175,9 @@ def default_action(hazard):
 CHILD_KEYWORDS = [
     "baby","infant","toddler","newborn","nursery","crib","cradle","bassinet",
     "stroller","car seat","booster seat","diaper","pacifier","teeth","teether",
-    "nursing","bottle","sippy","high chair","playpen","play yard","swaddle",
+    "nursing","baby bottle","nursing bottle","bottle warmer","sippy",
+    "human milk","donor milk","milk bank","breast milk","breastmilk",
+    "high chair","playpen","play yard","swaddle",
     "onesie","children","child","kids","kid","youth","pajama","sleepwear","rattle",
     "potty","formula","wipe","changing table","bed rail","play mat","walker",
     "bouncer","jumper","swing","carrier","toy",
@@ -242,23 +244,45 @@ INFANT_MAGNET_SAVE = re.compile(
     r"\b(magnet|magnetic)\b.*\b(block|chess|building|stick|stack|tile|set|toy)\b|"
     r"\b(block|chess|building|stacker|tile)\b.*\bmagnet", re.I)
 
+# Child-HAZARD language describes WHO is at risk, not WHAT the product is.
+# CPSC headlines for adult products say "Child-Resistant Packaging", "Child
+# Poisoning", "swallowed by young children" — without stripping these, paint
+# thinner / fuel bottles / Benadryl all pass the child filter.
+CHILD_HAZARD_PHRASE_RE = re.compile(
+    r"child[-\s]?resistant|child[-\s]?proof|poison prevention packaging|"
+    r"child(ren)?\s+poisoning|poisoning[^.]{0,40}child(ren)?|"
+    r"swallowed by (young )?child(ren)?|ingested by (young )?child(ren)?|"
+    r"out of the (sight and )?reach of child(ren)?|keep (it )?away from child(ren)?|"
+    r"accessible to (young )?child(ren)?|if a (young )?child|small child(ren)?|"
+    r"harmful if swallowed", re.I)
+
+# Adult / general categories that only ever appear via child-resistant-packaging
+# violations. Rescued when the item is clearly the kids'/baby version.
+EXTRA_NOISE_RE = re.compile(
+    r"(paint thinner|fuel bottle|liquid fuel|minoxidil|lidocaine|essential oil|"
+    r"nasal spray|dietary supplement|multivitamin|mouthwash|kitchen scale|"
+    r"\blighter|hair (growth|serum)|beard|waxing kit|reagent|test kit|"
+    r"iron supplement|hydrogen peroxide|silicone glue|numbing cream|"
+    r"battery pack|battery pouch|bottled water)", re.I)
+BABY_NAME_SIGNAL = re.compile(
+    r"\b(kid|kids|children|children's|child's|pediatric)\b", re.I)
+BABY_STRONG = re.compile(
+    r"(baby|babies|infant|newborn|toddler|nursery|breast ?milk|"
+    r"donor (human )?milk|human milk|milk bank|formula)", re.I)
+
 def is_child_product(text, name=None):
-    blob = (text or "").lower()
-    name_blob = (name or text or "").lower()
-    # Strong noise (appliances, coolers, helmets, pools, bed rails, lithium coin
-    # batteries, bunk beds, etc.) — decisive, checked against product name.
+    # Strip child-HAZARD wording first so it cannot qualify an adult product.
+    blob = CHILD_HAZARD_PHRASE_RE.sub(" ", (text or "").lower())
+    name_blob = CHILD_HAZARD_PHRASE_RE.sub(" ", (name or text or "").lower())
+    rescued = BABY_NAME_SIGNAL.search(name_blob) or BABY_STRONG.search(blob)
+    if EXTRA_NOISE_RE.search(name_blob) and not rescued:
+        return False
     if STRONG_NOISE_RE.search(name_blob):
         return False
-    # Age noise (0-4 focus): big-kid / adult items a 0-4 child does not use.
-    # Checked against the product NAME so a stray reason word can't rescue them,
-    # but genuine infant magnet toys (chess, blocks, building sticks) are kept
-    # because magnet ingestion is a top infant hazard.
     if AGE_NOISE_RE.search(name_blob) and not INFANT_MAGNET_SAVE.search(name_blob):
         return False
-    # Softer noise (explicit "adult", patio, fireworks) — rescuable by a baby signal.
     if NOISE_NAME_RE.search(blob) and not BABY_PROTECT_RE.search(blob):
         return False
-    # Hard produce exclusion, unless clearly a baby-food product
     if (PRODUCE_RE.search(blob) or SALAD_RE.search(blob)) and not BABYFOOD_RESCUE.search(blob):
         if not re.search(r"\b(baby food|infant|formula)\b", blob):
             return False
@@ -499,7 +523,17 @@ def merge(db, fresh):
     ADULT_PURGE_RE = re.compile(
         r"hemorrhoidal|stainless king|\bski boots?\b|\bfirearms?\b|"
         r"gun sight|dot sight|red dot|cleansing washcloths?|"
-        r"\bpower strips?\b|extension cord|surge protector",
+        r"\bpower strips?\b|extension cord|surge protector|"
+        # Adult/general products stored before the child-hazard-language fix.
+        # Kids/baby versions are protected by the BABY rescue in the loop below.
+        r"paint thinner|fuel bottles?|liquid fuel|minoxidil|"
+        r"hair and beard growth|waxing kits?|reagent bottles?|dissolved oxygen|"
+        r"silicone glue|numbing cream|battery pouch|battery packs?|"
+        r"bottled water|benadryl|safetussin|light up tumblers?|"
+        r"toilet lighters?|kitchen scales?|hydrogen peroxide mouthwash|"
+        r"essential oil bottles?|afrin|bariatric fusion|california gold nutrition|"
+        r"nfh iron|ultimate multivitamin|vitaquest|firefly safe|"
+        r"lidocaine ointment|relieve\W+lidocaine|loratadine|aloe vera lotion",
         re.I)
     before_purge = len(db["recalls"])
     kept = []
@@ -509,7 +543,10 @@ def merge(db, fresh):
         # records auto-set is_enforced (stable id) — that flag does not mean a human
         # curated them. The ADULT_PURGE_RE list is deliberately narrow (hemorrhoidal,
         # firearm, ski boots, power strips, etc.) so no genuine baby item matches.
-        if ADULT_PURGE_RE.search(name):
+        # Kids/baby versions of these categories (Kids Multivitamin, Baby Omega 3,
+        # Shakleebaby, Ferrous Sulfate for infants, donor human milk) are kept.
+        if ADULT_PURGE_RE.search(name) and not (
+                BABY_NAME_SIGNAL.search(name) or BABY_STRONG.search(name)):
             continue  # drop this adult / non-child product
         kept.append(r)
     purged = before_purge - len(kept)
