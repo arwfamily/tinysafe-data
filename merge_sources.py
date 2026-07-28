@@ -152,6 +152,34 @@ def trim_code_info(rec):
     return rec
 
 
+# The original 5-value `category`. Distinct from display_category (9) and
+# category_family (25), and something downstream still reads it.
+_COARSE = {
+    'Medical devices': 'Medical Devices',
+    'Medications & supplements': 'Drugs',
+    'Personal care & medicine': 'Drugs',
+    'Skincare, bath & diapering': 'Cosmetics',
+    'Food & formula': 'Food & Beverages',
+    'Feeding & high chairs': 'Baby & Kids',
+}
+
+
+def _coarse_category(rec):
+    fam = rec.get('category_family')
+    if fam in _COARSE:
+        return _COARSE[fam]
+    dc = rec.get('display_category')
+    if dc == 'Medical':
+        return 'Medical Devices'
+    if dc in ('Medications',):
+        return 'Drugs'
+    if dc in ('Skincare', 'Baby Sunscreen', 'Wipes', 'Oral Care'):
+        return 'Cosmetics'
+    if dc == 'Food & Formula':
+        return 'Food & Beverages'
+    return 'Baby & Kids'
+
+
 def fill_legacy(rec):
     """Every key the app decodes, on every record, whatever source it came from."""
     if rec.get("display_category") not in LEGACY_VALUES:
@@ -183,6 +211,10 @@ def fill_legacy(rec):
         rec["action"] = ("Stop using it now. Check the official recall notice for what to do "
                          "next. If your baby used it and has any symptoms, contact your "
                          "pediatrician.")
+    if not rec.get('status'):
+        # CPSC never terminates a recall, so an archive record is open by
+        # definition. NHTSA is the same. Only FDA carries a lifecycle.
+        rec['status'] = 'Recalled' if rec.get('source') in ('CPSC', 'NHTSA') else 'Ongoing'
     tier = rec.get("tier") or 9
     rec["is_urgent"] = tier <= 3
     rec["urgent_rank"] = tier if tier <= 3 else 99
@@ -209,8 +241,33 @@ def fill_legacy(rec):
 def enrich(rec):
     """Fill the derived fields on any record, whatever source it came from."""
     name = rec.get('product_name') or rec.get('display_name') or ''
-    blob = f"{name} {rec.get('heading') or ''} {rec.get('reason') or ''}"
-    fam = rec.get('category_family') or tcat.family(tc.key(blob)) or 'Other'
+    # Product name and title only. Including `reason` put every record whose
+    # hazard text says "can slide out" into Outdoor & play equipment — the same
+    # contamination already fixed once in tinysafe_categories, reintroduced here
+    # because this function builds its own blob.
+    blob = f"{name} {rec.get('heading') or ''}"
+    # Always re-derive. Keeping an existing value froze every past mistake in
+    # place: 595 FDA records sat in "Outdoor & play equipment" from an earlier
+    # pattern set and no later run could correct them. That is the same failure
+    # the hazard field was redesigned to avoid, reintroduced one field over.
+    ptype = rec.get('product_type') or ''
+    if not ptype and 'FDA' in str(rec.get('source', '')):
+        ptype = {'Medical Devices': 'Devices', 'Drugs': 'Drugs',
+                 'Cosmetics': 'Cosmetics'}.get(rec.get('category'), '')
+    if rec.get('source') == 'NHTSA':
+        # Every NHTSA record here is an RCLTYPECD == "C" child restraint
+        # campaign. The source states it; guessing from a title like
+        # "Cosco COSCO 13-168" put 184 of the 251 somewhere else.
+        fam = 'Car seats & travel'
+    elif ptype:
+        fam = tcat.family_for_fda(ptype, tc.key(blob))
+    else:
+        # Name and title first. Fall back to the description only when they
+        # yield nothing, so hazard prose can still help an otherwise unnamed
+        # product without being able to override a clear product name.
+        fam = (tcat.family(tc.key(blob))
+               or tcat.family(tc.key(str(rec.get('reason') or '')[:300]))
+               or 'Other')
     rec['category_family'] = fam
     rec['category_group'] = tcat.group(fam)
 
@@ -491,7 +548,7 @@ if __name__ == '__main__':
     for r in recs:
         rec = {k: v for k, v in r.items() if k in APP_FIELDS and v not in (None, '', [])}
         # fields every live record carries today, so they must not go missing
-        rec.setdefault('category', r.get('category_family') or 'Baby & Kids')
+        rec.setdefault('category', _coarse_category(r))
         rec.setdefault('match_words', rec.get('match_text', ''))
         rec.setdefault('product_count', r.get('product_count') or 1)
         rec.setdefault('reason', r.get('hazard_text') or r.get('plain_reason') or '')
