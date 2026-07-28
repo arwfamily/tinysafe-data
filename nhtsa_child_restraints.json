@@ -1,29 +1,32 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "generated": "2026-07-28",
   "description": "NHTSA child-restraint (RCLTYPECD C) recalls, post-2010 + pre-2010 flat files, collapsed on CAMPNO. Handoff extract — NOT merged into recalls_unified.json; cross-agency dedup happens at merge time. Hazard values hand-assigned per campaign (no pattern matching).",
   "source_file": "static.nhtsa.gov/odi/ffdd/rcl/FLAT_RCL_POST_2010.zip + FLAT_RCL_PRE_2010.zip (2026-07-28)",
   "notes": {
     "record_type": "All NHTSA records are record_type 'recall' (NHTSA has no safety-warning equivalent).",
-    "tier_mapping": "Agreed severity-table placement for car-seat hazards: entrapment -> tier 1; crash_protection -> tier 2; label_instruction -> tier 4 (car-seat-specific: instruction/label defects cause installation errors that become crash-protection failures, so they do not sit at the general labelling tier 7); fall, choking, fire, laceration, strangulation follow the general taxonomy.",
+    "tier_mapping": "Agreed severity-table placement for car-seat hazards: entrapment -> tier 1; crash_protection -> tier 2; label_instruction -> tier 4 (car-seat-specific: instruction/label defects cause installation errors that become crash-protection failures, so they do not sit at the general labelling tier 7); general (no source text) -> tier 4; fall, choking, flammable, fire, laceration, strangulation follow the general taxonomy.",
     "feed_scope": "Everything is searchable; the feed window (2016+) is applied at merge/app time. Pre-2010 seats are past their 6-10 year expiry and must never alert — they exist to answer the hand-me-down question.",
     "no_injury_counts": "NHTSA flat files carry no death/injury counts (no CPSC Incidents equivalent); records rank on hazard tier alone.",
     "no_termination_status": "NHTSA recalls have no lifecycle/termination status field; all records are open indefinitely.",
-    "no_source_text": "9 campaigns (8 from 1972-74 plus 95C035000) have no defect/consequence text in the flat file; hazard left empty with a rationale rather than guessed.",
+    "no_source_text": "9 campaigns (8 from 1972-74 plus 95C035000) have no defect/consequence text in the flat file; hazard is the literal 'general' (tier 4 - unknown is not minor) per the merged-schema rule that hazard is never empty. The no-source-text rationale is retained on each record.",
+    "flammability": "FMVSS 302 / burn-rate standard failures carry 'flammable' (9 campaigns), consistent with the CPSC children's-sleepwear taxonomy where 'fire' means actual ignition. One exception: 94C009000 (Renolux GT7000 powered recline) is overheating/melting wiring - an ignition risk, not a burn-rate failure - and stays 'fire'.",
+    "brands": "Every record carries a 'brands' array (one entry per make) for My Brands matching; 'brand' keeps the joined ' / ' form for display only. 13 pre-2010 campaigns span multiple makes.",
     "manufacture_window": "Campaign-level manufactured_from/to is min/max across model rows; per-model windows carried in models[]. Many campaigns have no window on any row (absent at source).",
     "url_form": "Full 9-char CAMPNO stored canonically; URL uses nhtsa.gov/recalls?nhtsaId=<CAMPNO> (form observed in NHTSA-indexed pages; pending a real-browser spot-check).",
     "superseded": "NHTSA-22C007000 is replaced by NHTSA-22C008000 (stated in its own corrective text); carried with superseded_by for the merge to resolve.",
     "possible_intra_source_duplicates": "90C031000/90C032000 (identical text, same date, overlapping models) and 96C013000/96C013001 (same defect, sub-campaign) look like intra-NHTSA duplicate pairs; carried as-is for merge-time dedup, no supersession stated at source."
   },
   "hazard_tally": {
-    "": 9,
+    "general": 9,
     "crash_protection": 145,
     "choking": 20,
     "entrapment": 16,
-    "fire": 10,
+    "flammable": 9,
     "fall": 11,
     "laceration": 2,
     "label_instruction": 37,
+    "fire": 1,
     "strangulation": 1
   },
   "total": 251,
@@ -39,6 +42,9 @@
       "product_name": "Five Filer Bros. FIVE FILER BROS.",
       "display_name": "Five Filer Bros. Child Seats",
       "brand": "Five Filer Bros.",
+      "brands": [
+        "Five Filer Bros."
+      ],
       "manufacturer": "FIVE",
       "recall_date": "19720501",
       "reason": "",
@@ -46,7 +52,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=72C001000",
-      "hazard": "",
+      "hazard": "general",
       "hazard_hand_assigned": true,
       "hazard_rationale": "No defect/consequence text at source (1972 record)",
       "action": "",
@@ -77,6 +83,9 @@
       "product_name": "Cosco COSCO 13-168; COSCO 13-169",
       "display_name": "Cosco 13-168 / 13-169 Child Seats",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19720501",
       "reason": "",
@@ -84,7 +93,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=72C002000",
-      "hazard": "",
+      "hazard": "general",
       "hazard_hand_assigned": true,
       "hazard_rationale": "No defect/consequence text at source (1972 record)",
       "action": "",
@@ -120,6 +129,9 @@
       "product_name": "Pride Trimble 875-879",
       "display_name": "Pride Trimble 875–879 Child Seats",
       "brand": "Pride Trimble",
+      "brands": [
+        "Pride Trimble"
+      ],
       "manufacturer": "PRIDE",
       "recall_date": "19720501",
       "reason": "",
@@ -127,7 +139,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=72C003000",
-      "hazard": "",
+      "hazard": "general",
       "hazard_hand_assigned": true,
       "hazard_rationale": "No defect/consequence text at source (1972 record)",
       "action": "",
@@ -158,6 +170,9 @@
       "product_name": "Frank F. Taylor 786; 787",
       "display_name": "Frank F. Taylor 786 / 787 Child Seats",
       "brand": "Frank F. Taylor",
+      "brands": [
+        "Frank F. Taylor"
+      ],
       "manufacturer": "FRANK",
       "recall_date": "19720510",
       "reason": "",
@@ -165,7 +180,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=72C004000",
-      "hazard": "",
+      "hazard": "general",
       "hazard_hand_assigned": true,
       "hazard_rationale": "No defect/consequence text at source (1972 record)",
       "action": "",
@@ -201,6 +216,9 @@
       "product_name": "Buckeye BUCKEYE 1280; BUCKEYE 1290",
       "display_name": "Buckeye 1280 / 1290 Child Seats",
       "brand": "Buckeye",
+      "brands": [
+        "Buckeye"
+      ],
       "manufacturer": "BUCKEYE",
       "recall_date": "19720510",
       "reason": "",
@@ -208,7 +226,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=72C005000",
-      "hazard": "",
+      "hazard": "general",
       "hazard_hand_assigned": true,
       "hazard_rationale": "No defect/consequence text at source (1972 record)",
       "action": "",
@@ -244,6 +262,9 @@
       "product_name": "Babyhood WONDA-CHAIR 500; WONDA-CHAIR 501; WONDA-CHAIR 501B",
       "display_name": "Babyhood Wonda-Chair 500 / 501 / 501B",
       "brand": "Babyhood",
+      "brands": [
+        "Babyhood"
+      ],
       "manufacturer": "BABYHOOD INDUSTRIES, INC.",
       "recall_date": "19730328",
       "reason": "",
@@ -251,7 +272,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=73C009000",
-      "hazard": "",
+      "hazard": "general",
       "hazard_hand_assigned": true,
       "hazard_rationale": "No defect/consequence text at source (1973 record)",
       "action": "",
@@ -292,6 +313,9 @@
       "product_name": "Questor KANTWET",
       "display_name": "Questor Kantwet Child Seats",
       "brand": "Questor",
+      "brands": [
+        "Questor"
+      ],
       "manufacturer": "QUESTOR",
       "recall_date": "19731231",
       "reason": "",
@@ -299,7 +323,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=73C027000",
-      "hazard": "",
+      "hazard": "general",
       "hazard_hand_assigned": true,
       "hazard_rationale": "No defect/consequence text at source (1973 record)",
       "action": "",
@@ -330,6 +354,9 @@
       "product_name": "Stroll-O-Chair 71",
       "display_name": "Stroll-O-Chair 71 Child Seats",
       "brand": "Stroll-O-Chair",
+      "brands": [
+        "Stroll-O-Chair"
+      ],
       "manufacturer": "REX-STROLL-O-CHAIR",
       "recall_date": "19740118",
       "reason": "",
@@ -337,7 +364,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=74C004000",
-      "hazard": "",
+      "hazard": "general",
       "hazard_hand_assigned": true,
       "hazard_rationale": "No defect/consequence text at source (1974 record)",
       "action": "",
@@ -368,6 +395,9 @@
       "product_name": "Century SAFE-T-RIDER",
       "display_name": "Century Safe-T-Rider Child Seats",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19801001",
       "reason": "CHILD SAFETY SEATS MAY FAIL TO COMPLY WITH FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS\". THE ADJUSTMENT SLIDE ON THE AUXILIARY HARNESS ALLOWS EXCESSIVE HORIZONTAL MOVEMENT WHEN TESTED UNDER CRASH CONDITIONS.",
@@ -406,6 +436,9 @@
       "product_name": "Strolee WEE CARE 599",
       "display_name": "Strolee Wee Care 599 Car Seats",
       "brand": "Strolee",
+      "brands": [
+        "Strolee"
+      ],
       "manufacturer": "STROLEE",
       "recall_date": "19810824",
       "reason": "THE PLASTIC UPHOLSTERY CLIPS USED TO FASTEN UPHOLSTERY TO THE CAR SEAT SHIELD COULD COME LOOSE.",
@@ -444,6 +477,9 @@
       "product_name": "International TEDDY TOT ASTRO SEAT 9100",
       "display_name": "International Teddy Tot Astro Seat 9100",
       "brand": "International",
+      "brands": [
+        "International"
+      ],
       "manufacturer": "INTERNATIONAL",
       "recall_date": "19821101",
       "reason": "THERE IS SOME CONCERN THAT THE SNAPS WHICH LOCK THE BUCKLE TO THE CROTCH STRAP MAY PULL THROUGH THE WEBBING AFTER CONTINUOUS USE.",
@@ -482,6 +518,9 @@
       "product_name": "Century 4100; 4200",
       "display_name": "Century 4100 / 4200 Car Seats",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19821203",
       "reason": "THE POSSIBILITY EXISTS THAT THE PLASTIC UPHOLSTERY BUTTON USED TO ATTACH THE UPHOLSTERY TO THE CAR SEAT FRAME COULD COME LOOSE. THOUGH REMOVAL OF THESE BUTTONS DOES NOT AFFECT THE PERFORMANCE OR FUNCTION OF THE CAR SEAT, A CHILD COULD PLACE ONE OF THEM IN HIS/HER MOUTH.",
@@ -525,6 +564,9 @@
       "product_name": "Babyhood BABYHOOD",
       "display_name": "Babyhood Child Safety Seats",
       "brand": "Babyhood",
+      "brands": [
+        "Babyhood"
+      ],
       "manufacturer": "BABYHOOD INDUSTRIES, INC.",
       "recall_date": "19830214",
       "reason": "EQUIPMENT FAILS TO MEET THE REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS\", SINCE THE BUCKLE MAY DISENGAGE DURING A VEHICLE FRONTAL IMPACT, ALLOWING EXCESSIVE MOTION OF THE INFANT. INCORRECT THREADING OF THE SHOULDER HARNESS LEADS TO UNBUCKLING.",
@@ -563,6 +605,9 @@
       "product_name": "Bolform BUCKLE-UP",
       "display_name": "Bolform Buckle-Up Child Seats",
       "brand": "Bolform",
+      "brands": [
+        "Bolform"
+      ],
       "manufacturer": "BOLFORM",
       "recall_date": "19840725",
       "reason": "PLASTIC BUCKLE AND LOOP STITCHING COMPONENTS FAIL TO MEET FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINT SYSTEMS.",
@@ -601,6 +646,9 @@
       "product_name": "TRW CHILD LOVE SEAT",
       "display_name": "TRW Child Love Seat",
       "brand": "TRW",
+      "brands": [
+        "TRW"
+      ],
       "manufacturer": "TRW AUTOMOTIVE PROD.,INC",
       "recall_date": "19841220",
       "reason": "REAR OF PLASTIC SHELL MAY CRACK OR SHEAR ALLOWING THE SHOULDER HARNESS TO LOOSEN AND OCCUPANT TO FALL FORWARD MORE THAN THE DISTANCE PERMITTED BY FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINT SYSTEMS.",
@@ -639,6 +687,9 @@
       "product_name": "Century 200",
       "display_name": "Century 200 Child Seats",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19850524",
       "reason": "CROTCH STRAP BUCKLE MADE OF PLASTIC REQUIRES 12 TO 20 LBS. RELEASE FORCE WHICH AT TIMES SEEMS DIFFICULT TO OPERATE.  TO REMEDY THIS CONDITION CONSUMERS HAVE USED LUBRICANTS TO OVERCOME THE HARD RELEASE.",
@@ -677,6 +728,9 @@
       "product_name": "Collier SAFE AND SOUND II",
       "display_name": "Collier Safe and Sound II",
       "brand": "Collier",
+      "brands": [
+        "Collier"
+      ],
       "manufacturer": "COLLIER-KEYWORTH",
       "recall_date": "19850605",
       "reason": "SEAT BUCKLE FAILED WHEN CRASH TESTED IN ACCORDANCE WITH   FMVSS # 213 IN THE FORWARD FACING RECLINING POSITION.                                                                                                             CONSEQUENCE OF DEFECT: BUCKLE FAILURE COULD RESULT IN INJURY IN CASE OF AN       ACCIDENT.",
@@ -715,6 +769,9 @@
       "product_name": "Graco GT1000",
       "display_name": "Graco GT1000 Child Restraints",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "GRACO CHILDREN'S PRODUCTS",
       "recall_date": "19860428",
       "reason": "IN SOME AUTOMOBILES THE REAR OF THE VEHICLE SEAT MAY      INTERFER WITH THE OPERATION OF THE RECLINE ADJUSTMENT LATCHING MECHANISM ON THE  CHILD RESTRAINT IN THE INFANT (REAR FACING) POSITION.  SHOULD THE ADJUSTMENT     LATCH BE HELD IN THE RELEASED (UNLOCKED) POSITION DURING AN ACCIDENT, THE        GT1000 WILL NOT PROVIDE OCCUPANT PROTECTION AS SPECIFIED BY FMVSS NO. 213.                                                                                        CONSEQUENCE OF DEFECT: AN UNLATCHED SEAT THAT HAS THE ADJUSTMENT RELEASE HANDLE  HELD IN THE RELEASED POSITION COULD CAUSE SERIOUS INJURY TO THE OCCUPANT OF THE  RESTRAINT AND TO OTHER OCCUPANTS OF THE AUTOMOBILE IF THE VEHICLE IS INVOLVED    IN AN ACCIDENT.",
@@ -753,6 +810,9 @@
       "product_name": "Cosco 02-081A; 02-081B; 02-181A (+1 more models)",
       "display_name": "Cosco 02-081 / 02-181 Child Seats",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19860505",
       "reason": "THE TOP OF THE METAL PULL/LOCK PIN WHICH HOLDS THE        SHIELD IN PLACE, BREAKS OFF.  THIS PREVENTS THE SHIELD FROM BEING RAISED IN      ORDER TO REMOVE ITS OCCUPANT.                                                                                                                                     CONSEQUENCE OF DEFECT: THE INABILITY TO RAISE THE SHIELD, WOULD MAKE IT          DIFFICULT TO REMOVE A CHILD FROM THE SEAT IN CASE OF AN EMERGENCY OR ANY OTHER   SITUATION.",
@@ -806,6 +866,9 @@
       "product_name": "Kolcraft 13123",
       "display_name": "Kolcraft 13123 Child Seats",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19860516",
       "reason": "DURING DYNAMIC SLED TEST THE CHILD SEAT'S PLASTIC SHELL   FRACTURED AND THE BACK SUPPORT ANGLE INCREASED.  THEREFORE THE SEATS FAIL TO     CONFORM TO THE REQUIREMENTS OF STANDARD FMVSS 213, DYNAMIC PERFORMANCE, CHILD    SEAT INTEGRITY.                                                                                                                                                   CONSEQUENCE OF DEFECT: FAILURE TO MEET THE REQUIREMENT OF FMVSS 213 INCREASES    THE POSSIBILITY OF SERIOUS INJURY TO THE CHILD SEAT OCCUPANT IN A CRASH.",
@@ -844,6 +907,9 @@
       "product_name": "Century 100; 200; 300 (+1 more models)",
       "display_name": "Century 100/200/300/400XL Child Seats",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19860613",
       "reason": "PLASTIC SHELL OF CHILD RESTRAIN FRACTURED DURING DYNAMIC  CRASH WHEN TESTED IN ACCORDANCE WITH FMVSS 213, CHILD SEATING SYSTEMS, WHEN      USED IN INFANT REAR FACING MODE.                                                                                                                                  CONSEQUENCE OF DEFECT: SHOULD THE PLASTIC SHELL FRACTURE IN AN ACCIDENT IT       WOULD FAIL TO RESTRAIN THE CHILD IN THE SEAT, RESULTING IN POSSIBLE SERIOUS      INJURIES.                                                                                                                                                         CORRECTIVE ACTIONS: AN EASY TO INSTALL KIT CONTAINING A REINFORCING PLASTIC      SLEEVE INSERT WILL BE PROVIDED TO CONSUMERS.",
@@ -897,6 +963,9 @@
       "product_name": "Kolcraft 19127; 19137",
       "display_name": "Kolcraft 19127 / 19137 Booster Seats",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19870319",
       "reason": "CHILD BOOSTER SEAT SHIELD HAS SURFACES THAT DO NOT MEET PROTRUSION AND RADIUS OF CURVATURE, REQUIREMENTS OF FMVSS NO. 213.",
@@ -940,6 +1009,9 @@
       "product_name": "Century 400XL",
       "display_name": "Century 400XL Child Seats",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19870511",
       "reason": "THE SHIELD POPS OPEN WHILE VEHICLE IS MOVING.  THIS IS DUE TO FAILURE TO FULLY DEPRESS LOCKING HANDLE.",
@@ -978,6 +1050,9 @@
       "product_name": "Strolee 605",
       "display_name": "Strolee 605 Booster Seats",
       "brand": "Strolee",
+      "brands": [
+        "Strolee"
+      ],
       "manufacturer": "STROLEE (CAR SEATS)",
       "recall_date": "19870514",
       "reason": "PLASTIC SHIELD CRACKED IN DYNAMIC SLED TEST ALLOWING EXCESSIVE CHILD HEAD EXCURSION GREATER THAN THE 22 INCH MAXIMUM.",
@@ -1016,6 +1091,9 @@
       "product_name": "Cosco 313; 323; 423",
       "display_name": "Cosco 313/323/423 Car Seats",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19880122",
       "reason": "CRACKS DEVELOP IN THE PLASTIC SHELL WHERE THE FRAME OF THE CAR SEAT IS RIVETED TO THE SHELL.",
@@ -1064,6 +1142,9 @@
       "product_name": "Virco 890; 891; 892",
       "display_name": "Virco 890/891/892 Booster Seats",
       "brand": "Virco",
+      "brands": [
+        "Virco"
+      ],
       "manufacturer": "VIRCO MANUFACTURING CORP.",
       "recall_date": "19880609",
       "reason": "FAILED HEAD EXCURSION AND HIC REQUIREMENT OF DYNAMIC SLED TESTS, FMVSS NO. 213 FOR CHILD RESTRAINT SYSTEM.",
@@ -1112,6 +1193,9 @@
       "product_name": "Fisher-Price 9100",
       "display_name": "Fisher-Price 9100 Car Seats",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19881018",
       "reason": "A FOREIGN OBJECT OR SUBSTANCE CAN CAUSE THE WHITE LOCK LEVER TO BE STUCK IN THE DOWN POSITION AT THE TIME THE CHEST SHIELD IS UNBUCKLED TO REMOVE THE CHILD.",
@@ -1150,6 +1234,9 @@
       "product_name": "Fisher-Price 9100; 9101",
       "display_name": "Fisher-Price 9100 / 9101 Car Seats",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19890302",
       "reason": "A CAR SEAT FOAM PIECE WHICH IS ATTACHED TO THE PLASTIC SEAT SHELL LOCATED UNDER THE SEAT COVER DOES NOT MEET THE FLAMMABILITY REQUIREMENTS OF FMVSS NO. 302.",
@@ -1157,7 +1244,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=89C005000",
-      "hazard": "fire",
+      "hazard": "flammable",
       "hazard_hand_assigned": true,
       "hazard_rationale": "Seat foam fails FMVSS 302 flammability requirements",
       "action": "A FOAM PIECE WHICH MEET THE REQUIREMENTS OF FMVSS NO. 302 WILL BE FORWARDED TO EACH CONSUMER.",
@@ -1193,6 +1280,9 @@
       "product_name": "Evenflo 441 (DYN-O-MITE); 448 (DYN-O-MITE); 456 (CAR SEAT/BABY CARRIER) (+1 more models)",
       "display_name": "Evenflo Dyn-O-Mite Infant Restraints",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19890419",
       "reason": "RESTRAINT SYSTEM FAILED TO MEET THE 70 DEGREE MAXIMUM BACK SUPPORT ANGLE REQUIREMENT OF FMVSS 213 DYNAMIC TESTS IN THE MOST RECLINED POSITION WHEN USED WITH A LAP BELT ONLY.",
@@ -1246,6 +1336,9 @@
       "product_name": "Volvo 1394332",
       "display_name": "Volvo 1394332 Child Seats",
       "brand": "Volvo",
+      "brands": [
+        "Volvo"
+      ],
       "manufacturer": "VOLVO OF AMERICA CORP.",
       "recall_date": "19890504",
       "reason": "PRE DYNAMIC TEST BUCKLE RELEASE FORCE IS LOWER THAN REQUIRED BY FMVSS 213 CHILD RESTRAINT SYSTEM.",
@@ -1284,6 +1377,9 @@
       "product_name": "Evenflo 410 (ONE STEP)",
       "display_name": "Evenflo One Step 410",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19890619",
       "reason": "THE SINGLE STRAP SLIDE THAT IS POSITIONED ON THE RIGHT AND LEFT SIDE OF THE UPPER HARNESS MAY SLIP.",
@@ -1322,6 +1418,9 @@
       "product_name": "Century 4253; 4263; 4265",
       "display_name": "Century 4253/4263/4265 Infant Seats",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19890703",
       "reason": "THE LOOP ON THE END OF THE SHOULDER STRAP IS ONLY GLUED TOGETHER, RATHER THAN GLUED AND SEWN.",
@@ -1370,6 +1469,9 @@
       "product_name": "Evenflo 420 (HORIZON V)",
       "display_name": "Evenflo Horizon V 420",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19890831",
       "reason": "CHILD RESTRAINT FAILED POST IMPACT BUCKLE RELEASE FORCE TESTING.",
@@ -1408,6 +1510,9 @@
       "product_name": "Century 4365DT; 4366",
       "display_name": "Century 4365DT / 4366 Car Seats",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19891130",
       "reason": "REMOVABLE PROTECTIVE FABRIC PAD THAT IS ATTACHED TO THE FRONT TRAY SHIELD WITH VELCRO TABS MAY HAVE EXPOSED URETHANE FOAM ON THE UNDERSIDE OF THE SHIELD PAD THAT A CHILD COULD PICK AT WITH HIS OR HER FINGERS.",
@@ -1451,6 +1556,9 @@
       "product_name": "Century 4581; 4583; 4585",
       "display_name": "Century 4581/4583/4585 Infant Carriers",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19900108",
       "reason": "THE RETAINING SCREWS OF THE HANDLE TO THE SHELL CAN LOOSEN, ALLOWING THE HANDLE TO SEPARATE FROM THE SHELL.",
@@ -1499,6 +1607,9 @@
       "product_name": "Century 4450GD; 4460FE; 4475GA",
       "display_name": "Century 4450GD/4460FE/4475GA",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19900110",
       "reason": "THESE SAFETY SEATS EXCEED THE POST IMPACT BUCKLE RELEASE FORCE REQUIREMENT OF 16 LBS. MAXIMUM DURING TESTING. NOT IN COMPLIANCE WITH FMVSS 213.W.",
@@ -1547,6 +1658,9 @@
       "product_name": "Kolcraft 180-200; 180-300",
       "display_name": "Kolcraft 180-200 / 180-300",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19900110",
       "reason": "THE SHOULDER STRAPS AND ASSEMBLY DO NOT FIT A CHILD SNUGLY, LEADING TO THE POSSIBILITY THAT A CHILD COULD TRAVEL TOO FAR FORWARD IN A CRASH. THIS CAUSES THE CHILD SEAT TO FAIL THE HEAD AND KNEE EXCURSION REQUIREMENTS OF FMVSS 213.   CONSEQUENCE OF DEFECT:     THE CHILD SITTING ON THE AFFECTED CHILD SEAT MAY BE  SUBJECT TO LESS PROTECTION DUE TO THE SEAT TRAVEL MOVEMENT IN A CRASH.",
@@ -1590,6 +1704,10 @@
       "product_name": "Pride Trimble / Virco 832",
       "display_name": "Pride Trimble / Virco 832",
       "brand": "Pride Trimble / Virco",
+      "brands": [
+        "Pride Trimble",
+        "Virco"
+      ],
       "manufacturer": "VIRCO MANUFACTURING CORP.",
       "recall_date": "19900119",
       "reason": "CHILD SEATS CONTAIN SHIELD THAT MAY CAUSE THE SEAT TO FAIL TO CONFORM TO HEAD EXCURSION REQUIREMENTS OF FMVSS 213.",
@@ -1628,6 +1746,9 @@
       "product_name": "Kolcraft 131-100; 131-101; 180-100 (+3 more models)",
       "display_name": "Kolcraft Infant Seats (canoe clips)",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19900307",
       "reason": "THE POLYPROPELENE FASTENERS (CANOE CLIP) USED TO ATTACH THE SEATS MAY CONTAIN HAIRLINE BREAKS OR WEAKNESSES THAT COULD CAUSE THE CLIP TO BREAK.",
@@ -1691,6 +1812,9 @@
       "product_name": "Fisher-Price 9101",
       "display_name": "Fisher-Price 9101 Car Seats",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19900404",
       "reason": "THE RETRACTOR ASSEMBLY HAS A 'TONGUE' USED TO ENGAGE THE BREAST SHIELD OF THE CHILD RESTRAINT;  A STAMPING DIE USED ON THIS TONGUE COULD CAUSE THE PART TO FAIL AND COMPLETELY SEPARATE IN A CRASH.",
@@ -1729,6 +1853,9 @@
       "product_name": "Renolux GT1000; GT2000",
       "display_name": "Renolux GT1000 / GT2000",
       "brand": "Renolux",
+      "brands": [
+        "Renolux"
+      ],
       "manufacturer": "FBS, INC.",
       "recall_date": "19900510",
       "reason": "CHILD RESTRAINT SYSTEM FAILED TO MEET PRE-IMPACT BUCKLE RELEASE FORCE REQUIREMENTS AND BACK SUPPORT ANGLE REQUIREMENTS OF FMVSS 213.",
@@ -1772,6 +1899,9 @@
       "product_name": "Century 4365DT; 4365MC; 4366BH (+6 more models)",
       "display_name": "Century Infant Car Seats (latch tongue)",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19900702",
       "reason": "LATCH TONGUES BROKE DURING IMPACT IN ROUTINE INFANT CAR SEAT CRASH TESTING AT 30 MPH.",
@@ -1850,6 +1980,9 @@
       "product_name": "Fisher-Price 9100; 9101",
       "display_name": "Fisher-Price 9100 / 9101 (label)",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19900905",
       "reason": "THE METALLIC LABEL GLUED TO THE BREAST SHIELD OF THE SEAT CAN BECOME LOOSE OVER TIME.",
@@ -1893,6 +2026,9 @@
       "product_name": "Evenflo 201 (DYN-O-MITE); 202 (DYN-O-MITE); 221 (ONE STEP) (+32 more models)",
       "display_name": "Evenflo Dyn-O-Mite / One Step Seats",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19900918",
       "reason": "SEAT BUCKLE AND TONGUE MAY NOT PROPERLY ENGAGE WHEN LATCHED AND WOULD NOT MEET REQUIREMENTS OF FMVSS 213.",
@@ -2101,6 +2237,9 @@
       "product_name": "Evenflo 201 (DYN-O-MITE); 202 (DYN-O-MITE); 221 (ONE STEP) (+31 more models)",
       "display_name": "Evenflo Dyn-O-Mite / One Step Seats (second campaign)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19900918",
       "reason": "SEAT BUCKLE AND TONGUE MAY NOT PROPERLY ENGAGE WHEN LATCHED AND WOULD NOT MEET REQUIREMENTS OF FMVSS 213.",
@@ -2304,6 +2443,9 @@
       "product_name": "Fisher-Price 9100; 9101",
       "display_name": "Fisher-Price 9100 / 9101 (buckle pin)",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19901025",
       "reason": "PLASTIC PIN INSIDE THE BUCKLE SHIELD CAN BREAK AFTER FORCE IS APPLIED IN REPEATED USE.",
@@ -2347,6 +2489,9 @@
       "product_name": "Fisher-Price 9100; 9101",
       "display_name": "Fisher-Price 9100 / 9101 (shield button)",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19901025",
       "reason": "BUTTON ON SHIELD STRAP CAN BECOME LOOSE AND BE REMOVED BY A CHILD.",
@@ -2390,6 +2535,9 @@
       "product_name": "Fisher-Price 9100",
       "display_name": "Fisher-Price 9100 (shield laminate)",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19901026",
       "reason": "SEAT METAL LAMINATE SHIELD, LOCATED INSIDE SHIELD BUCKLE, CAN BREAK AFTER REPEATED USE.",
@@ -2428,6 +2576,9 @@
       "product_name": "Century 4353; 4365; 4366 (+5 more models)",
       "display_name": "Century Infant Seats (rear latch position)",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19910123",
       "reason": "BUCKLE RELEASE FORCE MAY EXCEED 16 POUNDS WHEN NOT USED IN APPROPRIATE FORWARD LATCH POSITION FOR A CHILD WEIGHING 30 POUNDS AND MORE.",
@@ -2501,6 +2652,9 @@
       "product_name": "Kolcraft 180-150; 180-200",
       "display_name": "Kolcraft 180-150 / 180-200",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19910214",
       "reason": "THE SEAT FAILS TO MEET THE HEAD AND KNEE EXCURSION REQUIREMENTS OF FMVSS 213, S5.1.3.",
@@ -2544,6 +2698,9 @@
       "product_name": "Evenflo 227 (ULTARA II)",
       "display_name": "Evenflo Ultara II 227",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19910304",
       "reason": "CHILD RESTRAINT FAILED HEAD AND KNEE EXCURSION REQUIREMENTS OF FMVSS 213.",
@@ -2582,6 +2739,9 @@
       "product_name": "Cosco 02-090; 02-190; 02-290 (+2 more models)",
       "display_name": "Cosco 02-090 Series",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19910510",
       "reason": "THE CHILD SEATS FAIL TO MEET THE HEAD EXCURSION REQUIREMENTS OF FMVSS 213 (EXCEEDED PRESCRIBED 32 INCH HEAD EXCURSION LIMIT).",
@@ -2640,6 +2800,9 @@
       "product_name": "Fisher-Price 9149",
       "display_name": "Fisher-Price 9149",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19910521",
       "reason": "THE BREAST SHIELD COULD SEPARATE FROM THE TONGUE OF THE RESTRAINT ASSEMBLY IN CRASH CONDITIONS BECAUSE OF A FAULTY BUCKLE FRAME.",
@@ -2678,6 +2841,9 @@
       "product_name": "Renolux GT5000",
       "display_name": "Renolux GT5000 (base)",
       "brand": "Renolux",
+      "brands": [
+        "Renolux"
+      ],
       "manufacturer": "FBS, INC.",
       "recall_date": "19910522",
       "reason": "CHILD RESTRAINT SYSTEMS FAILED TO MEET HEAD EXCURSION REQUIREMENTS OF FMVSS 213 BECAUSE OF CHILD SEAT BASE DESIGN.",
@@ -2716,6 +2882,9 @@
       "product_name": "Renolux GT5000",
       "display_name": "Renolux GT5000 (covers)",
       "brand": "Renolux",
+      "brands": [
+        "Renolux"
+      ],
       "manufacturer": "FBS, INC.",
       "recall_date": "19910522",
       "reason": "CHILD RESTRAINTS HAVE STRIPED SEAT COVERS WHICH FAILED THE FLAMMABILITY REQUIREMENTS OF FMVSS 213.",
@@ -2723,7 +2892,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=91C018000",
-      "hazard": "fire",
+      "hazard": "flammable",
       "hazard_hand_assigned": true,
       "hazard_rationale": "Striped seat covers failed flammability requirements",
       "action": "REPLACE SEAT COVERS.",
@@ -2754,6 +2923,9 @@
       "product_name": "Kolcraft 140-155; 180-400",
       "display_name": "Kolcraft 140-155 / 180-400",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19910605",
       "reason": "THE FOAM SEAT CUSHIONS FAIL TO CONFORM TO FMVSS 213; THE SEAT BURNS AT A RATE FASTER THAN PERMITTED.",
@@ -2761,7 +2933,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=91C014000",
-      "hazard": "fire",
+      "hazard": "flammable",
       "hazard_hand_assigned": true,
       "hazard_rationale": "Foam cushions burn faster than permitted",
       "action": "REPLACE THE FOAM SEAT CUSHION WITH NEW SEAT CUSHION.",
@@ -2797,6 +2969,9 @@
       "product_name": "Kolcraft 180-600",
       "display_name": "Kolcraft 180-600",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19911001",
       "reason": "THE SEAT SHELLS FAILED TO COMPLY WITH THE STRUCTURAL INTEGRITY STANDARDS OF FMVSS 213. THE PLASTIC SEAT SHELLS CRACKED DURING DYNAMIC IMPACT TESTING.",
@@ -2835,6 +3010,9 @@
       "product_name": "Kolcraft TRAVELER 700",
       "display_name": "Kolcraft Traveler 700 (armrests)",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19911002",
       "reason": "THE ARMRESTS ON THE CHILDSEAT CRACK AT THE POINTS WHERE THEY ARE ATTACHED TO THE SEAT BACK LEAVING SPRINGS AND SHARP PIECES OF PLASTIC EXPOSED. THESE CRACKS ARE CAUSED BY EXCESSIVE TENSION BETWEEN  THE SPRINGS AND THE PLASTIC OF THE ARMREST.",
@@ -2873,6 +3051,9 @@
       "product_name": "Century 4580; 4581; 4583 (+1 more models)",
       "display_name": "Century 4580 Series (threading instructions)",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19911101",
       "reason": "THE DIRECTIONS FOR THREADING THE SHOULDER STRAPS THROUGH THE METAL RETENTION SLIDES ARE UNCLEAR.",
@@ -2926,6 +3107,9 @@
       "product_name": "Kolcraft 180-200",
       "display_name": "Kolcraft 180-200 (cushion)",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19911104",
       "reason": "THE BOTTOM CUSHION OF THE CHILD SAFETY SEAT FAILED TO MEET THE FLAMMABILITY REQUIREMENTS OF FMVSS 213.",
@@ -2933,7 +3117,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=91C043000",
-      "hazard": "fire",
+      "hazard": "flammable",
       "hazard_hand_assigned": true,
       "hazard_rationale": "Bottom cushion failed flammability requirements",
       "action": "REPLACE THE SEAT CUSHIONS ON PERFECT FITT MODEL 180-200.",
@@ -2964,6 +3148,9 @@
       "product_name": "Evenflo 453 (DISCOVERY); 454 (DISCOVERY TRAVEL SYSTEM); 470 (EVENFLO BOOSTER) (+1 more models)",
       "display_name": "Evenflo Discovery / Booster (push pins)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19911112",
       "reason": "THE BLACK PLASTIC PUSH PINS USED TO ATTACH THE PADS TO SEAT STRUCTURE CAN BE REMOVED BY CHILDREN.",
@@ -3017,6 +3204,9 @@
       "product_name": "Kolcraft TRAVELER 700",
       "display_name": "Kolcraft Traveler 700 (instruction sticker)",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19911231",
       "reason": "THE INSTRUCTION STICKER ATTACHED TO THE CHILD SEAT IS INCORRECT, SINCE IT WAS WRITTEN FOR A DIFFERENT MODEL OF KOLCRAFT CHILD SEAT.",
@@ -3055,6 +3245,9 @@
       "product_name": "Century 4153; 4163; 4253 (+16 more models)",
       "display_name": "Century Restraints (Spanish label)",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19920121",
       "reason": "THE SPANISH INSTRUCTIONS ON THE POSITIONING LABEL ARE INCORRECT.",
@@ -3183,6 +3376,9 @@
       "product_name": "Cosco 02-086",
       "display_name": "Cosco 02-086",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19920204",
       "reason": "THE FOAM SEAT PAD OF THE CHILD SEAT IS NOT SEALED AT THE SEAMS, ALLOWING THE FOAM PAD TO BE ACCESSIBLE TO THE SEAT OCCUPANT.",
@@ -3221,6 +3417,9 @@
       "product_name": "Gerry GERRY GUARDIAN",
       "display_name": "Gerry Guardian",
       "brand": "Gerry",
+      "brands": [
+        "Gerry"
+      ],
       "manufacturer": "GERRY BABY PRODUCTS, CO.",
       "recall_date": "19920601",
       "reason": "THE BUCKLES ON THESE CHILD RESTRAINTS ARE NOT STIFF ENOUGH TO PREVENT A CHILD FROM RELEASING THE BUCKLE.",
@@ -3259,6 +3458,9 @@
       "product_name": "Babyhood 820",
       "display_name": "Babyhood 820",
       "brand": "Babyhood",
+      "brands": [
+        "Babyhood"
+      ],
       "manufacturer": "BABYHOOD INDUSTRIES, INC.",
       "recall_date": "19920604",
       "reason": "THE CHILD RESTRAINT SEAT CUSHIONS DO NOT ADEQUATELY RESIST COMPRESSION - DEFLECTION OF THE SEAT OCCUPANT'S HEAD WHEN TESTED FOR CRASHWORTHINESS.",
@@ -3297,6 +3499,9 @@
       "product_name": "Century 4353; 4365; 4366 (+11 more models)",
       "display_name": "Century Restraints (release button)",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19920825",
       "reason": "THE RED SHOULDER STRAP RELEASE BUTTON CAN ROTATE OUT OF THE FRAME IN A CRASH OR SUDDEN STOP. IN THIS EVENT, THE RELEASE BUTTON COULD NOT BE ACTIVATED WITH LESS THAN 16 POUNDS OF FORCE AS REQUIRED BY FMVSS 213, \"CHILD RESTRAINT SYSTEMS\".",
@@ -3400,6 +3605,9 @@
       "product_name": "Fisher-Price 9100; 9101",
       "display_name": "Fisher-Price 9100 / 9101 (laminate)",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19920825",
       "reason": "PLASTIC LAMINATE ON THE BUCKLE SHIELD CAN BREAK AFTER FORCE IS APPLIED IN REPEATED USE.",
@@ -3443,6 +3651,9 @@
       "product_name": "Fisher-Price 9101",
       "display_name": "Fisher-Price 9101 (connector bar)",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19920825",
       "reason": "THE SHOULDER BELTS ON CAR SEATS USING A PARTICULAR DESIGN OF CONNECTOR BAR CAN COME FREE OF THE CONNECTOR BAR AFTER EXTENDED USE.",
@@ -3481,6 +3692,9 @@
       "product_name": "Fisher-Price 9104",
       "display_name": "Fisher-Price 9104",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19920918",
       "reason": "THE RED BUTTON ON THE BUCKLE OF THE CHILD SAFETY SEAT CAN DISLODGE FROM THE CASING CAUSING ONE OF THE APPENDAGES ATTACHED TO THE BUTTON TO BE OUTSIDE ITS PROTECTIVE CASING.",
@@ -3519,6 +3733,9 @@
       "product_name": "Century 2000STE",
       "display_name": "Century 2000STE",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19930402",
       "reason": "THE RED RELEASE BUTTON CAN ROTATE UPWARD IN A CRASH OR SUDDEN STOP, MAKING IT POSSIBLE FOR THE BUCKLE TO RELEASE THE SHOULDER HARNESS.",
@@ -3557,6 +3774,9 @@
       "product_name": "Renolux GT2000; GT4000; GT5000 (+2 more models)",
       "display_name": "Renolux GT Series (head padding)",
       "brand": "Renolux",
+      "brands": [
+        "Renolux"
+      ],
       "manufacturer": "FBS, INC.",
       "recall_date": "19930520",
       "reason": "THE CHILD SAFETY SEATS DO NOT MEET THE REQUIREMENTS OF FMVSS 213, \"CHILD RESTRAINT SYSTEMS.\" THE PADDING BEHIND THE HEAD OF THE SEAT OCCUPANT DOES NOT HAVE SUFFICIENT COMPRESSION DEFLECTION RESISTANCE.",
@@ -3615,6 +3835,9 @@
       "product_name": "Kolcraft AUTOMATE; PLAYSKOOL; TRAVELER 700",
       "display_name": "Kolcraft Automate / Playskool / Traveler 700",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19930728",
       "reason": "THE TONGUE OF THE BUCKLE ASSEMBLY CAN CORRODE. THIS DOES NOT COMPLY WITH FMVSS 213, \"CHILD RESTRAINT SYSTEMS.\" ALSO, THE LABEL WITH USE AND SAFETY INSTRUCTIONS IS MISSING FROM THE PLAYSKOOL MODEL.",
@@ -3663,6 +3886,9 @@
       "product_name": "Century 4353; 4365; 4366 (+11 more models)",
       "display_name": "Century (replacement buttons)",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19931215",
       "reason": "SOME RED BUTTONS SHIPPED TO REPAIR BUCKLE RELEASE BUTTONS RECALLED UNDER NHTSA CAMPAIGN NO. 92E017000 MAY HAVE BEEN INCORRECT.",
@@ -3766,6 +3992,9 @@
       "product_name": "Renolux GT2000; GT4000; GT5000 (+1 more models)",
       "display_name": "Renolux GT Series (tweed covers)",
       "brand": "Renolux",
+      "brands": [
+        "Renolux"
+      ],
       "manufacturer": "FBS, INC.",
       "recall_date": "19940128",
       "reason": "THE TWEED CAR SEAT COVER FABRIC DOES NOT MEET THE MINIMUM FLAMMABILITY REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -3773,7 +4002,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=94C003000",
-      "hazard": "fire",
+      "hazard": "flammable",
       "hazard_hand_assigned": true,
       "hazard_rationale": "Tweed cover fabric fails flammability requirements",
       "action": "FBS HAS GONE OUT OF BUSINESS.",
@@ -3819,6 +4048,9 @@
       "product_name": "Cosco 02-719-ARQ",
       "display_name": "Cosco 02-719-ARQ",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19940322",
       "reason": "THE FABRIC COVER OF THE PADS ON THESE SEATS DO NOT MEET THE REQUIREMENTS OF FMVSS NO. 302, \"FLAMMABILITY OF INTERIOR MATERIALS.\"",
@@ -3826,7 +4058,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=94C008000",
-      "hazard": "fire",
+      "hazard": "flammable",
       "hazard_hand_assigned": true,
       "hazard_rationale": "Pad fabric covers fail FMVSS 302 flammability",
       "action": "COSCO WILL PROVIDE A REPLACEMENT PAD FOR THESE INFANT SEATS.",
@@ -3857,6 +4089,9 @@
       "product_name": "Renolux GT7000",
       "display_name": "Renolux GT7000 (powered recline)",
       "brand": "Renolux",
+      "brands": [
+        "Renolux"
+      ],
       "manufacturer": "FBS, INC.",
       "recall_date": "19940324",
       "reason": "THE ELECTRIC MOTOR POWERING THE RECLINING CHILD SEAT IS POWERED BY THE AUTOMOBILE BATTERY/AUXILLIARY POWER SYSTEM THROUGH THE CIGARETTE LIGHTER. THE WIRING USED TO CONNECT THE CHILD SEAT TO THE CIGARETTE LIGHTER OVERHEATS AND MELTS THE PLASTIC WIRE COVERING.",
@@ -3866,7 +4101,7 @@
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=94C009000",
       "hazard": "fire",
       "hazard_hand_assigned": true,
-      "hazard_rationale": "Cigarette-lighter wiring overheats and melts; interior fire risk",
+      "hazard_rationale": "Cigarette-lighter wiring overheats and melts; actual ignition risk, not a burn-rate standard failure -- stays fire, not flammable",
       "action": "FBS HAS GONE OUT OF BUSINESS.   THE CORRECTION WAS TO REPLACE THE GT7000 REMOTE CONTROL SEAT WITH EITHER THE GT2000 CHILD SEAT OR THE GT4000 CHILD SEAT.",
       "action_curated": false,
       "units_affected": 891,
@@ -3895,6 +4130,9 @@
       "product_name": "Cosco TLC INFANT",
       "display_name": "Cosco TLC Infant Seats",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19940414",
       "reason": "THE RIBBON QUILT CHILD SEAT COVER HAS BEEN TESTED AND THE MATERIAL BURNS FASTER THAN THE RATE ESTABLISHED FOR CHILD SEAT MATERIAL. THE CHILD SEATS DO NOT COMPLY WITH FMVSS NO. 302, \"FLAMMABILITY OF INTERIOR MATERIALS.\"",
@@ -3902,7 +4140,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=94C012000",
-      "hazard": "fire",
+      "hazard": "flammable",
       "hazard_hand_assigned": true,
       "hazard_rationale": "Ribbon quilt cover burns faster than the permitted rate",
       "action": "REPLACE THE DEFECTIVE CHILD SAFETY SEAT COVER.",
@@ -3933,6 +4171,9 @@
       "product_name": "Evenflo 224 (CHAMPION/SCOUT/TROOPER); 231 (ULTARA I); 232 (ULTARA I)",
       "display_name": "Evenflo Champion / Ultara I (latching aid)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19940527",
       "reason": "THE SEATS ARE EQUIPPED WITH A LATCHING AID, WHICH IS A GRAY OR WHITE PLASTIC SLEEVE LOCATED AT THE BASE OF THE WEBBING AT THE POINT WHERE THE WEBBING IS JOINED TO THE BUCKLE TONGUE. THE LATCHING AID IS TO PROVIDE THE CONSUMER WITH A CONVENIENT STIFFENER FOR THE WEBBING, IN ORDER TO EASE THE INSERTION OF THE BUCKLE TONGUE INTO THE RECEIVING END OF THE BUCKLE. THIS LATCHING AID CAN BECOME TORN OR SPLIT OR CAN SLIP OUT OF POSITION.",
@@ -3981,6 +4222,9 @@
       "product_name": "Cosco 02-034; 02-404",
       "display_name": "Cosco 02-034 / 02-404",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19940818",
       "reason": "IN ACCIDENTS,  AT SPEEDS GREATER THAN 30 MPH, THE BUCKLE LATCH HOUSING MOUNTED IN THE BASE OF THE SHELL CAN DEFORM, CAUSING THE LATCH MECHANISM TO FRACTURE, ALLOWING DISENGAGEMENT OF THE BUCKLE TONGUE TO FROM THE BUCKLE HOUSING.",
@@ -4024,6 +4268,9 @@
       "product_name": "Fisher-Price 9173",
       "display_name": "Fisher-Price 9173",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19941114",
       "reason": "THE SEATS HAVE AN INCORRECTLY POSITIONED LABEL WARNING THAT ANY CAR SEAT USED IN THE REAR-FACING POSITION SHOULD NOT BE INSTALLED IN AN AUTOMOBILE SEAT ON WHICH AN AIR BAG MAY DEPLOY. THIS DOES NOT COMPLY WITH THE REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -4062,6 +4309,9 @@
       "product_name": "Babyhood 8200",
       "display_name": "Babyhood 8200",
       "brand": "Babyhood",
+      "brands": [
+        "Babyhood"
+      ],
       "manufacturer": "BABYHOOD MANUFACTURING",
       "recall_date": "19950318",
       "reason": "EQUIPMENT DESCRIPTION:  MODEL 8200 CAR SEAT MANUFACTURED FROM JANUARY 31, 1992 THROUGH JUNE 30, 1993.  THESE CHILD SAFETY SEATS DO NOT MEET THE RELEASE FORCE REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -4100,6 +4350,9 @@
       "product_name": "Gerry 626; SECURE RIDE",
       "display_name": "Gerry 626 / Secure Ride",
       "brand": "Gerry",
+      "brands": [
+        "Gerry"
+      ],
       "manufacturer": "HUFFY CORPORATION",
       "recall_date": "19950329",
       "reason": "THE SEATS HAVE AN INCORRECTLY POSITIONED LABEL WARNING THAT ANY CAR SEAT USED IN THE REAR-FACING POSITION SHOULD NOT BE INSTALLED IN AN AUTOMOBILE SEAT ON WHICH AN AIR BAG MAY DEPLOY. THIS DOES NOT COMPLY WITH THE REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -4143,6 +4396,9 @@
       "product_name": "All Our Kids 600; 602",
       "display_name": "All Our Kids 600 / 602",
       "brand": "All Our Kids",
+      "brands": [
+        "All Our Kids"
+      ],
       "manufacturer": "ALL OUR KIDS JUVENILE PRO",
       "recall_date": "19950428",
       "reason": "THE NYLON FABRIC IN THESE CHILD SAFETY RESTRAINTS DOES NOT MEET THE REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS\" AND FMVSS NO. 302, \"FLAMMABILITY OF INTERIOR MATERIALS.\"",
@@ -4150,7 +4406,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=95C013000",
-      "hazard": "fire",
+      "hazard": "flammable",
       "hazard_hand_assigned": true,
       "hazard_rationale": "Nylon fabric fails FMVSS 213/302 flammability requirements",
       "action": "ALL OUR KIDS WILL TREAT THE FABRIC WITH FLAME RETARDANT AGENTS.",
@@ -4186,6 +4442,9 @@
       "product_name": "Evenflo 207 (ON MY WAY)",
       "display_name": "Evenflo On My Way 207",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19950616",
       "reason": "THESE INFANT CHILD SEATS DO NOT MEET THE SLED TEST REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS,\" WHEN TESTED WITHOUT THE DETACHABLE AUTOBASE.",
@@ -4224,6 +4483,9 @@
       "product_name": "Kolcraft TRAVELER 700",
       "display_name": "Kolcraft Traveler 700 (buckle)",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19950825",
       "reason": "",
@@ -4231,7 +4493,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=95C035000",
-      "hazard": "",
+      "hazard": "general",
       "hazard_hand_assigned": true,
       "hazard_rationale": "No defect/consequence text at source; remedy replaces the buckle mechanism",
       "action": "KOLCRAFT IS PROVIDING OWNERS WITH A NEW BUCKLE MECHANISM, INSTRUCTIONS, AND THE TOOLS NEEDED TO REPLACE THE BUCKLE.",
@@ -4262,6 +4524,9 @@
       "product_name": "Cosco DREAMRIDE ULTRA",
       "display_name": "Cosco Dreamride Ultra",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19951206",
       "reason": "THESE SEATS DO NOT MEET THE MAXIMUM BACK ANGLE REQUIREMENT OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -4300,6 +4565,9 @@
       "product_name": "Evenflo 219 (CHAMPION/SCOUT/TROOPER)",
       "display_name": "Evenflo Champion/Scout/Trooper 219 (pamphlet)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19960102",
       "reason": "DUE TO A PRINTING ERROR, THE FOLD-OUT INSTRUCTION PAMPHLET PROVIDING INFORMATION ON TODDLER USE WAS INCORRECTLY LABELED FOR INFANT USE.",
@@ -4338,6 +4606,9 @@
       "product_name": "Century 4750; SMARTMOVE",
       "display_name": "Century SmartMove 4750",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19960301",
       "reason": "THIS CHILD SAFETY SEAT UTILIZES A LATCH ASSEMBLY  WHERE A VARIATION IN THE COMPONENTS RESULTED IN THE POTENTIAL FOR A BUCKLE TO RELEASE. THIS DOES NOT CONFORM TO THE DYNAMIC TESTING REQUIREMENTS OF FMVSS NO. 213.",
@@ -4381,6 +4652,9 @@
       "product_name": "Century 11-570; 11-597; 11-600 (+7 more models)",
       "display_name": "Century 11 / 45 Series (buckle)",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19960628",
       "reason": "DUE TO MISASSEMBLY OF THE BUCKLE ASSEMBLIES, THE BUCKLES CAN RELEASE UPON IMPACT.",
@@ -4464,6 +4738,9 @@
       "product_name": "Century 11 SERIES; 45 SERIES",
       "display_name": "Century 11 / 45 Series Infant Restraints (buckle)",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19960628",
       "reason": "DUE TO MISASSEMBLY OF THE BUCKLE ASSEMBLIES, THE BUCKLES CAN RELEASE UPON IMPACT.",
@@ -4507,6 +4784,10 @@
       "product_name": "Carter / Kolcraft INFANT RIDER; PLUS 4; PLUS 5 (+2 more models)",
       "display_name": "Carter / Kolcraft Infant Restraints",
       "brand": "Carter / Kolcraft",
+      "brands": [
+        "Carter",
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19961018",
       "reason": "DURING COMPLIANCE TESTING, A CROTCH STRAP ASSEMBLY SEPARATED FROM THE SHELL OF AN INFANT RESTRAINT.  THIS DOES NOT COMPLY WITH REQUIREMENTS OF FMVSS 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -4565,6 +4846,9 @@
       "product_name": "Evenflo 224 (CHAMPION/SCOUT/TROOPER); 229 (CHAMPION/SCOUT/TROOPER); 249 (CHAMPION/SCOUT/TROOPER)",
       "display_name": "Evenflo Champion/Scout/Trooper (recline arm)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19970116",
       "reason": "EQUIPMENT DESCRIPTION:  CHAMPION CAR SEATS MANUFACTURED FROM JUNE 1, 1993 THROUGH NOVEMBER 22, 1996, CONTAINING MODEL NUMBERS BEGINNING WITH THE FIRST THREE DIGITS \"224.\"  SCOUT CAR SEATS MANUFACTURED FROM JUNE 1, 1993 THROUGH DECEMBER 16, 1996, CONTAINING MODEL NUMBERS BEGINNING WITH THE FIRST THREE DIGITS \"229.\"    THESE CHILD SAFETY SEATS DO NOT MEET THE THORAX ACCELERATION REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -4613,6 +4897,9 @@
       "product_name": "Cosco 02-751; ARRIVA",
       "display_name": "Cosco Arriva 02-751 (latch release)",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19970326",
       "reason": "EQUIPMENT DESCRIPTION:  ARRIVA INFANT SEAT, MODEL NUMBER 02-751, MANUFACTURED FROM MARCH 1, 1995 THROUGH MAY 31, 1995. SEPARATION OF THE BUCKLE LATCH RELEASE BUTTON AND SPRING FROM THE LATCH RELEASE HOUSING ASSEMBLY.",
@@ -4656,6 +4943,9 @@
       "product_name": "Britax 101 (FREEWAY)",
       "display_name": "Britax Freeway 101",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "19970414",
       "reason": "THE MINIMUM FORCE REQUIRED TO RELEASE THE BELT BUCKLE COULD BE LESS THAN THE MINIMUM BUCKLE FORCE REQUIRED IN FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"  A CHILD COULD HAVE AN EASIER TIME OPENING THE BUCKLE.",
@@ -4694,6 +4984,9 @@
       "product_name": "Evenflo 219 (CHAMPION/SCOUT/TROOPER); 229 (CHAMPION/SCOUT/TROOPER); 249 (CHAMPION/SCOUT/TROOPER)",
       "display_name": "Evenflo Champion/Scout/Trooper (harness adjuster)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19970623",
       "reason": "EQUIPMENT DESCRIPTION:  CHILD RESTRAINT SEATS, MODEL NUMBERS BEGINNING WITH 219, 224, 225, AND 229 MANUFACTURED FROM  OCTOBER 14, 1996 THROUGH FEBRUARY 6, 1997.  THESE SEATS DO NOT COMPLY WITH FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS,\" WHICH LIMITS HEAD EXCURSION.",
@@ -4742,6 +5035,9 @@
       "product_name": "Evenflo 244 (SIDEKICK)",
       "display_name": "Evenflo Sidekick 244",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19970623",
       "reason": "EQUIPMENT DESCRIPTION:  SIDEKICK CHILD BOOSTER SEATS, MODEL NOS. 244 MANUFACTURED FROM APRIL 23, 1996 THROUGH MAY 20, 1997.   THESE SEATS DO NOT COMPLY WITH FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS,\" WHICH LIMITS HEAD INJURY CRITERIA.  IN RECENT TESTS ON SOME OF THESE BOOSTER SEATS, THE HEAD INJURY CRITERIA SCORED MORE THAN ALLOWED BY THIS STANDARD.",
@@ -4780,6 +5076,9 @@
       "product_name": "Kolcraft PERFORMA",
       "display_name": "Kolcraft Performa (materials)",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19970801",
       "reason": "EQUIPMENT DESCRIPTION:  PERFORMA INFANT SEATS MANUFACTURED FROM JANUARY 26, 1996 THROUGH JULY 31, 1997.    THESE MATERIAL USED IN THESE SEATS DO NOT COMPLY WITH FMVSS NO. 302, \"FLAMMABILITY OF INTERIOR MATERIALS.\"",
@@ -4787,7 +5086,7 @@
       "classification": "",
       "status": "Recalled",
       "url": "https://www.nhtsa.gov/recalls?nhtsaId=97C026000",
-      "hazard": "fire",
+      "hazard": "flammable",
       "hazard_hand_assigned": true,
       "hazard_rationale": "Seat materials fail FMVSS 302 flammability",
       "action": "KOLCRAFT WILL REPLACE THE MATERIAL ON THESE INFANT SEATS.",
@@ -4818,6 +5117,9 @@
       "product_name": "Kolcraft PERFORMA; SECURE FIT",
       "display_name": "Kolcraft Performa / Secure Fit (buckle)",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19970818",
       "reason": "EQUIPMENT DESCRIPTION:  PERFORMA AND SECURE-FIT INFANT SEATS MANUFACTURED FROM JANUARY 26, 1996 THROUGH JULY 31, 1997.    THESE SEATS DO NOT COMPLY WITH THE BUCKLE RELEASE FORCE REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -4861,6 +5163,11 @@
       "product_name": "Cosco / Touriva / Touriva 5-Point 02-014-EMF; 02-014-GDM; 02-015-PLD (+5 more models)",
       "display_name": "Cosco Touriva 5-Point / Overhead Shield",
       "brand": "Cosco / Touriva / Touriva 5-Point",
+      "brands": [
+        "Cosco",
+        "Touriva",
+        "Touriva 5-Point"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19970909",
       "reason": "EQUIPMENT DESCRIPTION:  TOURIVA 5-POINT (MODELS, 02-514-BWE, 02-584-OXF, AND 02-518-NDF) AND TOURIVA OVERHEAD SHIELD (MODELS, 02-014-EMF, 02-014-GDM, AND 02-015-PLD) CHILD RESTRAINT SYSTEMS.  WHEN THESE SEATS WERE TESTED DYNAMICALLY PER THE REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS,\" STRUCTURAL FAILURE OCURED IN THE BELT PATH AREA OF THE SHELL IN THE FORWARD FACING RECLINDED MODEL ONLY.",
@@ -4934,6 +5241,9 @@
       "product_name": "Evenflo 207 (ON MY WAY)",
       "display_name": "Evenflo On My Way 207 / 492 (handle)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19980217",
       "reason": "EQUIPMENT DESCRIPTION:  ON MY WAY INFANT CAR SEAT/CARRIER (MODEL 207)  AND ON MY WAY TRAVEL SYSTEM (MODEL 492) INFANT CAR SEAT/CARRIER WITH STROLLER BASE.   THE RED PUSH BUTTON ASSEMBLY ON EACH SIDE OF THE SEAT THAT IS USED TO LATCH AND ADJUST THE CARRYING HANDLE CAN UNEXPECTEDLY RELEASE AND CAUSE THE SEAT TO FLIP FORWARD.",
@@ -4972,6 +5282,9 @@
       "product_name": "Evenflo 636 (TWO IN ONE)",
       "display_name": "Evenflo Two-In-One 636 / 637",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19980511",
       "reason": "EQUIPMENT DESCRIPTION:  TWO-IN-ONE CAR SEATS, MODELS BEGINNING WITH 636 AND 637.  THE SEAT'S BACKREST AND BASE HAVE SEPARATED WHEN THE OCCUPANT IS RESTRAINED BY THE SEAT'S 5-POINT HARNESS.  THIS DOES NOT COMPLY WITH THE REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -5010,6 +5323,9 @@
       "product_name": "Fisher-Price 79700; SAFE EMBRACE",
       "display_name": "Fisher-Price Safe Embrace 79700",
       "brand": "Fisher-Price",
+      "brands": [
+        "Fisher-Price"
+      ],
       "manufacturer": "FISHER-PRICE",
       "recall_date": "19980724",
       "reason": "EQUIPMENT DESCRIPTION:  MODEL 79700 SAFE EMBRACE CONVERTIBLE CAR SEAT.  THE HARNESS ADJUSTER, USED TO TIGHTEN AND LOCK THE HARNESS BELTS AROUND A CHILD,  CAN MALFUNCTION IF A SPRING BREAKS OR DISLOCATES FROM THE CORRECT POSITION.",
@@ -5053,6 +5369,9 @@
       "product_name": "Basic Comfort 960; 961; GALAXY 2000",
       "display_name": "Basic Comfort Galaxy 2000 Boosters",
       "brand": "Basic Comfort",
+      "brands": [
+        "Basic Comfort"
+      ],
       "manufacturer": "BASIC COMFORT, INC.",
       "recall_date": "19981029",
       "reason": "EQUIPMENT DESCRIPTION:  BOOSTER SEAT, MODELS 960 AND 961 (WITH BACK).   THESE SEATS DO NOT MEET THE CHEST ACCELERATION REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -5101,6 +5420,9 @@
       "product_name": "Cosco ARRIVA; TURNABOUT",
       "display_name": "Cosco Arriva / Turnabout (handle)",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "19990701",
       "reason": "EQUIPMENT DESCRIPTION:   INFANT CAR SEATS/CARRIERS WITH MANUFACTURE DATE CODES BETWEEN 030195  THROUGH 090997.  THE ARRIVA MODEL NUMBERS ARE 02-665, 02-732, 02-756, 02-729, 02-733, 02-757, 02-731, AND 02-751.  THE TURNABOUT MODEL NUMBERS ARE 02-667, 02-758, 02-759, 02-760, 02-761, 02-762, 02-763, 02-764,  AND 02-765.  WHEN USED AS AN INFANT CARRIER, THE HANDLE LOCKS ON EACH SIDE OF THE SEAT CAN UNEXPECTEDLY RELEASE, CAUSING THE SEAT TO FLIP FORWARD.",
@@ -5144,6 +5466,9 @@
       "product_name": "Mercedes-Benz BABYSMART; BQ6910155; BQ6910157 (+1 more models)",
       "display_name": "Mercedes-Benz BabySmart Restraints",
       "brand": "Mercedes-Benz",
+      "brands": [
+        "Mercedes-Benz"
+      ],
       "manufacturer": "MERCEDES-BENZ USA, INC.",
       "recall_date": "19990803",
       "reason": "EQUIPMENT DESCRIPTION:  BABYSMART INFANT RESTRAINTS AND BOOSTER SEATS.    IF THE INFANT RESTRAINT OR BOOSTER SEAT IS INCORRECTLY POSITIONED OR MOVES SEVERAL INCHES OR MORE FORWARD OF THE SEAT BACK IN THE FRONT PASSENGER SEAT OF MERCEDES-BENZ BABYSMART EQUIPPED VEHICLES, IT MAY NOT AUTOMATICALLY DEACTIVATE THE PASSENGER FRONT AIR BAG.",
@@ -5197,6 +5522,9 @@
       "product_name": "Evenflo 203 (JOYRIDE); 205 (JOYRIDE TRAVEL TANDEM)",
       "display_name": "Evenflo Joyride 203 / 205 (labels)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "19990917",
       "reason": "EQUIPMENT DESCRIPTION:  CHILD RESTRAINT SYSTEMS.  THESE SEATS WERE ORIGINALLY MANUFACTURED FOR EXPORT TO CANADA AND ARE NOT LABELED CORRECTLY FOR SALE IN THE UNITED STATES.  THESE SEATS DO NOT COMPLY WITH THE AIR BAG WARNING LABEL REQUIREMENTS OF FMVSS 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -5240,6 +5568,9 @@
       "product_name": "Century BREVERRA CONTOUR; BREVERRA PREMIERE",
       "display_name": "Century Breverra Contour / Premiere",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "19991214",
       "reason": "THIS IS NOT A SAFETY RECALL IN ACCORDANCE WITH THE SAFETY ACT.  HOWEVER, IT IS DEEMED A PRODUCT IMPROVEMENT CAMPAIGN BY THE AGENCY.    EQUIPMENT DESCRIPTION: 4885 BREVERRA PREMIERE AND 4875 BREVERRA CONTOUR BOOSTER CAR SEATS MANUFACTURED FROM FEBRUARY 1995 THROUGH JULY 10, 1998.   THE BUCKLE FOR THE HARNESS SYSTEM ON THESE BOOSTER SEATS CAN CRACK OR BREAK.",
@@ -5283,6 +5614,9 @@
       "product_name": "Kolcraft INFANT CAR SEAT; INFANT RESTRAINT; INFANT RIDER (+5 more models)",
       "display_name": "Kolcraft Infant Carriers (handle)",
       "brand": "Kolcraft",
+      "brands": [
+        "Kolcraft"
+      ],
       "manufacturer": "KOLCRAFT ENTERPRISES, INC.",
       "recall_date": "19991216",
       "reason": "EQUIPMENT DESCRIPTION:  INFANT RIDER, SECURA, TRAVEL ABOUT, PLUS 4, PLUS 5, INFANT RESTRAINT, INFANT CAR SEAT AND PLAYSKOOL INFANT CAR SEATS, INCLUDING SEATS SOLD AS PART OF A STROLLER COMBINATION, AND MANUFACTURED FROM JANUARY 1, 1993 THROUGH JUNE 30, 1999.  WHEN USED AS AN INFANT CARRIER, THE HANDLE CAN UNEXPECTEDLY MOVE FROM THE INTENDED CARRYING POSITION.",
@@ -5356,6 +5690,9 @@
       "product_name": "Cosco TOURIVA",
       "display_name": "Cosco Touriva Safe-T-Shield",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "20000204",
       "reason": "EQUIPMENT DESCRIPTION:  COSCO TOURIVA CONVERTIBLE SAFE T SHIELD (FULL WRAP FABRIC COVER) MODEL 02-084, TOURIVA CONVERTIBLE SAFE T SHIELD (PARTIAL WRAP FABRIC COVER) MODEL 02-094, TOURIVA CONVERTIBLE SAFE T SHIELD (FULL WRAP FABRIC COVER WITH PILLOW) MODEL 02-096, TOURIVA CONVERTIBLE SAFE T SHIELD (PARTIAL WRAP VINYL COVER) MODEL 02404, TOURIVA CONVERTIBLE SAFE T SHIELD (PARTIAL WRAP FABRIC COVER) MODEL 02-821, MANUFACTURED FROM MAY 1, 1996 THROUGH NOVEMBER 26, 1997.  THESE SEATS FAIL TO FULLY COMPLY WITH THE REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS.\"  THE BUCKLE RELEASE FORCE EXCEEDS THE REQUIREMENTS OF FEDERAL REGULATIONS.",
@@ -5394,6 +5731,9 @@
       "product_name": "Cosco ARRIVA",
       "display_name": "Cosco Arriva 02-729-TED",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "COSCO, INC.",
       "recall_date": "20000204",
       "reason": "EQUIPMENT DESCRIPTION:  COSCO 02-729-TED ARRIVA INFANT CHILD RESTRAINTS MANUFACTURED FROM MARCH 31 THROUGH APRIL 7, 1999.  SOME OF THESE UNITS WERE PRODUCED WITHOUT AN AIR BAG WARNING LABEL.  THIS DOES NOT COMPLY WITH THE REQUIREMENTS OF FMVSS NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -5432,6 +5772,9 @@
       "product_name": "Evenflo 200 (ON MY WAY POSITION RIGHT)",
       "display_name": "Evenflo On My Way Position Right (base)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20000328",
       "reason": "EQUIPMENT DESCRIPTION: THIS RECALL AFFECTS THE \"CONVENIENCE BASE\"  OF THE SEAT ONLY.  EVENFLO HAS DISCOVERED THAT AFTER REPEATED USE BY CONSUMERS, TWO ALIGNMENT POSTS IN THE ON MY WAY POSITION RIGHT BASE CAN BECOME BENT.",
@@ -5470,6 +5813,9 @@
       "product_name": "Basic Comfort GALAXY 2000; GALAXY 2000 WITH BACKS",
       "display_name": "Basic Comfort Galaxy 2000 (backs/cushions)",
       "brand": "Basic Comfort",
+      "brands": [
+        "Basic Comfort"
+      ],
       "manufacturer": "BASIC COMFORT, INC.",
       "recall_date": "20000411",
       "reason": "EQUIPMENT DESCRIPTION:  GALAXY 2000 BOOSTER SEAT WITH BACH (MODEL 961) AND GALAXY 2000 BOOSTER SEAT (MODEL 960). THESE SEATS WERE MANUFACTURED WITH DEFECTIVE POLYSTYRENE BACKS AND CUSHIONS WHICH WERE NOT SUBJECTED TO STEAM PRESSURE IN THE MOLDING PROCESS FOR AN ADEQUATE PERIOD OF TIME RESULTING IN THE INNER POLYSTYRENE BEADS NOT COMPLETELY BONDING.   THESE SEATS DO NOT COMPLY WITH FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -5513,6 +5859,9 @@
       "product_name": "Britax 161 (ROUNDABOUT)",
       "display_name": "Britax Roundabout 161",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20000616",
       "reason": "EQUIPMENT DESCRIPTION:  ROUNDABOUT CONVERTIBLE CHILD RESTRAINTS, MODEL 161, MANUFACTURED BETWEEN JANUARY 13 AND MARCH 14, 1999.  THE SHELLS MANUFACTURED DURING THIS TIME MAY HAVE BEEN IMPROPERLY MOLDED AND COULD ALLOW HIGHER HEAD EXCURSIONS THAN ALLOWED BY FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"  AN INSUFFICIENT PARTING LINE BOND IN THE AREA OF THE HARNESS ADJUSTER ATTACHMENT MAY LEAD TO ADJUSTER MOVEMENT UNDER CRASH LOADS THAT COULD ALLOW A CHILD'S HEAD TO MOVE FURTHER THAN THE PERMITTED LIMITS.",
@@ -5551,6 +5900,9 @@
       "product_name": "Century REAR-FACING INFANT SEAT",
       "display_name": "Century Rear-Facing Infant Seats (Type 1 handle)",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "CENTURY PRODUCTS",
       "recall_date": "20000928",
       "reason": "EQUIPMENT DESCRIPTION:  ALL REAR-FACING INFANT CHILD SEATS THAT HAVE A \"TYPE 1\" HANDLE AND MANUFACTURED BETWEEN JANUARY 1, 1991, AND JULY 31, 1997.    THE HANDLE ON THESE CHILD RESTRAINTS CAN CRACK DURING NORMAL USE OUTSIDE A MOTOR VHEICLE, WHICH CAN LEAD TO AN UNEXPECTED BREAK.",
@@ -5589,6 +5941,9 @@
       "product_name": "Evenflo 203 (JOYRIDE); 205 (JOYRIDE TRAVEL TANDEM); 210 (TRIPLE TREAT) (+2 more models)",
       "display_name": "Evenflo Joyride Infant Restraints (handle)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20010426",
       "reason": "EQUIPMENT DESCRIPTION:  EVENFLO JOYRIDE INFANT RESTRAINTS MANUFACTURED AND SOLD IN THE UNITED STATES FROM JANUARY 1988 THROUGH DECEMBER 1998 MODEL NUMBERS BEGINNING WITH 203, 205, 210, 435, AND 493.   WHEN THE INFANT RESTRAINT IS USED AS A CARRIER (OUTSIDE OF A MOTOR VEHICLE), THE HANDLE LOCKS ON EACH SIDE OF THE RESTRAINT CAN UNEXPECTEDLY RELEASE, CAUSING THE SEAT TO FLIP FORWARD.  THE JOYRIDE INFANT RESTRAINT WAS SOMETIMES SOLD TOGETHER WITH A DETACHABLE CONVENIENCE BASE AS A TRAVEL TANDEM, AND WAS SOMETIMES SOLD AS A TRAVEL SYSTEM (TOGETHER WITH A MATCHING STROLLER.)",
@@ -5647,6 +6002,9 @@
       "product_name": "Century ACCEL; BRAVO; ENCORE (+1 more models)",
       "display_name": "Century Accel / Bravo / Encore / SmartMove",
       "brand": "Century",
+      "brands": [
+        "Century"
+      ],
       "manufacturer": "GRACO CHILDREN'S PRODUCTS",
       "recall_date": "20010602",
       "reason": "EQUIPMENT DESCRIPTION:  CENTURY CONVERTIBLE CHILD SEATS EQUIPPED WITH A CENTRAL ADJUSTER DEVICE, \"A-LOK\" ASSEMBLY, PRODUCED BETWEEN APRIL 9 AND MAY 10, 2001, INCLUDING THE FOLLOWING MODELS:  ENCORE (44612 GTN AND 4662 WSC 01); BRAVO (44622 LTG, 44630 LTH, 44631 PFN, AND 44662 WSC); ACCEL (45100 CHT, 45100 MTE, 45100 STH, 45200 LFT, 45200 MXM, 45600 JTI, 45600 MTE, 45600 MTO, 45600 MXM, 45600 SAF, 45700 GSD, AND 45700 LFT); AND SMARTMOVE (44709 MTE AND 44709 SVR).   THE ADJUSTER DEVICE ALLOWS CONSUMERS TO TIGHTEN THE CHILD SEAT HARNESS STRAPS ON THE CHILD.",
@@ -5700,6 +6058,9 @@
       "product_name": "Peg Perego INFANT CAR SEAT; PLIKO TRAVEL SYSTEM; PRIMO VIAGGO (+1 more models)",
       "display_name": "Peg Perego Primo Viaggio (base latch)",
       "brand": "Peg Perego",
+      "brands": [
+        "Peg Perego"
+      ],
       "manufacturer": "PEG PEREGO USA, INC.",
       "recall_date": "20010622",
       "reason": "EQUIPMENT DESCRIPTION:  PEG PEREGO MODELS PRIMO VIAGGO INFANT CAR SEAT, INFANT CAR SEAT WITH BASE, PLIKO TRAVEL SYSTEM (STROLLER BUNDLED AS A SINGLE PRODUCT), PRIMO VIAGGO SYSTEM (STROLLER BUNDLED AS A SINGLE PRODUCT).  THE BOTTOM LATCH MECHANISM OF THE CHILD SEAT ON THE LEFT SIDE DOES NOT COMPLETELY ENGAGE THE LATCHING ROD OF THE BASE THAT STAYS IN THE VEHICLE DUE TO THE IMPROPER POSITIONING OF THE METAL REINFORCING BRACKET OF THE LATCH MECHANISM DURING MANUFACTURE.  THESE SEATS FAIL TO CONFORM WITH FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -5753,6 +6114,9 @@
       "product_name": "Evenflo 207 (ON MY WAY); 428 (CONQUEST I)",
       "display_name": "Evenflo On My Way / Conquest (air-bag label)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20010705",
       "reason": "EQUIPMENT DESCRIPTION:  EVENFLO ON MY WAY INFANT RESTRAINT AND CONQUEST CONVERTIBLE CHILD RESTRAINTS THAT DID NOT CONTAIN THE AIR BAG WARNING LABEL WHICH FAILS TO COMPLY WITH FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINTS.\"",
@@ -5796,6 +6160,9 @@
       "product_name": "Sit'N'Stroll 3240",
       "display_name": "Sit'N'Stroll 3240 (certification)",
       "brand": "Sit'N'Stroll",
+      "brands": [
+        "Sit'N'Stroll"
+      ],
       "manufacturer": "SAFELINE KIDS, INC.",
       "recall_date": "20011009",
       "reason": "EQUIPMENT DESCRIPTION:  1996-1999 SIT'N'STROLL REAR-FACING AND FORWARD-FACING CONVERTIBLE CAR SEATS, MODEL 3240, MANUFACTURED BETWEEN NOVEMBER 1, 1996, AND JUNE 30, 1999.  THESE SEATS FAIL TO COMPLY WITH THE REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"  THE SIT'N'STROLL WAS RECOMMENDED FOR USAGE IN THE REAR-FACING SEATING CONFIGURATION BY CHILDREN NOT WEIGHING MORE THAN 25 POUNDS.",
@@ -5834,6 +6201,9 @@
       "product_name": "Sit'N'Stroll 3240",
       "display_name": "Sit'N'Stroll 3240 (air-bag label)",
       "brand": "Sit'N'Stroll",
+      "brands": [
+        "Sit'N'Stroll"
+      ],
       "manufacturer": "SAFELINE KIDS, INC.",
       "recall_date": "20011009",
       "reason": "EQUIPMENT DESCRIPTION:  SIT'N'STROLL REAR-FACING AND FORWARD-FACING CONVERTIBLE CAR SEATS, MODEL 3240, MANUFACTURED BETWEEN JUNE 9, 1997, AND AUGUST 9, 1997.  THESE SEATS FAIL TO COMPLY WITH THE REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"  THE AIR BAG WARNING LABEL WAS OMITTED FROM THE SEAT COVER.",
@@ -5872,6 +6242,9 @@
       "product_name": "Britax E9022 (ADVANTAGE)",
       "display_name": "Britax Advantage E9022 (tether)",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20011109",
       "reason": "EQUIPMENT DESCRIPTION:  ADVANTAGE CONVERTIBLE CHILD RESTRAINTS, MODEL E9022, WITH PRODUCTION DATES FROM MARCH 5 TO JULY 26, 2001.  THE TETHER BRACKETS USED DURING THE AFFECTED PERIOD MAY ALLOW ONE OF THE TETHER ATTACHMENTS TO SEPARATE FROM THE SEAT SHELL IN A VEHICLE CRASH.  SEPARATION OF ONE OF THE TETHER BRACKETS FROM THE SEAT SHELL COULD CAUSE INCREASED HEAD EXCURSION.  THESE SEATS DO NOT COMPLY WITH FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -5910,6 +6283,9 @@
       "product_name": "Britax 101 (FREEWAY); 161 (ROUNDABOUT); E9000 (FREEWAY) (+1 more models)",
       "display_name": "Britax Freeway / Roundabout / Advantage (buckle)",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20011204",
       "reason": "THIS IS NOT A SAFETY RECALL IN ACCORDANCE WITH THE SAFETY ACT.  CUSTOMARY ADVISORY:  THIS ADVISORY PERTAINS TO BRITAX CHILD SEATS, MODELS FREEWAY #101, FREEWAY PLUS #E9000, ROUNDABOUT #E9002, ADVANTAGE #E9022, ROUNDABOUT W/HEAD PAD # E9033.  IN CERTAIN CIRCUMSTANCES, THE LARGE RED BUTTON MAY BE CONTACTED BY THE CHILD AND OPENED.",
@@ -5963,6 +6339,9 @@
       "product_name": "Sit'N'Stroll 2240",
       "display_name": "Sit'N'Stroll 2240 (aircraft label)",
       "brand": "Sit'N'Stroll",
+      "brands": [
+        "Sit'N'Stroll"
+      ],
       "manufacturer": "SAFELINE KIDS, INC.",
       "recall_date": "20020104",
       "reason": "EQUIPMENT DESCRIPTION:  CERTAIN 2001 MY  SIT 'N' STROLL REAR-FACING AND FORWARD-FACING CONVERTIBLE CHILD RESTRAINT, MODEL NO. 2240, MANUFACTURED BETWEEN APRIL 1 AND OCTOBER 1, 2001.   THESE SEATS FAIL TO COMPLY WITH THE REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"  THE FAA CERTIFICATION STATEMENT, \"THIS RESTRAINT IS CERTIFIED FOR USE IN MOTOR VEHICLES AND AIRCRAFT,\" IS IN YELLOW LETTERING INSTEAD OF THE REQUIRED RED LETTERING.",
@@ -6001,6 +6380,9 @@
       "product_name": "Evenflo 264 (TRIUMPH)",
       "display_name": "Evenflo Triumph 264",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20020303",
       "reason": "EQUIPMENT DESCRIPTION:  TRIUMPH CONVERTIBLE CHILD RESTRAINTS MANUFACTURED FROM OCTOBER 20, 2001, THROUGH JANUARY 31, 2002 WITH THE MODEL NUMBER BEGINNING WITH THE NUMBER 264.  THE SLIDE LOOP CONNECTORS (WHICH ACT AS A LINK IN THE INTERNAL HARNESS SYSTEM) MAY BE INSUFFICIENTLY STRONG ENOUGH TO FULLY SECURE THE OCCUPANT.",
@@ -6039,6 +6421,9 @@
       "product_name": "Graco 7493G9; 7493RS; 7497HL (+47 more models)",
       "display_name": "Graco SnugRide (base hardware)",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "GRACO CHILDREN'S PRODUCTS",
       "recall_date": "20020318",
       "reason": "EQUIPMENT DESCRIPTION:  GRACO SNUGRIDE INFANT CAR SEATS, MODEL NOS. 7493G9, 7493RS, 7497HL, 7497SY, 7499LK, 7499N2, 841101, 841102, 841103, 841203, 8412T02, 8457D5, 8457DVB, 8457F3, 8457GP, 8457IND, 8457MA, 8457MV, 8457RG, 8457TMJ, 8457TMP, 8457YL, 8458A5, 8458AE, 8458B7, 8458D8, 8458FKB, 8458HE, 8458HH, 8458KY, 8458N5, 8459VL, 8460LV, 8462HAV, 8462JAM, 8471UVB, 8472BLW, 8472BRN, 8472CYP, 8472GMP, 8472MAD, 8472YL, 8474HAB, 8474MEL, 8476VIN, 8477HAV, 8477JAM, 8477NGS, 8478SAR, MANUFACTURED BETWEEN AUGUST 31, 1999, AND FEBRUARY 28, 2002.  THESE SEATS MAY BE MISSING COMPONENTS ON THE BASE OR THE CARRIER SHELL.  THE COMPONENTS ARE 1 OR 2 METAL HOOKS AND THEIR RETAINER PINS ON THE BASE, OR THE MATING \"U\" SHAPED BARS ON THE CARRIER SHELL THAT ARE USED TO ATTACH THE CARRIER TO THE BASE.  PLEASE NOTE:  ALL AFFECTED MODEL NUMBERS MAY ALSO BEGIN WITH THE LETTER \"A\".  A MODEL NUMBER LISTED, BUT BEGINNING WITH AN ADDITIONAL \"A\" IS ALSO INCLUDED IN THE RECALLED SEATS.",
@@ -6322,6 +6707,10 @@
       "product_name": "Martinelli / Peg Perego ATLANTICO SYSTEM; ATLANTICO TREK SYSTEM SNG; INFANT CAR SEAT (+4 more models)",
       "display_name": "Peg Perego Infant Car Seats (upholstery snap)",
       "brand": "Martinelli / Peg Perego",
+      "brands": [
+        "Martinelli",
+        "Peg Perego"
+      ],
       "manufacturer": "PEG PEREGO, USA, INC.",
       "recall_date": "20020321",
       "reason": "EQUIPMENT DESCRIPTION:  PEG PEREGO INFANT CAR SEATS, MODELS PRIMO VIAGGIO WITH BASE, PLIKO TRAVEL SYSTEM, PRIMO VIAGGIO SYSTEM, ATLANTICO SYSTEM, AND ATLANTICO TREK SYSTEM SNG PRODUCT FROM MAY 20, 2001, TO AND INCLUDING FEBRUARY 15, 2002.  THE SEATS HAVE A SNAP IN THE UPHOLSTERY DIRECTLY OVER THE LOCKING BELT ADJUSTMENT MECHANISM (A-LOC ADJUSTER).  WHEN THE UPHOLSTERY IS ATTACHED BY THE SNAP TO THE COVER OF THE A-LOC ADJUSTER, IT MAY CAUSE TENSION IN THE UPHOLSTERY DUE TO THE WEIGHT OF THE CHILD, WHICH MAY PREVENT THE COMPLETE ENGAGEMENT OF THE A-LOC ADJUSTER AND ALLOW SLIPPAGE IN THE HARNESS RESTRAINTS.  THESE SEATS FAIL TO COMPLY WITH FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213 \"CHILD RESTRAINT SYSTEMS.\"",
@@ -6390,6 +6779,9 @@
       "product_name": "XSCI INFANT CAR SEAT; PIONEERED",
       "display_name": "XSCI Pioneered Rear-Facing Seats",
       "brand": "XSCI",
+      "brands": [
+        "XSCI"
+      ],
       "manufacturer": "XPORTATION SAFETY CONCEPTS",
       "recall_date": "20020419",
       "reason": "CHILD SEAT DESCRIPTION:  XSCI PIONEERED AIRBAG COMPATIBLE REAR FACING CHILD SEATS WITH SEAT PAD COLORS BLUE/BLUE AND BROWN/BLUE, (THERE IS NO MODEL NUMBER ASSOCIATED WITH THE PRODUCT) MANUFACTURED BETWEEN FEBRUARY 1 AND MARCH 7, 2002.  THESE SEATS EXCEED THE MAXIMUM  HEAD EXCURSION CRITERIA OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -6433,6 +6825,10 @@
       "product_name": "Cosco / Eddie Bauer ALPHA/OMEGA 02332; ALPHA/OMEGA 02531; ALPHA/OMEGA 02533 (+36 more models)",
       "display_name": "Dorel Alpha/Omega & Eddie Bauer (tether webbing)",
       "brand": "Cosco / Eddie Bauer",
+      "brands": [
+        "Cosco",
+        "Eddie Bauer"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20020422",
       "reason": "ON CERTAIN DOREL JUVENILE GROUP (DJG) CHILD RESTRAINT SYSTEMS, MANUFACTURED FROM JANUARY 1, 2000, THROUGH SEPTEMBER 30, 2001, THE TETHER WEBBING FAILS TO CONFORM TO THE ABRASION REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -6661,6 +7057,10 @@
       "product_name": "Designer 22 / Dorel Juvenile Group 02-620 AZY; 02-620 BEA; 02-621 SAL (+2 more models)",
       "display_name": "Safety 1st / Beatrix Potter Designer 22 (handle)",
       "brand": "Designer 22 / Dorel Juvenile Group",
+      "brands": [
+        "Designer 22",
+        "Dorel Juvenile Group"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20020508",
       "reason": "EQUIPMENT DESCRIPTION:  SAFETY 1ST OR BEATRIX POTTER DESIGNER 22 INFANT CAR SEAT/CARRIER, MANUFACTURED BETWEEN JANUARY 3 AND FEBRUARY 13, 2002, MODELS 02-621 SAL, 02-620 AZY, 02-620 BEA.  WHEN USED AS A CARRIER, THE HANDLE MAY SLIP FROM ONE POSITION TO ANOTHER, CAUSING THE SEAT TO FALL FORWARD.",
@@ -6719,6 +7119,9 @@
       "product_name": "Cosco HI BACK 02442CNG; HI BACK 02442DNP; HI BACK 02442JUB (+11 more models)",
       "display_name": "Dorel Hi-Back Boosters (webbing)",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20020925",
       "reason": "THESE DOREL JUVENILE GROUP (DJG) CHILD RESTRAINT SYSTEMS, MANUFACTURED FROM MARCH 15 TO AUGUST 1, 2002 WITH 6 PANEL WELLINGTON WEBBING HARNESSES, FAIL TO CONFORM TO THE REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"  THE UV STABILIZER USED IN THE WEBBING MAY NOT ADEQUATELY PROTECT IT FROM DETERIORATION BY ULTRAVIOLET RAYS.",
@@ -6822,6 +7225,10 @@
       "product_name": "Gorilla / Spelcast 200-1000; 600-1000",
       "display_name": "Gorilla / Spelcast Seats (tether kit)",
       "brand": "Gorilla / Spelcast",
+      "brands": [
+        "Gorilla",
+        "Spelcast"
+      ],
       "manufacturer": "SNUG SEAT, IN.",
       "recall_date": "20030131",
       "reason": "GORILLA CHILD SAFETY SEAT (MODEL NUMBER 200-1000) AND SPELCAST CHILD SAFETY SEATS (MODEL NUMBER 600-1000) MANUFACTURED BETWEEN JULY 26, 2002, AND JANUARY 15, 2003, AND OUTFITTED WITH A TETHER ANCHOR MOUNTING KIT, PART NO. FW-50250-12-ZY.  THE KIT ALLOWS THE PURCHASER TO MOUNT A TETHER ANCHOR IN A VEHICLE THAT IS NOT ALREADY EQUIPPED WITH AN ANCHOR.  THE TETHER ANCHOR KIT CONTAINS A WASHER THAT DOES NOT COMPLY WITH THE SALT SPRAY STANDARD FOUND IN FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -6865,6 +7272,9 @@
       "product_name": "Graco SNUGRIDE",
       "display_name": "Graco SnugRide (base)",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "GRACO CHILDREN'S PRODUCTS",
       "recall_date": "20030310",
       "reason": "GRACO IS RECALLING THE SNUGRIDE INFANT CAR SEATS.  MODELS THAT HAVE THE FOLLOWING NUMBERS WITHIN THE MODEL NUMBER: 8402, 8412, 8442, 8442L, 8443, 8443L, 8444, 8444L, 8446, 8446L, 8447, 8447L, 8448, 8448L, 8457, 8458, 8459, 8601, 8463, 8464, 8470, 8471, 8478 AND C844342, AND WERE MANUFACTURED BETWEEN MARCH 1, 2002, AND MARCH 6, 2003, ARE INCLUDED.  SOME OF THE SEATSMAY HAVE MISSING HARDWARE THAT IS TO ATTACH THE CARRIER TO THE BASE.  IF THE HARDWARE IS MISSING, THE CARRIER MAY NOT BE SECURELY ATTACHED TO THE BASE.    GRACO HAS DECIDED TO EXPAND THIS RECALL TO INCLUDE ADDITIONAL SNUGRIDE INFANT CHILD RESTRAINTS WHICH HAVE A MANUFACTURE DATE OF MARCH 7 OR 8, 2003.                  THE MODEL NUMBERS FOR THE ADDITIONAL SEATS ARE 8402L03, 840301, 840302, 840303, 8442GMP, 8442LBLW, 8442LCYP, 8442LMAD, 8444LHAB, 8444LHIG, 8446LFKB, 8446LVIN, 8447LHAV, 8448LSAR, 8463AMB, 8463GMP, 8463JUN, 8463YL, 8464MAC, 8464MEL, 8602AMB, 8602JUN, 8602MAN, 8603MIC, 8603MLL, 8605HIG, 8605KER, 8605PLT, 8607LAG, 8607NGS, 8608DIA, AND 8609FOF.  NOTIFICATION TO REGISTERED OWNERS OF THE ADDITIONAL INFANT CHILD RESTRAINTS IS EXPECTED TO BEGIN AUGUST 1, 2003.",
@@ -6903,6 +7313,9 @@
       "product_name": "Cosco ARRIVA 02-665; ARRIVA 02-727; ARRIVA 02-728 (+22 more models)",
       "display_name": "Cosco Arriva / Turnabout (handle, 1997–2000)",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20030602",
       "reason": "COSCO ARRIVA AND TURNABOUT INFANT CAR SEATS/CARRIERS MANUFACTURED BETWEEN SEPTEMBER 10, 1997, AND JANUARY 31, 2000, INCLUDING SEATS SOLD AS PART OF A STROLLER COMBINATION.  WHEN USED AS AN INFANT CARRIER, THE HANDLE LOCKS ON EACH SIDE OF THE SEAT CAN UNEXPECTEDLY RELEASE, CAUSING THE SEAT AND INFANT TO FLIP FORWARD.",
@@ -7061,6 +7474,9 @@
       "product_name": "Evenflo 272 (COZY CARRY)",
       "display_name": "Evenflo Cozy Carry 272 (base hooks)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20030627",
       "reason": "COZY CARRIER INFANT RESTRAINT MANUFACTURED BETWEEN NOVEMBER 7, 2001, AND AUGUST 30, 2002.  DEFORMATION OR DAMAGE CAN OCCUR TO THE BASE HOOKS ON THE CONVENIENCE BASE DURING VEHICLE INSTALLATION.",
@@ -7099,6 +7515,9 @@
       "product_name": "Evenflo 254 (MEDALLION); 561 (DISCOVERY)",
       "display_name": "Evenflo Medallion / Discovery (non-US units)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20030729",
       "reason": "IN THE COARSE OF DEALING WITH CONSUMER SATISFACTION ISSUES, EVENFLO HAD INADVERTENTLY SENT CONSUMERS IN THE UNITED STATES CHILD RESTRAINTS MANUFACTURED FOR SALE OUTSIDE OF THE UNITED STATES, WHICH WERE NOT EQUIPPED WITH THE LATCH HARDWARD.  THESE SEATS FAIL TO COMPLY WITH FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -7142,6 +7561,10 @@
       "product_name": "Cosco / Dorel Juvenile Group ALPHA OMEGA; EDDIE BAUER 3-IN-1",
       "display_name": "Dorel Alpha Omega / Eddie Bauer 3-in-1 (tether)",
       "brand": "Cosco / Dorel Juvenile Group",
+      "brands": [
+        "Cosco",
+        "Dorel Juvenile Group"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20030808",
       "reason": "ALPHA OMEGA AND EDDIE BAUER 3-IN-1 BRAND CHILD SEATS MANUFACTURED FROM NOVEMBER 17, 2000, TO JANUARY 10, 2001, MODELS 02-331, 02-332, 02-531, 02-533, 02-537, AND 02-555.  DURING DYNAMIC TESTING, THE TETHER WEBBING EXHIBITED CUTTING AND SEPARATION WHICH FAIL THE REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINTS SYSTEMS.\"",
@@ -7185,6 +7608,9 @@
       "product_name": "Britax E9031 (SUPER ELITE)",
       "display_name": "Britax Super Elite E9031",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20030929",
       "reason": "SUPER ELITE YOUTH RESTRAINTS, MODEL NO. E9031, WITH PRODUCTION DATES FROM APRIL 25, 2001, THROUGH FEBRUARY 15, 2002, FAIL TO CONFORM TO FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"  VEHICLE CRASH FORCES COULD CAUSE THE CHILD'S HEAD TO MOVE FURTHER FORWARD THAN ALLOWED BY THE STANDARD.",
@@ -7223,6 +7649,9 @@
       "product_name": "Sit'N'Stroll 2003",
       "display_name": "Sit'N'Stroll 2003",
       "brand": "Sit'N'Stroll",
+      "brands": [
+        "Sit'N'Stroll"
+      ],
       "manufacturer": "SAFELINE KIDS, INC.",
       "recall_date": "20031103",
       "reason": "SIT \"N\" STROLL REAR-FACING AND FORWARD-FACING CONVERTIBLE CHILD RESTRAINTS MODEL #2003, MANUFACTURED BETWEEN SEPTEMBER 1, 2002, AND OCTOBER 21, 2003.  WHEN THE SEAT IS SECURED IN THE VEHICLE USING THE LOWER FORWARD-FACING BELT PATH OR WHEN THE SHOULDER AND BUCKLE PADS INCLUDED WITH THE RESTRAINT ARE USED, FORCES DURING A CRASH COULD CAUSE THE CHILD'S HEAD TO MOVE FORWARD FURTHER THAN ALLOWED BY THE FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"  SHOULDER AND BUCKLE PADS MAY INTERFERE WITH THE HARNESS BECOMING PROPERLY SNUG.",
@@ -7261,6 +7690,9 @@
       "product_name": "Cosco HIGH RISE 22-297-WAL; HIGH RISE 22-298-STM; HIGH RISE 22-299-NAN (+1 more models)",
       "display_name": "Cosco High Rise (misprinted label)",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20031106",
       "reason": "HIGH RISE CHILD RESTRAINTS, MODEL NUMBERS 22-297-WAL, 22-298-STM, 22-299-NAN, AND 93-299-FSM, MANUFACTURED BETWEEN OCTOBER 1 AND OCTOBER 31, 2003.  DJG INTENDED TO RECOMMEND THAT THE FORWARD-FACING MODE SHOULD BE USED FOR CHILDREN \"OVER 1 YEAR OF AGE.\"  THE LABEL WAS MISPRINTED TO RECOMMEND THAT THE FORWARD-FACING MODE SHOULD BE USE FOR CHILDREN \"UNDER 1 YEAR OF AGE.\"",
@@ -7314,6 +7746,9 @@
       "product_name": "Britax E9L30 (HUSKY)",
       "display_name": "Britax Husky E9L30 (manual)",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20031230",
       "reason": "HUSKY CHILD RESTRAINTS MODEL E9L30 MANUFACTURED FROM OCTOBER 7, 2002 TO DECEMBER 8, 2003.  THESE SEATS FAIL TO CONFORM TO FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"  RESTRAINTS WHEN INSTALLED WITH A LAP BELT AS DESCRIBED IN THE CURRENT USER'S MANUAL, FOR A LONG/SERPENTINE BELT PATH, COULD ALLOW THE CHILD'S HEAD TO MOVE FURTHER FORWARD THAN ALLOWED BY FMVSS NO. 213 IN THE EVENT OF A VEHICLE CRASH.",
@@ -7352,6 +7787,9 @@
       "product_name": "Britax E9027 (TRAVELLER PLUS); E9L06 (MARATHON); E9L07 (WIZARD) (+1 more models)",
       "display_name": "Britax Marathon / Wizard / Husky / Traveller Plus",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20040805",
       "reason": "BRITAX MARATHON, WIZARD, HUSKY, AND TRAVELLER PLUS CHILD RESTRAINTS.  THE A-LOK ADJUSTER ASSEMBLY CAN ALLOW SLIPPAGE OF THE WEBBING RESULTING IN LOOSENING OF THE HARNESS STRAPS.",
@@ -7405,6 +7843,9 @@
       "product_name": "Cosco DREAMRIDE 22-001-FSM",
       "display_name": "Cosco Dreamride 22-001-FSM",
       "brand": "Cosco",
+      "brands": [
+        "Cosco"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20041207",
       "reason": "CERTAIN COSCO DREAMRIDE, MODEL 22-001-FSM, REAR FACING CHILD RESTRAINT SYSTEM MANUFACTURED BETWEEN DECEMBER 1, 2003, AND APRIL 28, 2004.  THESE SEATS FAIL TO MEET THE 70 DEGREE MAXIMUM BACK SUPPORT ANGLE REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINT SYSTEMS.",
@@ -7443,6 +7884,9 @@
       "product_name": "Sicartex TOP SAFE",
       "display_name": "Sicartex Kiddy Top Safe",
       "brand": "Sicartex",
+      "brands": [
+        "Sicartex"
+      ],
       "manufacturer": "SICARTEX AUTOZUBEHOR CURT WURSTL GMBH",
       "recall_date": "20041215",
       "reason": "CERTAIN SICARTEX KIDDY TOP SAFE CHILD SEATS MANUFACTURED BETWEEN MARCH 1 AND OCTOBER 31, 2003, AND DISTRIBUTED THROUGH MERCEDES-BENZ DEALERSHIPS.  THE LOWER LATCHING ARM ON THE LATCH ANCHORAGE MAY NOT MEET THE REQUIRED MATERIAL STRENGTH.",
@@ -7481,6 +7925,9 @@
       "product_name": "Combi 8100 (AVATAR)",
       "display_name": "Combi Avatar 8100",
       "brand": "Combi",
+      "brands": [
+        "Combi"
+      ],
       "manufacturer": "COMBI USA, INC.",
       "recall_date": "20050414",
       "reason": "CERTAIN COMBI USA AVATAR CONVERTIBLE CHILD RESTRAINTS, MODEL NO. 8100.  IN A VEHICLE CRASH, THE LATCH LOWER ANCHORAGE BELT ASSEMBLY CAN FAIL AND SEPARATE WHEN USED IN THE REAR-FACING MODE.  THESE SEATS FAIL TO CONFORM TO FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINT SYSTEMS.",
@@ -7519,6 +7966,11 @@
       "product_name": "Cosco / Eddie Bauer / Safety 1st 22-300 JOS GB1B; 22-325 CMB GB1B; 22-325 DTA GB1B (+6 more models)",
       "display_name": "Dorel Designer 22 (web creep)",
       "brand": "Cosco / Eddie Bauer / Safety 1st",
+      "brands": [
+        "Cosco",
+        "Eddie Bauer",
+        "Safety 1st"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20050418",
       "reason": "CERTAIN DJG DESIGNER 22 REAR-FACING ONLY INFANT CHILD RESTRAINTS, MODELS: EDDIE BAUER, SAFETY 1ST , AND COSCO, MANUFACTURED BETWEEN AUGUST 19, 2003, AND OCTOBER 20, 2004.  IF THE HARNESS IS NOT PROPERLY TIGHTENED, THE INFANT SEAT CAN EXPERIENCE WEB MOVEMENT OR WEB CREEP.  IT IS IMPORTANT TO NOTE THE GB1B LINE CODE LOCATED NEXT TO THE MODEL NUMBER ON THE CHILD RESTRAINT INDICATES THE UNIT WAS MANUFACTURED BY GOOD BABY PRODUCTS AND IS THE ONLY LINE INCLUDED IN THE RECALL.  ANY LINE CODE OTHER THAN GB1B, SUCH AS DE1B, IS NOT INCLUDED IN THE RECALL.",
@@ -7597,6 +8049,9 @@
       "product_name": "Britax E9031 (SUPER ELITE)",
       "display_name": "Britax Super Elite E9031 (adjuster)",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20050509",
       "reason": "CERTAIN BRITAX SUPER ELITE CHILD RESTRAINT SYSTEMS, MODEL E9031, MANUFACTURED BETWEEN APRIL 2001 AND AUGUST 2002.  THE ADJUSTER ASSEMBLY CAN STICK IN THE OPEN POSITION WHICH MAY RESULT IN A LOOSE HARNESS.",
@@ -7635,6 +8090,9 @@
       "product_name": "Evenflo 378 (TRIBUTE); 379 (TRIBUTE 5)",
       "display_name": "Evenflo Tribute / Tribute 5",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20051018",
       "reason": "CERTAIN EVENFLO TRIBUTE AND TRIBUTE 5 REAR-FACING INFANT CHILD RESTRAINTS WITH MODEL NOS BEGINNING WITH 378 OR 379, MANUFACTURED BETWEEN SEPTEMBER 8 AND SEPTEMBER 22, 2005.  THE PLASTIC MATERIAL IN A SPECIFIC AREA ON EACH SIDE WALL WAS INCOMPLETELY BONDED DURING THE MOLDING OF THE SEAT SHELL WHICH FAILS TO COMPLY WITH THE REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINT SYSTEMS.",
@@ -7678,6 +8136,9 @@
       "product_name": "Britax COMPANION",
       "display_name": "Britax Companion E9L14",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20060912",
       "reason": "CERTAIN BRITAX COMPANION REAR FACING INFANT ONLY CHILD RESTRAINT SYSTEMS, MODEL E9L14, MANUFACTURED BETWEEN OCTOBER 27, 2003, AND JUNE 6, 2004.  DUE TO AN INCORRECT ASSEMBLY OF SOME OF THE INFANT CARRIERS, TABS ON THE BOTTOM OF THE CARRIER MAY NOT BE PROPERLY SEATED.  THESE CHILD RESTRAINTS FAIL TO CONFORM TO THE FRONTAL IMPACT CRASH REQUIREMENT OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINT SYSTEMS.",
@@ -7716,6 +8177,9 @@
       "product_name": "Britax E9W57 (BOULEVARD)",
       "display_name": "Britax Boulevard E9L57 (tether hook)",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20060925",
       "reason": "CERTAIN BRITAX BOULEVARD CHILD RESTRAINT SYSTEMS, MODEL E9L57, MANUFACTURED FROM MARCH 1 THROUGH AUGUST 1, 2006.  DURING TESTING, THE TETHER HOOK OPENED WHICH FAILS TO CONFORM TO THE DYNAMIC PERFORMANCE AND CHILD RESTRAINT SYSTEM INTEGRITY REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINT SYSTEMS.",
@@ -7754,6 +8218,9 @@
       "product_name": "Britax E906 (MARATHON); E9L06 (MARATHON); E9W06 (MARATHON)",
       "display_name": "Britax Marathon (tether hook)",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20060925",
       "reason": "CERTAIN BRITAX MARATHON CHILD RESTRAINT SYSTEMS, MODELS E9L06, E9W06, AND E906, MANUFACTURED FROM MAY 23 THROUGH JULY 28, 2006.  DURING TESTING, THE TETHER HOOK OPENED WHICH FAILS TO CONFORM TO THE DYNAMIC PERFORMANCE AND CHILD RESTRAINT SYSTEM INTEGRITY REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINT SYSTEMS.",
@@ -7802,6 +8269,10 @@
       "product_name": "Alpha Elite / Eddie Bauer 22-331; 22-332; 22-630 (+1 more models)",
       "display_name": "Dorel Alpha Elite / Eddie Bauer (screws)",
       "brand": "Alpha Elite / Eddie Bauer",
+      "brands": [
+        "Alpha Elite",
+        "Eddie Bauer"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20061117",
       "reason": "CERTAIN DOREL JUVENILE GROUP (DJG) COMFORT INFANT CHILD RESTRAINTS, MODELS 22-331 AND 22-332 ALPHA ELITE AND 22-630 AND 22-631 EDDIE BAUER, MANUFACTURED FROM JULY 26, 2005, AND FEBRUARY 28, 2006.  ONE OR MORE OF THE SIX HANDLE TRIM SCREWS CAN LOOSEN AND FALL OUT INTO THE CHILD OCCUPANT AREA.  THE CHILD COULD THEN PICK UP THE SCREW AND PLACE IT INTO HIS OR HER MOUTH.",
@@ -7855,6 +8326,9 @@
       "product_name": "Compass I420",
       "display_name": "Compass I420",
       "brand": "Compass",
+      "brands": [
+        "Compass"
+      ],
       "manufacturer": "COMPASS",
       "recall_date": "20061206",
       "reason": "CERTAIN COMPASS INFANT CHILD RESTRAINS, MODEL I420 WITH FABRIC CODES OF ARD, FUO, OR MAR, MANUFACTURED BETWEEN MAY 7 AND MAY 15, 2006.  THE CROTCH ANCHOR WHICH IS LOCATED ON THE BOTTOM OF THE SEAT WAS INSTALLED INCORRECTLY WHICH FAILS TO CONFORM TO FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINT SYSTEMS.",
@@ -7893,6 +8367,9 @@
       "product_name": "Team-Tex Babyride 374099",
       "display_name": "Team-Tex Babyride 374099 (label)",
       "brand": "Team-Tex Babyride",
+      "brands": [
+        "Team-Tex Babyride"
+      ],
       "manufacturer": "TEAM-TEX AMERICA, INC.",
       "recall_date": "20070117",
       "reason": "CERTAIN TEAM-TEX BABYRIDE INFANT CHILD RESTRAINT SYSTEMS, MODEL 374099, MANUFACTURED ON AUGUST 31, 2006 AND ON OCTOBER 23, 2006.  THE BELT ROUTING LABEL WITH THE \"HORIZONTAL REFERENCE LINE\" IS INCORRECTLY PLACED ON THE CHILD RESTRAINT SYSTEM WHICH FAILS TO CONFORM TO FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINTS SYSTEMS.",
@@ -7931,6 +8408,9 @@
       "product_name": "Britax E9L39 (REGENT)",
       "display_name": "Britax Regent Classic (label)",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20070216",
       "reason": "CERTAIN BRITAX REGENT CLASSIC FORWARD-FACING ONLY YOUTH CHILD RESTRAINT SYSTEMS, MODEL E9L3998, MANUFACTURED BETWEEN DECEMBER 18, 2006, AND JANUARY 18, 2007.  THESE CHILD RESTRAINT SYSTEMS WERE PRODUCED WITH AN INCORRECT LABEL SEWN TO THE FABRIC COVER WHICH FAILS TO CONFORM TO FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINTS SYSTEMS.  IN PLACE OF THE \"WARNING! DEATH OR SERIOUS INJURY CAN OCCUR\" WARNING LABEL, AN AIRBAG WARNING LABEL WAS ATTACHED.  THE AIRBAG WARNING LABEL IS NOT REQUIRED FOR THE REGENT CLASSIC RESTRAINT AS IT IS A FORWARD-FACING ONLY YOUTH RESTRAINT SYSTEM.",
@@ -7969,6 +8449,9 @@
       "product_name": "Evenflo 562 (EMBRACE)",
       "display_name": "Evenflo Embrace (handle)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20070510",
       "reason": "CERTAIN EVENFLO EMBRACE INFANT CHILD RESTRAINT SYSTEMS/CARRIERS MANUFACTURED BEFORE APRIL 8, 2006, WITH MODEL NUMBERS BEGINNING WITH 317, 320, 397, 398, 540, 548, 549, 550, 556, 597, 598 OR 599.  WHEN USED AS AN INFANT CARRIER, THE HANDLE CAN UNEXPECTEDLY RELEASE, CAUSING THE CHILD RESTRAINT SYSTEM TO ROTATE FORWARD.",
@@ -8007,6 +8490,10 @@
       "product_name": "Cosco / Dorel Juvenile Group ALPHA OMEGA 22-150; ALPHA OMEGA 22-151; EDDIE BAUER 3-IN-1",
       "display_name": "Dorel Alpha Omega / Eddie Bauer 3-in-1 (armrest)",
       "brand": "Cosco / Dorel Juvenile Group",
+      "brands": [
+        "Cosco",
+        "Dorel Juvenile Group"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20070517",
       "reason": "CERTAIN DOREL JUVENILE GROUP CHILD RESTRAINT SYSTEMS  MANUFACTURED FROM OCTOBER 1 THROUGH DECEMBER 31, 2005.  THERE IS A POTENTIAL FOR A CHILD TO HAVE HIS/HER FINGER STUCK IN THE SQUARE HOLE LOCATED ON THE LEFT ARMREST.",
@@ -8055,6 +8542,9 @@
       "product_name": "Britax E9L47 (DECATHLON)",
       "display_name": "Britax Decathlon E9L47",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20070807",
       "reason": "CERTAIN BRITAX DECATHLON CHILD RESTRAINT SYSTEMS, MODEL E9L47, MANUFACTURED FROM FEBRUARY 12, 2005, THROUGH JULY 31, 2007.  THE HARNESS ADJUSTER HOUSING CAN POP OUT OF POSITION WHICH MAKES IT DIFFICULT TO ADJUST THE HARNESS TO FIT SNUGGLY AROUND THE CHILD.",
@@ -8093,6 +8583,9 @@
       "product_name": "Graco COMFORTSPORT",
       "display_name": "Graco ComfortSport (belt routing)",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "GRACO CHILDREN'S PRODUCTS INC",
       "recall_date": "20070815",
       "reason": "CERTAIN GRACO COMFORTSPORT 5 POINT HARNESS CONVERTIBLE (REAR/FORWARD FACING) CHILD RESTRAINT SYSTEMS MANUFACTURED FROM JANUARY 2 THROUGH JULY 31, 2007, MODEL NOS. 8433FOF, 8629TWL, 8630MTR, 8631DFT, 8631DRA, 8632PSO, 8635TAC, 8639COS, 8C00BLG, 8C00DMN, 8C00GRP, 8C00LNW, 8C00MID, 8C00TMB, 8C01SVD, 8C01WTN, 8C02MGI, 8C02MRC, 8C03HAL, 8C03WCF, 8C04FRR.  DURING PRODUCTION, THE LOWER ANCHORAGE BELT IN SOME OF THESE CHILD RESTRAINT SYSTEMS WAS INCORRECTLY ROUTED.  AS A RESULT, WHEN THESE CHILD RESTRAINT SYSTEMS ARE USED IN THE REAR-FACING MODE, ATTACHED WITH THE LOWER ANCHORAGE BELT, THEY FAIL TO CONFORM TO FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, 'CHILD RESTRAINT SYSTEMS.'",
@@ -8131,6 +8624,12 @@
       "product_name": "Cosco / Cosco Kids / Eddie Bauer / Safety 1st 3-IN-1; ALPHA ELITE; ALPHA OMEGA (+4 more models)",
       "display_name": "Dorel Alpha Omega / Eddie Bauer / Safety 1st (adjustment strap)",
       "brand": "Cosco / Cosco Kids / Eddie Bauer / Safety 1st",
+      "brands": [
+        "Cosco",
+        "Cosco Kids",
+        "Eddie Bauer",
+        "Safety 1st"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20070830",
       "reason": "CERTAIN DOREL JUVENILE GROUP (DJG) COSCO: ALPHA OMEGA, ALPHA OMEGA ELITE, MODELS 22150, 22155, 22180, 22269; EDDIE BAUER: 3-IN-1, DELUXE 3-IN-1, DELUXE CONVERTIBLE, MODELS 22450, 22451, 22452, 22453, 22740, 22750, 22755, 22756, 22757, 22770; SAFETY 1ST: ALPHA ELITE, ALPHA OMEGA, ALPHA OMEGA ELITE, INTERA, ENSPIRA, MODELS 22151, 22450, 22451, 22452, 22453, 22455, 22460, 22470, 22480, 22740, 22481, CHILD RESTRAINT SYSTEMS MANUFACTURED DURING NOVEMBER 2003 THROUGH DECEMBER 2005.  THE HARNESS ADJUSTMENT STRAP CAN LOOSEN WHILE IN USE.",
@@ -8199,6 +8698,9 @@
       "product_name": "Evenflo 264 (TRIUMPH); 359 (TRIUMPH)",
       "display_name": "Evenflo Triumph (foam liner)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20070927",
       "reason": "CERTAIN EVENFLO TRIUMPH CHILD RESTRAINT SYSTEMS, MODELS 2641175, 2641196, 2641205, 2641208, 2641226, 2641247, 2641281, 3591205, 3591208, 3591226, 3591247, 3591288, 3591328, 3591331, 3591361, 3591404, 3591548, 3591453, 3591581, 3891609, MANUFACTURED BETWEEN SEPTEMBER 6, 2001, AND OCTOBER 31, 2005.  THESE SEATS USED SIX MECHANICAL ATTACHMENTS TO HOLD DOWN THE CLOTH COVER.  SOME CHILDREN COULD PULL BACK THE CLOTH COVER IN THE APPROXIMATE AREA ADJACENT TO THE OCCUPANT'S THIGHS, AND THEREBY ACCESS THE FOAM LINER.",
@@ -8242,6 +8744,9 @@
       "product_name": "Mia Moda VIVA",
       "display_name": "Mia Moda Viva (anchor adjuster)",
       "brand": "Mia Moda",
+      "brands": [
+        "Mia Moda"
+      ],
       "manufacturer": "MIAMODA, INC.",
       "recall_date": "20071108",
       "reason": "CERTAIN MIAMODA, MODEL VIVA, INFANT RESTRAINT SYSTEMS OR THE SEPARATELY SOLD BASES MANUFACTURED BETWEEN DECEMBER 19, 2006, AND FEBRUARY 6, 2007.  IN CERTAIN MOTOR VEHICLES, THE LOWER ANCHOR CONNECTOR ADJUSTER ASSEMBLY MAY INTERFERE WITH THE CONNECTION OF THE INFANT CARRIER TO THE BASE.  ALSO, REGISTRATION CARDS WERE NOT PROVIDED WITH THE VIVA INFANT RESTRAINT SYSTEM OR THE SEPARATELY SOLD BASES WHICH FAILS TO COMPLY WITH FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINT SYSTEMS.",
@@ -8280,6 +8785,9 @@
       "product_name": "Graco SNUGRIDE",
       "display_name": "Graco SnugRide (fiber backing)",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "GRACO CHILDREN'S PRODUCTS INC",
       "recall_date": "20071113",
       "reason": "CERTAIN GRACO SNUGRIDE CHILD RESTRAINT SYSTEMS, MODELS 8609, 8616, 8643, 8645, AND 8646, MANUFACTURED FROM AUGUST 1, 2006, THROUGH JUNE 30, 2007.  THE FIBER BACKING OF THESE SEATS ARE OF LESSER DENSITY AND MAY BE MORE PRONE TO DETERIORATION OR TEARING, ESPECIALLY AFTER WASHING.  IN ADDITION, THE PARTICULAR DESIGN OF THE SEAT PAD MAY ALLOW MORE READY ACCESS TO THE UNDERSIDE OF THE PADDING.",
@@ -8318,6 +8826,10 @@
       "product_name": "Cosco / Cosco Kids REGAL RIDE; TOURIVA",
       "display_name": "Cosco Touriva / Regal Ride (elastic straps)",
       "brand": "Cosco / Cosco Kids",
+      "brands": [
+        "Cosco",
+        "Cosco Kids"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20071217",
       "reason": "CERTAIN COSCO TOURIVA CONVERTIBLE CHILD RESTRAINTS, MODELS 22100TTD, 22100FSN, 22100TIP, 22111FSM, AND 22130WAL, AND COSCO REGAL RIDE, MODEL 22139MON, MANUFACTURED FROM SEPTEMBER 28, 2004, THROUGH SEPTEMBER 20, 2007.  MODELS 22100FSM AND 22111FSM WERE ALSO SOLD AS TWO PACKS WITH MODEL 93100FSM AND 93111FSM.  THE OUTSIDE PACKAGING WOULD HAVE THE 93 NUMBER HOWEVER THE INDIVIDUAL UNITS ARE MARKED WITH THE 22.",
@@ -8361,6 +8873,9 @@
       "product_name": "Graco COMFORTSPORT",
       "display_name": "Graco ComfortSport 8C02MRC2 (foam)",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "GRACO CHILDREN'S PRODUCTS INC",
       "recall_date": "20080102",
       "reason": "CERTAIN GRACO COMFORTSPORT CHILD RESTRAINT SYSTEMS, MODEL 8C02MRC2, MANUFACTURED ON OCTOBER 22, 2007, WERE NOT CERTIFIED TO COMPLY WITH FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, 'CHILD RESTRAINT SYSTEMS.' THESE SEATS WERE PRODUCED WITH CONVOLUTED FOAM THAT WAS 1.5\" THICK INSTEAD OF THE 1\" THICK FOAM THAT GRACO SPECIFIED AND TESTED.  SEATS WITH 1.5\" FOAM HAVE NOT BEEN TESTED SO IT IS UNCLEAR AS TO WHAT IMPACT THIS WILL HAVE ON COMPLIANCE TO THE STANDARD AND ON CHILD SEAT SAFETY.",
@@ -8399,6 +8914,9 @@
       "product_name": "Evenflo 390 (DISCOVERY); 391 (DISCOVERY); 534 (DISCOVERY) (+1 more models)",
       "display_name": "Evenflo Discovery Infant Seats",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20080131",
       "reason": "EVENFLO IS RECALLING 1,000,000 MODELS 390, 391, 534, AND 552 DISCOVERY CAR SEATS OR ASSOCIATED TRAVEL SYSTEMS MANUFACTURED FROM APRIL 2005 THROUGH JANUARY 2008.  IN RECENT LABORATORY TESTS CONDUCTED BY EVENFLO AND NHTSA TO EVALUATE THE PERFORMANCE OF THESE SEATS IN HIGH IMPACT SIDE COLLISIONS, IT WAS REVEALED THAT THE CAR SEAT COULD POTENTIALLY BECOME SEPARATED FROM ITS BASE UNDER THESE CONDITIONS.",
@@ -8452,6 +8970,9 @@
       "product_name": "Recaro COMO; SIGNO",
       "display_name": "Recaro Signo / Como (harness connector)",
       "brand": "Recaro",
+      "brands": [
+        "Recaro"
+      ],
       "manufacturer": "RECARO NORTH AMERICA, INC.",
       "recall_date": "20080222",
       "reason": "RECARO IS RECALLING 7,498 SIGNO AND COMO CONVERTIBLE CHILD RESTRAINT SYSTEMS WITH COLOR MODEL CODES OF 330.00 AND 331.00, MANUFACTURED PRIOR TO DECEMBER 18, 2007.  THE HARNESS MAY BECOME DISCONNECTED FROM THE HARNESS CONNECTOR WHEN A CHILD IS PLACED IN OR REMOVED FROM THE CHILD SEAT.",
@@ -8495,6 +9016,9 @@
       "product_name": "Combi 4400 (TRAVEL SYSTEMS); 4515 (TRAVEL SYSTEMS); 4520 (TRAVEL SYSTEMS) (+15 more models)",
       "display_name": "Combi Centre / Shuttle (base)",
       "brand": "Combi",
+      "brands": [
+        "Combi"
+      ],
       "manufacturer": "COMBI USA, INC",
       "recall_date": "20080228",
       "reason": "COMBI IS RECALLING 67,167 CENTRE, CENTRE ARB, AND SHUTTLE INFANT CHILD RESTRAINT SYSTEMS, MODEL NOS. 8065, 8074, 8086, 8087, AND 8520, AND ASSOCIATED TRAVEL SYSTEMS, MODEL NOS. 4400, 4515, AND 4520, THAT CONTAIN CENTRE AND SHUTTLE CAR SEAT MODELS.  THIS RECALL INCLUDES THE ENTIRE PRODUCTION OF THESE MODELS FROM OCTOBER 2005 THROUGH DECEMBER 2007.  IN THE EVENT OF A FRONTAL CRASH, THE CAR SEAT COULD POTENTIALLY BECOME SEPARATED FROM ITS BASE.",
@@ -8618,6 +9142,9 @@
       "product_name": "Graco 8487BELI CARGO ULTRA; 8487SMP CARGO ULTRA; 8487WBR CARGO ULTRA (+8 more models)",
       "display_name": "Graco Cargo Boosters (NHTSA phone label)",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "GRACO CHILDREN'S PRODUCTS INC",
       "recall_date": "20080311",
       "reason": "GRACO IS RECALLING 121,042 CARGO BOOSTER SEATS (CHILD RESTRAINT SYSTEMS) MANUFACTURED BETWEEN JANUARY 9, 2007 AND MARCH 3, 2008.  THESE SEATS WERE LABELED WITH AN INCORRECT TELEPHONE NUMBER FOR THE NATIONAL HIGHWAY TRAFFIC SAFETY ADMINISTRATION (NHTSA) WHICH FAILS TO CONFORM TO THE LABELING REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, CHILD RESTRAINT SYSTEMS.",
@@ -8706,6 +9233,9 @@
       "product_name": "Evenflo 3021769Z (DISCOVERY); 3021854Z (DISCOVERY)",
       "display_name": "Evenflo Discovery (release handle)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20080328",
       "reason": "EVENFLO IS RECALLING 1,038 DISCOVERY INFANT CHILD RESTRAINTS, MODELS 3021769Z AND 3021854Z, MANUFACTURED ON FEBRUARY 4, 2008.  DUE TO A MANUFACTURING VARIABILITY, SOME UNITS MAY HAVE BEEN PRODUCED WITHOUT COMPLETE ASSEMBLY OF THE RELEASE HANDLE LOCATED ON THE BACK OF THE SEAT.",
@@ -8749,6 +9279,9 @@
       "product_name": "Chicco CORTINA TRAVEL SYSTEMS; KEYFIT; KEYFIT 30",
       "display_name": "Chicco KeyFit / KeyFit 30 (base)",
       "brand": "Chicco",
+      "brands": [
+        "Chicco"
+      ],
       "manufacturer": "CHICCO USA, INC",
       "recall_date": "20080602",
       "reason": "CHICCO USA, INC. IS RECALLING APPROXIMATELY 18,000 BASES USED IN KEYFIT AND KEYFIT 30 REAR-FACING CHILD RESTRAINT SYSTEMS AND IN CORTINA TRAVEL SYSTEMS, AND STAND-ALONE BASES FOR THESE SYSTEMS PURCHASED SEPARATELY, THAT WERE MANUFACTURED BETWEEN FEBRUARY 26 AND MARCH 17, 2008.  SOME OF THESE BASES HAVE A DEFECT THAT CAN PREVENT THE BASE FROM BEING TIGHTLY SECURED TO A VEHICLE WHEN THE LOWER LATCH ATTACHMENTS ARE USED AS A METHOD OF INSTALLATION.  SPECIFICALLY, WHEN A DEFECTIVE BASE IS INSTALLED WITH THE LOWER LATCH ATTACHMENT STRAPS, THE WEBBING USED TO TIGHTEN THE BASE TO THE VEHICLE SEAT CAN SLIP THROUGH THE ADJUSTMENT LOCK.",
@@ -8797,6 +9330,9 @@
       "product_name": "Baby Trend 6400 RIGID LATCH-LOC BASE; 6439 (RIGID LATCH-LOC); 6448 (RIGID LATCH-LOC) (+1 more models)",
       "display_name": "Baby Trend Latch-Loc (locking pawl)",
       "brand": "Baby Trend",
+      "brands": [
+        "Baby Trend"
+      ],
       "manufacturer": "BABY TREND INC.,",
       "recall_date": "20080623",
       "reason": "BABY TREND IS RECALLING 5,787 LATCH-LOC CAR SEATS, MODELS MAGNUM 6439, GALAXY 6481, SILVERADO 6448, AND 6400S STAND ALONE BASES, MANUFACTURED BETWEEN MAY 14, 2007 AND APRIL 1, 2008.  INCORRECT STEEL WAS USED ON THE LATCH CONNECTOR LOCKING PAWL.",
@@ -8850,6 +9386,9 @@
       "product_name": "Graco 8C04FRR (COMFORT SPORT); 8C04FRR2 (COMFORT SPORT)",
       "display_name": "Graco ComfortSport Frazier (pillow)",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "GRACO CHILDREN'S PRODUCTS INC",
       "recall_date": "20081204",
       "reason": "GRACO IS RECALLING 43,994 COMFORTSPORT<SUP>TM</SUP> CONVERTIBLE CAR SEATS, IN THE FRAZIER<SUP>TM</SUP> FASHION, MANUFACTURED FROM NOVEMBER 1, 2006 THROUGH OCTOBER 8, 2007. THESE SEATS WERE EQUIPPED WITH A LARGE SIZED, SUPPLEMENTAL PAD OR \"BODY PILLOW\" THAT PARTIALLY OBSCURES THE CHILD AIRBAG WARNING LABEL WHICH IS ON THE SEAT PAD.  THE PARTIAL OBSCURING OF THIS LABEL FAILS TO CONFORM WITH THE REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS\".",
@@ -8893,6 +9432,9 @@
       "product_name": "Britax E9L5490 (FRONTIER); E9L54E7 (FRONTIER); E9L54H6 (FRONTIER) (+2 more models)",
       "display_name": "Britax Frontier (harness straps)",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20081211",
       "reason": "BRITAX IS RECALLING CERTAIN FRONTIER CHILD RESTRAINT SYSTEMS, MODELS E9L54E7 (FRONTIER RED ROCK), E9L54H6 (FRONTIER RUSHMORE), E9L54H7 (FRONTIER PINK SKY), E9L54M6 (FRONTIER CANYON), AND E9L5490 (FRONTIER SAHARA), MANUFACTURED BETWEEN APRIL 1 AND SEPTEMBER 18, 2008.  IF THE HARNESS STRAPS ARE LOOSENED USING ONE STRAP AT A TIME, THEN THE HARNESS STRAPS MAY BECOME DETACHED FROM THE METAL YOKE LOCATED ON THE BACK OF THE CHILD SEAT.",
@@ -8951,6 +9493,9 @@
       "product_name": "Peg Perego PRIMO VIAGGO SIP 30/30",
       "display_name": "Peg Perego Primo Viaggio SIP 30/30",
       "brand": "Peg Perego",
+      "brands": [
+        "Peg Perego"
+      ],
       "manufacturer": "PEG PEREGO USA, INC.",
       "recall_date": "20090105",
       "reason": "THE PLASTIC ADJUSTMENT COVER ON CERTAIN PEG PEREGO PRIMO VIAGGO SIP 30/30 INFANT CHILD RESTRAINT SYSTEMS MANUFACTURED BETWEEN JULY 1, 2007 AND MARCH 14, 2008, COULD HAVE AN EXPOSED MOLD FLASH WITH A SHARP EDGE.  THE MODEL NUMBERS OF THE AFFECTED SEATS ARE PEG PEREGO IMUN00US32MD41KN41, IMUN00US35CR13BU13, IMUN00US35CR13PL46, IMUN00US35CR24BU24, IMUN00US35TL49KN53, IMUN00US35TL53KN46, IMUN00US61ST13IC53, IMUN00US61ST34IC53, AND IMUN00US61ST48IC53.",
@@ -8989,6 +9534,9 @@
       "product_name": "Recaro COMO; SIGNO",
       "display_name": "Recaro Signo / Como (adjuster spring)",
       "brand": "Recaro",
+      "brands": [
+        "Recaro"
+      ],
       "manufacturer": "RECARO NORTH AMERICA, INC.",
       "recall_date": "20090302",
       "reason": "RECARO NORTH AMERICA, INC. IS RECALLING CERTAIN SIGNO AND COMO CHILD RESTRAINT SYSTEMS MANUFACTURED FROM NOVEMBER 1, 2007 TO FEBRUARY 16, 2009.  A MECHANICAL SPRING, LOCATED INSIDE THE LOCKING CAM, WAS MANUFACTURED OUTSIDE THE DIMENTIONAL REQUIREMENTS.  THE CENTRAL FRONT ADJUSTER STRAP ON THOSE SEATS CONTAINING THE INCORRECTLY MANUFACTURED SPRING WILL SLIP WITHIN THE METAL ADJUSTER (A-LOCK) AND THIS PREVENTS THE HARNESS FROM BEING SECURELY TIGHTENED.",
@@ -9032,6 +9580,9 @@
       "product_name": "Team-Tex Babyride 374199",
       "display_name": "Team-Tex Babyride 374199 (label)",
       "brand": "Team-Tex Babyride",
+      "brands": [
+        "Team-Tex Babyride"
+      ],
       "manufacturer": "TEAM-TEX AMERICA, INC",
       "recall_date": "20090421",
       "reason": "TEAM-TEX AMERICA, INC. IS RECALLING CERTAIN BABYRIDE INFANT CHILD RESTRAINT SYSTEMS, MODEL 374199, MANUFACTURED ON DECEMBER 18, 2008.  THE BELT ROUTING LABEL WITH THE \"HORIZONTAL REFERENCE LINE\" IS INCORRECTLY PLACED ON THE CHILD RESTRAINT SYSTEM WHICH FAILS TO CONFORM TO FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -9070,6 +9621,9 @@
       "product_name": "Triple Play SIT-N-STROLL",
       "display_name": "Triple Play Sit'N'Stroll 4002",
       "brand": "Triple Play",
+      "brands": [
+        "Triple Play"
+      ],
       "manufacturer": "TRIPLE PLAY PRODUCTS, LLC",
       "recall_date": "20090514",
       "reason": "TRIPLE PLAY PRODUCTS, LLC IS RECALLING CERTAIN SIT'N'STROLL CHILD RESTRAINT SYSTEMS, MODEL 4002, MANUFACTURED ON MAY 5, 2008.  THE WEBBING USED IN THE CENTER ADJUSTER FOR THE HARNESS FAILS TO COMPLY WITH THE INITIAL BREAKING STRENGTH REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -9108,6 +9662,9 @@
       "product_name": "Maxi-Cosi 22-371 (MICO); 22-372 (MICO); 22-515 (MICO)",
       "display_name": "Maxi-Cosi Mico (base bracket)",
       "brand": "Maxi-Cosi",
+      "brands": [
+        "Maxi-Cosi"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20090716",
       "reason": "DOREL JUVENILE GROUP (DJG) IS RECALLING CERTAIN MAXI-COSI MICO INFANT CHILD RESTRAINT SYSTEMS, MODELS 22-371 AND 22-372, AND MAXI-COSI MICO INFANT CHILD RESTRAINT SYSTEM - BASE ONLY, MODEL 22-515, PRODUCED FROM JULY 2007 THROUGH FEBRUARY 17, 2008.  INTERFERENCE BETWEEN THE MOUNTING BRACKET AND THE BASE CAUSED BY WARPING OF THE BASE OR INADEQUATE MATING BETWEEN THE SHELL AND THE BASE MOUNTING BRACKET CAN RESULT IN DIFFICULTY ATTACHING OR DETACHING THE SHELL FROM THE BASE.",
@@ -9156,6 +9713,9 @@
       "product_name": "Mia Moda VIVA; VIVA SUPREME",
       "display_name": "Mia Moda Viva / Viva Supreme (splitter plate)",
       "brand": "Mia Moda",
+      "brands": [
+        "Mia Moda"
+      ],
       "manufacturer": "LERADO SUCCESS, INC",
       "recall_date": "20091022",
       "reason": "LERADO IS RECALLING CERTAIN MIA MODA INFANT CHILD RESTRAINTS AND BASES, MODELS VIVA AND VIVA SUPREME, MODEL NOS. 5000 (SEAT), 5001 (BASE), 5050 (SEAT), 5051 (BASE), 5070 (SEAT), 5071 (BASE), 5080 (SEAT), AND 5081 (BASE).  THE HARNESS SPLITTER PLATE LOCATED ON THE REAR OF THE SEAT HAS SHARP EDGES WHICH CAN CUT THE HARNESS.  ALSO, THE BASE COULD CRACK IN A CRASH.",
@@ -9199,6 +9759,9 @@
       "product_name": "Evenflo 360 (FIRST CHOICE)",
       "display_name": "Evenflo First Choice 360 (label)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20091118",
       "reason": "CERTAIN EVENFLO FIRST CHOICE INFANT CHILD RESTRAINT SYSTEMS, MODEL 3604098, MANUFACTURED BETWEEN JANUARY 16 AND SEPTEMBER 29, 2009, FAIL TO CONFORM TO THE LABELING REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"  A LABEL CONTAINING IMPORTANT INFORMATION WAS LEFT OFF THE SEAT.",
@@ -9237,6 +9800,9 @@
       "product_name": "Dorel Juvenile Group 22-057 CLN (SAFETY 1ST); 22-057 DBY (SAFETY 1ST); 22-057 HRT (SAFETY 1ST) (+33 more models)",
       "display_name": "Dorel Cosco / Disney / Safety 1st / Eddie Bauer (handle)",
       "brand": "Dorel Juvenile Group",
+      "brands": [
+        "Dorel Juvenile Group"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20091217",
       "reason": "DOREL JUVENILE GROUP (DJG) IS RECALLING CERTAIN COSCO, DISNEY, SAFETY 1ST, AND EDDIE BAUER REAR-FACING INFANT CHILD RESTRAINTS, MODEL NOS. 22-057 CLN, 22-057 DBY, 22-057 HRT, 22-057 LPH, 22-085 DWA, 22-085 LYN, 22-095 RBK, 22-300 CSF, 22-300 FZN, 22-300 JJV, 22-300 OSF, 22-300 THD, 22-300 TWD, 22-305 NAB, 22-305 PPH, 22-322 HRR, 22-322 KDL, 22-322 LXI, 22-322 MAI, 22-322 PTK, 22-322 OLY, 22-322 PRS, 22-325 COB, 22-325 PAC, 22-355 LBF, 22-355 PWK, 22-380 LGA, 22-380 MSA, 22-627 AWF, 22-627 CGT, 22-627 FRK, 22-627 SNW, 22-627 WAV, 22-627 WPR, 22-627KGS, AND 22-655 BYTE, MANUFACTURED FROM JANUARY 6, 2008 THROUGH APRIL 6, 2009.  THE HANDLE SCREWS USED TO CONNECT THE HANDLE TO THE SHELL CAN BACK OUT, AND IF NOT NOTICED BY THE CARE GIVER, LEAD TO FULL OR PARTIAL HANDLE DETACHMENT.",
@@ -9450,6 +10016,9 @@
       "product_name": "Maxi-Cosi 22-371 HFL; 22-371 JUC; 22-371 LMD (+4 more models)",
       "display_name": "Maxi-Cosi Mico Infant Car Seats",
       "brand": "Maxi-Cosi",
+      "brands": [
+        "Maxi-Cosi"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20100204",
       "reason": "DOREL JUVENILE GROUP (DJG) IS RECALLING CERTAIN MAXI-COSI MICO INFANT CHILD RESTRAINT SYSTEMS, MODELS 22-371 HFL, JUC, LMD, PNG, AND ORE; 22-372 TTH; AND MAXI-COSI MICO INFANT CHILD RESTRAINT SYSTEM - BASE ONLY, MODEL 22-515 BLK, PRODUCED FROM FEBRUARY 18, 2008 THROUGH JUNE 28, 2008.  INTERFERENCE BETWEEN THE MOUNTING BRACKET AND THE BASE CAUSED BY WARPING OF THE BASE OR INADEQUATE MATING BETWEEN THE SHELL AND THE BASE MOUNTING BRACKET CAN RESULT IN DIFFICULTY ATTACHING OR DETACHING THE SHELL FROM THE BASE.",
@@ -9518,6 +10087,9 @@
       "product_name": "Cybex SOLUTION X-FIX",
       "display_name": "Cybex Solution X-Fix Booster Seats",
       "brand": "Cybex",
+      "brands": [
+        "Cybex"
+      ],
       "manufacturer": "REGAL LAGER",
       "recall_date": "20100726",
       "reason": "CERTAIN CYBEX SOLUTION X-FIX MODEL BOOSTER SEATS MANUFACTURED DURING FEBRUARY 2010, WERE PRODUCED USING AN INCORRECT WARNING LABEL.  THE DEFECT CONSISTS OF AN INCORRECT WARNING STATEMENT RELATED TO SECURING AN UNOCCUPIED BOOSTER SEAT.  THIS STATEMENT IS INCONSISTENT WITH CYBEX RECOMMENDED PRACTICES - ALWAYS SECURE AN UNOCCUPIED BOOSTER WITH THE VEHICLE SEAT BELT.  IF A CAREGIVER FOLLOWS THE WARNING AS WRITTEN, THERE IS AN INCREASED RISK THAT THE UNOCCUPIED BOOSTER SEAT COULD STRIKE A VEHICLE OCCUPANT AND CAUSE INJURY IN A SEVERE CRASH.  THE INCORRECT WARNING STATEMENT APPEARS IN THE OWNER'S MANUAL AND ON THE HEADREST WARNING LABEL.",
@@ -9556,6 +10128,9 @@
       "product_name": "Evenflo 310 (MAESTRO)",
       "display_name": "Evenflo Maestro Child Seats",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20101013",
       "reason": "EVENFLO IS RECALLING CERTAIN MAESTRO CHILD RESTRAINT SYSTEMS WITH MODEL NUMBERS BEGINNING WITH 310 AND BUILT FROM NOVEMBER 24, 2009, THROUGH APRIL 9, 2010.  THESE SEATS FAIL TO CONFORM TO THE STRUCTURAL INTEGRITY REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -9594,6 +10169,9 @@
       "product_name": "Britax CHAPERONE 9L69P5 COWMOO; CHAPERONE E9L69N9 MOONSTO; CHAPERONE E9L69P2 RED MIL (+1 more models)",
       "display_name": "Britax Chaperone Infant Car Seats",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20101028",
       "reason": "BRITAX IS RECALLING CERTAIN BRITAX CHAPERON INFANT CAR SEATS MODEL E9L69N9 MOONSTONE, E9L69P2 RED MILL, E9L69P3 SAVANNAH, AND E9L69P5 COWMOOFLAGE, MANUFACTURED FROM APRIL 2009 THROUGH MAY 2010.  THE CHEST CLIP WAS INCORRECTLY PRODUCED WHICH COULD RESULT IN A MORE BRITTLE CHEST CLIP THAN WAS INTENDED.   AS A RESULT, THE CHEST CLIP WHICH POSITIONS THE HARNESS STRAPS ACROSS THE INFANT'S SHOULDERS MAY BREAK WHEN THE CHEST CLIP IS ENGAGED AS THE INFANT IS SECURED INTO THE INFANT CAR SEAT.",
@@ -9647,6 +10225,9 @@
       "product_name": "Dorel Juvenile Group 22077; 22078; 22148 (+52 more models)",
       "display_name": "Dorel Infant, Convertible & Booster Seats (multiple brands)",
       "brand": "Dorel Juvenile Group",
+      "brands": [
+        "Dorel Juvenile Group"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20110210",
       "reason": "DOREL JUVENILE GROUP (DJG) IS RECALLING CERTAIN INFANT, CONVERTIBLE, AND BOOSTER CHILD RESTRAINT SYSTEMS WHICH WERE SOLD BOTH AS STAND ALONE SEATS OR PART OF A TRAVEL SYSTEM (WITH A STROLLER).   THE HARNESS LOCKING AND RELEASE BUTTON DOES NOT ALWAYS RETURN TO ITS LOCKED POSITION.  A BUTTON THAT IS NOT IN THE LOCKED POSITION CAN ALLOW THE HARNESS ADJUSTMENT STRAP TO SLIP BACK THROUGH THE ADJUSTER AS A CHILD MOVES AROUND IN THE SEAT AND RESULTS IN A LOOSE HARNESS.  CHILD RESTRAINT SYSTEMS INCLUDED IN THIS RECALL ARE CONVERTIBLE CHILD RESTRAINTS ALPHA OMEGA, ALPHA OMEGA ELITE, ENSPIRA, PRIORI, PROSPECT, AND VANTAGE; INFANT CHILD RESTRAINTS MICO AND ONBOARD.  AFFECTED UNITS BEGIN WITH MODEL NUMBERS 22077, 22078, 22148, 22149, 22150, 22152, 22154, 22155, 22158, 22159, 22172, 22177, 22178, 22185, 22188, 22195, 22356, 22371, 22372, 22412, 22439, 22452, 22453, 22456, 22458, 22459, 22462, 22465, 22469, 22476, 22486, 22546, 22547, 22553, 22554, 22561, 22564, 22567, 22574, 22580, 22657, 22740, 22741, 22755, 22758, 22759, 22790, 22799, 22880, 22560, 22346, 17439, 22449, 22475, AND IC072, MANUFACTURED FROM MAY 1, 2008, THROUGH APRIL 30, 2009.",
@@ -9955,6 +10536,9 @@
       "product_name": "Safety 1st 3-IN-1; ALPHA OMEGA ELITE; COMPLETE AIR LX (+1 more models)",
       "display_name": "Safety 1st Complete Air / Alpha Omega Elite & Eddie Bauer Convertibles",
       "brand": "Safety 1st",
+      "brands": [
+        "Safety 1st"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20110624",
       "reason": "Dorel Juvenile Group (DJG) is recalling certain Safety 1st Complete Air LX (models CC050xxx), Safety 1st Complete Air SE (models CC051xxx), and Safety 1st Alpha Omega Elite (models 22187xxx , 22465xxx ,CC033xxx , and CC046xxx), and Eddie Bauer Deluxe 3 in 1 convertible (models 22790xxx , and CC046xxx) child restraint systems manufactured from July 20, 2010, through May 18, 2011.  [Note: The 'xxx' at the end of each model number represents different color options that each seat could be.] The rear facing belt path installation arrows are incorrect and could be potentially construed as pointing toward the forward facing vehicle belt path location. Therefore, the affected seats fail to conform to the labeling requirements of Federal Motor Vehicle Safety Standard No. 213, \"Child Restraint Systems.\"",
@@ -10008,6 +10592,9 @@
       "product_name": "Britax CHAPERONE E9L692J BLK/SIL; CHAPERONE E9L692K (RED); CHAPERONE E9L692L COWMOOF (+1 more models)",
       "display_name": "Britax Chaperone Infant Car Seats",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "BRITAX CHILD SAFETY, INC.",
       "recall_date": "20120126",
       "reason": "BRITAX IS RECALLING CERTAIN CHAPERONE INFANT CHILD RESTRAINT SYSTEMS PRODUCED FROM SEPTEMBER 1, 2010, THROUGH APRIL 30, 2011.  THE HARNESS ADJUSTER CAN DETACH FROM THE SEAT SHELL.",
@@ -10061,6 +10648,9 @@
       "product_name": "Dorel Juvenile Group IC123FSM (COMFY CARRY); IC124FSM (ONBOARD 35)",
       "display_name": "Safety 1st onBoard 35 / Comfy Carry Infant Seats",
       "brand": "Dorel Juvenile Group",
+      "brands": [
+        "Dorel Juvenile Group"
+      ],
       "manufacturer": "DOREL JUVENILE GROUP",
       "recall_date": "20120502",
       "reason": "DOREL JUVENILE GROUP  (DJG) IS RECALLING CERTAIN INFANT CHILD RESTRAINTS, MODELS IC124FSM (ONBOARD 35) AND IC123FSM (COMFY CARRY), PRODUCED FROM MAY 2011 THROUGH APRIL 2012, WERE SOLD WITHOUT THE SEPARATE SEAT BASE THAT CONTAINS THE REQUIRED LATCH ATTACHMENT ASSEMBLY.  WITHOUT THE LATCH ASSEMBLY, THESE UNITS FAIL TO CONFORM TO THE REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 213, \"CHILD RESTRAINT SYSTEMS.\"",
@@ -10104,6 +10694,9 @@
       "product_name": "Evenflo BIG KID",
       "display_name": "Evenflo Big Kid Booster Seats",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "EVENFLO COMPANY, INC.",
       "recall_date": "20120927",
       "reason": "Certain Evenflo Big Kid Factory Select booster seats, Model Nos. 30911173AD, 3091967AD, 30911118AD, and 30911120D, shipped between August 6, 2012, and September 18, 2012, fail to conform to the requirements of Federal Motor Vehicle Safety Standard No. 213, \"Child Restraint Systems.\"  The subject seats were originally manufactured solely for purposes of retail display and not to be sold at retail.  Therefore, the seats were packaged without the instruction manual or the required registration card.  However, the seats were inadvertently shipped to Evenflo's institutional customers (i.e. hospitals, government agencies) to be given to families.  None of the affected units were sold at retail stores.",
@@ -10142,6 +10735,9 @@
       "product_name": "Britax ADVOCATE 70 G3; BOULEVARD 70 G3; PAVILION 70 G3",
       "display_name": "Britax Boulevard / Advocate / Pavilion 70 G3 Convertibles",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "Britax Child Safety , Inc..",
       "recall_date": "20121102",
       "reason": "Britax is recalling certain convertible child restraints, models Boulevard 70 G3, Advocate 70 G3, and Pavilion 70 G3, Model Numbers: E9LJ91A, E9LJ91M, E9LJ91S, E9LJ92E, E9LJ93P, E9LJ93S, E9LK91A, E9LK31A, E9LK31Q, E9LK32D, E9LK32Z, E9LK33Q, E9LL11A, E9LL11Q, E9LL12D, E9LL12Z, E9LG81A, E9LG83N, E9LG83P, E9LG83X, E9LG83Y, E9LL21A, E9LL23P, E9LL23Y, manufactured from June 2012 through August 2012.  These seats were manufactured with a softer chest pad material that may be bitten or chewed into pieces by a child using the seat.",
@@ -10190,6 +10786,9 @@
       "product_name": "Recaro PROSPORT",
       "display_name": "Recaro ProSport Child Seats",
       "brand": "Recaro",
+      "brands": [
+        "Recaro"
+      ],
       "manufacturer": "Recaro Child Safety, LLC",
       "recall_date": "20130212",
       "reason": "Recaro Child Safety LLC (Recaro) is recalling certain Recaro ProSport model 385 child restraints, manufactured from June 16, 2010, through January 31, 2013.  When the affected child seats are installed with the LATCH lower anchors only (without the top tether), the child's head can move excessively, increasing the risk of injury.  As such, these seats fail to conform to the requirements of Federal Motor Vehicle Safety Standard No. 213, \"Child Restraint Systems.\"",
@@ -10228,6 +10827,9 @@
       "product_name": "Combi COCCORO; ZEUS 360; ZEUS TURN",
       "display_name": "Combi Coccoro / Zeus Child Seats",
       "brand": "Combi",
+      "brands": [
+        "Combi"
+      ],
       "manufacturer": "Combi USA, Inc.",
       "recall_date": "20130611",
       "reason": "Combi USA, Inc. (Combi) is recalling certain model 8220 (Coccoro) child restraints manufactured January 6, 2009, through December 5, 2012; model 8836 (Zeus 360) child restraints manufactured February 25, 2009, through May 24, 2012; and model 8815 (Zeus Turn) manufactured from July 15, 2007, through March 25, 2009.  The harness webbing fails to meet minimum breaking strength requirements.  Thus, these child seats fail to comply to Federal Motor Vehicle Safety Standard No. 213, \"Child Restraint Systems.\"",
@@ -10276,6 +10878,9 @@
       "product_name": "Orbit Baby G2 CAR SEATBASE ORB822000",
       "display_name": "Orbit Baby G2 Car Seat Bases",
       "brand": "Orbit Baby",
+      "brands": [
+        "Orbit Baby"
+      ],
       "manufacturer": "Orbit Baby, Inc.",
       "recall_date": "20131023",
       "reason": "Orbit Baby, Inc. (Orbit) is recalling certain G2 Car Seat Bases, Model No. ORB822000, manufactured from March 20, 2013, through July 20, 2013, with batch numbers A0840, A0860, or A0880.  The StrongArm Knob component of the Orbit Baby G2 Car Seat Base intended to secure the seat's base, may become detached or spin.",
@@ -10314,6 +10919,9 @@
       "product_name": "Graco ARGOS 70; CLASSIC RIDE 50; COMFORT SPORT BOOSTER (+12 more models)",
       "display_name": "Graco Toddler & Booster Seats (11 models)",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "Graco Children's Products Inc.",
       "recall_date": "20140210",
       "reason": "On February 7, 2014, Graco Children's Products, Inc. (Graco) informed NHTSA that it would be recalling model year 2009 through 2013 toddler and booster child restraints, models Cozy Cline, Comfort Sport, Classic Ride 50, My Ride 65, My Ride w/Safety Surround, My Ride 70, Size 4 Me 70, Smart Seat, Nautilus, Nautilus Elite, and Argos 70. On March 7, 2014, Graco informed NHTSA it would be including an additional 403,222 seats in this recall, including certain model year 2006 through 2014 Argos 70 Elite, Ready Ride, Step 2, My Ride 65 with Safety Surround, My Size 70, Head Wise 70 with Safety Surround, Nautilus 3-in-1, Nautilus Plus, and Smart Seat with Safety Surround.  The defect involves difficulty in unlatching the harness buckle. In some cases, the buckle becomes stuck in a latched condition so that it cannot be opened by depressing the buckle's release button.",
@@ -10422,6 +11030,9 @@
       "product_name": "Baby Trend TRENDZ FASTBACK",
       "display_name": "Baby Trend TrendZ Fastback 3-in-1",
       "brand": "Baby Trend",
+      "brands": [
+        "Baby Trend"
+      ],
       "manufacturer": "BABY TREND INC.,",
       "recall_date": "20140401",
       "reason": "Baby Trend, Inc. (Baby Trend) is recalling certain model year 2011 and 2012 TrendZ Fastback 3-in-1 child restraints, models FB60070 (Granite) and FB60408 (Jellybean), manufactured between October 2011 and July 2013.  The defect involves difficulty in unlatching the harness buckle.  In some cases, the buckle becomes stuck in a latched condition so that it cannot be opened by depressing the buckle's release button.",
@@ -10460,6 +11071,9 @@
       "product_name": "Evenflo CHASE; MAESTRO; MAESTRO PERFORMANCE (+7 more models)",
       "display_name": "Evenflo Convertible & Harnessed Seats (buckle)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20140403",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling certain convertible and harnessed child restraints, models Momentum 65 (including LX and DLX), Chase (including LX, DLX, and Select), Maestro (including Performance), Symphony (including 65, LX, 65 E3, and DLX), Snugli All-In-One, Snugli Booster, Titan 65, SureRide DLX, and Secure Kid (including LX, DLX, 100, 300, and 400).  The affected seats have model number prefixes of 306, 308, 310, 329, 345, 346, 371 or 385.  The defect involves difficulty in unlatching the harness buckle.  In the convertible car seats and harnessed booster seats, the buckle may become stuck in a latched condition so that it cannot be opened by depressing the buckle's release button.",
@@ -10543,6 +11157,9 @@
       "product_name": "Graco APRICA A30; SNUGRIDE; SNUGRIDE 30 (+3 more models)",
       "display_name": "Graco SnugRide Rear-Facing Infant Seats",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "Graco Children's Products Inc.",
       "recall_date": "20140630",
       "reason": "Graco Children's Products (Graco) is recalling certain rear-facing child restraints manufactured between July 2010 and May 2013, models SnugRide, SnugRide Classic Connect (including Classic Connect 30 and 35), SnugRide 30, SnugRide 35, SnugRide Click Connect 40, and Aprica A30.  The defect involves difficulty in unlatching the harness buckle.  In some cases, the buckle becomes stuck in a latched condition so that it cannot be opened by depressing the buckle's release button.",
@@ -10606,6 +11223,9 @@
       "product_name": "Recaro PERFORMANCE RIDE; PRORIDE",
       "display_name": "Recaro ProRIDE / Performance RIDE",
       "brand": "Recaro",
+      "brands": [
+        "Recaro"
+      ],
       "manufacturer": "Recaro Child Safety, LLC",
       "recall_date": "20140730",
       "reason": "Recaro Child Safety, LLC (Recaro) is recalling certain ProRIDE child restraints, model number 332.01 in all colors (AK21, KAEC, KAEG, KK91, MC11, MJ15, QA56, QA9N, QQ11, QQ14, and QQ95), manufactured from April 9, 2010, through June 9, 2015, and Performance RIDE child restraints, model number 333.01 in all colors (CHIL, HABB, HAZE, JEBB, JETT, KNGT, MABB, MARI, MNGT, PLUM, PLBB, REBB, SLBB, REDD, ROBB, ROSE, SABB, SAPH, SLTE, VIBB, VIBE), manufactured from January 15, 2013, through June 9, 2015.   In the event of a crash, the top tether anchorage may detach from the child restraint.  As such, these restraints fail to conform to the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -10649,6 +11269,9 @@
       "product_name": "Evenflo EMBRACE 35",
       "display_name": "Evenflo Embrace 35 Infant Seats",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20141020",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling certain Embrace 35 two-piece, rear-facing infant child restraints equipped with an AmSafe QT1 buckle.  The affected model numbers include: 30711365 (Snugli brand), 31511040, 31511323, 31511400, 3151198, 3151953, 31521138, 46811205 (or 24502447), 46811237 (or 24502446), 48111200, 48111215, 48111215A, 48111218, 48111234, 48111235, 48111235A, 48111462, 48411391 (or 24502786), 48411391D (or 24502787), 48411392 (or 24502830), 48411504 (or 24507546), 48411504D (or 24507544), 52911307A, 52921040, 55311138 (or 24505003), 55311238 (or 24505000), and 55311292 (or 24505001) and were manufactured at various times from December 2011 through May 2013.  Over time, use of the seat can make the harness buckle difficult to unlatch.",
@@ -10687,6 +11310,9 @@
       "product_name": "Graco CLASSIC RIDE; COMFORTSPORT; READY RIDE",
       "display_name": "Graco ComfortSport / Ready Ride / Classic Ride",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "Graco Children's Products Inc.",
       "recall_date": "20150318",
       "reason": "Graco Children's Products Inc. (Graco) is recalling certain ComfortSport child restraints, model numbers 1813040 and 1794333; Ready Ride child restraints, model numbers 1924520 and 1924519; and Classic Ride child restraints, model number 1812930.  These seats were manufactured between March 1, 2014, and February 28, 2015.  The affected convertible child restraints are missing a statement on the affixed label that informs of location of the instruction manual.  Without the notice on the fixed label, these seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard No. 213 \"Child Restraint Systems.\"",
@@ -10735,6 +11361,9 @@
       "product_name": "Baby Jogger CITY GO INFANT CAR SEAT; CITY MINI INFANT CAR SEAT; VUE LITE INFANT CAR SEAT",
       "display_name": "Baby Jogger City GO / Vue Lite Infant Seats & Travel Systems",
       "brand": "Baby Jogger",
+      "brands": [
+        "Baby Jogger"
+      ],
       "manufacturer": "Baby Jogger, LLC",
       "recall_date": "20150610",
       "reason": "Baby Jogger, LLC (Baby Jogger) is recalling certain City GO Infant Car Seats (models BJ64510 and BJ64529), City GO Base for infant car seat (models BJ80400 and BJ61500); City Mini Infant Car Seat/Stroller Travel Systems (model BJ72510); and Vue Lite Infant Car Seat/Stroller Travel Systems (models BJ70411, BJ70424, and BJ70431).  The affected child seats have information on the labels, instruction manual and registration card that is either the wrong size, has an incorrect background color, or is in the incorrect order or is missing.  As such, these seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -10783,6 +11412,9 @@
       "product_name": "Britax ADVOCATE CLICKTIGHT; BOULEVARD CLICKTIGHT; MARATHON CLICKTIGHT",
       "display_name": "Britax ClickTight Convertibles (Advocate / Boulevard / Marathon)",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "Britax Child Safety, Inc.",
       "recall_date": "20150811",
       "reason": "Britax Child Safety, Inc. (Britax) is recalling certain Advocate ClickTight child seats, model numbers E9LT95Q, E9LT95Z, E9LT95N, and E1A025Q, Boulevard ClickTight child seats, model numbers E9LT86F, E1A135Q, E9LT86G, E9LT85Q, E9LT86A, E9LT86H, E9LT85S, E1A015Q, E1A016A, and E1A016H, and Marathon ClickTight child seats, model numbers E1A116L, E9LT76P, E9LT71Q, E9LT76N, E9LT76B, E9LT75R, E9LT76L, E1A006B, E1A005R and EXA116L, manufactured August 1, 2014, to July 29, 2015.  The affected child seats have a red harness adjuster button that may stick in the down (harness release) position allowing the shoulder harness to loosen.",
@@ -10831,6 +11463,9 @@
       "product_name": "Graco MILESTONE",
       "display_name": "Graco Milestone Child Seats",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "Graco Children's Products Inc.",
       "recall_date": "20151113",
       "reason": "Graco Children's Products Inc. (Graco) is recalling certain Milestone child seats, model numbers 1910130, 1923980, 1926538, and 1926539, for failing to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"  The affected child seat have labels that are missing the required phrase \"Secure this child restraint with the vehicle's child restraint anchorage system (LATCH) if available or with a vehicle belt.\"",
@@ -10869,6 +11504,9 @@
       "product_name": "Britax B-SAFE 35 ELITE; B-SAFE 35 ELITE TRAVEL SY; B-SAFE 35 TRAVEL SYSTEM",
       "display_name": "Britax B-Safe 35 Infant Seats & Travel Systems",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "Britax Child Safety, Inc.",
       "recall_date": "20160108",
       "reason": "Britax Child Safety, Inc. (Britax) is recalling certain B-Safe 35 child seats, models E9LU65M, E9LU65P, E9LU63F, E9LU66R, E9LS63F and EXLU65M, B-Safe 35 Elite child seats, models E9LS55T, E9LS56P, E9LS55U, E9LS66C and E9LS65U, and B-Safe 35 Travel Systems, models S914900, S915400, S915200, S921900 and S01635200, manufactured October 1, 2014, to July 1, 2015.  The affected child restraints have handles that may develop cracks in, under, and around, the carry handle grip.  The cracks may lead to the handle fracturing and the seat falling while being carried.",
@@ -10917,6 +11555,9 @@
       "product_name": "Graco EXTEND2FIT CONVERTIBLE",
       "display_name": "Graco Extend2Fit Convertibles",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "Graco Children's Products Inc.",
       "recall_date": "20160202",
       "reason": "Graco Children's Products, Inc. (Graco) is recalling certain Extend2Fit Convertible child seats manufactured November 27, 2015, to January 20, 2016.  The affected child seats may have the recline label affixed at the wrong location, resulting in confusion about how to use the seat properly.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard (FMVSS) No. 213, \"Child Restraint Systems.\"",
@@ -10955,6 +11596,9 @@
       "product_name": "Evenflo TRANSITIONS BOOSTER SEAT",
       "display_name": "Evenflo Transitions 3-in-1 Boosters",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20160218",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling certain Transitions 3-in-1 Combination Booster Seats, model numbers 34411686, 34411695, and 34411029, produced from December 18, 2014, through January 29, 2016.  The central front adjuster (CFA) button that is used to loosen the seat's internal harness may be within the child's reach, allowing the child to activate the CFA and loosen the internal harness.",
@@ -10993,6 +11637,9 @@
       "product_name": "Graco TURBOBOOSTER",
       "display_name": "Graco TurboBooster Seats",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "Graco Children's Products Inc.",
       "recall_date": "20160425",
       "reason": "Graco Children's Products Inc. (Graco) is recalling certain Graco TurboBooster booster seats, models 1967886, 1963973, 1963974, 1963975, 1963976, and 1975173, manufactured between December 22, 2015, and April 5, 2016.  The instructions for the booster seats are missing the information that the seats should be securely belted to the vehicle at all times, even if the seat is unoccupied.  As such, these seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard (FMVSS) number 213, \"Child Restraint Systems.\"",
@@ -11031,6 +11678,9 @@
       "product_name": "Kiddy KIDDY WORLD PLUS",
       "display_name": "Kiddy World Plus Combination Seats",
       "brand": "Kiddy",
+      "brands": [
+        "Kiddy"
+      ],
       "manufacturer": "Kiddy USA",
       "recall_date": "20160429",
       "reason": "Kiddy USA (Kiddy) is recalling certain World Plus combination forward facing child restraints that convert to a high back booster seat, model 51 100 WP, manufactured from July 2, 2012, through October 5, 2013.  The buckle/tongue on the affected booster seats may only partially engage.  As a result, the consumer may have a false impression that the buckle is fully latched when it is not.  As such, these seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard (FMVSS) number 213, \"Child Restraint Systems.\"",
@@ -11069,6 +11719,9 @@
       "product_name": "Combi COCCORO",
       "display_name": "Combi Coccoro Convertibles",
       "brand": "Combi",
+      "brands": [
+        "Combi"
+      ],
       "manufacturer": "Combi USA, Inc.",
       "recall_date": "20160705",
       "reason": "Combi USA, Inc. (Combi) is recalling certain Coccoro Convertible Child Restraints, model number 8220, manufactured from January 1, 2009, to June 29, 2016.  When the Coccoro car seat is installed in a forward facing position and only secured with the vehicle's lap belt, excessive force may be transmitted to the car seat occupant in the event of a crash, increasing their risk of injury.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard (FMVSS) number 213, \"Child Restraint Systems.\"",
@@ -11107,6 +11760,9 @@
       "product_name": "Evenflo EVOLVE 3-IN-1 SEAT",
       "display_name": "Evenflo Evolve 3-in-1 Boosters",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20160907",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling certain Evolve 3-in-1 Combination Booster Seats, model number 34411700 manufactured February 26, 2015, to February 9, 2016 and model number 34411741 manufactured May 27, 2015, to February 9, 2016.  The affected seats have a button for adjusting the harness tightness.  The child in the seat can access this button and loosen the harness without the caregiver's knowledge.",
@@ -11145,6 +11801,9 @@
       "product_name": "Baby Trend HYBRID LX 3-IN-1",
       "display_name": "Baby Trend Hybrid LX 3-in-1 Boosters",
       "brand": "Baby Trend",
+      "brands": [
+        "Baby Trend"
+      ],
       "manufacturer": "Baby Trend, Inc.",
       "recall_date": "20161219",
       "reason": "Baby Trend, Inc. (Baby Trend) is recalling certain Hybrid LX 3-in-1 Centennial booster seats, model number FB58181, manufactured on July 23, 2016, and Hybrid LX 3-in-1 Kiwi booster seats, model number FB48417, manufactured on July 14, 2016.  The affected child seats have a center adjuster rivet that may pull through or break if the harness is being used with a child weighing more than 40 lbs.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard (FMVSS) number 213, \"Child Restraint Systems.\"",
@@ -11183,6 +11842,9 @@
       "product_name": "4moms SELF INSTALLING CAR SEAT",
       "display_name": "4moms Self-Installing Infant Car Seats",
       "brand": "4moms",
+      "brands": [
+        "4moms"
+      ],
       "manufacturer": "THORLEY INDUSTRIES D/B/A 4MOMS",
       "recall_date": "20161230",
       "reason": "Thorley Industries LLC d/b/a 4moms (4moms) is recalling certain 4moms Self Installing Rear-facing Infant Car Seats, model number 1032,  manufactured July 1, 2016, to October 31, 2016.  Due to a tight rivet, the affected car seats have a coupling hook that may not properly engage around the coupling pin, preventing the infant carrier portion from securely attaching to the seat base.",
@@ -11221,6 +11883,9 @@
       "product_name": "Graco MY RIDE 65 BOOSTER",
       "display_name": "Graco My Ride 65 Convertibles",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "Graco Children's Products Inc.",
       "recall_date": "20170510",
       "reason": "Graco Children's Products Inc. (Graco) is recalling certain Graco My Ride 65 convertible child restraints, models 1871689, 1908152, 1813074, 1872691, 1853478, 1877535, 1813015, and 1794334.  In the event of a crash, the child seat webbing may not adequately restrain the child.  As such, these car seats fail to conform to Federal Motor Vehicle Safety Standard (FMVSS) number 213, \"Child Restraint Systems.\"",
@@ -11259,6 +11924,9 @@
       "product_name": "Britax B-SAFE 35; B-SAFE 35 ELITE; B-SAFE 35 ELITE TRAVEL SY (+2 more models)",
       "display_name": "Britax B-Safe 35 / BOB B-Safe Infant Seats",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "Britax Child Safety, Inc.",
       "recall_date": "20170615",
       "reason": "Britax Child Safety, Inc. (Britax) is recalling certain  B-Safe 35, B-Safe 35 Travel Systems, B-Safe 35 Elite, B-Safe 35 Elite Travel Systems and BOB B-Safe rear-facing infant child safety seats, model numbers E1A183F, E1A185M, E1A185P, E1A186R, E1A203F, E1A205M, E1A205P, E1A206X, E1A206Z, E1A207E, E9LU65V, E9LU66X, E9LU66Z, E9LU67D, E9LU67E, EXA185M, S02063600, S02063700, S03803400, S03803500, S03803700, S03803800, S03803900, S04144400, S04144500, S04144600, S04145000, S04402800, S04884200, S04884300, S04975600, S04978900, S05260200, S06020300, S06020400, S06020500, S06020600, S06020700, S06020800, S06020900, S06147100, S921800, E1A215T, E1A215U, E1A216P, E1A221Q, E1A225C, E1A225U, E1A226L, E9LS51Q, E9LS56C, E9LS56L, E9LS57F, E9LS57G, E9LS57H, EXA216L, S01298600, S02063800, S02063900, S02064000, S04281200, S04281300, S04628500, S06018800, S06020000, S06020200, S923700, E9LT34A, E9LT34C, E9LT35X and EXLT34A.  The affected child safety seats have a center tab on the chest clip marked \"ABS\" that may break.",
@@ -11317,6 +11985,9 @@
       "product_name": "Diono OLYMPIA; PACIFICA; RADIAN R100 (+3 more models)",
       "display_name": "Diono Radian / Olympia / Pacifica / Rainier",
       "brand": "Diono",
+      "brands": [
+        "Diono"
+      ],
       "manufacturer": "Diono (formerly SUNSHINE KIDS JUVENILE)",
       "recall_date": "20170914",
       "reason": "Diono is recalling certain Radian R100, Radian R120, Radian RXT, Olympia, Pacifica, and Rainier convertible and booster car seats.  When the seat is installed in the forward facing position and secured to the car using the lap belt without also using the top tether, the seat may not adequately protect the child from injury in the event of a crash.  As such, these child seats fail to conform to the requirements of Federal Motor Vehicle Safety Standard (FMVSS) number 213, \"Child Restraint Systems.\"  Only seats manufactured between November 25, 2013, and September 5, 2017, are affected by this recall campaign.",
@@ -11380,6 +12051,9 @@
       "product_name": "Harmony BIG BOOST DELUXE",
       "display_name": "Harmony Big Boost Deluxe Boosters",
       "brand": "Harmony",
+      "brands": [
+        "Harmony"
+      ],
       "manufacturer": "Harmony Juvenile Products",
       "recall_date": "20180417",
       "reason": "Harmony Juvenile Products (Harmony) is recalling certain Harmony Big Boost Deluxe booster seats.  In the event of a crash, the seat belt may cause excessive force to be applied to the restrained child's chest.  As such, these booster seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard (FMVSS) number 213, \"Child Restraint Systems.\"",
@@ -11418,6 +12092,9 @@
       "product_name": "WAYB PICO",
       "display_name": "WAYB Pico Child Seats",
       "brand": "WAYB",
+      "brands": [
+        "WAYB"
+      ],
       "manufacturer": "ForB dba WAYB",
       "recall_date": "20190830",
       "reason": "ForB dba WAYB (WAYB) is recalling certain WAYB Pico child seats manufactured between February 1, 2019 and August 23, 2019.  The headrest's aluminum tubular frame can break allowing the headrest to detach.",
@@ -11456,6 +12133,9 @@
       "product_name": "Babidéal STORM BOOSTER",
       "display_name": "Babidéal Storm Booster Seats",
       "brand": "Babidéal",
+      "brands": [
+        "Babidéal"
+      ],
       "manufacturer": "Dorel China America, Inc.",
       "recall_date": "20191017",
       "reason": "Dorel China America, Inc. (DCA) is recalling certain Babidéal Storm Booster Car Seats, model BC901BPXL, sold exclusively at Family Dollar Stores.  The label attached to the fabric cover may not have the required safety warnings and instructions.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard (FMVSS) number 213, \"Child Restraint Systems.\"",
@@ -11494,6 +12174,9 @@
       "product_name": "Merritt Angel Guard ANGEL RIDE",
       "display_name": "Merritt Angel Guard Angel Ride Car Beds",
       "brand": "Merritt Angel Guard",
+      "brands": [
+        "Merritt Angel Guard"
+      ],
       "manufacturer": "Merritt Manufacturing Inc",
       "recall_date": "20191105",
       "reason": "Merritt Manufacturing Inc. (Merritt) is recalling certain Angel Guard Angel Ride car beds.  The restraint harness may not have been properly sewed where the buckle is attached.",
@@ -11532,6 +12215,9 @@
       "product_name": "Combi BABYRIDE",
       "display_name": "Combi BabyRide Infant Seats",
       "brand": "Combi",
+      "brands": [
+        "Combi"
+      ],
       "manufacturer": "Combi USA, Inc.",
       "recall_date": "20210308",
       "reason": "Combi USA, Inc. (Combi) is recalling certain Combi BabyRide Infant Car Seats, model 378099 with dates of manufacture of 5/1/2016 thru 8/31/2019. The 1-inch-wide webbing strap used in the center front adjuster to adjust the shoulder harness straps fail the minimum initial breaking strength requirements, and in certain circumstances, may not adequately restrain a child during a crash.  As such, these car seats fail to conform to Federal Motor Vehicle Safety Standard (FMVSS) number 213, \"Child Restraint Systems.\"",
@@ -11570,6 +12256,9 @@
       "product_name": "Diono CAMBRIA 2",
       "display_name": "Diono Cambria 2 Boosters",
       "brand": "Diono",
+      "brands": [
+        "Diono"
+      ],
       "manufacturer": "Diono",
       "recall_date": "20210324",
       "reason": "Diono is recalling certain Cambria 2 Booster Seats, model numbers 31200-US-01, 31201-US-01, and 31202-US-01.  In the event of a crash, a crack between the headrest and backrest can occur, allowing the headrest to separate.  As such, these seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -11608,6 +12297,9 @@
       "product_name": "Maxi-Cosi PRIA 85",
       "display_name": "Maxi-Cosi Pria 85 Convertibles",
       "brand": "Maxi-Cosi",
+      "brands": [
+        "Maxi-Cosi"
+      ],
       "manufacturer": "Dorel Juvenile Group",
       "recall_date": "20210824",
       "reason": "Dorel Juvenile Group (Dorel) is recalling certain Maxi-Cosi Pria 85 Convertible child seats.  When the seat is installed in the forward facing position and secured to the car using the lap belt without also using the top tether, the seat may not adequately protect the child from head injury in the event of a crash.  As such, these child seats fail to conform to the requirements of Federal Motor Vehicle Safety Standard (FMVSS) number 213, \"Child Restraint Systems.\"",
@@ -11646,6 +12338,9 @@
       "product_name": "Maxi-Cosi PRIA 70",
       "display_name": "Maxi-Cosi Pria 70 Convertibles",
       "brand": "Maxi-Cosi",
+      "brands": [
+        "Maxi-Cosi"
+      ],
       "manufacturer": "Dorel Juvenile Group",
       "recall_date": "20210908",
       "reason": "Dorel Juvenile Group (Dorel) is recalling certain Maxi-Cosi Pria 70 Convertible child seats.  When the seat is installed in the forward facing position and secured to the car using the lap belt without also using the top tether, the seat may not adequately protect the child from head injury in the event of a crash.  As such, these child seats fail to conform to the requirements of Federal Motor Vehicle Safety Standard (FMVSS) number 213, \"Child Restraint Systems.\"",
@@ -11684,6 +12379,9 @@
       "product_name": "Clek FLLO; FOONF",
       "display_name": "Clek Foonf / Fllo Convertibles",
       "brand": "Clek",
+      "brands": [
+        "Clek"
+      ],
       "manufacturer": "Clek, Inc.",
       "recall_date": "20211201",
       "reason": "Clek, Inc. (Clek) is recalling certain Foonf, model numbers FO12 through FO19, and Fllo, model numbers FL15 through FL19, convertible child seats manufactured prior to May 21, 2021.  A child may pick pieces of foam from the foam cushion located under the seat pad.",
@@ -11727,6 +12425,9 @@
       "product_name": "Clek LIING; LIINGO",
       "display_name": "Clek Liing / Liingo Infant Seats",
       "brand": "Clek",
+      "brands": [
+        "Clek"
+      ],
       "manufacturer": "Clek, Inc.",
       "recall_date": "20211201",
       "reason": "Clek, Inc. (Clek) is recalling certain Liing, model number LG19U1, and Liingo, model number LGO20U1, infant child seats manufactured before September 15, 2020.  A small plastic portion of the child seat canopy support may break and detach from the seat.",
@@ -11770,6 +12471,9 @@
       "product_name": "Clek LIING; LIINGO",
       "display_name": "Clek Liing / Liingo Infant Seats (labels)",
       "brand": "Clek",
+      "brands": [
+        "Clek"
+      ],
       "manufacturer": "Clek, Inc.",
       "recall_date": "20211220",
       "reason": "Clek, Inc. (Clek) is recalling certain Liing, model LG19U1, and Liingo, model number LGO20U1, infant child seats manufactured before February 22, 2021.  The labels on the seat cover or infant insert may bubble up, allowing the labels to come apart into small pieces.",
@@ -11813,6 +12517,9 @@
       "product_name": "Cybex SIRONA M",
       "display_name": "Cybex Sirona M Convertibles",
       "brand": "Cybex",
+      "brands": [
+        "Cybex"
+      ],
       "manufacturer": "Columbus Trading-Partners USA, Inc.",
       "recall_date": "20220408",
       "reason": "Columbus Trading-Partners USA, Inc. (CTP) is recalling certain CYBEX Sirona M Convertible Child Car Seat, model numbers 518000385, 518002153, 518000387, 518002145, 518002149, 518002151, and 519000211, manufactured between November 3, 2017 and August 31, 2018.  A child may pick pieces of foam from the child seat headrest pad.",
@@ -11851,6 +12558,9 @@
       "product_name": "Clek OLLI; OZZI",
       "display_name": "Clek Olli / Ozzi Boosters",
       "brand": "Clek",
+      "brands": [
+        "Clek"
+      ],
       "manufacturer": "Clek, Inc.",
       "recall_date": "20220607",
       "reason": "Clek, Inc. (Clek) is recalling certain Olli booster seats, model number OL12U2 manufactured between January 20, 2020 and May 10, 2022, and Ozzi booster seats, model number OZ11U2, manufactured between March 1, 2020 and May 10, 2022.  The installation diagram displaying the proper way to install the booster seat with a continuous-loop lap/shoulder belt is missing.  As such, these child seats fails to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -11894,6 +12604,9 @@
       "product_name": "Joybuy (Marainbow) PORTABLE INFANT SAFE SEAT",
       "display_name": "Marainbow Portable Infant Seats (superseded)",
       "brand": "Joybuy (Marainbow)",
+      "brands": [
+        "Joybuy (Marainbow)"
+      ],
       "manufacturer": "JD E-Commerce America Limited",
       "recall_date": "20221128",
       "reason": "JD E-Commerce America Limited (JD E-Commerce) is recalling certain Marainbow Portable Infant Safe Seat child seats.  The installation labels display incorrect instructions.  The child seat's design also prohibits it from being installed properly.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -11933,6 +12646,9 @@
       "product_name": "Joybuy (Marainbow) CARTOON STROLLER CUSHION; FARFI RUST-PROOF BOOSTER; FOLD WATERPROOF CAR SEAT (+11 more models)",
       "display_name": "Marainbow Portable Infant Seats (all models)",
       "brand": "Joybuy (Marainbow)",
+      "brands": [
+        "Joybuy (Marainbow)"
+      ],
       "manufacturer": "JD E-Commerce America Limited",
       "recall_date": "20221229",
       "reason": "JD E-Commerce America Limited (Joybuy Express) is recalling all Marainbow Portable Infant Safe Seat and materially similar child seats.  Please refer to Joybuy Express' affected products attachment for specific child seat model details.  The installation labels display incorrect instructions.  The child seat's design also prohibits it from being installed properly.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12036,6 +12752,9 @@
       "product_name": "Cybex ATON; ATON 2; ATON M (+2 more models)",
       "display_name": "Cybex Aton / Cloud Q Infant Seats",
       "brand": "Cybex",
+      "brands": [
+        "Cybex"
+      ],
       "manufacturer": "Columbus Trading-Partners USA, Inc.",
       "recall_date": "20230210",
       "reason": "Columbus Trading-Partners USA, Inc. (CTP) is recalling certain Cybex models Aton, Aton Q, Aton M, Aton 2, and Cloud Q rear facing infant seats.  Please refer to CTP's recall report for specific model details.  The webbing for the front harness adjustment strap, used to snugly adjust the shoulder harness straps onto the infant, may fray, which can reduce the strength of the front harness adjustment strap.  As such, these infant seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard numbers 213, \"Child Restraint Systems\" and 209, \"Seatbelt Assemblies.\"",
@@ -12094,6 +12813,9 @@
       "product_name": "Maxi-Cosi CORAL XP; INFANT BASE; MICO LUXE+ (+4 more models)",
       "display_name": "Maxi-Cosi / Safety 1st Infant Seats & Bases",
       "brand": "Maxi-Cosi",
+      "brands": [
+        "Maxi-Cosi"
+      ],
       "manufacturer": "Dorel Juvenile Group",
       "recall_date": "20230303",
       "reason": "Dorel Juvenile Group (Dorel) is recalling certain Safety 1st onBoard 35 Secure Tech, Safety 1st Secure Tech Infant Base, Maxi-Cosi Coral XP, Maxi-Cosi Mico XP Max, Maxi-Cosi Mico XP, Maxi-Cosi Mico Luxe+, and Maxi-Cosi Infant Base child seats.  Please refer to Dorel's recall report for specific model numbers.  The lower seat anchors used to secure the child seat base may fail, allowing the child seat to detach.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12162,6 +12884,9 @@
       "product_name": "Maxi-Cosi CORAL XP",
       "display_name": "Maxi-Cosi Coral XP Infant Seats",
       "brand": "Maxi-Cosi",
+      "brands": [
+        "Maxi-Cosi"
+      ],
       "manufacturer": "Dorel Juvenile Group",
       "recall_date": "20230314",
       "reason": "Dorel Juvenile Group (Dorel) is recalling certain Maxi-Cosi Coral XP Rear-facing Infant Seats with model number IC313.  The child seat inner carrier is not sufficient to restrain a child without the use of the outer carrier.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12200,6 +12925,9 @@
       "product_name": "Baby Trend HYBRID 3-IN-1",
       "display_name": "Baby Trend Hybrid 3-in-1 (Desert Blue)",
       "brand": "Baby Trend",
+      "brands": [
+        "Baby Trend"
+      ],
       "manufacturer": "Baby Trend, Inc.",
       "recall_date": "20230504",
       "reason": "Baby Trend, Inc. (Baby Trend) is recalling certain Hybrid 3-in-1 Combination Booster Seat-Desert Blue child seats.  The latch assembly webbing that secures the child restraint system to the lower anchorages may fray, which can reduce the strength of the webbing and fail to properly restrain a child in a crash.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard numbers 213, \"Child Restraint Systems,\" and 209, \"Seat Belt Assemblies.\"",
@@ -12238,6 +12966,9 @@
       "product_name": "Evenflo TITAN 65",
       "display_name": "Evenflo Titan 65 (single seat)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20231106",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling one Titan 65 child seat.  The child seat is missing the warning labels.  As such, this child seat fails to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12276,6 +13007,9 @@
       "product_name": "Britax ONE4LIFE SLIM",
       "display_name": "Britax One4Life Slim ClickTight",
       "brand": "Britax",
+      "brands": [
+        "Britax"
+      ],
       "manufacturer": "Britax Child Safety, Inc.",
       "recall_date": "20241119",
       "reason": "Britax Child Safety, Inc. (Britax) is recalling certain One4Life Slim ClickTight All-in-One car seats with model numbers E1D197A, E1D197B, E1D197F, and E1D197G.  The labels and user guide incorrectly state the maximum rear-facing lower anchor weight.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12314,6 +13048,9 @@
       "product_name": "Nuna RAVA",
       "display_name": "Nuna Rava Convertibles",
       "brand": "Nuna",
+      "brands": [
+        "Nuna"
+      ],
       "manufacturer": "Nuna Baby Essentials, Inc.",
       "recall_date": "20241127",
       "reason": "Nuna Baby Essentials, Inc. (Nuna) is recalling certain Rava child seats with a plastic harness adjuster button, manufactured between July 16, 2016 and October 25, 2023.  Please see the recall report for a complete list of model numbers.  Debris may enter the front harness adjuster and cause the mechanism to fail, resulting in a loose harness.",
@@ -12352,6 +13089,9 @@
       "product_name": "Cybex ATON G; ATON G SWIVEL; BEEZY TRAVEL SYSTEM (+2 more models)",
       "display_name": "Cybex Aton G / Eos Travel Systems",
       "brand": "Cybex",
+      "brands": [
+        "Cybex"
+      ],
       "manufacturer": "Columbus Trading-Partners USA, Inc.",
       "recall_date": "20250214",
       "reason": "Columbus Trading-Partners USA, Inc. (CTP) is recalling certain Cybex Aton G, Aton G SensorSafe, Aton G Swivel, Aton G Swivel SensorSafe, Eos and Aton G Swivel Travel System, Eos and Aton G Travel System, Libelle and Aton G Travel System, and Beezy and Aton G Travel System child seats.  The harness hip anchorage retention hooks may bend, causing the anchor pin to loosen, and the harness strap to detach.",
@@ -12410,6 +13150,9 @@
       "product_name": "Safety 1st BOOST & GO; BOOST & GO ESSENTIAL; COMFORT RIDE (+1 more models)",
       "display_name": "Safety 1st 3-in-1 Harness Boosters",
       "brand": "Safety 1st",
+      "brands": [
+        "Safety 1st"
+      ],
       "manufacturer": "Dorel Juvenile Group",
       "recall_date": "20250312",
       "reason": "Dorel Juvenile Group (Dorel) is recalling certain Safety 1st Comfort Ride 3-in-1, Boost & Go 3-in-1, Boost & Go Essential 3-in-1, and MagicSquad 3-in-1 harness booster child seats.  Please refer to Dorel's recall report for specific model numbers.  The forward-facing installation label incorrectly states the height range.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12463,6 +13206,9 @@
       "product_name": "Evenflo AMP HIGH BACK; BIG KID; EVERYFIT (+17 more models)",
       "display_name": "Evenflo Seats & Travel Systems (20 models)",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20250314",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling certain child seats and travel systems.  Please refer to Evenflo's recall report for specific model numbers.  The child seats and travel systems are missing the USA recall registration card.  As such, these child seats and travel systems fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12596,6 +13342,9 @@
       "product_name": "Chicco MYFIT",
       "display_name": "Chicco MyFit Zip Air",
       "brand": "Chicco",
+      "brands": [
+        "Chicco"
+      ],
       "manufacturer": "Chicco USA, Inc.",
       "recall_date": "20250409",
       "reason": "Chicco USA, Inc. (Chicco) is recalling certain MyFit Zip Air Harness and Booster child restraint seats (CRS) with model numbers 07079561970070 and 04079561190070.  In certain configurations, the child seat may allow excessive chest movement in a crash.  As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12634,6 +13383,9 @@
       "product_name": "Safety 1st GROW & GO SPRINT",
       "display_name": "Safety 1st Grow & Go Sprint",
       "brand": "Safety 1st",
+      "brands": [
+        "Safety 1st"
+      ],
       "manufacturer": "Dorel Juvenile Group",
       "recall_date": "20250422",
       "reason": "Dorel Juvenile Group (Dorel) is recalling certain Safety 1st Grow & Go Sprint child seats.  The included model numbers are CC321GYU, CC321GYUD, CC321GYY, CC321GYYD, CC321HAO, and CC321HAR.  The headrest foam pad is not adequately secured, which can allow a child to pick off pieces of foam.",
@@ -12672,6 +13424,9 @@
       "product_name": "Evenflo TITAN 65",
       "display_name": "Evenflo Titan 65",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20250618",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling certain Titan 65 child seats with model number 3712198 manufactured between March 17, 2025 and May 1, 2025. The child seat may have been packaged with an incorrect instruction manual. As such, these child seats and travel systems fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12710,6 +13465,9 @@
       "product_name": "Evenflo GOLD REVOLVE360 SLIM; REVOLVE360 SLIM",
       "display_name": "Evenflo Revolve360 Slim / Gold Revolve360 Slim",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20250925",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling certain Gold Revolve360 Slim and Revolve360 Slim child seats manufactured between December 1, 2022 and December 8, 2024.  Please refer to Evenflo's recall report for specific model and color information. The headrest foam is not adequately secured away from the child, which can allow the child to pick off pieces of foam.",
@@ -12753,6 +13511,9 @@
       "product_name": "Evenflo ALL4ONE",
       "display_name": "Evenflo All4One",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20251224",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling certain All4One child seats. Please refer to Evenflo's recall report for specific model numbers. In rear-facing mode, the adjustable recline mechanism may shift out of proper position. As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12791,6 +13552,9 @@
       "product_name": "Evenflo TITAN",
       "display_name": "Evenflo Titan 65",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20260120",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling certain Titan 65 child seats with model numbers CS200312198, CS200311198, 3712198, and 3711198. The child seats may have been manufactured without a tether strap.",
@@ -12829,6 +13593,9 @@
       "product_name": "Evenflo LITEMAX",
       "display_name": "Evenflo LiteMax Factory Select",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20260225",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling certain LiteMax Factory Select child seats with model number CS100111198. The weight and height limitations are stated incorrectly in the Spanish language manual. As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12867,6 +13634,9 @@
       "product_name": "Graco MODES NEST TRAVEL SYSTEM W/SNUGRIDE TURN&SLIDE; SNUGRIDE TURN & SLIDE",
       "display_name": "Graco SnugRide Turn & Slide / Modes Nest Travel Systems",
       "brand": "Graco",
+      "brands": [
+        "Graco"
+      ],
       "manufacturer": "Graco Children's Products, Inc.",
       "recall_date": "20260402",
       "reason": "Graco Children's Products Inc. (Graco) is recalling certain SnugRide Turn & Slide and Modes Nest Travel Systems with Snugride Turn & Slide infant child seats. Please refer to Graco's recall report for specific model information. The infant seat carrier may detach from the base in a crash. As such, these child seats and travel systems fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
@@ -12910,6 +13680,9 @@
       "product_name": "Evenflo REO BY REVOLVE 360",
       "display_name": "Evenflo Reo by Revolve360",
       "brand": "Evenflo",
+      "brands": [
+        "Evenflo"
+      ],
       "manufacturer": "Evenflo Company, Inc.",
       "recall_date": "20260717",
       "reason": "Evenflo Company, Inc. (Evenflo) is recalling certain Reo by Revolve360 child seats in color variants Nantucket, Danvers, Chelsea, Holden, Brookline, and Lenox. Please refer to Evenflo's recall report for the specific models. In certain rear or forward-facing positions, the headrest may shift position during a crash. As such, these child seats fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 213, \"Child Restraint Systems.\"",
