@@ -2,37 +2,45 @@ name: TinySafe Recall Sync (daily)
 
 on:
   schedule:
-    - cron: '0 12 * * *'   # 08:00 America/New_York (UTC 12:00) daily
-  workflow_dispatch:        # allow manual run from the Actions tab
+    - cron: '0 12 * * *'      # 08:00 America/New_York
+  workflow_dispatch:
 
 permissions:
-  contents: write           # needed to commit the updated JSON back
+  contents: write
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           python -m pip install --upgrade pip
           pip install requests pandas openpyxl
 
-      - name: Run daily sync (FDA datatables + CPSC)
+      # 1. Automatic half — CPSC API and the FDA datatables feed.
+      #    Writes recalls_pipeline.json only.
+      - name: Fetch live sources
         run: python sync_recalls.py
+
+      # 2. Combine with the manual archives that live in the repo:
+      #    cpsc_curated.jsonl, *_enforce_rpt*.csv, nhtsa_child_restraints.json.
+      #    These cannot be fetched on a schedule, so they are committed once and
+      #    re-merged on every run. This step is what makes the daily job safe —
+      #    without it each run would publish only the automatic half.
+      - name: Merge with manual archives
+        run: python merge_sources.py .
 
       - name: Commit changes if any
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "TinySafe Sync Bot"
-          git add recalls_unified.json
+          git add recalls_unified.json recalls_pipeline.json recalls_full.jsonl
           if git diff --cached --quiet; then
             echo "No changes."
           else
