@@ -24530,7 +24530,7 @@
       "display_category": "Wipes",
       "display_name": "Up & Up Fragrance Free Baby Wipes – 20, 72, 216, 800, and 1200 count, Up & Up Fr",
       "hazard": "contamination",
-      "action": "Stop using it and follow the recall instructions for a refund or repair.",
+      "action": "Stop using these wipes right away. Check the lot/batch on the package against the recall notice, and return the product to the store for a refund. If your baby develops a rash, redness, or any sign of skin or eye infection after use, contact your pediatrician.",
       "product_count": 1,
       "grouped_products": [],
       "plain_reason": "May be contaminated or contain undeclared material.",
@@ -24543,7 +24543,8 @@
       "match_brand_squash": "upup",
       "match_words": "up & up up & up fragrance free baby wipes – 20, 72, 216, 800, and 1200 count, up & up fresh cucumber scented baby wipes – 72, 216, and 800 count",
       "is_urgent": true,
-      "urgent_rank": 3
+      "urgent_rank": 3,
+      "action_curated": true
     },
     {
       "source": "FDA",
@@ -24588,7 +24589,7 @@
       "display_category": "Food & Formula",
       "display_name": "Pear, Kiwi, Spinach & Pea Baby Food pouches",
       "hazard": "contamination",
-      "action": "Stop using it and follow the recall instructions for a refund or repair.",
+      "action": "Stop using this immediately. Lead exposure is especially harmful to babies and young children. Ask your pediatrician whether a blood lead test is recommended.",
       "product_count": 1,
       "grouped_products": [],
       "plain_reason": "May be contaminated or contain undeclared material.",
@@ -24601,7 +24602,8 @@
       "match_brand_squash": "greenwise",
       "match_words": "greenwise pear, kiwi, spinach & pea baby food pouches",
       "is_urgent": true,
-      "urgent_rank": 3
+      "urgent_rank": 3,
+      "action_curated": true
     },
     {
       "source": "FDA",
@@ -24617,7 +24619,7 @@
       "display_category": "Oral Care",
       "display_name": "Cold Remedy Nasal Swabs, Nasal AllClear Swabs, Baby Teething Swabs",
       "hazard": "bacteria",
-      "action": "Stop using it and follow the recall instructions for a refund or repair.",
+      "action": "Stop using this immediately. Mold or fungal contamination can cause infections or allergic reactions, especially in babies. Return for a refund.",
       "product_count": 1,
       "grouped_products": [],
       "plain_reason": "May be contaminated with harmful bacteria.",
@@ -24630,7 +24632,8 @@
       "match_brand_squash": "zicamandorajel",
       "match_words": "zicam® and orajel™ cold remedy nasal swabs, nasal allclear swabs, baby teething swabs",
       "is_urgent": true,
-      "urgent_rank": 3
+      "urgent_rank": 3,
+      "action_curated": true
     },
     {
       "source": "FDA",
@@ -24675,7 +24678,7 @@
       "display_category": "Food & Formula",
       "display_name": "Baby Food",
       "hazard": "",
-      "action": "Stop using it and follow the recall instructions for a refund or repair.",
+      "action": "Stop feeding this immediately and throw it out (or return it to the store for a refund). Check the lot on the package against the recall notice. If your baby ate it and seems unwell, contact your pediatrician.",
       "product_count": 1,
       "grouped_products": [],
       "plain_reason": "Has been recalled for a safety risk.",
@@ -24688,7 +24691,8 @@
       "match_brand_squash": "tippytoes",
       "match_words": "tippy toes baby food",
       "is_urgent": false,
-      "urgent_rank": 99
+      "urgent_rank": 99,
+      "action_curated": true
     },
     {
       "source": "FDA",
@@ -24762,7 +24766,7 @@
       "display_category": "Food & Formula",
       "display_name": "Whole Milk Powdered Infant Formula",
       "hazard": "botulism",
-      "action": "Stop using it and follow the recall instructions for a refund or repair.",
+      "action": "Stop feeding this immediately. Infant botulism is a medical emergency — if your baby ate this and shows weak sucking, drooping eyelids, weak cry, constipation, or trouble breathing, call 911 or go to the ER now. Do not wait for symptoms to worsen.",
       "product_count": 1,
       "grouped_products": [],
       "plain_reason": "May be contaminated and pose a botulism risk.",
@@ -24775,7 +24779,8 @@
       "match_brand_squash": "naraorganics",
       "match_words": "nara organics whole milk powdered infant formula",
       "is_urgent": true,
-      "urgent_rank": 1
+      "urgent_rank": 1,
+      "action_curated": true
     },
     {
       "source": "FDA",
@@ -24791,7 +24796,7 @@
       "display_category": "Food & Formula",
       "display_name": "Whole Nutrition Infant formula",
       "hazard": "botulism",
-      "action": "Stop using it and follow the recall instructions for a refund or repair.",
+      "action": "Stop feeding this immediately. Infant botulism is a medical emergency — if your baby ate this and shows weak sucking, drooping eyelids, weak cry, constipation, or trouble breathing, call 911 or go to the ER now. Do not wait for symptoms to worsen.",
       "product_count": 1,
       "grouped_products": [],
       "plain_reason": "May be contaminated and pose a botulism risk.",
@@ -24804,7 +24809,8 @@
       "match_brand_squash": "byheart",
       "match_words": "byheart whole nutrition infant formula",
       "is_urgent": true,
-      "urgent_rank": 1
+      "urgent_rank": 1,
+      "action_curated": true
     },
     {
       "source": "FDA",
@@ -24936,7 +24942,7 @@
       "display_category": "Food & Formula",
       "display_name": "Powder Infant Formula",
       "hazard": "bacteria",
-      "action": "Stop using it and follow the recall instructions for a refund or repair.",
+      "action": "Stop using or feeding this immediately and throw it out (or return for a refund). If your baby consumed it and has fever, vomiting, diarrhea, poor feeding, or unusual sleepiness, contact your pediatrician or seek care right away.",
       "product_count": 1,
       "grouped_products": [],
       "plain_reason": "May be contaminated with harmful bacteria.",
@@ -24949,7 +24955,8 @@
       "match_brand_squash": "similacalimentumandelecare",
       "match_words": "similac, alimentum, and elecare powder infant formula",
       "is_urgent": true,
-      "urgent_rank": 3
+      "urgent_rank": 3,
+      "action_curated": true
     },
     {
       "source": "FDA",
@@ -24965,7 +24972,7 @@
       "display_category": "Food & Formula",
       "display_name": "Powdered Goat Milk Infant Formula",
       "hazard": "bacteria",
-      "action": "Stop using it and follow the recall instructions for a refund or repair.",
+      "action": "Stop using or feeding this immediately and throw it out (or return for a refund). If your baby consumed it and has fever, vomiting, diarrhea, poor feeding, or unusual sleepiness, contact your pediatrician or seek care right away.",
       "product_count": 1,
       "grouped_products": [],
       "plain_reason": "May be contaminated with harmful bacteria.",
@@ -24978,7 +24985,8 @@
       "match_brand_squash": "crecelac",
       "match_words": "crecelac powdered goat milk infant formula",
       "is_urgent": true,
-      "urgent_rank": 3
+      "urgent_rank": 3,
+      "action_curated": true
     },
     {
       "source": "FDA",
@@ -24994,7 +25002,7 @@
       "display_category": "Food & Formula",
       "display_name": "Whole Nutrition Infant formula 24 oz cans and 0.6oz packets",
       "hazard": "botulism",
-      "action": "Stop using it and follow the recall instructions for a refund or repair.",
+      "action": "Stop feeding this immediately. Infant botulism is a medical emergency — if your baby ate this and shows weak sucking, drooping eyelids, weak cry, constipation, or trouble breathing, call 911 or go to the ER now. Do not wait for symptoms to worsen.",
       "product_count": 1,
       "grouped_products": [],
       "plain_reason": "May be contaminated and pose a botulism risk.",
@@ -25007,7 +25015,8 @@
       "match_brand_squash": "byheart",
       "match_words": "byheart whole nutrition infant formula 24 oz cans and 0.6oz packets",
       "is_urgent": true,
-      "urgent_rank": 1
+      "urgent_rank": 1,
+      "action_curated": true
     },
     {
       "source": "FDA",
@@ -25023,7 +25032,7 @@
       "display_category": "Food & Formula",
       "display_name": "a2 Platinum Premium Infant Formula 0-12 months USA label",
       "hazard": "",
-      "action": "Stop using it and follow the recall instructions for a refund or repair.",
+      "action": "Stop using or feeding this immediately and throw it out (or return for a refund). If your baby consumed it and has fever, vomiting, diarrhea, poor feeding, or unusual sleepiness, contact your pediatrician or seek care right away.",
       "product_count": 1,
       "grouped_products": [],
       "plain_reason": "Has been recalled for a safety risk.",
@@ -25036,7 +25045,8 @@
       "match_brand_squash": "a2",
       "match_words": "a2 a2 platinum premium infant formula 0-12 months usa label",
       "is_urgent": false,
-      "urgent_rank": 99
+      "urgent_rank": 99,
+      "action_curated": true
     },
     {
       "source": "FDA",
