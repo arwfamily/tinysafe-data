@@ -1,12 +1,11 @@
 {
-  "version": "4.7",
-  "updated": "2026-07-28T16:37:38.329566Z",
+  "version": "5.0",
+  "updated": "2026-07-28T16:50:35.938959Z",
   "description": "TinySafe unified baby/kids recall DB — all categories (FDA drugs/sunscreen/skincare/oral/meds, food/formula, cosmetics + CPSC physical products). Comprehensive baby safety scope. Veterinary excluded.",
   "sources": [
-    "FDA Enforcement Reports (drug/food/device, 2003-2026)",
-    "FDA openFDA drug enforcement (sunscreen, 2024-2026)",
-    "FDA datatables press releases (baby food/cosmetic outbreak)",
-    "CPSC SaferProducts (baby & kids physical products)"
+    "CPSC",
+    "FDA",
+    "FDA datatables (press releases)"
   ],
   "total": 884,
   "recalls": [
@@ -350,7 +349,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "Liposomal Kids Liquid Multivitamin Drops. Dosage",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using or feeding this immediately and throw it out (or return for a refund). If your baby consumed it and has fever, vomiting, diarrhea, poor feeding, or unusual sleepiness, contact your pediatrician or seek care right away.",
       "product_count": 1,
       "grouped_products": [],
@@ -366,7 +365,7 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -748,7 +747,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Children's Ibuprofen Oral Suspension",
-      "hazard": "general",
+      "hazard": "contamination",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -759,15 +758,15 @@
       "match_squash": "stridesincchildrensibuprofenoralsuspension",
       "match_brand_squash": "strides",
       "match_words": "strides pharma children s ibuprofen oral suspension",
-      "is_urgent": false,
-      "urgent_rank": 99,
+      "is_urgent": true,
+      "urgent_rank": 2,
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "contamination"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 2,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -1451,7 +1450,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Medline Kits: 1) NEWBORN ADMISSION",
-      "hazard": "general",
+      "hazard": "unapproved",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -1467,10 +1466,10 @@
       "category_family": "Medical devices",
       "category_group": "Health",
       "hazards": [
-        "general"
+        "unapproved"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 6,
+      "band": "CHECK",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -1669,7 +1668,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "Baby Food",
-      "hazard": "general",
+      "hazard": "mold",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -1685,7 +1684,7 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "mold"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -1794,7 +1793,8 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "contamination"
+        "contamination",
+        "mold"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -2322,7 +2322,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "PHYSIO CONTROL INFANT/CHILD Reduced Energy…",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -2338,10 +2338,10 @@
       "category_family": "Sleepwear & apparel",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -2358,7 +2358,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Children's Healthcare of Atlanta, Instant Hand…",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 2,
       "grouped_products": [
@@ -2385,7 +2385,7 @@
       "category_family": "Skincare, bath & diapering",
       "category_group": "Health",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -2735,7 +2735,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Medline Convenience Kits: 1) DRAPE PACK",
-      "hazard": "general",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 2,
       "grouped_products": [
@@ -2762,10 +2762,10 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -2782,7 +2782,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "All human food products",
-      "hazard": "general",
+      "hazard": "sanitation",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -2793,15 +2793,15 @@
       "match_squash": "goldstardistributionincallhumanfoodproducts",
       "match_brand_squash": "goldstardistribution",
       "match_words": "gold star distribution all human food products",
-      "is_urgent": false,
-      "urgent_rank": 99,
+      "is_urgent": true,
+      "urgent_rank": 3,
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "sanitation"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -2818,7 +2818,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "CHILDREN NYQUIL, COLD&FLU, BERRY",
-      "hazard": "general",
+      "hazard": "sanitation",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 1,
       "grouped_products": [],
@@ -2829,15 +2829,16 @@
       "match_squash": "goldstardistributionincchildrennyquilcoldfluberry",
       "match_brand_squash": "goldstardistribution",
       "match_words": "gold star distribution children nyquil cold flu berry",
-      "is_urgent": false,
-      "urgent_rank": 99,
+      "is_urgent": true,
+      "urgent_rank": 3,
       "category_family": "Medications & supplements",
       "category_group": "Health",
       "hazards": [
-        "general"
+        "manufacturing",
+        "sanitation"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -3037,7 +3038,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Oral Care",
       "display_name": "ORL Kids Mouthwash, Bubblegum Flavor",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 2,
       "grouped_products": [
@@ -3064,7 +3065,7 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -3426,7 +3427,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "Baby Allergy Herbal Supplement, Contains: Echinacea…",
-      "hazard": "undeclared",
+      "hazard": "unapproved",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 2,
       "grouped_products": [
@@ -3454,6 +3455,7 @@
       "category_group": "Feeding",
       "hazards": [
         "labeling",
+        "unapproved",
         "undeclared"
       ],
       "tier": 6,
@@ -3983,7 +3985,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Skincare",
       "display_name": "WeCare, Zinc Oxide Ointment",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 5,
       "grouped_products": [
@@ -4025,7 +4027,7 @@
       "category_family": "Medications & supplements",
       "category_group": "Health",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -4289,7 +4291,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Myosa for Kids KS1",
-      "hazard": "general",
+      "hazard": "unapproved",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -4305,10 +4307,10 @@
       "category_family": "Sleepwear & apparel",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "unapproved"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 6,
+      "band": "CHECK",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -4672,7 +4674,8 @@
       "category_family": "Sleep — cribs, bassinets, loungers",
       "category_group": "Sleep",
       "hazards": [
-        "contamination"
+        "contamination",
+        "mold"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -4818,7 +4821,8 @@
       "category_family": "Medications & supplements",
       "category_group": "Health",
       "hazards": [
-        "contamination"
+        "contamination",
+        "manufacturing"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -5000,7 +5004,8 @@
       "category_family": "Sleep — cribs, bassinets, loungers",
       "category_group": "Sleep",
       "hazards": [
-        "contamination"
+        "contamination",
+        "mold"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -5727,7 +5732,8 @@
       "category_group": "Feeding",
       "hazards": [
         "contamination",
-        "mold"
+        "mold",
+        "sterility"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -5928,7 +5934,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Hamilton C6",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -5944,10 +5950,10 @@
       "category_family": "Jewelry & accessories",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -5964,7 +5970,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Gentamicin Injection, (PEDIATRIC)",
-      "hazard": "quality",
+      "hazard": "manufacturing",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -5980,10 +5986,11 @@
       "category_family": "Jewelry & accessories",
       "category_group": "Wear",
       "hazards": [
+        "manufacturing",
         "quality"
       ],
-      "tier": 8,
-      "band": "CHECK",
+      "tier": 4,
+      "band": "ACT SOON",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -6887,7 +6894,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "AirLife Infant Heated Wire Circuit",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 2,
       "grouped_products": [
@@ -6914,10 +6921,10 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -7115,7 +7122,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Microstream Advance Neonatal-Infant Intubated CO2…",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -7131,10 +7138,10 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -7406,7 +7413,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Baby Sunscreen",
       "display_name": "In Your Face Mineral Tint SPF 31, Zinc Oxide 25%,…",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 2,
       "grouped_products": [
@@ -7433,7 +7440,7 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -7940,7 +7947,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Microstream Instructions for Use and Part Number used…",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 4,
       "grouped_products": [
@@ -7977,10 +7984,10 @@
       "category_family": "Medications & supplements",
       "category_group": "Health",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -8273,7 +8280,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Numerous models of nonsterile hemostatic forceps: (1)",
-      "hazard": "general",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -8289,10 +8296,10 @@
       "category_family": "Medical devices",
       "category_group": "Health",
       "hazards": [
-        "general"
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -8676,7 +8683,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "regard",
-      "hazard": "quality",
+      "hazard": "manufacturing",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -8692,10 +8699,11 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
+        "manufacturing",
         "quality"
       ],
-      "tier": 8,
-      "band": "CHECK",
+      "tier": 4,
+      "band": "ACT SOON",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -9875,7 +9883,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "PT301US Airvo 3 Respiratory Support Device with…",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this immediately. Lead exposure is especially harmful to babies and young children. Ask your pediatrician whether a blood lead test is recommended.",
       "product_count": 1,
       "grouped_products": [],
@@ -9891,10 +9899,10 @@
       "category_family": "Sleepwear & apparel",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -10651,7 +10659,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "Farmalac powdered infant formula with iron",
-      "hazard": "general",
+      "hazard": "unapproved",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 2,
       "grouped_products": [
@@ -10678,10 +10686,10 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "unapproved"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 6,
+      "band": "CHECK",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -10714,7 +10722,8 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "bacteria"
+        "bacteria",
+        "unapproved"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -10734,7 +10743,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "Mt. Capra Goat Milk Formula Recipe Kit (net wt. 10lbs",
-      "hazard": "general",
+      "hazard": "unapproved",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -10750,10 +10759,10 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "unapproved"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 6,
+      "band": "CHECK",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -11439,7 +11448,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Non-sterile convenience kits: a. Medline Difficult…",
-      "hazard": "general",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -11455,10 +11464,10 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -12414,7 +12423,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Baby PICC Kit",
-      "hazard": "general",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -12430,10 +12439,10 @@
       "category_family": "Sleepwear & apparel",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -12797,7 +12806,9 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "contamination"
+        "contamination",
+        "mold",
+        "sterility"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -13101,7 +13112,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Custom Sterile and Non-Sterile Procedural Kits…",
-      "hazard": "quality",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 2,
       "grouped_products": [
@@ -13128,10 +13139,11 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "quality"
+        "quality",
+        "sterility"
       ],
-      "tier": 8,
-      "band": "CHECK",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -13165,6 +13177,7 @@
       "category_group": "Play",
       "hazards": [
         "contamination",
+        "mold",
         "undeclared"
       ],
       "tier": 2,
@@ -13647,7 +13660,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Skincare",
       "display_name": "SWAN PETROLEUM JELLY",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 10,
       "grouped_products": [
@@ -13714,7 +13727,7 @@
       "category_family": "Toys",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -13787,7 +13800,8 @@
       "category_group": "Health",
       "hazards": [
         "contamination",
-        "mold"
+        "mold",
+        "sterility"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -14117,7 +14131,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Wipes",
       "display_name": "Cosmetic products purchased from Family Dollar retail…",
-      "hazard": "general",
+      "hazard": "sanitation",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -14133,10 +14147,10 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "sanitation"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -14341,7 +14355,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Philips",
-      "hazard": "general",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -14357,10 +14371,10 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -14673,7 +14687,8 @@
       "category_group": "Wear",
       "hazards": [
         "fall",
-        "labeling"
+        "labeling",
+        "unapproved"
       ],
       "tier": 3,
       "band": "ACT NOW",
@@ -14802,7 +14817,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "regard Clinical Packaging Solutions",
-      "hazard": "general",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -14818,10 +14833,10 @@
       "category_family": "Other",
       "category_group": "Other",
       "hazards": [
-        "general"
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -14921,7 +14936,8 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "contamination"
+        "contamination",
+        "manufacturing"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -14941,7 +14957,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Medtronic Custom Perfusion kits, with the following…",
-      "hazard": "general",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -14957,10 +14973,10 @@
       "category_family": "Other",
       "category_group": "Other",
       "hazards": [
-        "general"
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -15097,7 +15113,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Baby Sunscreen",
       "display_name": "Coppertone Pure & Simple baby 50 Sunscreen Spray (To…",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 2,
       "grouped_products": [
@@ -15124,7 +15140,7 @@
       "category_family": "Medications & supplements",
       "category_group": "Health",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -15180,7 +15196,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "REGARD Newborn Tray",
-      "hazard": "quality",
+      "hazard": "manufacturing",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -15196,10 +15212,11 @@
       "category_family": "Other",
       "category_group": "Other",
       "hazards": [
+        "manufacturing",
         "quality"
       ],
-      "tier": 8,
-      "band": "CHECK",
+      "tier": 4,
+      "band": "ACT SOON",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -15433,7 +15450,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Philips, HEARTSTART, INFANT/CHILD - SMART PADS CARTRIDGE",
-      "hazard": "labeling",
+      "hazard": "sterility",
       "action": "Stop using this immediately. Lead exposure is especially harmful to babies and young children. Ask your pediatrician whether a blood lead test is recommended.",
       "product_count": 1,
       "grouped_products": [],
@@ -15449,10 +15466,11 @@
       "category_family": "Other",
       "category_group": "Other",
       "hazards": [
-        "labeling"
+        "labeling",
+        "sterility"
       ],
-      "tier": 7,
-      "band": "CHECK",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -15558,7 +15576,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Infant Heel Warmer with Attachment Tab, Nonsterile,…",
-      "hazard": "general",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 2,
       "grouped_products": [
@@ -15585,10 +15603,10 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -15796,7 +15814,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Ferrous Sulfate",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 2,
       "grouped_products": [
@@ -15823,7 +15841,7 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -15879,7 +15897,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Medtronic Custom Pack Infant Tubingset Pixie Flow…",
-      "hazard": "general",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -15895,10 +15913,10 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -15967,7 +15985,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Ear Pain MD Pain Relief Drops For Kids (lidocaine HCl…",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 1,
       "grouped_products": [],
@@ -15983,7 +16001,7 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -16158,7 +16176,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Infant Child Starter Kits, Part Number: 3202784-009,…",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 2,
       "grouped_products": [
@@ -16185,10 +16203,10 @@
       "category_family": "Other",
       "category_group": "Other",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -16723,7 +16741,8 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "contamination"
+        "contamination",
+        "manufacturing"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -16759,7 +16778,8 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "contamination"
+        "contamination",
+        "sterility"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -16862,7 +16882,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "Stonyfield Kids Strawberry Beet Berry Tubes",
-      "hazard": "undeclared",
+      "hazard": "unapproved",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -16879,6 +16899,7 @@
       "category_group": "Feeding",
       "hazards": [
         "labeling",
+        "unapproved",
         "undeclared"
       ],
       "tier": 6,
@@ -16952,7 +16973,8 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "contamination"
+        "contamination",
+        "manufacturing"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -16972,7 +16994,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Baby Saver Capsules",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 1,
       "grouped_products": [],
@@ -16988,7 +17010,7 @@
       "category_family": "Jewelry & accessories",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -17205,7 +17227,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "MINI BABYBEL LIGHT SEMISOFT CHEESES",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 9,
       "grouped_products": [
@@ -17267,10 +17289,10 @@
       "category_family": "Jewelry & accessories",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -17438,7 +17460,8 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "contamination"
+        "contamination",
+        "manufacturing"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -17458,7 +17481,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Maquet Getinge- BEQ-TOP 28901 MCV INFANT ECC…",
-      "hazard": "general",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 2,
       "grouped_products": [
@@ -17485,10 +17508,10 @@
       "category_family": "Jewelry & accessories",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -18049,7 +18072,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "Packer Arugula Baby Organic",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -18065,10 +18088,10 @@
       "category_family": "Sleepwear & apparel",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -18322,7 +18345,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "CVS Health, Baby Nasal Spray/Drops, Non-Medicated",
-      "hazard": "quality",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 3,
       "grouped_products": [
@@ -18354,10 +18377,11 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
+        "manufacturing",
         "quality"
       ],
-      "tier": 8,
-      "band": "CHECK",
+      "tier": 4,
+      "band": "ACT SOON",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -18869,7 +18893,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Hamilton-C3 Ventilator Unit Product Usage: The…",
-      "hazard": "quality",
+      "hazard": "manufacturing",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -18885,10 +18909,11 @@
       "category_family": "Medical devices",
       "category_group": "Health",
       "hazards": [
+        "manufacturing",
         "quality"
       ],
-      "tier": 8,
-      "band": "CHECK",
+      "tier": 4,
+      "band": "ACT SOON",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -19034,7 +19059,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "MINI INFANT < 3KG, RADIOTRANSLUCENT ELECTRODE,…",
-      "hazard": "general",
+      "hazard": "sterility",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 5,
       "grouped_products": [
@@ -19076,10 +19101,11 @@
       "category_family": "Nursery electricals & monitors",
       "category_group": "Around the home",
       "hazards": [
-        "general"
+        "device_failure",
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -19604,7 +19630,8 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "contamination"
+        "contamination",
+        "mold"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -19707,7 +19734,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "A-Series A7 Anesthesia Delivery System",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 2,
       "grouped_products": [
@@ -19734,10 +19761,10 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -19926,6 +19953,7 @@
       "category_group": "Feeding",
       "hazards": [
         "contamination",
+        "manufacturing",
         "quality"
       ],
       "tier": 2,
@@ -20137,7 +20165,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "AirLife Resuscitation, Infant, with mask, oxygen…",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 9,
       "grouped_products": [
@@ -20199,10 +20227,10 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -20255,7 +20283,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Infant 25% DEXTROSE Injection",
-      "hazard": "general",
+      "hazard": "contamination",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -20267,14 +20295,14 @@
       "match_brand_squash": "hospira",
       "match_words": "hospira infant 25% dextrose injection",
       "is_urgent": true,
-      "urgent_rank": 6,
+      "urgent_rank": 3,
       "category_family": "Medical devices",
       "category_group": "Health",
       "hazards": [
-        "general"
+        "contamination"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 2,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -20686,7 +20714,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Kids' Relief Ear Relief Oral Liquid",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 3,
       "grouped_products": [
@@ -20718,7 +20746,7 @@
       "category_family": "Other",
       "category_group": "Other",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -21369,7 +21397,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Hamilton G5 with software version between v2.41, v2.42,…",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -21385,10 +21413,10 @@
       "category_family": "Medical devices",
       "category_group": "Health",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -21798,7 +21826,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "The \"Pacifier Activated Lullaby\" (PAL) System composed…",
-      "hazard": "labeling",
+      "hazard": "unapproved",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -21814,9 +21842,10 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "labeling"
+        "labeling",
+        "unapproved"
       ],
-      "tier": 7,
+      "tier": 6,
       "band": "CHECK",
       "record_type": "recall",
       "in_feed_scope": true
@@ -22058,7 +22087,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Infant Heel Warmer and Infant Gel Warmer, sold under…",
-      "hazard": "general",
+      "hazard": "unapproved",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -22074,10 +22103,10 @@
       "category_family": "Other",
       "category_group": "Other",
       "hazards": [
-        "general"
+        "unapproved"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 6,
+      "band": "CHECK",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -22682,7 +22711,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "PREMIUM PROTEIN III For kids Nutritional Supplement",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 1,
       "grouped_products": [],
@@ -22698,7 +22727,7 @@
       "category_family": "Jewelry & accessories",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -23014,7 +23043,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Model Number(s): PB840 Ventilator (4-840120DIUU-XX).…",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -23030,10 +23059,10 @@
       "category_family": "Medical devices",
       "category_group": "Health",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -23264,7 +23293,8 @@
       "category_family": "Sleep — mattresses & bedding",
       "category_group": "Sleep",
       "hazards": [
-        "contamination"
+        "contamination",
+        "sterility"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -23776,7 +23806,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Philips HeartStart FR3 Automated External Defibrillator…",
-      "hazard": "general",
+      "hazard": "device_failure",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -23792,10 +23822,10 @@
       "category_family": "Sleepwear & apparel",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "device_failure"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 3,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -23812,7 +23842,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Dermamedics Baby's Relief Calm and Repair Cream in",
-      "hazard": "undeclared",
+      "hazard": "unapproved",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -23828,6 +23858,7 @@
       "category_family": "Sleepwear & apparel",
       "category_group": "Wear",
       "hazards": [
+        "unapproved",
         "undeclared"
       ],
       "tier": 6,
@@ -24425,7 +24456,8 @@
       "category_family": "Medications & supplements",
       "category_group": "Health",
       "hazards": [
-        "contamination"
+        "contamination",
+        "sterility"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -24445,7 +24477,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Concentrated Motrin (ibuprofen) Infants' Drops Oral…",
-      "hazard": "general",
+      "hazard": "contamination",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -24461,10 +24493,10 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "contamination"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 2,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -24553,7 +24585,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medical",
       "display_name": "Medtronic Affinity Pediatric Arterial Filter",
-      "hazard": "general",
+      "hazard": "contamination",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 1,
       "grouped_products": [],
@@ -24569,10 +24601,11 @@
       "category_family": "Sleepwear & apparel",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "contamination",
+        "sterility"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 2,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -24749,7 +24782,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "Happy Kids Creamy Peanut Butter, packed in",
-      "hazard": "general",
+      "hazard": "mold",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 3,
       "grouped_products": [
@@ -24781,7 +24814,7 @@
       "category_family": "Food & formula",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "mold"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -24837,7 +24870,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Benjamins Infants Gripe Mixture, Each",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 1,
       "grouped_products": [],
@@ -24853,7 +24886,7 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -25258,7 +25291,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Oral Care",
       "display_name": "Orajel Kids My Way! Anticavity Fluoride (sodium…",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 1,
       "grouped_products": [],
@@ -25274,7 +25307,7 @@
       "category_family": "Oral care & teething",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -26039,7 +26072,8 @@
       "category_family": "Sleepwear & apparel",
       "category_group": "Wear",
       "hazards": [
-        "contamination"
+        "contamination",
+        "sterility"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -26112,7 +26146,8 @@
       "category_group": "Play",
       "hazards": [
         "bacteria",
-        "contamination"
+        "contamination",
+        "sterility"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -26204,7 +26239,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Infant's PANADOL (Acetaminophen) Drops",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 1,
       "grouped_products": [],
@@ -26220,7 +26255,7 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -26312,7 +26347,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Food & Formula",
       "display_name": "\" CALCIGENOLITO Doble Para Ninos / Kids Doble Con…",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 1,
       "grouped_products": [],
@@ -26328,7 +26363,7 @@
       "category_family": "Sleepwear & apparel",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -27525,7 +27560,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Acetaminophen, Infant Oral Drop",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 2,
       "grouped_products": [
@@ -27552,7 +27587,7 @@
       "category_family": "Medications & supplements",
       "category_group": "Health",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -27572,7 +27607,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Simethicone, Infants",
-      "hazard": "general",
+      "hazard": "manufacturing",
       "action": "Stop using this product. It was made outside required quality standards, which can mean a contamination or safety risk. Return it for a refund.",
       "product_count": 1,
       "grouped_products": [],
@@ -27588,7 +27623,7 @@
       "category_family": "Jewelry & accessories",
       "category_group": "Wear",
       "hazards": [
-        "general"
+        "manufacturing"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -27815,7 +27850,8 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "contamination"
+        "contamination",
+        "mold"
       ],
       "tier": 2,
       "band": "ACT NOW",
@@ -28448,7 +28484,7 @@
       "url": "https://www.accessdata.fda.gov/scripts/ires/index.cfm#tabNav_advancedSearch",
       "display_category": "Medications",
       "display_name": "Infant Tylenol Concentrated Drops Cherry Flavor",
-      "hazard": "general",
+      "hazard": "contamination",
       "action": "Stop using this product and follow the manufacturer's recall instructions for a refund or replacement. Contact your pediatrician if your baby was exposed and shows any symptoms.",
       "product_count": 2,
       "grouped_products": [
@@ -28475,10 +28511,10 @@
       "category_family": "Outdoor & play equipment",
       "category_group": "Play",
       "hazards": [
-        "general"
+        "contamination"
       ],
-      "tier": 4,
-      "band": "ACT SOON",
+      "tier": 2,
+      "band": "ACT NOW",
       "record_type": "recall",
       "in_feed_scope": true
     },
@@ -32048,7 +32084,7 @@
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
       "display_category": "Food & Formula",
       "display_name": "Baby Food",
-      "hazard": "general",
+      "hazard": "mold",
       "action": "Stop feeding this immediately and throw it out (or return it to the store for a refund). Check the lot on the package against the recall notice. If your baby ate it and seems unwell, contact your pediatrician.",
       "product_count": 1,
       "grouped_products": [],
@@ -32067,7 +32103,7 @@
       "category_family": "Feeding & high chairs",
       "category_group": "Feeding",
       "hazards": [
-        "general"
+        "mold"
       ],
       "tier": 4,
       "band": "ACT SOON",
@@ -35709,6 +35745,50 @@
       "urgent_rank": 1
     }
   ],
-  "categories": 9,
-  "total_products": 1267
+  "categories": [
+    "Bath & water safety",
+    "Button cells & batteries",
+    "Car seats & travel",
+    "Feeding & high chairs",
+    "Food & formula",
+    "Gates, rails & childproofing",
+    "Helmets & wheeled toys",
+    "Household chemicals",
+    "Jewelry & accessories",
+    "Lighters & fire hazards",
+    "Medical devices",
+    "Medications & supplements",
+    "Nursery electricals & monitors",
+    "Nursery furniture & tip-over",
+    "Oral care & teething",
+    "Other",
+    "Outdoor & play equipment",
+    "Skincare, bath & diapering",
+    "Sleep — cribs, bassinets, loungers",
+    "Sleep — mattresses & bedding",
+    "Sleepwear & apparel",
+    "Strollers & carriers",
+    "Toys",
+    "Walkers, swings & bouncers"
+  ],
+  "total_products": 1267,
+  "schema": {
+    "hazards": "list of all matching hazards, not first match",
+    "tier": "1-8 severity computed from the hazard list",
+    "band": "ACT NOW 1-3 / ACT SOON 4-5 / CHECK 6-8",
+    "category_family": "25 product families",
+    "category_group": "7 browse groups",
+    "record_type": "recall | warning",
+    "in_feed_scope": "false = searchable but outside the 0-4 feed"
+  },
+  "groups": [
+    "Around the home",
+    "Feeding",
+    "Health",
+    "Other",
+    "Out & about",
+    "Play",
+    "Sleep",
+    "Wear"
+  ]
 }
