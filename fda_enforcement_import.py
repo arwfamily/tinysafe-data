@@ -139,7 +139,14 @@ def build(row):
     rec['brand'] = tcur.clean(firm)
     rec['reason'] = tcur.clean(reason)
 
-    fam = tcat.family_for_fda(row.get('Product Type'), tcur.key(f"{desc} {firm}"))
+    # Persist the source's own product type. Deriving it back from `category`
+    # at merge time was circular — category is computed from category_family,
+    # which was being computed from category — and it silently misfiled
+    # cosmetics and drugs into Feeding.
+    ptype = (row.get('Product Type') or '').strip()
+    if ptype:
+        rec['product_type'] = ptype
+    fam = tcat.family_for_fda(ptype, tcur.key(f"{desc} {firm}"))
     rec['category_family'] = fam
     rec['category_group'] = tcat.group(fam)
     hz, tier = thaz.derive(rec['reason'], rec['product_name'], fam)
