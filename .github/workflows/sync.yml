@@ -40,7 +40,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "TinySafe Sync Bot"
-          git add recalls_unified.json recalls_pipeline.json
+          git add recalls_unified.json recalls_pipeline.json recalls_full.jsonl
           if git diff --cached --quiet; then
             echo "No changes."
           else
