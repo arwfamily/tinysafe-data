@@ -58,6 +58,49 @@ def _date(s):
     return ''
 
 
+def read_jsonl(path):
+    """Compact enforcement records, one JSON object per line.
+
+    The nine raw CSV exports total 40.5 MB — too large for GitHub's web
+    uploader, and 62% of that was `code_info` spillover across up to 58 columns.
+    Reduced to the fields this importer actually reads, with lot lists capped,
+    the same 2,945 records fit in 4.5 MB.
+    """
+    import json as _json
+    with open(path, encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            r = _json.loads(line)
+            yield {
+                'Recall Number': r.get('recall_id', ''),
+                'Product Description': r.get('product_name', ''),
+                'Recalling Firm': r.get('brand', ''),
+                'Reason for Recall': r.get('reason', ''),
+                'Classification': r.get('classification', ''),
+                'Status': r.get('status', ''),
+                'Product Quantity': r.get('units', ''),
+                'Distribution Pattern': r.get('distribution', ''),
+                'Event ID': r.get('event_id', ''),
+                'City': r.get('firm_city', ''),
+                'State/Province': r.get('firm_state', ''),
+                'Country': r.get('firm_country', ''),
+                'Recall Initiation Date': r.get('initiated_date', ''),
+                'Center Classification Date': r.get('classified_date', ''),
+                'Termination Date': r.get('terminated_date', ''),
+                'Voluntary/Mandated': r.get('recall_initiated_by', ''),
+                'Initial Firm Notification of Consignee or Public': r.get('firm_notification', ''),
+                'Product Type': r.get('product_type', ''),
+                'Report Date': r.get('report_date', ''),
+                '_code_info': r.get('code_info', ''),
+            }
+
+
+def read_any(path):
+    return read_jsonl(path) if path.endswith('.jsonl') else read_csv(path)
+
+
 def read_csv(path):
     """Yield raw rows with the code-info spillover rejoined."""
     with open(path, encoding='utf-8-sig', newline='') as f:
@@ -111,7 +154,7 @@ def import_files(paths, existing_ids, log=print):
     """Returns (new records, enrichment updates keyed by recall_id)."""
     new, enrich, seen = [], {}, set()
     for p in paths:
-        for row in read_csv(p):
+        for row in read_any(p):
             rid = (row.get('Recall Number') or '').strip()
             if not rid or rid in seen:
                 continue
