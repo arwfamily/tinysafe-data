@@ -36,6 +36,13 @@ jobs:
       - name: Merge with manual archives
         run: python merge_sources.py .
 
+      # Reports, never blocks. A recall app that skips a day because one check
+      # cried wolf is worse than one that ships a flawed record — the other
+      # 6,264 are fine, and a formula recall posted yesterday needs to arrive
+      # today. Read the output; act on it yourself.
+      - name: Audit (report only)
+        run: python tinysafe_audit.py . || true
+
       - name: Commit changes if any
         run: |
           git config --local user.email "action@github.com"
