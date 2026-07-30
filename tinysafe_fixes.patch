@@ -1,0 +1,486 @@
+--- a/merge_sources.py
++++ b/merge_sources.py
+@@ -157,14 +157,41 @@
+ # CPSC archive records carry only the recall title, never a separate brand.
+ # My Brands matches on `brand`, so without this every one of the 4,158 archive
+ # records is invisible to a parent following Graco or Fisher-Price.
++# A heading may open with a subordinate clause before naming the company. CPSC
++# closes that clause with a comma; the URL slug drops punctuation, which is why
++# three attempts to read the brand off the slug all failed. The heading itself
++# is in recalls_full.jsonl on 4,002 records and carries the comma.
++_LEAD_CLAUSE = re.compile(
++    r'^(?:following|after|because of|due to|amid|citing|in (?:the )?wake of|'
++    r'in response to|near|risk of|reports? of|death of|strangulation|'
++    r'prompted by)\b[^,]{0,90},\s*', re.I)
++# CPSC's title grammar is "<COMPANY> Recalls <PRODUCT> Due to <HAZARD>".
++# Anything from the verb onward is not the company, which is what let
++# `IKEA Reannounces`, `Kids2 Reannounces` and `Fisher-Price Reannounces` ship
++# as brands - and those are the Rock 'n Play and Rocking Sleeper
++# re-announcements, so My Brands missed them for the exact brands a parent
++# would follow after an infant-sleep death.
++_HEAD_VERB = re.compile(
++    r'\s+(?:recalls?|recalled|reannounces?|reannounced|expands?|expanded|'
++    r'announces?|announced|urges?|warns?|reissues?)\b', re.I)
++
+ _ANNOUNCEMENT = re.compile(
+     r'^(?:cpsc|fda|nhtsa)\s+(?:urges?|warns?|announces?|alerts?|advises?)\s+'
+     r'(?:consumers?|parents?|the\s+public)?\s*(?:to\s+)?'
+     r'(?:stop\s+using|check|immediately|)\s*(?:their\s+homes?\s+for\s+)?'
+     r'(?:numerous\s+)?', re.I)
+ 
++# `new` is a generic opener only when it modifies the product word after it
++# ("New Children's Pajamas"). In "New York Lighter Company", "New York Firm"
++# and "New Port Sales" it is the first word of the name, and stripping it gave
++# `York Lighter Company` - a plausible-looking brand that is simply wrong,
++# which is why it was never caught. Require a generic word to follow.
++_NEW_GENERIC = re.compile(
++    r'^new\s+(?=(?:the|a|an|certain|all|various|assorted|recalled|children|'
++    r'kids?|baby|babies|infant|toddler|girls?|boys?|youth|juvenile|model|'
++    r'style|line)\b)', re.I)
+ _STOPHEAD = re.compile(
+-    r'^(the|a|an|certain|all|various|assorted|new|recalled|children\'?s?|childrens|'
++    r'^(the|a|an|certain|all|various|assorted|recalled|children\'?s?|childrens|'
+     r'kids?|baby|babies|infant|infants|toddler|toddlers|girls?|boys?|youth|juvenile|'
+     r'wooden|wood|plastic|metal|organic|natural|mini|large|small|portable|'
+     r'\d+[a-z]*)\s+', re.I)
+@@ -176,11 +203,55 @@
+     r'set|sets|kit|kits|with|and|due|for)\b', re.I)
+ 
+ 
++# CPSC titles come in two voices. Active - "<COMPANY> Recalls <PRODUCT>" - puts
++# the firm first. Passive - "<PRODUCT> Recalled by <FIRM>" - puts it last, and
++# 425 headings are passive. Reading only the front of a passive title gave
++# `Nightgowns` for two different firms (AOSKERA and AllMeInGeld), so two
++# unrelated recalls shared one brand string and My Brands could match neither.
++#
++# The front is still preferred when it names a real consumer brand: in
++# "Bunz Kidz Children's Sleepwear Sets Recalled by Stargate Apparel" a parent
++# follows Bunz Kidz, not the manufacturer. The firm after `by` is the fallback
++# when the front is nothing but product words, and is kept alongside it either
++# way - Philips Avent and Philips Personal Health are both true.
++_RECALLED_BY = re.compile(
++    r'\brecalled by\s+(.+?)(?=\s+due to\b|\s+because\b|;|$)', re.I)
++# Words that cannot be a brand on their own.
++_GENERIC_ONLY = re.compile(
++    r"^(?:[\s,&'-]|children'?s?|childrens|kids?|baby|babies|infant|infants|"
++    r"toddlers?|girls?|boys?|youth|juvenile|toy|toys|pajamas?|nightgowns?|robes?|"
++    r"sleepwear|garments?|blanket|sleepers?|bumpers?|crib|cribs|stroller|strollers|"
++    r"walkers?|helmets?|swings?|dressers?|mattress(?:es)?|sets?|kits?|tools?|"
++    r"boots?|jackets?|hoodies|sweatshirts?|apparel|clothing|bed|rails?|"
++    r"and|with|due|the|a|an)+$", re.I)
++# The agency is never the recalling company.
++_AGENCY_ONLY = re.compile(r'^(?:cpsc|fda|nhtsa|u\.?s\.? cpsc)\b[\s,]*(?:again|announce\w*)?$', re.I)
++
++
++def firm_from_title(title):
++    """The company named after a passive `Recalled by`, or ''."""
++    m = _RECALLED_BY.search(tc.clean(title or ''))
++    if not m:
++        return ''
++    firm = re.split(r'\s+(?:due|because|after|following)\b', m.group(1), 1, re.I)[0]
++    words = firm.split()[:4]
++    while words and words[-1].lower() in ('for', 'of', 'and', 'the', 'on', 'at', 'in'):
++        words.pop()
++    return ' '.join(words).strip(' ,.-\'"')
++
++
+ def brand_from_title(title):
+     """Leading proper-noun run of a CPSC recall title. Strips generic openers
+     repeatedly — "Children's Wooden Toy Blocks" must not yield "childrens"."""
+     t = _ANNOUNCEMENT.sub('', tc.clean(title or '')).strip()
++    m = _LEAD_CLAUSE.match(t)
++    if m:
++        t = t[m.end():].strip()
++    mv = _HEAD_VERB.search(t)
++    if mv and mv.start() > 0:
++        t = t[:mv.start()].strip()
+     for _ in range(4):
++        t = _NEW_GENERIC.sub('', t).strip()
+         n = _STOPHEAD.sub('', t).strip()
+         if n == t:
+             break
+@@ -190,7 +261,15 @@
+     m = _PRODNOUN.search(t)
+     head = t[:m.start()] if m and m.start() > 0 else t
+     words = [w for w in head.split() if w]
+-    return ' '.join(words[:3]).strip(' ,.-\'"') if words else ''
++    out = ' '.join(words[:3]).strip(' ,.-\'"') if words else ''
++    # Never assert a brand that is only product words or the agency name. An
++    # empty brand is honest; a wrong one silently fails every match it is asked
++    # to make and looks plausible on the card while doing it.
++    if out and (_GENERIC_ONLY.match(out) or _AGENCY_ONLY.match(out)):
++        out = firm_from_title(title) or ''
++    if out and _AGENCY_ONLY.match(out):
++        out = ''
++    return out
+ 
+ 
+ # A lot list is for checking one tin against, not for reading. The longest in
+@@ -249,14 +328,60 @@
+ # Out of scope for a 0-4 feed, in scope for search. Mirrors the narrowing
+ # sync_recalls applies to freshly fetched records.
+ # The record naming its own audience beats any pattern word.
++# FDA ships product_name as a lettered list - "a.) nara organics brand; ... b.)
++# ...". The marker survived into display_name, and because the app ignores the
++# FDA url and builds its own fda.gov search from display_name, H-1137-2026 -
++# infant formula, Clostridium botulinum, tier 1 - searched fda.gov for the
++# literal string "a.) nara organics brand".
++#
++# Only strip a marker that is part of a real enumeration: the source must carry
++# a sibling. `B. toys` is Battat's actual brand and `B. Childhood` is a real
++# company, so a rule keyed on shape alone renames a teether to "toys Firefly
++# Frank Infant Teethers" and breaks every match against it. Four marker forms
++# occur - a) a.) (a) and a bare `a.` - and reading only for `a)` misses the
++# DYNAREX baby-wipe record.
++_MARKER = r'(?:\(\s*([a-z])\s*\)|([a-z])\s*\.\s*\)|([a-z])\s*\)|([a-z])\s*\.(?=\s))'
++_MARKER_RE = re.compile(_MARKER, re.I)
++_LEAD_MARKER = re.compile(r'^\s*' + _MARKER + r'\s*', re.I)
++
++
++def _is_enumeration(text):
++    """True when the source really is a lettered list, not a brand initial."""
++    seen = {next(g for g in m.groups() if g).lower()
++            for m in _MARKER_RE.finditer(text or '')}
++    return {'a', 'b'} <= seen
++
++
++def strip_list_markers(name, source):
++    """Remove an FDA enumeration marker from a name already in the store."""
++    if not _is_enumeration(source):
++        return name
++    out = _LEAD_MARKER.sub('', name)
++    out = re.split(r'\s+(?:\(\s*b\s*\)|b\s*\.\s*\)|b\s*\))\s', out, 1, re.I)[0]
++    return out.strip(' ;,.-') or name
++
++
++def build_display_name(rec):
++    src = rec.get("product_name") or rec.get("brand") or rec.get("heading") or ""
++    name = src
++    if _is_enumeration(src):
++        name = _LEAD_MARKER.sub('', name)
++        # The first list member is the readable name; the rest are pack sizes
++        # and UPCs that no card shows.
++        name = re.split(r'\s+(?:\(\s*b\s*\)|b\s*\.\s*\)|b\s*\))\s', name, 1, re.I)[0]
++    name = name.strip(' ;,.-')
++    return (name[:77] + "...") if len(name) > 80 else name
++
++
+ def fill_legacy(rec):
+     # Repair the stored text. clean() ran when the archive was built, so any
+     # mojibake or orphaned combining mark baked in then is still there —
+     # "LullaBear\u00e2\u201e\u00a2", "LDLXLHTE\u2019 \u0304Crib Bumpers". Re-running it here is what
+     # makes a fix to the repair table reach records that already exist.
+-    for _k in ('product_name', 'brand', 'display_name', 'heading', 'plain_reason'):
++    for _k in ('product_name', 'brand', 'display_name', 'heading', 'plain_reason',
++               'reason', 'action', 'sold_at', 'incidents_text'):
+         if rec.get(_k):
+-            rec[_k] = tc.repair_text(rec[_k])
++            rec[_k] = tc.strip_markup(tc.repair_text(rec[_k]))
+ 
+     """Every key the app decodes, on every record, whatever source it came from."""
+     # Always recompute. The guard was "only if the stored value isn't a legal
+@@ -266,9 +391,22 @@
+     # saying "Medications". Sixth field found frozen at ingest; the shape is
+     # always a guard that treats "has a plausible value" as "is correct".
+     rec["display_category"] = _legacy_category(rec)
+-    if not rec.get("display_name"):
+-        n = rec.get("product_name") or rec.get("brand") or rec.get("heading") or ""
+-        rec["display_name"] = (n[:77] + "...") if len(n) > 80 else n
++    # Recompute every merge. This was the last field still guarded by
++    # "only if empty", which is the same shape as the five already fixed above:
++    # a stored value that looks plausible is treated as correct, so no rule
++    # change ever reaches the records that already exist. Two different
++    # truncators had written it (1,594 values sit at exactly 80 chars, 253 end
++    # in an ellipsis character and 246 in three dots) and neither was this line.
++    # Repair, do not rewrite. Re-deriving the field from product_name changed
++    # 2,103 of 6,256 names - mostly a different truncation of the same string -
++    # which is a blast radius nobody asked for and would bury the four records
++    # this is actually about. So: run the repair over the stored value every
++    # merge (that is the unfreeze), and only build from source when it is empty.
++    if rec.get("display_name"):
++        rec["display_name"] = strip_list_markers(
++            rec["display_name"], rec.get("product_name") or rec["display_name"])
++    else:
++        rec["display_name"] = build_display_name(rec)
+     if not rec.get("plain_reason"):
+         # Nine NHTSA campaigns from 1972-74 plus 95C035000 carry no defect or
+         # consequence text at source. Rork left them blank rather than guessing,
+@@ -809,6 +947,15 @@
+         'hazards', 'tier', 'band', 'category_family', 'category_group',
+         'record_type', 'in_feed_scope', 'code_info', 'remedy_type', 'incidents_text',
+         'age_band', 'direct_use', 'priority_rank', 'category_label', 'category_order',
++        # The heading was dropped from the app payload on all 6,256 records while
++        # sitting complete on 4,042 in the archive, and three separate problems
++        # were unsolvable without it: the brand for 16-204 (the company is named
++        # only here), the adult/child split on bed rails (`JOKOSIS Adult Portable
++        # Bed Rails` in the heading, `JOKOSIS Portable Bed Rails` in the product
++        # name), and every search that read display_name and found no company.
++        # It is the authoritative source string; deriving from it and then
++        # discarding it means no later rule can ever check its own work.
++        'heading',
+         # Units matter as much as deaths and cover far more records: a recall of
+         # four million cribs and one of two hundred differ by four orders of
+         # magnitude in whether this parent owns it. Deaths say the hazard
+@@ -889,6 +1036,13 @@
+         meta['updated'] = prev_updated
+         print('  no record changes — keeping the previous updated stamp so the '
+               'commit stays empty')
++    # Emit in severity order. The array was in merge order (58.8% of adjacent
++    # pairs ascending, i.e. none), so any client that renders file order, or
++    # that sorts on a key with ties, fell back to an arbitrary sequence. Sorting
++    # here costs nothing and means the file is correct even for a reader that
++    # does no sorting at all. Ties break on the newer recall first.
++    app.sort(key=lambda r: (r.get('priority_rank') or 99999,
++                            str(r.get('recall_date') or ''), str(r.get('recall_id') or '')))
+     with open(f'{repo}/recalls_unified.json', 'w', encoding='utf-8') as f:
+         json.dump({**meta, 'recalls': app}, f, ensure_ascii=False)
+ 
+--- a/tinysafe_curate.py
++++ b/tinysafe_curate.py
+@@ -14,6 +14,7 @@
+ """
+ import re
+ import unicodedata
++import unicodedata
+ 
+ # --------------------------------------------------------------------------
+ # text normalisation. CPSC uses U+2019, curly double quotes, en/em dashes and
+@@ -51,16 +52,60 @@
+ 
+ 
+ def repair_text(s):
+-    t = str(s or '')
++    # NFC first. "LullaBear\u00e2\u201e\u00a2" arrives DECOMPOSED - `a` + U+0302 + U+201E +
++    # U+00A2 - so the table's precomposed key (U+00E2) never matched, and
++    # _ORPHAN_MARK could not strip the mark either, because a letter precedes
++    # it. Composing first turns `a`+U+0302 into U+00E2 and the existing
++    # ('\u00e2\u201e\u00a2', '\u2122') entry then fires. One line, no new table entry.
++    t = unicodedata.normalize('NFC', str(s or ''))
+     for bad, good in _MOJIBAKE:
+         if bad in t:
+             t = t.replace(bad, good)
+     return _ORPHAN_MARK.sub('', t)
+ 
+ 
++# CPSC's notices are scraped from HTML and the anchor tags did not survive: the
++# href stayed, truncated, and the link TEXT was pushed out past a leftover
++# attribute. 1,908 field values across hazard_text, action and sold_at carry the
++# debris, and the sentence a parent reads comes out as
++#
++#   "violate the mandatory safety standard for
++#    https://www.cpsc.gov/Business--Manufacturing/Busines... lang="EN-US">children's
++#    sleepwear, posing a risk of burn injury or death to children."
++#
++# Nothing is lost - the link text is still there, on the far side of the junk.
++# So this removes the href and the orphaned attributes and KEEPS the text,
++# recovering "children's sleepwear", "Virginia Graeme Baker Pool and Spa Safety
++# Act (VGBA)" and "toys". A rule that deleted the whole span would throw away
++# the only words that say which standard was violated.
++# The scraped href can contain whitespace where the source HTML wrapped a long
++# URL - "https://www.cpsc.gov/Business-- Manufacturing/Business-Education/...".
++# Matching \S+ stopped at that space and left the second half of the URL sitting
++# in the sentence as though it were a word: "the mandatory safety standard for
++# Manufacturing/Business-Education/Busines...". The debris always terminates at
++# the orphaned `>`, so consume up to it rather than up to the first space.
++_LINK_DEBRIS = re.compile(
++    r'\s*https?://[^>]{0,400}?'
++    r'(?:&gt;|>)\s*', re.I)
++# A url with nothing after it. Allow the same wrapped-whitespace shape, but stop
++# at a sentence boundary so ordinary prose after a bare link is never eaten.
++_BARE_URL = re.compile(
++    r'\s*\(?\s*https?://(?:\S|\s(?=\S*[/.]))*\.{0,3}\s*\)?', re.I)
++
++
++def strip_markup(s):
++    """Drop scraped-HTML debris without dropping the words it swallowed."""
++    t = str(s or '')
++    t = t.replace('&nbsp;', ' ')
++    t = _LINK_DEBRIS.sub(' ', t)      # href + orphaned attributes, link text kept
++    t = _BARE_URL.sub(' ', t)         # a url that had no text after it
++    t = re.sub(r'\s+([,.;:])', r'\1', t)
++    return re.sub(r'\s{2,}', ' ', t).strip()
++
++
+ def clean(s) -> str:
+     """Human-readable normalised text: entities gone, smart punctuation flattened."""
+-    s = repair_text(s)
++    s = strip_markup(repair_text(s))
+     for k, v in _MOJI.items():
+         s = s.replace(k, v)
+     for k, v in _ENT.items():
+@@ -278,22 +323,73 @@
+     r'\bbed\s?assist\b|\bgrab\s?bars?\b|\brollators?\b|\bcommodes?\b|'
+     r'\btransfer\s?(?:bench|board)e?s?\b', re.I)
+ 
+-# Products a child must never be handed, whatever the recall reason.
+-ADULT_ONLY_PRODUCT = re.compile(
++# Adult consumables a child never uses directly. These are NOT curated out:
++# 21-759 is recalled under the Child Nicotine Poisoning Prevention Act, so the
++# record exists because of children even though the product is for adults.
++# Deleting it answers the wrong question. Rank answers the right one - a product
++# an infant uses directly outranks one where the child is the second-order
++# victim - and the severity model already has that axis in `contact`, where an
++# adult consumable is `environmental` and sinks on its own.
++ADULT_CONSUMABLE = re.compile(
+     r'\bliquid nicotine\b|\be.?liquid\b|\bvape\b|\be.?cigarettes?\b|'
+     r'\bnicotine (?:pouch|salt)', re.I)
+ CHILD_VETO = re.compile(r"\bchild(?:ren)?(?:'?s)?\b|\binfants?\b|\bbab(?:y|ies)\b|\btoddlers?\b", re.I)
+ 
+ 
+-def _adult_equipment(product):
++# CPSC states the audience in the HEADING, not the product name. Keying on the
++# product name removed 24 bed rails and left 23 of the same class in, because it
++# was reading the manufacturer's naming habit:
++#
++#   product_name  JOKOSIS Portable Bed Rails
++#   heading       JOKOSIS ADULT Portable Bed Rails Recalled Due to ...
++#
++# The heading decides 44 of 47 unambiguously. It is also the field the pipeline
++# was discarding, which is why this looked undecidable.
++_HEAD_ADULT = re.compile(r"\badults?\b", re.I)
++_HEAD_CHILD = re.compile(r"\bchildren'?s?\b|\btoddlers?\b|\binfants?\b|\bbab(?:y|ies)\b", re.I)
++
++
++def _adult_equipment(product, heading=''):
++    """Adult mobility equipment. Audience read from the heading where it exists."""
+     name = str(product or '')
+-    if ADULT_ONLY_PRODUCT.search(name):
+-        return True          # no child veto: nicotine is not a children's product
++    head = str(heading or '')
++    if not ADULT_EQUIPMENT.search(name) and not ADULT_EQUIPMENT.search(head):
++        return False
++    if _HEAD_CHILD.search(head) and not _HEAD_ADULT.search(head):
++        return False
++    if _HEAD_ADULT.search(head):
++        return True
+     if CHILD_VETO.search(name):
+         return False
+     return bool(ADULT_EQUIPMENT.search(name))
+ 
+ 
++# Last resort for the handful of headings that name no audience at all. CPSC's
++# own notices are consistent about this: the adult standard is written about
++# "users", the children's standard about "children". Applied only after the
++# heading has been read and found silent, and every record it decides is listed
++# in the build output so the call can be checked rather than trusted.
++_MOBILITY_CLASS = re.compile(
++    r'\bbed\s?rails?\b|\bbed\s?assist\b|\bgrab\s?bars?\b|\brollators?\b|'
++    r'\bcommodes?\b|\btransfer\s?(?:bench|board)', re.I)
++_VICTIM_ADULT = re.compile(r'\busers?\b', re.I)
++_VICTIM_CHILD = re.compile(
++    r"\bchild(?:ren)?'?s?\b|\binfants?\b|\bbab(?:y|ies)\b|\btoddlers?\b", re.I)
++
++
++def adult_equipment_undecided(product, heading, hazard_text):
++    """True when the heading is silent and the hazard prose says `users`."""
++    head = str(heading or '')
++    if _HEAD_ADULT.search(head) or _HEAD_CHILD.search(head):
++        return False
++    # Wider gate than ADULT_EQUIPMENT: a bare "OasisSpace Bed Rails" names no
++    # adult word anywhere, which is exactly the case this fallback exists for.
++    if not _MOBILITY_CLASS.search(str(product or '') + ' ' + head):
++        return False
++    t = str(hazard_text or '')
++    return bool(_VICTIM_ADULT.search(t)) and not _VICTIM_CHILD.search(t)
++
++
+ def curate(product='', heading='', description='', hazard='', extra=''):
+     """
+     Returns (in_scope: bool, signals: list[str], excluded_by: str|None).
+@@ -312,8 +408,10 @@
+         sig.append('victim')
+     if S3_STANDARD.search(all_blob):
+         sig.append('standard')
+-    if _adult_equipment(product):
++    if _adult_equipment(product, heading):
+         return False, [], 'adult mobility equipment'
++    if adult_equipment_undecided(product, heading, f'{description} {hazard}'):
++        return False, [], 'adult mobility equipment (victim language)'
+     if not sig and _brand_hit(f'{product} {heading}'):
+         sig.append('known_brand')
+ 
+--- a/tinysafe_categories.py
++++ b/tinysafe_categories.py
+@@ -179,8 +179,14 @@
+ # a prefix that existed to disambiguate it from its group, and with no group
+ # there is nothing to disambiguate from.
+ LABELS = {
+-    'Sleep — cribs, bassinets, loungers': 'Cribs & bassinets',
+-    'Sleep — mattresses & bedding': 'Mattresses & bedding',
++    # Both members are named on each side so a parent can place a borderline
++    # item without guessing: a crib mattress reads as bedding because bedding
++    # says "mattresses", and a play yard reads as furniture because furniture
++    # says "play yards". The hazard data supports the split - the structures
++    # carry entrapment 103 and fall 82, the soft goods carry suffocation 67 -
++    # and the stored family strings are unchanged, so contract 3 holds.
++    'Sleep — cribs, bassinets, loungers': 'Cribs, bassinets & play yards',
++    'Sleep — mattresses & bedding': 'Mattresses, bumpers & bedding',
+     'Feeding & high chairs': 'Feeding & high chairs',
+     'Outdoor & play equipment': 'Outdoor play',
+     'Nursery furniture & tip-over': 'Furniture & tip-over',
+--- a/tinysafe_severity.py
++++ b/tinysafe_severity.py
+@@ -77,7 +77,18 @@
+     """
+     if record_type == 'warning':
+         return 0
+-    return 0 if str(remedy_type or '').strip().lower() == 'dispose' else 1
++    # Equality on a comma-joined field. `Dispose` scored 0 while
++    # `Dispose, No Remedy Available` - the strictly worse situation - scored 1,
++    # and the 36 records whose remedy_type is exactly "No Remedy Available"
++    # scored 1 as well. Same boundary shape as `sleeper` not matching
++    # `sleepers`. `Dispose, Refund` keeps its 1: a refund is somebody coming.
++    rt = str(remedy_type or '').strip().lower()
++    if not rt:
++        return 1          # unstated is unknown, not "nobody is coming"
++    if 'no remedy available' in rt:
++        return 0
++    parts = {p.strip() for p in rt.split(',') if p.strip()}
++    return 0 if parts <= {'dispose'} else 1
+ 
+ 
+ _UNITS = re.compile(r'([\d][\d,]*)')
+--- a/tinysafe_hazard.py
++++ b/tinysafe_hazard.py
+@@ -96,13 +96,29 @@
+     'subpotent': 6, 'undeclared': 6,
+     'labeling': 7,
+     'quality': 8,
+-    'general': UNMAPPED_TIER if False else 4,
++    'general': 4,
+ }
+ UNMAPPED_TIER = 4
+ 
+ # Lead is a special case. On something a child puts in their mouth it is an
+ # immediate ingestion route; on a wall-mounted item it is not. CPSC does not
+ # make this distinction, so the product family does.
++# Ingested mycotoxin is not mould on a fabric surface. `mold` matched patulin,
++# aflatoxin and visible growth alike and gave them all tier 4, so a mycotoxin in
++# infant food ranked with a mouldy tent. 21 of the 36 mould records are
++# Food & formula. Same one-word-two-events shape as choking, same branch.
++INGESTED_FAMILIES = {
++    'Food & formula', 'Medications & supplements', 'Personal care & medicine',
++}
++
++# 16 CFR 1615/1616 exist because children burned to death in nightwear: loose
++# nightgowns ignite and the child is asleep and alone. `flammable` sat flat at
++# tier 3 across 234 records of which 206 are Sleepwear & apparel, ranking a
++# nightgown that fails the standard alongside a flammable outdoor toy. Tier 2 -
++# lethal, but the mechanism needs an ignition event - is the honest read; it is
++# not tier 1, which is for hazards that need no event at all.
++SLEEPWEAR_FAMILIES = {'Sleepwear & apparel', 'Sleep \u2014 mattresses & bedding'}
++
+ MOUTHABLE = {
+     'Feeding & high chairs', 'Toys', 'Jewelry & accessories',
+     'Personal care & medicine', 'Household chemicals', 'Button cells & batteries',
+@@ -134,6 +150,10 @@
+         # tip-over, which sits at tier 2.
+         if h == 'choking' and family in MOUTHABLE:
+             t = 2
++        if h == 'mold' and family in INGESTED_FAMILIES:
++            t = 2
++        if h == 'flammable' and family in SLEEPWEAR_FAMILIES:
++            t = 2
+         tiers.append(t)
+     return hits, min(tiers)
+ 
