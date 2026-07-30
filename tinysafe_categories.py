@@ -59,15 +59,31 @@ DEFINITIVE = [
     # earlier-listed word was taking the record somewhere wrong:
     #   infant walkers were filing as Toys, window blinds as Jewellery,
     #   nursing pillows as Sleep, board books as Lighters.
+    # A cradle swing is a swing, a nursery heater is an appliance, a travel
+    # mobile is a toy. All seven were sitting in the crib family because the
+    # crib pattern matched first on `cradle`, `nursery` or `crib-side`.
+    ('Nursery electricals & monitors', re.compile(r'\bspace heaters?\b|\bheaters?\b(?!\s?proof)', re.I)),
+    ('Nursery furniture & tip-over', re.compile(r'\bottomans?\b|\bpoufs?\b|\bdressers?\b|\bchests?\s+of\s+drawers\b', re.I)),
+    ('Outdoor & play equipment', re.compile(r'\btents?\b|\bplayhouses?\b|\bteepees?\b', re.I)),
     ('Walkers, swings & bouncers', re.compile(
         r'\b(?:infant|baby)\s+walkers?\b|\bbouncers?\b|\bexersaucers?\b|'
+        r'\bcradle\s?[\u2019\']?n?\s?swings?\b|\bhammock\s?swings?\b|\bswings?\b|'
         r'\b(?:baby|infant)\s+swings?\b|\bjumperoos?\b|\bactivity\s+cent(?:er|re)s?\b',
         re.I)),
     ('Window coverings & cords', re.compile(
         r'\bblinds?\b|roman shades?|roller shades?|cellular shades?|'
         r'window (?:covering|treatment|shade)s?', re.I)),
     ('Feeding & high chairs', re.compile(r'nursing pillows?|feeding pillows?', re.I)),
-    ('Toys', re.compile(r'\btoys?\b|\bdolls?\b|\bplush\b|stuffed animals?|'
+    # What goes IN the crib is not the crib. "Bubble Bear Crib Mattresses" and
+    # "SARO Braided Crib Bumpers" both contain `crib`, which was matching first
+    # and putting 42 mattresses and bumpers in with the furniture. The bedding
+    # word is the specific one; the crib word only says where it goes.
+    ('Sleep \u2014 mattresses & bedding', re.compile(
+        r'\bmattress(?:es)?\b|\bbumpers?\b|\bbedding\b|\bquilts?\b|\bcomforters?\b|'
+        r'\bblankets?\b|\bsheets?\b|\bmattress\s?pads?\b|\bcrib\s?liners?\b|'
+        r'\bsleep\s?(?:sacks?|bags?)\b|\bswaddles?\b|\bnappers?\b|\bsnuggle\s?pods?\b',
+        re.I)),
+    ('Toys', re.compile(r'\btoys?\b|\bdolls?\b|\bplush\b|stuffed animals?|\bmobiles?\b|'
                         r'\bboard books?\b|fidget|building (?:blocks?|sets?)', re.I)),
     # Appliances before food: "baby food processor" is gear. Order inside this
     # list is the tiebreak, so the narrower rule has to come first.
@@ -163,8 +179,14 @@ def load_warnings(path='warnings_raw.txt'):
 # a prefix that existed to disambiguate it from its group, and with no group
 # there is nothing to disambiguate from.
 LABELS = {
-    'Sleep — cribs, bassinets, loungers': 'Cribs & bassinets',
-    'Sleep — mattresses & bedding': 'Mattresses & bedding',
+    # Both members are named on each side so a parent can place a borderline
+    # item without guessing: a crib mattress reads as bedding because bedding
+    # says "mattresses", and a play yard reads as furniture because furniture
+    # says "play yards". The hazard data supports the split - the structures
+    # carry entrapment 103 and fall 82, the soft goods carry suffocation 67 -
+    # and the stored family strings are unchanged, so contract 3 holds.
+    'Sleep — cribs, bassinets, loungers': 'Cribs, bassinets & play yards',
+    'Sleep — mattresses & bedding': 'Mattresses, bumpers & bedding',
     'Feeding & high chairs': 'Feeding & high chairs',
     'Outdoor & play equipment': 'Outdoor play',
     'Nursery furniture & tip-over': 'Furniture & tip-over',
