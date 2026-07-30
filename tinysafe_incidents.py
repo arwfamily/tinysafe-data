@@ -53,6 +53,28 @@ INJURIES = re.compile(
     r'emergency\s+room\s+visits?)\b', re.I)
 
 
+# "One dog reportedly died from ingestion of the gel" counted as one child
+# death (12089). A badge that says a child died when a dog did is the worst
+# thing this field can do, so a sentence about an animal is removed before any
+# counting happens.
+_ANIMAL_SENTENCE = re.compile(
+    r'[^.!?]*\b(?:dogs?|cats?|puppy|puppies|kittens?|pets?|animals?|livestock|'
+    r'horses?|birds?)\b[^.!?]*(?:died|death|fatal\w*)[^.!?]*[.!?]|'
+    r'[^.!?]*(?:died|death|fatal\w*)[^.!?]*\b(?:dogs?|cats?|puppy|puppies|'
+    r'kittens?|pets?|animals?)\b[^.!?]*[.!?]', re.I)
+
+# The count can follow the noun as easily as precede it: "Death of Two
+# Toddlers", "death of 6 infants", "Death of 4 Children". Three records read as
+# one death when the notice said two, four and six - and undercounting a death
+# badge is the same failure as inventing one.
+DEATHS_AFTER = re.compile(
+    r'\b(?:deaths?|fatalit(?:y|ies))\s+of\s+' + _NUM + r'\b', re.I)
+
+
+def _strip_animals(text):
+    return _ANIMAL_SENTENCE.sub(' ', str(text or ''))
+
+
 def _largest(pattern, text):
     """Largest single count mentioned. Not a sum — notices restate totals, and
     adding "two additional deaths" to "a total of five" gives seven."""
@@ -71,15 +93,15 @@ def _largest(pattern, text):
 
 def deaths(*texts):
     """Reported deaths, or 0. Returns 1 for an unnumbered fatality mention."""
-    joined = ' '.join(str(t or '') for t in texts)
-    n = _largest(DEATHS, joined)
+    joined = _strip_animals(' '.join(str(t or '') for t in texts))
+    n = max(_largest(DEATHS, joined), _largest(DEATHS_AFTER, joined))
     if n:
         return n
     return 1 if DIED.search(joined) else 0
 
 
 def injuries(*texts):
-    return _largest(INJURIES, ' '.join(str(t or '') for t in texts))
+    return _largest(INJURIES, _strip_animals(' '.join(str(t or '') for t in texts)))
 
 
 def tier_floor(tier, death_count):
