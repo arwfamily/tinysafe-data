@@ -1307,6 +1307,12 @@ if __name__ == '__main__':
     except Exception:
         pass
 
+    # Link before the payload snapshot is taken. This ran after the `app` list
+    # was built, so related_ids reached recalls_full.jsonl but never the file
+    # the app reads — the plain_reason lesson again: any field filled after the
+    # snapshot exists only in the run log.
+    link_related(recs)
+
     app = []
     for r in recs:
         rec = {k: v for k, v in r.items() if k in APP_FIELDS and v not in (None, '', [])}
@@ -1328,7 +1334,6 @@ if __name__ == '__main__':
         meta['updated'] = prev_updated
         print('  no record changes — keeping the previous updated stamp so the '
               'commit stays empty')
-    link_related(recs)
     # Emit in severity order. The array was in merge order (58.8% of adjacent
     # pairs ascending, i.e. none), so any client that renders file order, or
     # that sorts on a key with ties, fell back to an arbitrary sequence. Sorting
