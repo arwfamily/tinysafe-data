@@ -108,10 +108,18 @@ def _firestore_users(project):
 
 # --- onesignal ---------------------------------------------------------------
 def _push(uids, title, body, recall_id, alias_field='external_id'):
+    # Production targets accounts (external_id). 'subscription' targets one
+    # device directly by its Subscription ID - test-only, exists to prove APNs
+    # delivery before the app links accounts. The OneSignal *user* ID is not a
+    # valid targeting alias; the API rejected it, which is how we learned.
+    if alias_field == 'subscription':
+        targeting = {'include_subscription_ids': uids}
+    else:
+        targeting = {'include_aliases': {alias_field: uids},
+                     'target_channel': 'push'}
     payload = json.dumps({
         'app_id': os.environ['ONESIGNAL_APP_ID'],
-        'include_aliases': {alias_field: uids},
-        'target_channel': 'push',
+        **targeting,
         'headings': {'en': title},
         'contents': {'en': body},
         'data': {'recall_id': recall_id},
@@ -151,7 +159,7 @@ def main(repo):
         # identifier); anything else is a Firebase uid targeted by external_id.
         # The OneSignal-ID path exists to prove APNs delivery end-to-end before
         # the app links accounts - production always targets external_id.
-        alias = ('onesignal_id'
+        alias = ('subscription'
                  if re.fullmatch(r'[0-9a-fA-F-]{36}', uid) else 'external_id')
         rec = max((r for r in recs if r.get('in_feed_scope')),
                   key=lambda r: str(r.get('recall_date') or ''))
