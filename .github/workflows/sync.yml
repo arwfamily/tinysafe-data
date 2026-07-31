@@ -47,7 +47,11 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "TinySafe Sync Bot"
-          git add recalls_unified.json recalls_pipeline.json recalls_full.jsonl
+          # cdrh_urls.json is the device-link cache (P33). Committing it is
+          # what makes the openFDA lookup one-time; without it every run
+          # re-queries 1,360 ids and a single outage flips links back to
+          # the dead search form for a day.
+          git add recalls_unified.json recalls_pipeline.json recalls_full.jsonl cdrh_urls.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
