@@ -518,6 +518,68 @@ def _rel_key(rec):
     return b, p
 
 
+# ---------------------------------------------------------------------------
+# P33 - 1,965 FDA records all carry the same URL: the IRES advanced-search TAB,
+# a fragment that never reaches the server, so "view original" lands a parent
+# on an empty form. For device records (Z-, 1,360 of them) a real per-record
+# page exists in the CDRH database (res.cfm?id=N), and openFDA's device/recall
+# endpoint maps recall number -> cfres_id. Look the id up once, cache it in
+# cdrh_urls.json, and rewrite the URL. Food and drug enforcement records have
+# no per-record page anywhere; they keep the shell URL and the app's
+# copy-the-number fallback covers them. Every network step is optional: a
+# lookup failure leaves the record exactly as it was, because the feed
+# skipping a day over a link repair is worse than one dead link.
+# ---------------------------------------------------------------------------
+_IRES_SHELL = 'ires/index.cfm'
+_CDRH_CACHE = 'cdrh_urls.json'
+
+
+def repair_device_urls(recs):
+    import urllib.request
+    try:
+        cache = json.load(open(_CDRH_CACHE, encoding='utf-8'))
+    except Exception:
+        cache = {}
+    targets = [r for r in recs
+               if _IRES_SHELL in str(r.get('url') or '')
+               and re.match(r'^Z-\d', str(r.get('recall_id') or '').upper())]
+    todo = [r['recall_id'] for r in targets if r['recall_id'] not in cache]
+    looked = 0
+    for i in range(0, len(todo), 20):
+        batch = todo[i:i + 20]
+        q = 'product_res_number:(' + ' '.join(f'"{n}"' for n in batch) + ')'
+        url = ('https://api.fda.gov/device/recall.json?search='
+               + urllib.parse.quote(q, safe='():"') + '&limit=100')
+        try:
+            with urllib.request.urlopen(url, timeout=20) as resp:
+                data = json.load(resp)
+        except Exception:
+            break        # rate limit or outage - keep what we have, stop asking
+        for res in data.get('results', []):
+            n = str(res.get('product_res_number') or '')
+            cid = str(res.get('cfres_id') or '')
+            if n and cid.isdigit():
+                cache[n] = cid
+        # Anything queried but absent from the answer is a known miss; "" stops
+        # us re-asking for it every day.
+        for n in batch:
+            cache.setdefault(n, '')
+        looked += len(batch)
+    fixed = 0
+    for r in targets:
+        cid = cache.get(r['recall_id'])
+        if cid:
+            r['url'] = ('https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/'
+                        'cfres/res.cfm?id=' + cid)
+            fixed += 1
+    try:
+        json.dump(cache, open(_CDRH_CACHE, 'w', encoding='utf-8'))
+    except Exception:
+        pass
+    print(f'=== device urls ===\n  {fixed} of {len(targets)} Z- records now '
+          f'link to their CDRH page ({looked} looked up this run)')
+
+
 def link_related(recs):
     """related_ids, drawn only where the source states a prior recall."""
     groups = collections.defaultdict(list)
@@ -1349,6 +1411,7 @@ if __name__ == '__main__':
     # the app reads — the plain_reason lesson again: any field filled after the
     # snapshot exists only in the run log.
     link_related(recs)
+    repair_device_urls(recs)
 
     app = []
     for r in recs:
