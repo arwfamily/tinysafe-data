@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '0 12 * * *'      # 08:00 America/New_York
   workflow_dispatch:
+    inputs:
+      test_push_uid:
+        description: 'Send ONE test push to this Firebase uid (leave empty for a normal run)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -21,7 +26,7 @@ jobs:
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install requests pandas openpyxl
+          pip install requests pandas openpyxl google-auth
 
       # 1. Automatic half — CPSC API and the FDA datatables feed.
       #    Writes recalls_pipeline.json only.
@@ -43,6 +48,21 @@ jobs:
       - name: Audit (report only)
         run: python tinysafe_audit.py . || true
 
+      # 3. Push a parent when a NEW recall matches a brand they watch.
+      #    First ever run only seeds the ledger and sends nothing. Never
+      #    blocks the sync - a broken push is a bug, a skipped feed is worse.
+      - name: Notify My Brands matches
+        env:
+          ONESIGNAL_APP_ID: ${{ secrets.ONESIGNAL_APP_ID }}
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -n "${{ github.event.inputs.test_push_uid }}" ]; then
+            python notify_new_matches.py . --test-uid "${{ github.event.inputs.test_push_uid }}" || true
+          else
+            python notify_new_matches.py . || true
+          fi
+
       - name: Commit changes if any
         run: |
           git config --local user.email "action@github.com"
@@ -51,10 +71,11 @@ jobs:
           # what makes the openFDA lookup one-time; without it every run
           # re-queries 1,360 ids and a single outage flips links back to
           # the dead search form for a day.
-          git add recalls_unified.json recalls_pipeline.json recalls_full.jsonl cdrh_urls.json
+          git add recalls_unified.json recalls_pipeline.json recalls_full.jsonl cdrh_urls.json notified_ids.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
             git commit -m "chore: daily recall sync ($(date -u +%Y-%m-%d))"
             git push
           fi
+
