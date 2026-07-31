@@ -44,6 +44,18 @@ from datetime import date, datetime, timedelta
 LEDGER = 'notified_ids.json'
 STORE = 'recalls_unified.json'
 MAX_AGE_DAYS = 14
+
+
+def _push_brand(rec):
+    """The notification title wants a brand, not a product line. brands[0] is
+    the cleanest name the pipeline extracted ('EnHomee'); the legacy brand
+    field can drag product words along ('EnHomee 9-Drawer Fabric')."""
+    for b in (rec.get('brands') or []):
+        b = str(b).strip()
+        if 2 <= len(b) <= 24:
+            return b
+    b = str(rec.get('brand') or '').strip()
+    return (b[:24].rsplit(' ', 1)[0] if len(b) > 24 else b) or 'TinySafe'
 BATCH = 2000                      # OneSignal external_id cap per call
 
 
@@ -133,6 +145,23 @@ def _push(uids, title, body, recall_id, alias_field='external_id'):
         return json.load(resp)
 
 
+def _broadcast(title, body, recall_id):
+    payload = json.dumps({
+        'app_id': os.environ['ONESIGNAL_APP_ID'],
+        'included_segments': ['Total Subscriptions'],
+        'headings': {'en': title},
+        'contents': {'en': body},
+        'data': {'recall_id': recall_id},
+    }).encode()
+    req = urllib.request.Request(
+        'https://api.onesignal.com/notifications',
+        data=payload, method='POST',
+        headers={'Content-Type': 'application/json',
+                 'Authorization': 'Key ' + os.environ['ONESIGNAL_REST_API_KEY']})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.load(resp)
+
+
 def _age_days(rec):
     s = str(rec.get('recall_date') or '').replace('-', '')[:8]
     try:
@@ -141,11 +170,13 @@ def _age_days(rec):
         return 10 ** 6
 
 
-def _card_line(rec):
+def _short_name(rec):
     name = str(rec.get('display_name') or rec.get('product_name') or 'A product')
-    if len(name) > 60:
-        name = name[:57] + '...'
-    return f'{name} has been recalled. Tap to see what to do.'
+    return name[:57] + '...' if len(name) > 60 else name
+
+
+def _card_line(rec):
+    return f'{_short_name(rec)} has been recalled. Tap to see what to do.'
 
 
 def main(repo):
@@ -163,7 +194,7 @@ def main(repo):
                  if re.fullmatch(r'[0-9a-fA-F-]{36}', uid) else 'external_id')
         rec = max((r for r in recs if r.get('in_feed_scope')),
                   key=lambda r: str(r.get('recall_date') or ''))
-        out = _push([uid], f"Recall alert: {rec.get('brand') or 'TinySafe'}",
+        out = _push([uid], f"Recall alert: {_push_brand(rec)}",
                     _card_line(rec), rec['recall_id'], alias_field=alias)
         print('test push:', rec['recall_id'], f'({alias})', '->', out)
         return
@@ -193,12 +224,31 @@ def main(repo):
 
     sent_records = []
     for rec in fresh:
+        # Major alert: a NEW recall announced with reported deaths goes to
+        # every subscriber - "we'll tell you first" can't be conditional on
+        # having registered the right brand when a child has already died.
+        # Frequency check before shipping this: 7-15 such recalls per year,
+        # about one broadcast a month. Broadcast replaces the matched send
+        # for that record so watchers don't get two notifications.
+        if rec.get('deaths_reported'):
+            n = rec['deaths_reported']
+            body = (f"{_short_name(rec)} recalled after "
+                    f"{n} reported death{'s' if n != 1 else ''}. "
+                    "Tap to check if it's in your home.")
+            try:
+                _broadcast(f"Safety alert: {_push_brand(rec)}", body,
+                           rec['recall_id'])
+                sent_records.append((rec['recall_id'], 'ALL (major alert)'))
+                ledger.add(rec['recall_id'])
+            except Exception as e:
+                print(f'  major alert failed for {rec["recall_id"]}: {e}')
+            continue
         matched = [uid for uid, keys in users if _matches(keys, rec)]
         ok = True
         for i in range(0, len(matched), BATCH):
             try:
                 _push(matched[i:i + BATCH],
-                      f"Recall alert: {rec.get('brand') or 'a brand you follow'}",
+                      f"Recall alert: {_push_brand(rec)}",
                       _card_line(rec), rec['recall_id'])
             except Exception as e:
                 print(f'  push failed for {rec["recall_id"]}: {e}')

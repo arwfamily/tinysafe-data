@@ -123,6 +123,34 @@ DEFINITIVE = [
 ]
 
 
+# P34 - a parent opened the Teething & oral care chip and found 3 records
+# while ~40 teething products sat under Toys (pull-string teething toys),
+# Feeding (pacifiers - the word list at the top catches them first),
+# Medications (Orajel swabs, Hyland's tablets - the FDA drug centre wins
+# over the name) and Food (Gerber teething snacks). The proof the split is
+# wrong: the same Gerber Soothe'n'Chew sat in Teething via its press-release
+# record and in Food via its enforcement record. Usage beats regulation for
+# a parent-facing shelf, with two exceptions that stay put:
+#   - button-battery hazard outranks everything (a battery chip that misses
+#     a battery product is a safety miss, not a taxonomy miss)
+#   - doll/figure accessories are toys - Calico Critters ships "pacifier
+#     accessories" for dolls, and a blanket pacifier rule would shelve a
+#     doll set with real pacifiers.
+_ORAL_SIGNAL = re.compile(
+    r'teething|teethers?\b|toothbrush|toothpast|mouthwash|oral care|'
+    r'orajel|\bpacifiers?\b|dental floss', re.I)
+_ORAL_NOT_DOLL = re.compile(r'\bdolls?\b|figur|playset|animal figures?', re.I)
+_ORAL_NOT_BATTERY = re.compile(
+    r'button cells?|coin batter|cr20\d\d|lr\d\d|\bbutton batter', re.I)
+
+
+def _oral_override(text):
+    t = str(text or '')
+    return (_ORAL_SIGNAL.search(t)
+            and not _ORAL_NOT_DOLL.search(t)
+            and not _ORAL_NOT_BATTERY.search(t))
+
+
 def family(text):
     """Most specific match, not the first in list order.
 
@@ -138,6 +166,8 @@ def family(text):
     is where the deliberate ordering (Bath before Outdoor for pool drains) still
     does its job.
     """
+    if _oral_override(text):
+        return 'Oral care & teething'
     # A definitive term wins outright — it names the product rather than
     # describing something the product mentions.
     for name, pat in DEFINITIVE:
@@ -319,6 +349,8 @@ FDA_TYPE_FAMILY = {
 def family_for_fda(product_type, text):
     """Family for an FDA enforcement record. Product type wins where it is
     specific; food falls through because it spans formula, purees and snacks."""
+    if _oral_override(text):
+        return 'Oral care & teething'
     forced = FDA_TYPE_FAMILY.get((product_type or "").strip())
     if forced:
         return forced

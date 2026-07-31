@@ -580,6 +580,34 @@ def repair_device_urls(recs):
           f'link to their CDRH page ({looked} looked up this run)')
 
 
+# P34 - two title debris shapes a parent actually saw on a card:
+#   ") BABY ADMIT" - the source says "kits labeled as: 1) BABY ADMIT, ..." and
+#   the derivation cut at the enumerator, keeping its closing bracket.
+#   "... Model Numbers: 6650-0004-901, ..." / "...Incubator. Model Numbers" -
+#   FDA device titles drag their model-number dump into the display name.
+# Strip leading punctuation debris; cut a trailing model-number clause when
+# what remains still names the product (>= 8 chars). ~12 records total - small
+# on purpose: titles are load-bearing for search, so only the two shapes that
+# were seen get touched.
+_TITLE_DEBRIS = re.compile(r'^[\s\)\]\},;:.\-]+')
+_MODEL_TAIL = re.compile(
+    r'[\s,.:;-]*(?:with the following )?(?:REF/?\s*)?(?:Model Numbers?|Catalog(?:ue)? (?:Numbers?|#))'
+    r'[:.]?(?:\s*[#\w][\w\s,./#-]*)?$', re.I)
+
+
+def polish_title(name):
+    # The trailing strip runs ONLY when a model tail matched - titles end in a
+    # deliberate truncation ellipsis ("...") and an unconditional strip was
+    # found eating it on 406 records during verification.
+    s = _TITLE_DEBRIS.sub('', str(name or '')).strip()
+    m = _MODEL_TAIL.search(s)
+    if m:
+        cut = s[:m.start()].rstrip(' ,.;:-')
+        if len(cut) >= 8:
+            s = cut
+    return s
+
+
 def link_related(recs):
     """related_ids, drawn only where the source states a prior recall."""
     groups = collections.defaultdict(list)
@@ -686,6 +714,7 @@ def fill_legacy(rec):
             rec["display_name"], rec.get("product_name") or rec["display_name"])
     else:
         rec["display_name"] = build_display_name(rec)
+    rec["display_name"] = polish_title(rec.get("display_name"))
     if not rec.get("plain_reason"):
         # Nine NHTSA campaigns from 1972-74 plus 95C035000 carry no defect or
         # consequence text at source. Rork left them blank rather than guessing,
@@ -728,7 +757,7 @@ def fill_legacy(rec):
         # "CPSC, Graco" is one agency and one brand, not a brand. The agency
         # prefix survives in older source records; a matcher comparing whole
         # entries never equates it with the "Graco" a parent registered.
-        _b = re.sub(r'^(?:CPSC|FDA|NHTSA)(?:,|\s+and)\s+', '', _b)
+        _b = re.sub(r'^(?:(?:CPSC|FDA|NHTSA)(?:,|\s+and)\s+)+', '', _b)
         _k = re.sub(r'[^a-z0-9]', '', _b.lower())
         # A single generic word is not a brand. "Toys R Us and Babies R Us"
         # yields `Babies`, which matches nothing a parent follows and would
