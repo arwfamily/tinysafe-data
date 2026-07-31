@@ -107,10 +107,10 @@ def _firestore_users(project):
 
 
 # --- onesignal ---------------------------------------------------------------
-def _push(uids, title, body, recall_id):
+def _push(uids, title, body, recall_id, alias_field='external_id'):
     payload = json.dumps({
         'app_id': os.environ['ONESIGNAL_APP_ID'],
-        'include_aliases': {'external_id': uids},
+        'include_aliases': {alias_field: uids},
         'target_channel': 'push',
         'headings': {'en': title},
         'contents': {'en': body},
@@ -147,11 +147,17 @@ def main(repo):
     # --test-uid: one real push to one person, nothing recorded.
     if '--test-uid' in sys.argv:
         uid = sys.argv[sys.argv.index('--test-uid') + 1]
+        # A 36-char hyphenated value is a OneSignal ID (the dashboard's own
+        # identifier); anything else is a Firebase uid targeted by external_id.
+        # The OneSignal-ID path exists to prove APNs delivery end-to-end before
+        # the app links accounts - production always targets external_id.
+        alias = ('onesignal_id'
+                 if re.fullmatch(r'[0-9a-fA-F-]{36}', uid) else 'external_id')
         rec = max((r for r in recs if r.get('in_feed_scope')),
                   key=lambda r: str(r.get('recall_date') or ''))
         out = _push([uid], f"Recall alert: {rec.get('brand') or 'TinySafe'}",
-                    _card_line(rec), rec['recall_id'])
-        print('test push:', rec['recall_id'], '->', out)
+                    _card_line(rec), rec['recall_id'], alias_field=alias)
+        print('test push:', rec['recall_id'], f'({alias})', '->', out)
         return
 
     first_run = not os.path.exists(LEDGER)
