@@ -608,6 +608,76 @@ def polish_title(name):
     return s
 
 
+# P35 - a registry import matched 'Target' (a retailer that recalls, not a
+# brand a parent owns), 'Dream' (shed from Dream On Me), 'Summer' (from
+# Summer Infant), 'High' (from a high chair) - heading fragments that sat in
+# brands[] and turned 105 registry lines into 21 phantom brand matches.
+# Two rules, applied to the matching array only (display `brand` untouched):
+#   - retailer names never belong in brands[] - a parent who "follows Target"
+#     would drown in every Target-sold recall
+#   - a generic single word is dropped when a longer form lives on the same
+#     record ('Delta' goes, 'Delta Children' stays); when it is the ONLY
+#     entry we keep it - orphaning a Delta-only record is a false negative,
+#     and in a safety app the false negative is the expensive direction.
+_RETAILER_BRANDS = {
+    'target', 'amazon', 'walmart', 'costco', 'nordstrom', 'wayfair',
+    'babylist', 'kohls', 'meijer', 'burlington', 'marshalls', 'homegoods',
+    'tjmaxx', 'samsclub', 'biglots', 'dollartree', 'familydollar',
+    'fivebelow', 'rossstores', 'westelm',
+    # P35c - an Amazon-registry run surfaced retailer brands the first two
+    # lists missed ('Company Store' headed a 52-record group)
+    'wholefoodsmarket', 'companystore', 'thecompanystore', 'cvs',
+    'cvspharmacy', 'walgreens', 'riteaid', 'buybuybaby', 'potterybarn',
+    'potterybarnkids', 'crateandbarrel', 'pharmacy'}
+# P35b - a second registry (36 items) stress-tested the hygiene and found
+# product NOUNS still posing as brands: 'Bath' matched a bath caddy, 'Bottle'
+# matched three different bottles, 'High' (kept as an orphan) matched a
+# birthday banner, 'Stainless Steel' slipped through as two tokens. Product
+# nouns are never brands - they drop unconditionally, orphan or not; the
+# orphan exception below remains only for brand-plausible words like Delta.
+_NEVER_BRAND = {
+    'bath', 'bottle', 'bottles', 'musical', 'stuffed', 'plush', 'stainless',
+    'steel', 'high', 'chair', 'chairs', 'pack', 'eco', 'toy', 'toys',
+    'spoon', 'spoons', 'cup', 'cups', 'mattress', 'mattresses', 'blanket',
+    'blankets', 'stroller', 'strollers', 'crib', 'cribs', 'walker',
+    'walkers', 'sleeper', 'sleepers', 'swing', 'swings', 'seat', 'seats',
+    'gate', 'gates', 'monitor', 'monitors', 'pillow', 'pillows', 'infant',
+    'infants', 'babies', 'children', 'kids', 'wooden', 'plastic', 'cotton',
+    'deluxe', 'set', 'sets',
+    # P35c - the same run: category/nav words posing as brands
+    'jewelry', 'fashion', 'search', 'based', 'today', "today's", 'todays',
+    'girl', "girl's", 'girls', 'boy', "boy's", 'boys', 'personal', 'care',
+    'market', 'foods', 'store', 'stores'}
+_COMMON_WORD_BRANDS = {
+    'summer', 'dream', 'delta', 'electric', 'high', 'bouncer', 'harmony',
+    'eco', 'green', 'rainbow', 'honest', 'pack', 'carter', 'cloud',
+    'comfort', 'journey', 'angel', 'little', 'million', 'love', 'classic',
+    'modern', 'premium', 'deluxe', 'simple', 'natural', 'nature', 'light',
+    'first', 'pacific', 'national', 'american', 'united', 'general',
+    'universal', 'standard'}
+
+
+def _brand_hygiene(brands):
+    kept = []
+    for b in brands:
+        bl = str(b).lower().strip()
+        k = re.sub(r'[^a-z0-9]', '', bl)
+        if k in _RETAILER_BRANDS:
+            continue
+        toks = re.findall(r"[a-z0-9']+", bl)
+        if toks and all(t in _NEVER_BRAND for t in toks):
+            continue
+        if len(toks) == 1 and toks[0] in _COMMON_WORD_BRANDS:
+            longer_form = any(
+                toks[0] in re.findall(r"[a-z0-9']+", str(o).lower())
+                and re.sub(r'[^a-z0-9]', '', str(o).lower()) != k
+                for o in brands)
+            if longer_form:
+                continue
+        kept.append(b)
+    return kept
+
+
 def link_related(recs):
     """related_ids, drawn only where the source states a prior recall."""
     groups = collections.defaultdict(list)
@@ -782,7 +852,7 @@ def fill_legacy(rec):
         if any(k == _kn for k in _seen) and _ko not in _seen:
             _seen.add(_ko)
             _brands.append(_old)
-    rec["brands"] = _brands or None
+    rec["brands"] = _brand_hygiene(_brands) or None
     if not rec.get("brand"):
         words = (rec.get("product_name") or "").split()
         out = ""
