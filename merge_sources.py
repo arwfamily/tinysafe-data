@@ -1214,6 +1214,58 @@ def load_all(repo='.'):
     globals()['_CARRIED'] = carried
     report['carried CPSC flags'] = len(carried)
 
+    # --- pipeline CPSC records the archive does not hold ---------------------
+    # The archive is a snapshot (it currently ends 2026-07-23) and does not
+    # grow; the pipeline grows daily. "The archive replaces the pipeline's
+    # CPSC records wholesale" was true only on the day the archive was built.
+    # Every recall CPSC announces after the snapshot exists in the pipeline
+    # alone, so treating the pipeline as a flags-only source meant the store's
+    # newest CPSC record stayed frozen at the snapshot date while the daily
+    # sync kept fetching new ones and this merge silently dropped them.
+    #
+    # Only records NEWER than the archive's own newest date qualify. For any
+    # date the archive covers, the archive is authoritative: if a record is
+    # absent there it was excluded on richer text, and the API's copy of the
+    # same recall can carry a DIFFERENT number and date (ChrisDowa is 10136 in
+    # the API and 25-105 in the archive; Uuoeebb is 26-141 vs 26-080), so an
+    # id check alone re-imports records the archive already holds as double
+    # cards. One API record (26-565) even arrived with another recall's hazard
+    # text attached. The date floor removes the whole class.
+    #
+    # Membership past the floor needs no new rule: sync_recalls already ran
+    # tinysafe_curate.curate() on every CPSC record before storing it — the
+    # same gate that curated the archive — and the re-curation pass below
+    # applies the exclusions again. Derived fields are dropped so enrich()
+    # computes them exactly as it does for archive records; the pipeline's own
+    # narrowing (its in_feed_scope, its tier) must not survive into the store.
+    arch_newest = max((str(r.get('recall_date') or '') for r in out
+                       if 'CPSC' in str(r.get('source', '')).upper()),
+                      default='')
+    _DERIVED = ('hazard', 'hazards', 'tier', 'band', 'category_family',
+                'category_group', 'display_category', 'in_feed_scope',
+                'plain_reason', 'urgent_rank', 'is_urgent')
+    archive_ids = {str(r.get('recall_id', '')).strip() for r in out
+                   if 'CPSC' in str(r.get('source', '')).upper()}
+    fresh = []
+    for r in db['recalls']:
+        if 'CPSC' not in str(r.get('source', '')).upper():
+            continue
+        if str(r.get('recall_date') or '') <= arch_newest:
+            continue
+        rid = re.sub(r'^CPSC-', '', str(r.get('recall_id', '')).strip())
+        rid = cw.get(rid, rid)
+        if not rid or rid in archive_ids:
+            continue
+        rec = dict(r)
+        rec['recall_id'] = rid
+        rec.setdefault('hazard_text', rec.get('reason') or '')
+        for k in _DERIVED:
+            rec.pop(k, None)
+        fresh.append(rec)
+        archive_ids.add(rid)   # a duplicate inside the pipeline enters once
+    out += fresh
+    report[f'CPSC pipeline (after {arch_newest})'] = len(fresh)
+
     # --- NHTSA -------------------------------------------------------------
     n = json.load(open(f'{repo}/nhtsa_child_restraints.json', encoding='utf-8'))
     nh = n['recalls'] if isinstance(n, dict) else n
@@ -1576,3 +1628,4 @@ if __name__ == '__main__':
     b = os.path.getsize(f'{repo}/recalls_full.jsonl') / 1048576
     print(f'\n  recalls_unified.json  {len(app):5d} records  {a:5.1f} MB  (app payload)')
     print(f'  recalls_full.jsonl    {len(recs):5d} records  {b:5.1f} MB  (full field set)')
+
