@@ -1,0 +1,51 @@
+# .github/workflows/gap_check.yml
+#
+# FDA gap check — compares recalls_unified.json against FDA's live
+# Enforcement Report via openFDA. READ-ONLY: prints a report and uploads
+# artifacts; never commits or pushes anything.
+#
+# Run it from the Actions tab -> "FDA gap check" -> Run workflow.
+# The MISSING list appears directly in the run log; the CSV and the
+# ready-to-review fda_enforcement_new.jsonl download as artifacts.
+
+name: FDA gap check
+
+on:
+  workflow_dispatch:
+    inputs:
+      since:
+        description: "window start, YYYYMMDD"
+        required: false
+        default: "20260601"
+      to:
+        description: "window end, YYYYMMDD (blank = today)"
+        required: false
+        default: ""
+
+jobs:
+  gap-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests pandas
+
+      - name: Run gap check
+        env:
+          SINCE: ${{ github.event.inputs.since }}
+          TO: ${{ github.event.inputs.to }}
+        run: |
+          if [ -z "$TO" ]; then unset TO; fi
+          python fda_gap_check.py
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: fda-gap-report
+          path: |
+            fda_gap_report.csv
+            fda_enforcement_new.jsonl
