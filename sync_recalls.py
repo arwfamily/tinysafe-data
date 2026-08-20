@@ -630,6 +630,13 @@ def fetch_cpsc():
             "plain_reason": plain_reason(hazard),
             "needs_review": False,
             "is_enforced": True,                  # CPSC carries its own stable id
+            # CPSC declares joint recalls with other regulators machine-readably:
+            # Inconjunctions carries the partner agency's own recall URL (e.g. the
+            # Boon PIVOT record links recalls-rappels.canada.ca). Regulator-declared
+            # cross-country links — never derive what the source states.
+            "inconjunction_urls": [str(x.get("URL", "")).strip()
+                                   for x in (it.get("Inconjunctions") or [])
+                                   if isinstance(x, dict) and str(x.get("URL", "")).strip()],
         }
         rec.update(build_match_fields(brand, product_name))
         out.append(rec)
