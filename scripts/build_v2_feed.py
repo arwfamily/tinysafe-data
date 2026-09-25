@@ -213,7 +213,8 @@ def flags(p):
       "_x_mimci": has(b,MIMCI),
       "_x_fragrance": has(b,FRAG),
       "_x_eu_allergen": has(b,EU26),
-      "_x_synthetic_dye": bool(__import__("re").search(r"FD&C|D&C|\bYELLOW \d|\bRED \d|\bBLUE \d|CI 1[0-9]{4}|CI 4[0-9]{4}|CI 7[0-9]{4}", b)),
+      "_x_synthetic_dye": bool(__import__("re").search(r"FD&C|D&C|\bYELLOW \d|\bRED \d|\bBLUE \d|CI 1[0-9]{4}|CI 4[0-9]{4}|\bLAKE\b", b.replace("&AMP;","&").replace("&amp;","&"))),
+      "_x_mineral_tint": bool(__import__("re").search(r"CI 7[0-9]{4}|IRON OXIDE|FERRIC OXIDE|FERROSOFERRIC|\bMICA\b", b)),
       # 알러지 플래그 (정밀 토큰, 오탐수정 — 부모 알러지 선택시 매칭)
       "_alg_coconut": any(t in b for t in ["COCOS NUCIFERA","COCONUT","COCO-CAPRYLATE","COCO-GLUCOSIDE","COCOATE","COCAMIDE","COCOYL"]),
       "_alg_sunflower": any(t in b for t in ["HELIANTHUS","SUNFLOWER"]),
