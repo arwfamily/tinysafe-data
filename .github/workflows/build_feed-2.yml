@@ -1,0 +1,81 @@
+name: Build sunscreen feed
+
+# 전략: 스크래퍼(월요일)가 canonical을 갱신한 뒤, 화요일에 이 워크플로가
+# canonical → 정제/배지 → QA 게이트 → 통과 시에만 앱 피드 푸시.
+# QA 실패 시 푸시 중단 + 이슈 생성 → 옛 피드가 그대로 유지됨(앱 안전).
+
+on:
+  schedule:
+    - cron: "0 9 * * 2"      # 매주 화요일 09:00 UTC (스크래퍼 월요일 이후)
+  workflow_dispatch: {}       # 수동 실행 버튼(테스트/긴급 갱신용)
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tinysafe-data
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch inputs (canonical, current feed, recalls)
+        run: |
+          set -e
+          # ① canonical (scraper 레포가 매주 자동 커밋)
+          curl -sSf -o canonical.jsonl \
+            "https://raw.githubusercontent.com/arwfamily/tinysafe-dailymed-scraper-v2/main/data/canonical/us_sunscreens.jsonl"
+          # ② 현재 앱 피드 = legacy (ndc/wearability/asin 복원용) + QA 비교 기준
+          cp tinysafe_baby_sunscreens.json old_feed.json
+          # ③ 리콜 (같은 레포)
+          cp recalls_unified.json recalls.json
+          echo "canonical lines: $(wc -l < canonical.jsonl)"
+
+      - name: Build feed
+        run: |
+          BUILD=$(test -f scripts/build_v2_feed.py && echo scripts/build_v2_feed.py || echo build_v2_feed.py)
+          echo "Using build script: $BUILD"
+          python3 "$BUILD" \
+            --canonical canonical.jsonl \
+            --legacy old_feed.json \
+            --recalls recalls.json \
+            --out new_feed.json
+
+      - name: QA gate (blocks bad data)
+        id: qa
+        run: |
+          # 실패하면 exit 1 → 다음 스텝(푸시) 안 돎 → 옛 피드 유지
+          QA=$(test -f scripts/qa_gate.py && echo scripts/qa_gate.py || echo qa_gate.py)
+          echo "Using QA script: $QA"
+          python3 "$QA" new_feed.json old_feed.json
+
+      - name: Publish feed (only if QA passed)
+        run: |
+          mv new_feed.json tinysafe_baby_sunscreens.json
+          if git diff --quiet tinysafe_baby_sunscreens.json; then
+            echo "No change — nothing to commit."
+            exit 0
+          fi
+          git config user.name  "tinysafe-bot"
+          git config user.email "bot@arwhouse.com"
+          git add tinysafe_baby_sunscreens.json
+          git commit -m "Auto-update sunscreen feed ($(date -u +%Y-%m-%d)) — QA passed"
+          git push
+
+      - name: Open issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Feed build failed — ${new Date().toISOString().slice(0,10)}`,
+              body: `The weekly sunscreen feed build or QA gate failed. The live feed was NOT updated (old feed kept). Check the Actions log: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            })
