@@ -28,7 +28,7 @@ BOOSTERS=["BUTYLOCTYL SALICYLATE","TRIDECYL SALICYLATE","ETHYLHEXYL METHOXYCRYLE
 FORMALDEHYDE=["DMDM HYDANTOIN","IMIDAZOLIDINYL UREA","DIAZOLIDINYL UREA","QUATERNIUM-15","BRONOPOL","SODIUM HYDROXYMETHYLGLYCINATE"]
 MIMCI=["METHYLISOTHIAZOLINONE","METHYLCHLOROISOTHIAZOLINONE"]
 FRAG=["FRAGRANCE","PARFUM"]
-EU26=["LIMONENE","LINALOOL","CITRONELLOL","GERANIOL","CITRAL","EUGENOL","COUMARIN","BENZYL BENZOATE","BENZYL SALICYLATE","FARNESOL","CINNAMAL"]
+EU26=["LIMONENE","LINALOOL","CITRONELLOL","GERANIOL","CITRAL","EUGENOL","ISOEUGENOL","COUMARIN","BENZYL ALCOHOL","BENZYL SALICYLATE","BENZYL BENZOATE","BENZYL CINNAMATE","CINNAMAL","CINNAMYL ALCOHOL","FARNESOL","HEXYL CINNAMAL","AMYL CINNAMAL","AMYLCINNAMYL","HYDROXYCITRONELLAL","ANISE ALCOHOL","ANISYL","BUTYLPHENYL METHYLPROPIONAL","ISOMETHYL IONONE","METHYL 2-OCTYNOATE","EVERNIA PRUNASTRI","EVERNIA FURFURACEA","HYDROXYISOHEXYL"]
 RETINOL=["RETINOL","RETINYL","RETINALDEHYDE","RETINOIC","VITAMIN A"]
 PETRO=["PETROLATUM","MINERAL OIL","PARAFFINUM LIQUIDUM","PETROLEUM JELLY"]
 CYCLIC=re.compile(r"CYCLOTETRASILOXANE|CYCLOPENTASILOXANE|CYCLOHEXASILOXANE|CYCLOMETHICONE")
@@ -108,6 +108,19 @@ def refine(canonical):
         # 미네랄 게이트
         if not any(("ZINC OXIDE" in a or "TITANIUM DIOXIDE" in a) for a in actives(p)): drop["non_mineral"]+=1; continue
         if has(av,CHEM_FILTERS): drop["chemical_filter"]+=1; continue
+        # salicylic acid(BHA 각질) 자동배제 — 아기 선크림 부적합 (octisalate/BOS와 구분, word-boundary)
+        import re as _re
+        if _re.search(r"(?<![A-Z])SALICYLIC ACID", blob(p)): drop["salicylic_acid"]+=1; continue
+        # PABA·trolamine salicylate·벌레퇴치제 콤보 자동배제 (AAP/AAD 명시)
+        if any(t in blob(p)+av for t in ["AMINOBENZOIC","TROLAMINE SALICYLATE","TRIETHANOLAMINE SALICYLATE"]): drop["paba_trolamine"]+=1; continue
+        if any(t in blob(p)+av+nm(p) for t in ["DIETHYLTOLUAMIDE","DEET ","PICARIDIN","IR3535","INSECT REPELLENT"]): drop["repellent_combo"]+=1; continue
+        # 광독성 시트러스 자동배제 (bergapten/furocoumarin — 햇빛질문 대체)
+        if any(t in blob(p) for t in ["BERGAMOT","CITRUS BERGAMIA","BERGAPTEN","FUROCOUMARIN","PSORALEN","CITRUS AURANTIFOLIA","CITRUS LIMON","CITRUS PARADISI"]): drop["phototoxic_citrus"]+=1; continue
+        # ★ 숨은 화학필터: inactive에 등록 화학 UV 필터 있으면 제외 (미네랄 표방인데 화학 숨김)
+        # 정밀: butyloctyl/tridecyl salicylate(부스터, _x_boosters 토글 소관)는 제외, word-boundary
+        HIDDEN_CHEM=["AVOBENZONE","OXYBENZONE","BENZOPHENONE","OCTINOXATE","OCTYL METHOXYCINNAMATE","OCTOCRYLENE","HOMOSALATE","ENSULIZOLE","MEXORYL","MERADIMATE","PADIMATE","SULISOBENZONE","DIOXYBENZONE","CINOXATE"]
+        _ib=blob(p)
+        if any(re.search(r"(?<![A-Z])"+re.escape(c), _ib) for c in HIDDEN_CHEM): drop["hidden_chemical_filter"]+=1; continue
         n=nm(p)
         # 정크/비선크림/립/메이크업
         if has(n,JUNK): drop["junk"]+=1; continue
@@ -200,6 +213,35 @@ def flags(p):
       "_x_mimci": has(b,MIMCI),
       "_x_fragrance": has(b,FRAG),
       "_x_eu_allergen": has(b,EU26),
+      "_x_synthetic_dye": bool(__import__("re").search(r"FD&C|D&C|\bYELLOW \d|\bRED \d|\bBLUE \d|CI 1[0-9]{4}|CI 4[0-9]{4}|CI 7[0-9]{4}", b)),
+      # 알러지 플래그 (정밀 토큰, 오탐수정 — 부모 알러지 선택시 매칭)
+      "_alg_coconut": any(t in b for t in ["COCOS NUCIFERA","COCONUT","COCO-CAPRYLATE","COCO-GLUCOSIDE","COCOATE","COCAMIDE","COCOYL"]),
+      "_alg_sunflower": any(t in b for t in ["HELIANTHUS","SUNFLOWER"]),
+      "_alg_aloe": any(t in b for t in ["ALOE","BARBADENSIS"]),
+      "_alg_shea": any(t in b for t in ["SHEA","BUTYROSPERMUM"]),
+      "_alg_jojoba": any(t in b for t in ["JOJOBA","SIMMONDSIA"]),
+      "_alg_seed_oil": any(t in b for t in ["RUBUS","RASPBERRY SEED","VITIS","GRAPE SEED","ROSA CANINA","ROSEHIP","OENOTHERA","EVENING PRIMROSE"]),
+      "_alg_green_tea": any(t in b for t in ["CAMELLIA SINENSIS","GREEN TEA"]),
+      "_alg_tree_nut": any(t in b for t in ["PRUNUS AMYGDALUS","SWEET ALMOND","ARGANIA","ARGAN","MACADAMIA","JUGLANS","WALNUT","CORYLUS","HAZELNUT","ANACARDIUM","CASHEW","PISTACIA VERA"]),
+      "_alg_cocoa": any(t in b for t in ["THEOBROMA","COCOA BUTTER"]),
+      "_alg_olive": any(t in b for t in ["OLEA EUROPAEA"]),
+      "_alg_castor": any(t in b for t in ["RICINUS","CASTOR"]),
+      "_alg_avocado": any(t in b for t in ["PERSEA","AVOCADO"]),
+      "_alg_citrus": any(t in b for t in ["CITRUS","BERGAMOT"]),
+      "_alg_calendula": "CALENDULA" in b,
+      "_alg_safflower": any(t in b for t in ["CARTHAMUS","SAFFLOWER"]),
+      "_alg_oat": any(t in b for t in ["AVENA","COLLOIDAL OAT","OAT KERNEL"]),
+      "_alg_honey_beeswax": any(t in b for t in ["BEESWAX","CERA ALBA","HONEY","PROPOLIS","ROYAL JELLY"]),
+      "_alg_lanolin": any(t in b for t in ["LANOLIN","WOOL"]),
+      # 식품 알러지 (정제오일 보수적 = 다 매칭, 생명안전)
+      "_alg_soy": any(t in b for t in ["GLYCINE SOJA","SOYBEAN","SOJA","HYDROLYZED SOY","SOY PROTEIN","SOY ISOFLAVON","LECITHIN, SOY"]),
+      "_alg_wheat": bool(__import__("re").search(r"TRITICUM|HYDROLYZED WHEAT|WHEAT PROTEIN|WHEAT GERM|WHEAT STARCH|WHEAT BRAN|WHEAT AMINO|HORDEUM|SECALE", b)),
+      "_alg_peanut": any(t in b for t in ["ARACHIS","PEANUT"]),
+      "_alg_milk": any(t in b for t in [" MILK","CASEIN","WHEY","LACTIS PROTEIN"]),
+      "_alg_egg": any(t in b for t in [" EGG","ALBUMEN","OVUM","LYSOZYME"]),
+      "_alg_sesame": any(t in b for t in ["SESAMUM","SESAME"]),
+      "_alg_fish": any(t in b for t in [" FISH","COD LIVER","SALMON OIL"]),
+      "_alg_shellfish": any(t in b for t in ["SHELLFISH","CRUSTACEAN","CHITOSAN","CHITIN"]),
       "_x_talc": "TALC" in b,
       "_x_retinol": has(b,RETINOL),
       "_x_spray_powder": has(nm(p),["SPRAY","AEROSOL","MIST","POWDER"]),
