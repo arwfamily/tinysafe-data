@@ -39,7 +39,7 @@ jobs:
 
       - name: Build feed
         run: |
-          python3 build_v2_feed.py \
+          python3 scripts/build_v2_feed.py \
             --canonical canonical.jsonl \
             --legacy old_feed.json \
             --recalls recalls.json \
@@ -49,7 +49,7 @@ jobs:
         id: qa
         run: |
           # 실패하면 exit 1 → 다음 스텝(푸시) 안 돎 → 옛 피드 유지
-          python3 qa_gate.py new_feed.json old_feed.json
+          python3 scripts/qa_gate.py new_feed.json old_feed.json
 
       - name: Publish feed (only if QA passed)
         run: |
