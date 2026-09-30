@@ -30,6 +30,15 @@ import tinysafe_audience as taud
 import tinysafe_incidents as tinc
 import tinysafe_severity as tsev
 
+def _load_deaths_verified():
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'deaths_verified.json')
+    try:
+        return json.load(open(p)).get('overrides', {})
+    except FileNotFoundError:
+        return {}
+
+_DEATHS_VERIFIED = _load_deaths_verified()
+
 # Words that appear inside brand strings but identify no firm. Without these a
 # make like "Play Yard Inc" matches every CPSC record containing "play".
 GENERIC = set("""baby babies infant infants toddler kids child children youth junior
@@ -1077,8 +1086,23 @@ def enrich(rec):
     # recall that has killed a child cannot sit at tier 4 no matter what the
     # hazard vocabulary matched — Rock 'n Play was `general` at tier 4 with
     # roughly a hundred infant deaths, described in words the table didn't hold.
-    _d = tinc.deaths(rec.get('incidents_text'), rec.get('reason'), rec.get('heading'))
+    # Heading first, reason only when there is no heading. CPSC's `reason` is
+    # hazard prose and routinely cites OTHER products' deaths ("infant
+    # fatalities have occurred in inclined sleepers"); the heading is CPSC's
+    # own statement about THIS recall. Old records without a parsed heading
+    # carry their headline in `reason`, so they keep it.
+    _d = (tinc.deaths(rec.get('incidents_text'), rec.get('heading'))
+          if rec.get('heading')
+          else tinc.deaths(rec.get('incidents_text'), rec.get('reason')))
     _i = tinc.injuries(rec.get('incidents_text'), rec.get('reason'))
+    # Hand-verified counts win. The parser reads `reason`, and CPSC's reason
+    # often describes deaths in OTHER companies' products ("infant fatalities
+    # have been reported with other manufacturers' inclined sleep products") -
+    # that put a death pill on 33 brands that never had one. See
+    # deaths_verified.json; audit lists any new death record not yet verified.
+    _v = _DEATHS_VERIFIED.get(str(rec.get('recall_id')))
+    if _v is not None:
+        _d = _v['deaths']
     rec['deaths_reported'] = _d or None
     rec['injuries_reported'] = _i or None
     tier = tinc.tier_floor(tier, _d)

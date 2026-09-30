@@ -26,7 +26,14 @@ import re
 # --------------------------------------------------------------------------
 PATTERNS = {
     # tier 1 — kills quickly and often silently, usually while unattended
-    'suffocation':   r'suffocat|asphyxiat|smother|obstruct\w*\s+(?:the\s+)?(?:infant|child|baby)?\s*\w*\s*breath|unable to breathe',
+    'suffocation':   r'suffocat|asphyxiat|smother|obstruct\w*\s+(?:the\s+)?(?:infant|child|baby)?\s*\w*\s*breath|unable to breathe'
+                     # Inclined sleepers: CPSC names the mechanism ("rolled from their
+                     # back to their stomach") without the word. The death floor used to
+                     # hide this; once borrowed deaths were removed, 13 inclined sleepers
+                     # fell to tier 4 - a product banned under the Safe Sleep for Babies
+                     # Act ranked below a drawstring.
+                     r'|roll\w*\s+(?:from\s+)?(?:their|its|his|her)?\s*back\s+to\s+(?:their|its|his|her)?\s*(?:stomach|side)'
+                     r'|incline\s+angle\s+greater\s+than\s+10|inclined\s+sleep',
     'strangulation': r'strangulat|strangl',
     'entrapment':    r'entrap|become trapped|get trapped|wedge\w*\s+between|pinned',
     'drowning':      r'drown',

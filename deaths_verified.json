@@ -1,0 +1,365 @@
+{
+ "_note": "Hand-verified death counts, 2026-09-29. Overrides the parser. A key here is a human decision: never re-derive over it. Rule: count only deaths the notice attributes to THIS product (incidents_text, or CPSC's own headline). Deaths in other manufacturers' or 'similar' products are not counted. 2026-09-30 second pass: all 209 records with deaths>0 now hand-read.",
+ "overrides": {
+  "04-078": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "09-047": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "23-150": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "25-378": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "25-174": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "26-052": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "21-125": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "21-052": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "20-075": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "20-059": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "19-177": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "19-151": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "20-060": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "20-061": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "24-184": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "24-719": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "23-290": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "23-237": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "Z-2254-2018": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "20-033": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "06-005": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "Z-2212-2026": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "82-036": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "97-159": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "87-072": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "22-101": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "14-056": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "21-179": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "88-030": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "95-118": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "99-018": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "95-174": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "93011": {
+   "deaths": 0,
+   "why": "Death count came from text about OTHER products (other manufacturers, similar products, generic hazard statement) or the incident text says none reported. Nothing attributes a death to this product."
+  },
+  "23-047": {
+   "deaths": 1,
+   "why": "Incident text: one fatal incident (4-year-old). Parser read 4 from the child's age."
+  },
+  "84-013": {
+   "deaths": 9,
+   "why": "Incident text: nine known deaths with these Bassett cribs (five Candlelite, four Mandalay)."
+  },
+  "24-179": {
+   "deaths": 3,
+   "why": "One death before the 2021 recall plus two additional after it, all this bed rail."
+  },
+  "86-022": {
+   "deaths": 2,
+   "why": "Headline and text: second death with the Brawny bed, first in Denver 1983."
+  },
+  "95-021": {
+   "deaths": 1,
+   "why": "Reason (the old headline): a two-year-old died when his head was caught between mattress and guardrail of this bed."
+  },
+  "25-069": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "25-018": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-265": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-240": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-175": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-147": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-144": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-097": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-096": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-071": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-052": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-048": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-044": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "24-035": {
+   "deaths": 0,
+   "why": "Category-wide national figure ('CPSC is aware of N deaths since 2005 involving hazardous magnets'); the notice reports no incident with this product."
+  },
+  "10-344": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "09-181": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "09-090": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "03-084": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "01-500": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "00-107b": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "00-023": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "00-022": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "97-118": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "97-095": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "94-038": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "93-101": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "93025": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "90-080": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "85-061": {
+   "deaths": 0,
+   "why": "Deaths cited are in other companies' products or the product type in general; the notice attributes none to this product."
+  },
+  "09-265": {
+   "deaths": 0,
+   "why": "The death mentioned belongs to the earlier 2007 recall (07-315) for a different hazard; counting it here would double it."
+  },
+  "97-002": {
+   "deaths": 0,
+   "why": "Fatality only alleged; the firm states just one no-injury report was conclusively tied to the monitor."
+  },
+  "18-040": {
+   "deaths": 8,
+   "why": "Headline: 8th child fatality (IKEA chests/dressers). Parser read 1."
+  },
+  "10-114": {
+   "deaths": 1,
+   "why": "One death (6-month-old). Parser read the age as the count."
+  },
+  "10-079": {
+   "deaths": 1,
+   "why": "One death (8-year-old). Parser misread."
+  },
+  "10-073": {
+   "deaths": 8,
+   "why": "Industry-wide recall of all Roman and roll-up blinds: 5 deaths in Roman shades + 3 in roll-up blinds."
+  },
+  "10-056": {
+   "deaths": 2,
+   "why": "Two infant suffocation deaths in the Amby hammock."
+  },
+  "08-378": {
+   "deaths": 2,
+   "why": "Second strangulation death in these bassinets (2007 and 2008)."
+  },
+  "01-016": {
+   "deaths": 27,
+   "why": "Industry-wide initiative for all old chest freezers: 27 child deaths 1980-1999."
+  },
+  "00-019": {
+   "deaths": 4,
+   "why": "Headline: four strangulation deaths."
+  },
+  "99-021": {
+   "deaths": 6,
+   "why": "Six children died in Playskool Travel-Lite portable cribs."
+  },
+  "98-156": {
+   "deaths": 2,
+   "why": "Two deaths in the Playskool Travel-Lite (June and this one)."
+  },
+  "98-128": {
+   "deaths": 12,
+   "why": "Twelve deaths in the recalled collapsing play yards/portable cribs this search covers."
+  },
+  "01-094": {
+   "deaths": 4,
+   "why": "This death plus three other deaths associated with these products."
+  },
+  "96-125": {
+   "deaths": 12,
+   "why": "Industry recall of net mini-hammocks without spreader bars: 12 deaths 1984-1995."
+  },
+  "96-183": {
+   "deaths": 12,
+   "why": "Same industry-wide mini-hammock recall (additional makers): 12 deaths."
+  },
+  "95-059": {
+   "deaths": 2,
+   "why": "Two deaths (1985, 1994) involving these animal swings."
+  },
+  "85-039": {
+   "deaths": 15,
+   "why": "Warning covering all drop-side mesh cribs/playpens: 15 deaths since 1978."
+  },
+  "85-006": {
+   "deaths": 8,
+   "why": "Eighth death involving accordion-style gates."
+  },
+  "84-058": {
+   "deaths": 2,
+   "why": "This death plus a previous 1980 death on the Play Gym."
+  },
+  "82-008": {
+   "deaths": 3,
+   "why": "Two deaths before the 1980 action plus the 1982 California death."
+  },
+  "78-103": {
+   "deaths": 2,
+   "why": "Two accidental deaths associated with the product."
+  },
+  "86-036": {
+   "deaths": 2,
+   "why": "Two children strangled on the crib toys (1984, 1985)."
+  }
+ }
+}

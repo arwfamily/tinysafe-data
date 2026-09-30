@@ -12,6 +12,7 @@ product name is generic.
 Exclusions apply only to things a child cannot reach, and are checked last so
 they can never override an explicit child-standard citation.
 """
+import html
 import re
 import unicodedata
 import unicodedata
@@ -120,6 +121,9 @@ def strip_lost_symbol(s):
 def strip_markup(s):
     """Drop scraped-HTML debris without dropping the words it swallowed."""
     t = str(s or '')
+    # HTML entities survive scraping: "Graco&#174;-Branded" showed on cards and
+    # hid the record from My Brands. Decode first; &nbsp; becomes U+00A0.
+    t = html.unescape(t).replace('\u00a0', ' ')
     t = strip_lost_symbol(t.replace('&nbsp;', ' '))
     t = _LINK_DEBRIS.sub(' ', t)      # href + orphaned attributes, link text kept
     t = _BARE_URL.sub(' ', t)         # a url that had no text after it
