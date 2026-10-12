@@ -270,6 +270,7 @@ EXCLUDE = re.compile(r"""\b(
  | veterinary|livestock|poultry\s+feed|animal\s+feed|bird\s+seed
  | breeder|foster\s+care|milk\s+replacer|colostrum\s+supplement
  | goat\s+milk\s+formula|lamb\s+milk|calf|calves|foal|piglet|swine
+ | banana\s+babies
  | goat\s+grower|kid[\s-]?gro\b|denkamilk|medicated\s+(?:feed|ration)
  | \bnursing\s+(?:puppies|kittens|animals)|baby\s+birds?|baby\s+macaws?|hand[\s-]?feeding|chew\s+toy\s+for
  | all[\s-]?terrain\s+vehicle|\batvs?\b|utvs?|off[\s-]?highway|side\s?by\s?side|snowmobile|snow\s?bike|dirt\s?bike
@@ -321,6 +322,12 @@ BABYFOOD = re.compile(r"""
 # brand_list.json already holds 179 curated baby brands with normalised keys.
 # Loaded lazily and optional — this module has to keep working standalone.
 _BRANDS = None
+BRAND_SIGNAL_CATS = {'Food & Formula', 'Wipes', 'Toys & Gear'}
+# baby-only companies that sit in the skincare/sunscreen lists
+BABY_ONLY_SQ = {'tubbytodd', 'hellobello', 'babobotanicals', 'earthmama', 'zerotoseven',
+                'babyantimonkeybutt', 'tendermoments', 'johnsonsbaby', 'cetaphilbaby',
+                'eucerinbaby', 'aveenobaby', 'aveenokids', 'burtsbeesbaby', 'babymagic',
+                'earthbaby', 'babybum'}
 
 # Retailers and distributors sit in brand_list.json because the app's brand
 # catalog needs them (a parent can follow "Kirkland Signature"), but a retailer
@@ -361,10 +368,19 @@ def load_brands(path='brand_list.json'):
         # Kirkland is on the Prosecco. Two words is what makes a name
         # distinctive enough to stand alone as a signal — "Dr. Brown's" and
         # "Tommee Tippee" identify a baby company; "Indigo" identifies nothing.
+        # Only categories made of baby companies count. The sunscreen and
+        # skincare categories were filled from FDA labeler data for the
+        # sunscreen filter and hold adult brands and contract labelers (Banana
+        # Boat, Aruba Aloe, "Private Label", "Personal Care"); as a curation
+        # signal they admitted adult sunscreen and hand sanitizer recalls.
+        # A baby line of those brands already says so in its name (Aveeno
+        # Baby, Burt's Bees Baby), which the product signal catches.
         _BRANDS = {b['sq'] for b in data
                    if b.get('sq') and len(b['sq']) > 6
                    and len(str(b.get('name', '')).split()) >= 2
-                   and not RETAILER_SQ.search(b['sq'])}
+                   and not RETAILER_SQ.search(b['sq'])
+                   and (b.get('cat') in BRAND_SIGNAL_CATS
+                        or b['sq'] in BABY_ONLY_SQ)}
     except Exception:
         _BRANDS = set()
     return len(_BRANDS or ())
