@@ -32,7 +32,9 @@ import requests
 import tinysafe_curate as tcur
 import fda_enforcement_import as fimp
 
-SINCE = os.environ.get("SINCE", "20260601")
+# Blank or unset SINCE (the weekly scheduled run) means a rolling 60-day window.
+SINCE = os.environ.get("SINCE") or (datetime.date.today()
+                                    - datetime.timedelta(days=60)).strftime("%Y%m%d")
 TO = os.environ.get("TO", datetime.date.today().strftime("%Y%m%d"))
 UNIFIED = os.environ.get("UNIFIED", "recalls_unified.json")
 CATS = ("food", "drug", "device")
@@ -198,6 +200,19 @@ def main():
             print(f"{r['recall_number']} | {r['product'][:70]} -> {r['matched']}")
     if not rows_out:
         print("no curated records in window — widen SINCE or check the query")
+    # Status for pipeline_notify.py: a MISSING record means the inbox upload
+    # (or, later, the iRES API) has a hole the weekly check can see.
+    os.makedirs(".pipeline_status", exist_ok=True)
+    missing = [r for r in rows_out if r["verdict"] == "MISSING"]
+    with open(os.path.join(".pipeline_status", "gap.json"), "w") as f:
+        json.dump({"source": "FDA gap check (openFDA)", "window": f"{SINCE}..{TO}",
+                   "missing": len(missing),
+                   "warnings": ([f"{len(missing)} FDA child recall(s) in {SINCE}..{TO} are on openFDA "
+                                 f"but not in TinySafe. Download that report week into inbox/fda/, "
+                                 f"or review fda_gap_report.csv in the run's artifacts."]
+                                if missing else []),
+                   "items": [f"{r['recall_number']} {r['report_date']} {r['classification']} | "
+                             f"{r['product'][:80]}" for r in missing[:40]]}, f, indent=1)
     return 0
 
 

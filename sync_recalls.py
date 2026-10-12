@@ -54,7 +54,16 @@ BROWSER_HEADERS = {
     "Connection": "keep-alive",
     "Upgrade-Insecure-Requests": "1",
 }
-FDA_KEYWORDS = ["baby", "infant", "toddler", "newborn"]
+# The datatables search is a TEXT search, so every keyword is also a blind
+# spot: "Gerber Arrowroot Biscuits" and "Pumpkin Tree Peter Rabbit Organics"
+# pouches carry none of baby/infant/toddler/newborn and were missed for months.
+# The fetch now pulls the whole table first (empty search) and unions it with
+# these keywords as a fallback. Membership is decided by tinysafe_curate.curate()
+# on every row either way, so a wider net adds recall, not noise.
+FDA_KEYWORDS = ["", "baby", "infant", "toddler", "newborn", "neonatal",
+                "pediatric", "child", "children", "kids", "formula", "puree",
+                "pouch", "teething", "gripe", "nursery", "toddler"]
+FDA_KEYWORDS = list(dict.fromkeys(FDA_KEYWORDS))   # de-dupe, keep order
 CPSC_LOOKBACK_DAYS = 120  # CPSC status never flips; 3-year window handled downstream
 
 # ----------------------------------------------------------------------------
@@ -475,8 +484,10 @@ def fetch_fda_datatables():
                 print(f"[!] datatables {kw} attempt {attempt+1}: {e}", file=sys.stderr)
             time.sleep(3 * (attempt + 1))   # back off: 3s, 6s, 9s
         if df is None:
-            print(f"[!] datatables fetch gave up ({kw})", file=sys.stderr)
+            print(f"[!] datatables fetch gave up ({kw or 'FULL TABLE'})", file=sys.stderr)
             continue
+        print(f"[*] datatables {kw or 'FULL TABLE'}: {len(df)} rows "
+              f"(kept so far: {len(out)})")
         for _, row in df.iterrows():
             brand = row.get("Brand-Names", "")
             desc = row.get("Product-Description", "")
@@ -485,7 +496,7 @@ def fetch_fda_datatables():
             date_raw = row.get("Date", "")
             blob = f"{brand} {desc} {company} {reason}"
             ok, signals, _ = tcur.curate(product=desc, heading=brand,
-                                         description=desc, hazard=reason)
+                                         description=desc, hazard=reason, fda=True)
             if not ok:
                 continue
             feed_ok = in_feed_scope(blob, name=f"{brand} {desc}")
@@ -792,8 +803,14 @@ def merge(db, fresh):
                 if not rec:
                     continue
                 for k, v in fields.items():
-                    # never overwrite what the primary feed or a human set
+                    # never overwrite what the primary feed or a human set —
+                    # except the lifecycle. FDA terminating a recall is news the
+                    # store must take, or a closed recall stays in the feed
+                    # forever. import_fda_inbox refreshes these in the jsonl.
                     if v and not (rec.get(k) or ""):
+                        rec[k] = v
+                    elif (k in ("status", "terminated_date") and v
+                          and v != rec.get(k) and not rec.get("is_enforced")):
                         rec[k] = v
             for r in fresh:
                 # Legacy fields the app decodes. Without these the records land

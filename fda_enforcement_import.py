@@ -120,7 +120,8 @@ def build(row):
     firm = (row.get('Recalling Firm') or '').strip()
     reason = (row.get('Reason for Recall') or '').strip()
 
-    ok, signals, _ = tcur.curate(product=desc, heading=firm, description=desc, hazard=reason)
+    ok, signals, _ = tcur.curate(product=desc, heading=firm, description=desc, hazard=reason,
+                                 fda=True)
     if not ok:
         return None
 

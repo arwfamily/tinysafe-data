@@ -321,6 +321,32 @@ BABYFOOD = re.compile(r"""
 # Loaded lazily and optional — this module has to keep working standalone.
 _BRANDS = None
 
+# Retailers and distributors sit in brand_list.json because the app's brand
+# catalog needs them (a parent can follow "Kirkland Signature"), but a retailer
+# name is not evidence that a product is for children. As a curation signal they
+# admitted antacids, ear drops, shrimp soup and chocolate (2026-08 gap check).
+# The catalog file is left untouched; only the signal ignores them.
+RETAILER_SQ = re.compile(
+    r'^(?:kirkland\w*|wholefoods\w*|topco\w*|walmart\w*|wal\w*mart\w*|walgreens\w*'
+    r'|cvs\w*|meijer\w*|target\w*|costco\w*|kroger\w*|publix\w*|safeway\w*'
+    r'|albertsons\w*|amazon\w*|riteaid\w*|dollargeneral\w*|familydollar\w*'
+    r'|heb|hebgrocery\w*|aldi\w*|traderjoe\w*|sprouts\w*|giantfood\w*|stopshop\w*)$')
+
+# A single word is not a distinctive brand in general (Gerber also sells
+# machetes), but FDA does not regulate machetes. Inside an FDA record these
+# names identify a baby food, formula or infant remedy company outright. Only
+# applied when the caller says the record is FDA.
+FDA_BABY_BRANDS = re.compile(r"""\b(?:
+    gerber|beech[\s-]?nut|similac|enfamil|earth.?s\s+best|happy\s?baby|happy\s?tot
+  | plum\s+organics|sprout\s+organics?|once\s+upon\s+a\s+farm|cerebelly|little\s+spoon
+  | serenity\s+kids|pumpkin\s+tree|peter\s+rabbit\s+organics|ella.?s\s+kitchen
+  | nurture\s?me|baby\s+gourmet|bobbie|byheart|kendamil|holle|hipp|nara\s+organics
+  | mt\.?\s+capra|sammy.?s\s+milk|crecelac|parent.?s\s+choice\s+infant
+  | mommy.?s\s+bliss|little\s+remedies|colic\s+calm|hyland.?s\s+baby|orajel\s+baby
+  | babyganics|tippy\s+toes|yobaby|good\s?&?\s?gather\s+baby|mama\s+bear\s+(?:infant|baby)
+  | up\s?&?\s?up\s+(?:infant|baby)|nutramigen|alimentum|pediasure|pedialyte
+)\b""", re.X | re.I)
+
 
 def load_brands(path='brand_list.json'):
     """Populate the known-baby-brand signal. Safe to call more than once."""
@@ -336,7 +362,8 @@ def load_brands(path='brand_list.json'):
         # "Tommee Tippee" identify a baby company; "Indigo" identifies nothing.
         _BRANDS = {b['sq'] for b in data
                    if b.get('sq') and len(b['sq']) > 6
-                   and len(str(b.get('name', '')).split()) >= 2}
+                   and len(str(b.get('name', '')).split()) >= 2
+                   and not RETAILER_SQ.search(b['sq'])}
     except Exception:
         _BRANDS = set()
     return len(_BRANDS or ())
@@ -456,7 +483,7 @@ def adult_equipment_undecided(product, heading, hazard_text):
     return bool(_VICTIM_ADULT.search(t)) and not _VICTIM_CHILD.search(t)
 
 
-def curate(product='', heading='', description='', hazard='', extra=''):
+def curate(product='', heading='', description='', hazard='', extra='', fda=False):
     """
     Returns (in_scope: bool, signals: list[str], excluded_by: str|None).
 
@@ -480,6 +507,8 @@ def curate(product='', heading='', description='', hazard='', extra=''):
         return False, [], 'adult mobility equipment (victim language)'
     if not sig and _brand_hit(f'{product} {heading}'):
         sig.append('known_brand')
+    if not sig and fda and FDA_BABY_BRANDS.search(clean(f'{product} {heading}')):
+        sig.append('fda_baby_brand')
 
     if not sig:
         return False, [], None

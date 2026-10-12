@@ -1318,11 +1318,29 @@ def load_all(repo='.'):
             continue
         blob = tc.key(f"{r.get('product_name') or ''} {r.get('brand') or ''} "
                       f"{r.get('heading') or ''}")
-        if tc.EXCLUDE.search(blob) or tc.PRODUCE.search(tc.clean(
-                f"{r.get('product_name') or ''} {r.get('heading') or ''}")):
+        # PRODUCE must carry curate()'s own BABYFOOD rescue. Copying the produce
+        # check here without it meant curate() admitted a baby-food pouch and
+        # this pass then deleted it again (GreenWise pear/kiwi/spinach pouches,
+        # Good & Gather veggie puree). A rule copied to two places drifts in one.
+        name_text = tc.clean(f"{r.get('product_name') or ''} {r.get('heading') or ''}")
+        if tc.EXCLUDE.search(blob) or (tc.PRODUCE.search(name_text)
+                                       and not tc.BABYFOOD.search(name_text)):
             continue
         if tc._adult_equipment(r.get('product_name') or ''):
             continue
+        # FDA records whose ONLY reason for being here was the brand signal are
+        # re-tested against today's brand rule. Retailer names (Walmart, Whole
+        # Foods, Meijer, Kirkland) used to count as baby brands and admitted
+        # potato salad, eye drops and glucosamine; the stored flag froze that
+        # decision. Records with any other signal are left alone.
+        if ('FDA' in str(r.get('source', '')).upper()
+                and r.get('curation_signals') == ['known_brand']):
+            ok, _, _ = tc.curate(product=r.get('product_name') or '',
+                                 heading=r.get('brand') or '',
+                                 description=r.get('product_name') or '',
+                                 hazard=r.get('reason') or '', fda=True)
+            if not ok:
+                continue
         kept.append(r)
     if len(kept) != before:
         print(f'  re-curated: dropped {before - len(kept)} records that now match '
