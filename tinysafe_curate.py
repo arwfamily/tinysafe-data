@@ -270,6 +270,7 @@ EXCLUDE = re.compile(r"""\b(
  | veterinary|livestock|poultry\s+feed|animal\s+feed|bird\s+seed
  | breeder|foster\s+care|milk\s+replacer|colostrum\s+supplement
  | goat\s+milk\s+formula|lamb\s+milk|calf|calves|foal|piglet|swine
+ | goat\s+grower|kid[\s-]?gro\b|denkamilk|medicated\s+(?:feed|ration)
  | \bnursing\s+(?:puppies|kittens|animals)|baby\s+birds?|baby\s+macaws?|hand[\s-]?feeding|chew\s+toy\s+for
  | all[\s-]?terrain\s+vehicle|\batvs?\b|utvs?|off[\s-]?highway|side\s?by\s?side|snowmobile|snow\s?bike|dirt\s?bike
  | gun\s+safe|firearm|ammunition|rifle|handgun
@@ -341,7 +342,7 @@ FDA_BABY_BRANDS = re.compile(r"""\b(?:
   | plum\s+organics|sprout\s+organics?|once\s+upon\s+a\s+farm|cerebelly|little\s+spoon
   | serenity\s+kids|pumpkin\s+tree|peter\s+rabbit\s+organics|ella.?s\s+kitchen
   | nurture\s?me|baby\s+gourmet|bobbie|byheart|kendamil|holle|hipp|nara\s+organics
-  | mt\.?\s+capra|sammy.?s\s+milk|crecelac|parent.?s\s+choice\s+infant
+  | mt\.?\s+capra|sammy.?s\s+milk|little\s?oak|crecelac|parent.?s\s+choice\s+infant
   | mommy.?s\s+bliss|little\s+remedies|colic\s+calm|hyland.?s\s+baby|orajel\s+baby
   | babyganics|tippy\s+toes|yobaby|good\s?&?\s?gather\s+baby|mama\s+bear\s+(?:infant|baby)
   | up\s?&?\s?up\s+(?:infant|baby)|nutramigen|alimentum|pediasure|pedialyte
@@ -523,6 +524,11 @@ def curate(product='', heading='', description='', hazard='', extra='', fda=Fals
     # exclusions checked last, and never override an explicit child standard
     if 'standard' not in sig:
         m = EXCLUDE.search(f'{name_blob} {key(hazard)}')
+        # "goat milk formula" is excluded for kid-goat feed, but an FDA record
+        # from a human infant-formula company (Mt. Capra, Holle, LittleOak,
+        # Sammy's Milk) is the human product.
+        if m and 'fda_baby_brand' in sig and re.match(r'goat', m.group(0), re.I):
+            m = None
         if m:
             return False, sig, m.group(0)
 
