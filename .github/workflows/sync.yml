@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   sync:
@@ -28,30 +29,46 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pandas openpyxl google-auth
 
+      # 0a. FDA Enforcement Report exports uploaded to inbox/fda/ (by hand, a
+      #     full report week, no keyword). New child recalls go into
+      #     fda_enforcement.jsonl; lifecycle changes refresh existing ones.
+      - name: Import FDA inbox
+        run: python import_fda_inbox.py . || true
+
+      # 0b. New NHTSA car-seat campaigns from NHTSA's daily flat file. Appends
+      #     only; hand-built records are never edited. Falls back to a zip in
+      #     inbox/nhtsa/ if NHTSA refuses the download.
+      - name: Fetch NHTSA car seats
+        run: python fetch_nhtsa.py . || true
+
       # 1. Automatic half — CPSC API and the FDA datatables feed.
       #    Writes recalls_pipeline.json only.
       - name: Fetch live sources
         run: python sync_recalls.py
 
       # 2. Combine with the manual archives that live in the repo:
-      #    cpsc_curated.jsonl, *_enforce_rpt*.csv, nhtsa_child_restraints.json.
-      #    These cannot be fetched on a schedule, so they are committed once and
-      #    re-merged on every run. This step is what makes the daily job safe —
-      #    without it each run would publish only the automatic half.
+      #    cpsc_curated.jsonl, fda_enforcement.jsonl, nhtsa_child_restraints.json.
       - name: Merge with manual archives
         run: python merge_sources.py .
 
       # Reports, never blocks. A recall app that skips a day because one check
-      # cried wolf is worse than one that ships a flawed record — the other
-      # 6,264 are fine, and a formula recall posted yesterday needs to arrive
-      # today. Read the output; act on it yourself.
+      # cried wolf is worse than one that ships a flawed record.
       - name: Audit (report only)
         run: python tinysafe_audit.py . || true
+
+      # Blocks ONLY catastrophic output (total down >3%, a source down >10%,
+      # unreadable file, ids/dates missing at scale). On a block the previously
+      # published files are restored, so the app keeps yesterday's good data.
+      - name: Publish gate
+        id: gate
+        continue-on-error: true
+        run: python pipeline_gate.py .
 
       # 3. Push a parent when a NEW recall matches a brand they watch.
       #    First ever run only seeds the ledger and sends nothing. Never
       #    blocks the sync - a broken push is a bug, a skipped feed is worse.
       - name: Notify My Brands matches
+        if: steps.gate.outcome == 'success'
         env:
           ONESIGNAL_APP_ID: ${{ secrets.ONESIGNAL_APP_ID }}
           ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
@@ -68,14 +85,37 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "TinySafe Sync Bot"
           # cdrh_urls.json is the device-link cache (P33). Committing it is
-          # what makes the openFDA lookup one-time; without it every run
-          # re-queries 1,360 ids and a single outage flips links back to
-          # the dead search form for a day.
-          git add recalls_unified.json recalls_pipeline.json recalls_full.jsonl cdrh_urls.json notified_ids.json
+          # what makes the openFDA lookup one-time.
+          git add recalls_unified.json recalls_pipeline.json recalls_full.jsonl \
+                  cdrh_urls.json notified_ids.json \
+                  fda_enforcement.jsonl nhtsa_child_restraints.json
+          git add -A inbox || true
           if git diff --cached --quiet; then
             echo "No changes."
           else
             git commit -m "chore: daily recall sync ($(date -u +%Y-%m-%d))"
+            git pull --rebase --autostash || true
             git push
           fi
 
+      # Anything that crashed above leaves no status file of its own.
+      - name: Record crash
+        if: failure()
+        run: |
+          mkdir -p .pipeline_status
+          echo '{"source": "daily sync", "warnings": ["A step crashed before publishing. The app keeps the last published data. Open the run log to see which step."]}' > .pipeline_status/crash.json
+
+      # One GitHub issue ("Data pipeline needs attention") collects every
+      # block and warning, so it reaches email instead of sitting in a log.
+      # A clean run closes it.
+      - name: Report problems
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python pipeline_notify.py . --context "daily sync" || true
+
+      - name: Fail the run if the gate blocked
+        if: steps.gate.outcome == 'failure'
+        run: |
+          echo "Publish gate blocked today's data — see the issue for details."
+          exit 1

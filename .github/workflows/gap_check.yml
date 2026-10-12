@@ -1,26 +1,33 @@
 # .github/workflows/gap_check.yml
 #
 # FDA gap check — compares recalls_unified.json against FDA's live
-# Enforcement Report via openFDA. READ-ONLY: prints a report and uploads
-# artifacts; never commits or pushes anything.
+# Enforcement Report via openFDA. READ-ONLY: never commits or pushes anything.
 #
-# Run it from the Actions tab -> "FDA gap check" -> Run workflow.
-# The MISSING list appears directly in the run log; the CSV and the
-# ready-to-review fda_enforcement_new.jsonl download as artifacts.
+# Runs every Thursday (FDA posts the Enforcement Report on Wednesdays) over a
+# rolling 60-day window. If openFDA holds a child recall TinySafe does not, it
+# comments on the "Data pipeline needs attention" issue. It can also be run by
+# hand from Actions -> "FDA gap check" -> Run workflow with a custom window.
+# The CSV and a ready-to-review fda_enforcement_new.jsonl download as artifacts.
 
 name: FDA gap check
 
 on:
+  schedule:
+    - cron: '17 15 * * 4'     # Thursdays 11:17 America/New_York
   workflow_dispatch:
     inputs:
       since:
-        description: "window start, YYYYMMDD"
+        description: "window start, YYYYMMDD (blank = last 60 days)"
         required: false
-        default: "20260601"
+        default: ""
       to:
         description: "window end, YYYYMMDD (blank = today)"
         required: false
         default: ""
+
+permissions:
+  contents: read
+  issues: write
 
 jobs:
   gap-check:
@@ -40,12 +47,20 @@ jobs:
           TO: ${{ github.event.inputs.to }}
         run: |
           if [ -z "$TO" ]; then unset TO; fi
+          if [ -z "$SINCE" ]; then unset SINCE; fi
           python fda_gap_check.py
 
       - name: Upload report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: fda-gap-report
           path: |
             fda_gap_report.csv
             fda_enforcement_new.jsonl
+
+      - name: Report missing recalls
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python pipeline_notify.py . --context "weekly FDA gap check" || true
