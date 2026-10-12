@@ -45,6 +45,7 @@ sys.path.insert(0, HERE)
 import fda_enforcement_import as fimp  # noqa: E402
 
 CODE_CAP = 2000
+RID = re.compile(r"^[A-Z]-\d{3,4}-\d{4}$")
 
 # CSV column -> compact jsonl key (the shape fda_enforcement.jsonl already uses)
 COLMAP = [
@@ -111,6 +112,8 @@ def read_file(path):
 
 def compact(row):
     out = {k: (row.get(col) or "").strip() for k, col in COLMAP}
+    # iRES writes "N/A" for an empty date; storing it would read as a value
+    out = {k: ("" if v.upper() in ("N/A", "NA", "NONE") else v) for k, v in out.items()}
     out["code_info"] = (row.get("_code_info") or "")[:CODE_CAP]
     return out
 
@@ -170,7 +173,10 @@ def main(repo="."):
         seen = set()
         for row in rows:
             rid = (row.get("Recall Number") or "").strip()
-            if not rid or rid in seen:
+            # FDA leaves "N/A" on some rows (veterinary, pending). Several rows
+            # share it, so it is not an id; keying on it would make unrelated
+            # recalls overwrite each other.
+            if not RID.match(rid) or rid in seen:
                 continue
             seen.add(rid)
             c = compact(row)
