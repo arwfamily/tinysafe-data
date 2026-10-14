@@ -1,6 +1,6 @@
 {
   "version": "5.0",
-  "updated": "2026-10-13T18:36:20.773458Z",
+  "updated": "2026-10-14T16:05:35.253841Z",
   "description": "TinySafe unified baby/kids recall DB — all categories (FDA drugs/sunscreen/skincare/oral/meds, food/formula, cosmetics + CPSC physical products). Comprehensive baby safety scope. Veterinary excluded.",
   "sources": [
     "CPSC",
@@ -120934,7 +120934,8 @@
       "match_ndc": "",
       "match_squash": "ablegroupeinchippcomfortmilkformula",
       "match_brand_squash": "ablegroupeinc",
-      "match_words": "able groupe inc hipp comfort milk formula"
+      "match_words": "able groupe inc hipp comfort milk formula",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -120985,7 +120986,8 @@
       "match_ndc": "",
       "match_squash": "ablegroupeinchippargermanyantirefluxmilkformula",
       "match_brand_squash": "ablegroupeinc",
-      "match_words": "able groupe inc hipp ar germany anti-reflux milk formula"
+      "match_words": "able groupe inc hipp ar germany anti-reflux milk formula",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121036,7 +121038,8 @@
       "match_ndc": "",
       "match_squash": "ablegroupeinchippdutchstage2combioticfollowonmilkformula",
       "match_brand_squash": "ablegroupeinc",
-      "match_words": "able groupe inc hipp dutch stage 2 combiotic follow-on milk formula"
+      "match_words": "able groupe inc hipp dutch stage 2 combiotic follow-on milk formula",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121087,7 +121090,8 @@
       "match_ndc": "",
       "match_squash": "ablegroupeinckendamilorganicstage2followonmilkformula",
       "match_brand_squash": "ablegroupeinc",
-      "match_words": "able groupe inc kendamil organic stage 2 follow on milk formula"
+      "match_words": "able groupe inc kendamil organic stage 2 follow on milk formula",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121137,7 +121141,8 @@
       "match_ndc": "",
       "match_squash": "cswholesalegrocersincstonyfieldorganicyobabyappleblueberryyogurt6ct4ozcupsupc5215970115",
       "match_brand_squash": "cswholesalegrocersinc",
-      "match_words": "c & s wholesale grocers, inc. stonyfield organic yobaby apple & blueberry yogurt - 6ct/4oz cups upc: 5215970115"
+      "match_words": "c & s wholesale grocers, inc. stonyfield organic yobaby apple & blueberry yogurt - 6ct/4oz cups upc: 5215970115",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121187,7 +121192,8 @@
       "match_ndc": "",
       "match_squash": "cswholesalegrocersincstonyfieldorganicyobabypeachpearyogurt6ct4ozcupsupc5215970116",
       "match_brand_squash": "cswholesalegrocersinc",
-      "match_words": "c & s wholesale grocers, inc. stonyfield organic yobaby peach & pear yogurt - 6ct/4oz cups upc: 5215970116"
+      "match_words": "c & s wholesale grocers, inc. stonyfield organic yobaby peach & pear yogurt - 6ct/4oz cups upc: 5215970116",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121236,7 +121242,8 @@
       "match_ndc": "",
       "match_squash": "medlineindustrieslpmedlineconveniencekits1ivstartkitcatalognumberdyndv25202peripherallabbloodculturekitcatalognumberdyndh1983a3pediemergencytraypurplecatalognumberacc010157c4pedsemergencytraygreencatalognumberacc010158c5pediemergencytraybluecatalognumberacc010159c6pedsemergencytrayyellowcatalognumberacc010160c7pedsemergencytraywhitecatalognumberacc010161c8pedsemergencytrayorangecatalognumberacc010162c9pedsemergencytrayredcatalognumberacc010163c10cvhpdrawerivcatalognumberacc010308a11pediemergencytraybluecatalognumberacc010316a12pedsemergencytraygreencatalognumberacc010318a13pedsemergencytrayorangecatalognumberacc010319a14drawerthreeivsetupcatalognumberacc01036115drawer1catalognumberacc010374a16drawer3labdrawivstartcatalognumberacc010417a17drawer6catalognumberacc010477b18drawer4catalognumberacc010479a19adultdrawer4catalognumberacc01067920drawer2catalognumberacc01069021drawer2catalognumberacc01072622drawer2catalognumberacc010726a23rrmccodecartdrawer3catalognumberacc01077024drawer2catalognumberacc01087525bottomdrawercatalognumberacc01097226codecartdrawertwoivsupplicatalognumberacc01097727drawer4circulationcatalognumberacc01108828nonsuturedsheath113197kitcatalognumberdykm149529suturedsheathwsci113198catalognumberdykm149630labortriagekitlf13232catalognumberdykm156431fingerthoracostomypcckitcatalognumberdykm2676a32uvckitcatalognumberdykm2677a33crickitcatalognumberdykm2678a34scopekit3catalognumberdykm275035surgicalkitcatalognumberdykm275236preopkitcatalognumberdyks1022b37mackitcatalognumberdyks1089b38preopkitcatalognumberdyks1091a39preopkitcatalognumberdyks1128b40preopkitcatalognumberdyks132541uclarapidresponsekitcatalognumberdylab109742bssmwholebloodphlebotomycatalognumberdyndb306143wholebloodphlebotomycatalognumberdyndb306444wholeblooddoubleredcatalognumberdyndb3078c45accesskitcatalognumberdyndh1159a46adltbloodculturecollectkitcatalognumberdyndh124547adultbloodculturekitcatalognumberdyndh136248pediatricbloodculturekitcatalognumberdyndh136349stanfordtimetopositivitycatalognumberdyndh159150bloodculturepinkperipheralcatalognumberdyndv187551bloodcultureblueperipheralcatalognumberdyndv187652niculinepackcatalognumberdynj6341053studentpracticebagwlogocatalognumbereduc104353",
       "match_brand_squash": "medlineindustrieslp",
-      "match_words": "medline industries, lp medline convenience kits: 1) iv start kit, catalog number: dyndv2520; 2) peripheral lab blood culture kit, catalog number: dyndh1983a; 3) pedi emergency tray-purple, catalog number: acc010157c; 4) peds emergency tray- green, catalog number: acc010158c; 5) pedi emergency tray-blue, catalog number: acc010159c; 6) peds emergency tray-yellow, catalog number: acc010160c; 7) peds emergency tray-white, catalog number: acc010161c; 8) peds emergency tray-orange, catalog number: acc010162c; 9) peds emergency tray-red, catalog number: acc010163c; 10) cvhp drawer -iv, catalog number: acc010308a; 11) pedi emergency tray-blue, catalog number: acc010316a; 12) peds emergency tray- green, catalog number: acc010318a; 13) peds emergency tray-orange, catalog number: acc010319a; 14) drawer three - iv set up, catalog number: acc010361; 15) drawer 1, catalog number: acc010374a; 16) drawer 3 lab draw & iv start, catalog number: acc010417a; 17) drawer #6, catalog number: acc010477b; 18) drawer #4, catalog number: acc010479a; 19) adult drawer 4, catalog number: acc010679; 20) drawer 2, catalog number: acc010690; 21) drawer 2, catalog number: acc010726; 22) drawer 2, catalog number: acc010726a; 23) rrmc code cart drawer 3, catalog number: acc010770; 24) drawer 2, catalog number: acc010875; 25) bottom drawer, catalog number: acc010972; 26) code cart drawer two iv suppli, catalog number: acc010977; 27) drawer 4 circulation, catalog number: acc011088; 28) non-sutured sheath #113197 kit, catalog number: dykm1495; 29) sutured sheath w/sci #113198, catalog number: dykm1496; 30) labor triage kit - lf #13232, catalog number: dykm1564; 31) finger thoracostomy pcc kit, catalog number: dykm2676a; 32) uvc kit, catalog number: dykm2677a; 33) cric kit, catalog number: dykm2678a; 34) scope kit 3, catalog number: dykm2750; 35) surgical kit, catalog number: dykm2752; 36) pre op kit, catalog number: dyks1022b; 37) mac kit, catalog number: dyks1089b; 38) pre op kit, catalog number: dyks1091a; 39) pre op kit, catalog number: dyks1128b; 40) pre op kit, catalog number: dyks1325; 41) ucla rapid response kit, catalog number: dylab1097; 42) bssm-whole blood phlebotomy, catalog number: dyndb3061; 43) whole blood phlebotomy, catalog number: dyndb3064; 44) whole blood/double red, catalog number: dyndb3078c; 45) access kit, catalog number: dyndh1159a; 46) adlt blood culture collect kit, catalog number: dyndh1245; 47) adult blood culture kit, catalog number: dyndh1362; 48) pediatric blood culture kit, catalog number: dyndh1363; 49) stanford time to positivity, catalog number: dyndh1591; 50) blood culture pink peripheral, catalog number: dyndv1875; 51) blood culture blue peripheral, catalog number: dyndv1876; 52) nicu line pack, catalog number: dynj63410; 53) student practice bag w logo, catalog number: educ1043; 53)"
+      "match_words": "medline industries, lp medline convenience kits: 1) iv start kit, catalog number: dyndv2520; 2) peripheral lab blood culture kit, catalog number: dyndh1983a; 3) pedi emergency tray-purple, catalog number: acc010157c; 4) peds emergency tray- green, catalog number: acc010158c; 5) pedi emergency tray-blue, catalog number: acc010159c; 6) peds emergency tray-yellow, catalog number: acc010160c; 7) peds emergency tray-white, catalog number: acc010161c; 8) peds emergency tray-orange, catalog number: acc010162c; 9) peds emergency tray-red, catalog number: acc010163c; 10) cvhp drawer -iv, catalog number: acc010308a; 11) pedi emergency tray-blue, catalog number: acc010316a; 12) peds emergency tray- green, catalog number: acc010318a; 13) peds emergency tray-orange, catalog number: acc010319a; 14) drawer three - iv set up, catalog number: acc010361; 15) drawer 1, catalog number: acc010374a; 16) drawer 3 lab draw & iv start, catalog number: acc010417a; 17) drawer #6, catalog number: acc010477b; 18) drawer #4, catalog number: acc010479a; 19) adult drawer 4, catalog number: acc010679; 20) drawer 2, catalog number: acc010690; 21) drawer 2, catalog number: acc010726; 22) drawer 2, catalog number: acc010726a; 23) rrmc code cart drawer 3, catalog number: acc010770; 24) drawer 2, catalog number: acc010875; 25) bottom drawer, catalog number: acc010972; 26) code cart drawer two iv suppli, catalog number: acc010977; 27) drawer 4 circulation, catalog number: acc011088; 28) non-sutured sheath #113197 kit, catalog number: dykm1495; 29) sutured sheath w/sci #113198, catalog number: dykm1496; 30) labor triage kit - lf #13232, catalog number: dykm1564; 31) finger thoracostomy pcc kit, catalog number: dykm2676a; 32) uvc kit, catalog number: dykm2677a; 33) cric kit, catalog number: dykm2678a; 34) scope kit 3, catalog number: dykm2750; 35) surgical kit, catalog number: dykm2752; 36) pre op kit, catalog number: dyks1022b; 37) mac kit, catalog number: dyks1089b; 38) pre op kit, catalog number: dyks1091a; 39) pre op kit, catalog number: dyks1128b; 40) pre op kit, catalog number: dyks1325; 41) ucla rapid response kit, catalog number: dylab1097; 42) bssm-whole blood phlebotomy, catalog number: dyndb3061; 43) whole blood phlebotomy, catalog number: dyndb3064; 44) whole blood/double red, catalog number: dyndb3078c; 45) access kit, catalog number: dyndh1159a; 46) adlt blood culture collect kit, catalog number: dyndh1245; 47) adult blood culture kit, catalog number: dyndh1362; 48) pediatric blood culture kit, catalog number: dyndh1363; 49) stanford time to positivity, catalog number: dyndh1591; 50) blood culture pink peripheral, catalog number: dyndv1875; 51) blood culture blue peripheral, catalog number: dyndv1876; 52) nicu line pack, catalog number: dynj63410; 53) student practice bag w logo, catalog number: educ1043; 53)",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121285,7 +121292,8 @@
       "match_ndc": "",
       "match_squash": "medlineindustrieslpmedlineconveniencekits1bloodculturetraypediatricmodelnumberdyndh11932bloodculturekit2wconnectmodelnumberdyndh1487a",
       "match_brand_squash": "medlineindustrieslp",
-      "match_words": "medline industries, lp medline convenience kits: 1) blood culture tray pediatric, model number: dyndh1193; 2) blood culture kit 2 w/connect, model number: dyndh1487a"
+      "match_words": "medline industries, lp medline convenience kits: 1) blood culture tray pediatric, model number: dyndh1193; 2) blood culture kit 2 w/connect, model number: dyndh1487a",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121334,7 +121342,8 @@
       "match_ndc": "",
       "match_squash": "medlineindustrieslpmedlinebreathingcircuitslabeledas1hudsonrcicircuithtddlneonate48medlineproductnumberskuhud78007teleflexproductnumbersku780072hudsonrcidbmcircuitventneonatal21vmedlineproductnumberskuhud78009teleflexproductnumbersku780093hudsonrcidbdcircuitventinsiratoryheatedneo4medlineproductnumbersku78013teleflexproductnumbersku780134hudsonrcidbdcircuitventinsiratoryheatedneo4medlineproductnumbersku78014teleflexproductnumbersku780145hudsonrcidbdcircuithtdduallimbneonatemedlineproductnumbersku78015teleflexproductnumbersku780156hudsonrcicircuitneodualwire60inmedlineproductnumberskuhud78018teleflexproductnumbersku78018",
       "match_brand_squash": "medlineindustrieslp",
-      "match_words": "medline industries, lp medline breathing circuits labeled as: 1) hudson rci, circuit, htd, dl, neonate, 48, medline product number/sku hud78007 (teleflex product number/sku 780-07); 2) hudson rci, dbm-circuit,vent,neonatal,21 v, medline product number/sku hud78009 (teleflex product number/sku 780-09); 3) hudson rci, dbd-circuit,vent,insiratory,heated,neo,4, medline product number/sku 780-13 (teleflex product number/sku 780-13); 4) hudson rci, dbd-circuit,vent,insiratory,heated,neo,4, medline product number/sku 780-14 (teleflex product number/sku 780-14); 5) hudson rci, dbd-circuit, htd, dual limb, neonate, medline product number/sku 780-15 (teleflex product number/sku 780-15); 6) hudson rci, circuit,neo,dual,wire,60 in, medline product number/sku hud78018) (teleflex product number/sku 780-18)."
+      "match_words": "medline industries, lp medline breathing circuits labeled as: 1) hudson rci, circuit, htd, dl, neonate, 48, medline product number/sku hud78007 (teleflex product number/sku 780-07); 2) hudson rci, dbm-circuit,vent,neonatal,21 v, medline product number/sku hud78009 (teleflex product number/sku 780-09); 3) hudson rci, dbd-circuit,vent,insiratory,heated,neo,4, medline product number/sku 780-13 (teleflex product number/sku 780-13); 4) hudson rci, dbd-circuit,vent,insiratory,heated,neo,4, medline product number/sku 780-14 (teleflex product number/sku 780-14); 5) hudson rci, dbd-circuit, htd, dual limb, neonate, medline product number/sku 780-15 (teleflex product number/sku 780-15); 6) hudson rci, circuit,neo,dual,wire,60 in, medline product number/sku hud78018) (teleflex product number/sku 780-18).",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121383,7 +121392,8 @@
       "match_ndc": "",
       "match_squash": "medlineindustrieslpmedlinebreathingcircuitslabeledas1medlinehudsonrcicircuitneosinglimbhtdcolumnmedlineproductnumberskuhud78001kitteleflexproductnumbersku78001kit2medlinehudsonrcicircuitneoduallimbhtdcolumnmedlineproductnumberskuhud78007kitteleflexproductnumbersku78007kit3medlinehudsonrcidbdcircuitneoduallimbhtdcolumnmedlineproductnumberskuhud78008kitteleflexproductnumbersku78008kit4medlinehudsonrcidbdcircuitneoduallimbhtdcolumnmedlineproductnumberskuhud78009kitteleflexproductnumbersku79009kit5medlinehudsonrcicircuitneoduallimbhtdcolumnmedlineproductnumberskuhud78017kitteleflexproductnumbersku78017kit6medlinehudsonrcicircuitneodualhtdduallimbcolumnmedlineproductnumberskuhud78018kitteleflexproductnumbersku78018kit7medlinehudsonrcicircuitisoshieldsinglelimbinfantmedlineproductnumberskuhud88001kitteleflexproductnumbersku88001kit8medlinehudsonrcicircuitisoshieldinfanthtdcolumndrnmedlineproductnumberskuhud88013kitteleflexproductnumbersku88013kit9medlinehudsonrciisoshieldcircuitinfnthtddldrainmedlineproductnumberskuhud88014kitteleflexproductnumbersku88014kit10medlinehudsonrciisoshieldcircuitinfnthtddldrainmedlineproductnumberskuhud88015kitteleflexproductnumbersku88015kit11medlinehudsonrciisoshieldcircuitinfnthtddldrainmedlineproductnumberskuhud88017kitteleflexproductnumbersku88017kit",
       "match_brand_squash": "medlineindustrieslp",
-      "match_words": "medline industries, lp medline breathing circuits labeled as: 1) medline hudson rci, circuit, neo, sing limb, htd,column, medline product number/sku hud78001kit (teleflex product number/sku 780-01kit); 2) medline hudson rci, circuit, neo, dual limb htd, column, medline product number/sku hud78007kit (teleflex product number/sku 780-07kit); 3) medline hudson rci, dbd-circuit, neo, dual limb htd, column, medline product number/sku hud78008kit (teleflex product number/sku 780-08kit); 4) medline hudson rci, dbd-circuit, neo, dual limb htd, column, medline product number/sku hud78009kit (teleflex product number/sku 790-09kit); 5) medline hudson rci, circuit, neo, dual limb, htd,column, medline product number/sku hud78017kit (teleflex product number/sku 780-17kit); 6) medline hudson rci, circuit, neo, dual htd, dual limb,column, medline product number/sku hud78018kit (teleflex product number/sku 780-18kit); 7) medline hudson rci, circuit,iso-shield single limb,infant, medline product number/sku hud88001kit (teleflex product number/sku 880-01kit); 8) medline hudson rci, circuit,iso-shield,infant,htd,column,drn, medline product number/sku hud88013kit (teleflex product number/sku 880-13kit); 9) medline hudson rci, iso-shield circuit,infnt,htd,dl,drain, medline product number/sku hud88014kit (teleflex product number/sku 880-14kit); 10) medline hudson rci,iso-shield circuit,infnt,htd,dl,drain, medline product number/sku hud88015kit (teleflex product number/sku 880-15kit); 11) medline hudson rci, iso-shield circuit,infnt,htd,dl,drain, medline product number/sku hud88017kit (teleflex product number/sku 880-17kit)."
+      "match_words": "medline industries, lp medline breathing circuits labeled as: 1) medline hudson rci, circuit, neo, sing limb, htd,column, medline product number/sku hud78001kit (teleflex product number/sku 780-01kit); 2) medline hudson rci, circuit, neo, dual limb htd, column, medline product number/sku hud78007kit (teleflex product number/sku 780-07kit); 3) medline hudson rci, dbd-circuit, neo, dual limb htd, column, medline product number/sku hud78008kit (teleflex product number/sku 780-08kit); 4) medline hudson rci, dbd-circuit, neo, dual limb htd, column, medline product number/sku hud78009kit (teleflex product number/sku 790-09kit); 5) medline hudson rci, circuit, neo, dual limb, htd,column, medline product number/sku hud78017kit (teleflex product number/sku 780-17kit); 6) medline hudson rci, circuit, neo, dual htd, dual limb,column, medline product number/sku hud78018kit (teleflex product number/sku 780-18kit); 7) medline hudson rci, circuit,iso-shield single limb,infant, medline product number/sku hud88001kit (teleflex product number/sku 880-01kit); 8) medline hudson rci, circuit,iso-shield,infant,htd,column,drn, medline product number/sku hud88013kit (teleflex product number/sku 880-13kit); 9) medline hudson rci, iso-shield circuit,infnt,htd,dl,drain, medline product number/sku hud88014kit (teleflex product number/sku 880-14kit); 10) medline hudson rci,iso-shield circuit,infnt,htd,dl,drain, medline product number/sku hud88015kit (teleflex product number/sku 880-15kit); 11) medline hudson rci, iso-shield circuit,infnt,htd,dl,drain, medline product number/sku hud88017kit (teleflex product number/sku 880-17kit).",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121481,7 +121491,8 @@
       "match_ndc": "",
       "match_squash": "medlineindustrieslpmedlineconveniencekitscontainingbdchloraprepclear1mlapplicatorsbloodculturepinkperipheraldyndv1875bottomdraweracc010972drawer4acc010479adrawer2acc010690acc010875drawer3syrdrsmonng1of3acc011073drawer4circulationacc011088drawer5leftboxacc011067labortriagekitlf13232dykm1564dykm1564alinenuniversalpackdynjt10325mackitdyks1089bniculinepackdynj63410pediatricbloodculturekitdyndh1363rrmccodecartdrawer3acc010770stanfordtimetopositivitydyndh1591studentpracticebagwlogoeduc1043educ1043asuturedsheathwsci113198dykm1496ivstartkitdyndv2520",
       "match_brand_squash": "medlineindustrieslp",
-      "match_words": "medline industries, lp medline convenience kits containing bd chloraprep clear - 1ml applicators blood culture pink peripheral dyndv1875 bottom drawer acc010972 drawer #4 acc010479a drawer 2 acc010690 acc010875 drawer 3 syr/drs/mon/ng 1 of 3 acc011073 drawer 4 circulation acc011088 drawer 5 - left box acc011067 labor triage kit - lf #13232 dykm1564 dykm1564a linen universal pack dynjt10325 mac kit dyks1089b nicu line pack dynj63410 pediatric blood culture kit dyndh1363 rrmc code cart drawer 3 acc010770 stanford time to positivity dyndh1591 student practice bag w logo educ1043 educ1043a sutured sheath w/sci #113198 dykm1496 iv start kit dyndv2520"
+      "match_words": "medline industries, lp medline convenience kits containing bd chloraprep clear - 1ml applicators blood culture pink peripheral dyndv1875 bottom drawer acc010972 drawer #4 acc010479a drawer 2 acc010690 acc010875 drawer 3 syr/drs/mon/ng 1 of 3 acc011073 drawer 4 circulation acc011088 drawer 5 - left box acc011067 labor triage kit - lf #13232 dykm1564 dykm1564a linen universal pack dynjt10325 mac kit dyks1089b nicu line pack dynj63410 pediatric blood culture kit dyndh1363 rrmc code cart drawer 3 acc010770 stanford time to positivity dyndh1591 student practice bag w logo educ1043 educ1043a sutured sheath w/sci #113198 dykm1496 iv start kit dyndv2520",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121529,7 +121540,9 @@
       "match_ndc": "",
       "match_squash": "heartsinetechnologiesltdheartsinesam350p350pusdeviceusenglish2mincprudidicodes0506016712067350pusdeviceusenglishamericanairlines2mincprudidicode0506016712207350pusdeviceusenglishwithgateway2mincprudidicode0506016712804heartsinesam360p360pusdeviceusenglish2mincprudidicode0506016712068heartsinesam450psam450pusdeviceusenglish2mincprudidicode0506016712069theheartsinesamaritanpadpublicaccessdefibrillatormodelssam350psam360pandsam450pareindicatedforuseonvictimsofcardiacarrestwhoareexhibitingthefollowingsignsunconsciousnotbreathingwithoutcirculationwithoutapulsethedevicesareindicatedforuseonpatientsgreaterthan8yearsoldorover55lbs25kgwhenusedwiththeadultpadpakpadpak01orpadpak07theyareindicatedforuseonchildrenbetween1and8yearsofageorupto55lbs25kgwhenusedwiththepediatricpadpadpak02",
       "match_brand_squash": "heartsinetechnologiesltd",
-      "match_words": "heartsine technologies ltd heartsine sam 350p 350p us device, us english - 2 min cpr udi-di codes: 0506016712067 350p us device, us english (american airlines) - 2 min cpr udi-di code: 0506016712207 350p us device, us english with gateway - 2 min cpr udi-di code: 0506016712804 heartsine sam 360p 360p us device, us english - 2 min cpr udi-di code: 0506016712068 heartsine sam 450p sam 450p us device, us english (2 min cpr) udi-di code: 0506016712069 the heartsine samaritan pad (public access defibrillator) models sam 350p, sam 360p and sam 450p are indicated for use on victims of cardiac arrest who are exhibiting the following signs: \" unconscious \" not breathing \" without circulation (without a pulse) the devices are indicated for use on patients greater than 8 years old or over 55 lbs. (25 kg) when used with the adult pad-pak (pad-pak-01 or pad-pak-07). they are indicated for use on children between 1 and 8 years of age or up to 55 lbs. (25 kg) when used with the pediatric-pad (pad-pak-02)."
+      "match_words": "heartsine technologies ltd heartsine sam 350p 350p us device, us english - 2 min cpr udi-di codes: 0506016712067 350p us device, us english (american airlines) - 2 min cpr udi-di code: 0506016712207 350p us device, us english with gateway - 2 min cpr udi-di code: 0506016712804 heartsine sam 360p 360p us device, us english - 2 min cpr udi-di code: 0506016712068 heartsine sam 450p sam 450p us device, us english (2 min cpr) udi-di code: 0506016712069 the heartsine samaritan pad (public access defibrillator) models sam 350p, sam 360p and sam 450p are indicated for use on victims of cardiac arrest who are exhibiting the following signs: \" unconscious \" not breathing \" without circulation (without a pulse) the devices are indicated for use on patients greater than 8 years old or over 55 lbs. (25 kg) when used with the adult pad-pak (pad-pak-01 or pad-pak-07). they are indicated for use on children between 1 and 8 years of age or up to 55 lbs. (25 kg) when used with the pediatric-pad (pad-pak-02).",
+      "more_code_info": "3 23E90146441J23 23E90146442J23 23E90146443J23 23E90146445J23 23E90146446J23 23E90146450J23 23E90146451J23 23E90146452J23 23E90146453J23 23E90146454J23 23E90146455J23 23E90146566J23 23E90148086K23 23E90148149K23 23E90148170K23 23E90148173K23 23E90148291K23 23E90148293K23 23E90148297K23 23E90148301K23 24E90001961B24 24E90002370B24 24E90003112B24 24E90003215B24 24E90003216B24 24E90003254B24 24E90003312B24 24E90003493B24 24E90003494B24 24E90003739B24 24E90003744B24 24E90003745B24 24E90003747B24 24E90003760B24 24E90003787B24 24E90003791B24 24E90004170B24 24E90004612B24 24E90004613B24 24E90004617B24 24E90004619B24 24E90004621B24 24E90004622B24 24E90004624B24 24E90004625B24 24E90004633B24 24E90004634B24 24E90004635B24 24E90004638B24 24E90004640B24 24E90004641B24 24E90004695B24 24E90004696B24 24E90004697B24 24E90004698B24 24E90004699B24 24E90004704B24 24E90004705B24 24E90004706B24 24E90004726B24 24E90004732B24 24E90005978B24 24E90013330B24 24E90014785A24 24E90015664B24 24E90015665B24 24E90016471A24 24E90016891A24 24E90016893A24 24E90016894A24 24E90016895A24 24E90016896A24 24E90016897A24 24E90016900A24 24E90016901A24 24E90016902A24 24E90016903A24 24E90016904A24 24E90017087A24 24E90017112A24 24E90017277A24 24E90017409A24 24E90017410A24 24E90017417A24 24E90017418A24 24E90017421A24 24E90017422A24 24E90017423A24 24E90017424A24 24E90017426A24 24E90017427A24 24E90017428A24 24E90017429A24 24E90017430A24 24E90017431A24 24E90017432A24 24E90017433A24 24E90017439A24 24E90017440A24 24E90017441A24 24E90017442A24 24E90017443A24 24E90017444A24 24E90017445A24 24E90017446A24 24E90017447A24 24E90017448A24 24E90017449A24 24E90017450A24 24E90017451A24 24E90017452A24 24E90017454A24 24E90017455A24 24E90017456A24 24E90017457A24 24E90017458A24 24E90017459A24 24E90017460A24 24E90017461A24 24E90017462A24 24E90017463A24 24E90017464A24 24E90017465A24 24E90017466A24 24E90017467A24 24E90017471A24 24E90017472A24 24E90017473A24 24E90017474A24 24E90017475A24 24E90017476A24 24E90017477A24 24E90017478A24 ... (+73,140 more characters — see the official notice)",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121578,7 +121591,8 @@
       "match_ndc": "",
       "match_squash": "happiestbabyinchappiestbabyincsnoosleepsackxsmallmodelcatalognumbers2101101s21011086s2101133s2102112s2107101s2107110",
       "match_brand_squash": "happiestbabyinc",
-      "match_words": "happiest baby, inc happiest baby, inc snoo sleep sack, x-small model/catalog number: s2101-101 s2101-108-6 s2101-133 s2102-112 s2107-101 s2107-110"
+      "match_words": "happiest baby, inc happiest baby, inc snoo sleep sack, x-small model/catalog number: s2101-101 s2101-108-6 s2101-133 s2102-112 s2107-101 s2107-110",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121627,7 +121641,8 @@
       "match_ndc": "",
       "match_squash": "happiestbabyinchappiestbabyincsnoosleepsackxlargemodelcatalognumbers2101501s210150811s21015083s21015084s21015085s21015086s21015087s2101512s2101513s2101532s2101533s2101534s2101535s2101536s2101541s2101551s210250810s21025089s2103501s2103502s2103504s210350811s210350812s210350813s210350814s21035086s21035087s21035088",
       "match_brand_squash": "happiestbabyinc",
-      "match_words": "happiest baby, inc happiest baby, inc. snoo sleep sack, x-large model/catalog number: s2101-501 s2101-508-11 s2101-508-3 s2101-508-4 s2101-508-5 s2101-508-6 s2101-508-7 s2101-512 s2101-513 s2101-532 s2101-533 s2101-534 s2101-535 s2101-536 s2101-541 s2101-551 s2102-508-10 s2102-508-9 s2103-501 s2103-502 s2103-504 s2103-508-11 s2103-508-12 s2103-508-13 s2103-508-14 s2103-508-6 s2103-508-7 s2103-508-8"
+      "match_words": "happiest baby, inc happiest baby, inc. snoo sleep sack, x-large model/catalog number: s2101-501 s2101-508-11 s2101-508-3 s2101-508-4 s2101-508-5 s2101-508-6 s2101-508-7 s2101-512 s2101-513 s2101-532 s2101-533 s2101-534 s2101-535 s2101-536 s2101-541 s2101-551 s2102-508-10 s2102-508-9 s2103-501 s2103-502 s2103-504 s2103-508-11 s2103-508-12 s2103-508-13 s2103-508-14 s2103-508-6 s2103-508-7 s2103-508-8",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121676,7 +121691,8 @@
       "match_ndc": "",
       "match_squash": "midmarkcorporationmidmarkiqvitalszoneautomaticallyandnoninvasivelymeasuressystolicanddiastolicbloodpressurepulseratetemperaturetemporalandoxygensaturationspo2foradultandpediatricpatientsmodelnumber12000320withkitnumber40000622",
       "match_brand_squash": "midmarkcorporation",
-      "match_words": "midmark corporation midmark iqvitals zone, automatically and noninvasively measures systolic and diastolic blood pressure, pulse rate, temperature (temporal), and oxygen saturation (spo2) for adult and pediatric patients, model number: 1-200-0320 with kit number: 4-000-0622"
+      "match_words": "midmark corporation midmark iqvitals zone, automatically and noninvasively measures systolic and diastolic blood pressure, pulse rate, temperature (temporal), and oxygen saturation (spo2) for adult and pediatric patients, model number: 1-200-0320 with kit number: 4-000-0622",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121725,7 +121741,8 @@
       "match_ndc": "",
       "match_squash": "coopersurgicalincincainfantnasalcannulaeassyinfantnasalcpapcompletesetstayflextubingcomponent5unitsperboxmodelnumbers442707442709442710442712442715",
       "match_brand_squash": "coopersurgicalinc",
-      "match_words": "coopersurgical, inc. inca (infant nasal cannulae assy) infant nasal cpap, complete set. stay-flex tubing component. 5 units per box. model numbers: 44-2707, 44-2709, 44-2710, 44-2712, 44-2715."
+      "match_words": "coopersurgical, inc. inca (infant nasal cannulae assy) infant nasal cpap, complete set. stay-flex tubing component. 5 units per box. model numbers: 44-2707, 44-2709, 44-2710, 44-2712, 44-2715.",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121774,7 +121791,8 @@
       "match_ndc": "",
       "match_squash": "coopersurgicalincincainfantnasalcannulaeassyneonatalnasalcpapreplacementsetstayflextubingcomponent5unitsperboxmodelnumbers440712440707440709440715",
       "match_brand_squash": "coopersurgicalinc",
-      "match_words": "coopersurgical, inc. inca (infant nasal cannulae assy) neonatal nasal cpap, replacement set. stay-flex tubing component. 5 units per box. model numbers: 44-0712, 44-0707, 44-0709, 44-0715."
+      "match_words": "coopersurgical, inc. inca (infant nasal cannulae assy) neonatal nasal cpap, replacement set. stay-flex tubing component. 5 units per box. model numbers: 44-0712, 44-0707, 44-0709, 44-0715.",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121823,7 +121841,8 @@
       "match_ndc": "",
       "match_squash": "midmarkcorporationmidmarkiqvitalszoneautomaticallyandnoninvasivelymeasuressystolicanddiastolicbloodpressurepulseratetemperaturetemporalandoxygensaturationspo2foradultandpediatricpatientsmodelnumber120003300withkitnumber40000624",
       "match_brand_squash": "midmarkcorporation",
-      "match_words": "midmark corporation midmark iqvitals zone, automatically and noninvasively measures systolic and diastolic blood pressure, pulse rate, temperature (temporal), and oxygen saturation (spo2) for adult and pediatric patients, model number: 1-200-03300 with kit number: 4-000-0624"
+      "match_words": "midmark corporation midmark iqvitals zone, automatically and noninvasively measures systolic and diastolic blood pressure, pulse rate, temperature (temporal), and oxygen saturation (spo2) for adult and pediatric patients, model number: 1-200-03300 with kit number: 4-000-0624",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121872,7 +121891,8 @@
       "match_ndc": "",
       "match_squash": "midmarkcorporationmidmarkiqvitalszoneautomaticallyandnoninvasivelymeasuressystolicanddiastolicbloodpressurepulseratetemperaturetemporalandoxygensaturationspo2foradultandpediatricpatientsmodelnumber12000350withkitnumber40000722",
       "match_brand_squash": "midmarkcorporation",
-      "match_words": "midmark corporation midmark iqvitals zone, automatically and noninvasively measures systolic and diastolic blood pressure, pulse rate, temperature (temporal), and oxygen saturation (spo2) for adult and pediatric patients, model number: 1-200-0350 with kit number: 4-000-0722"
+      "match_words": "midmark corporation midmark iqvitals zone, automatically and noninvasively measures systolic and diastolic blood pressure, pulse rate, temperature (temporal), and oxygen saturation (spo2) for adult and pediatric patients, model number: 1-200-0350 with kit number: 4-000-0722",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121921,7 +121941,8 @@
       "match_ndc": "",
       "match_squash": "midmarkcorporationmidmarkiqvitalszoneautomaticallyandnoninvasivelymeasuressystolicanddiastolicbloodpressurepulseratetemperaturetemporalandoxygensaturationspo2foradultandpediatricpatientsmodelnumber12000360withkitnumber40000724",
       "match_brand_squash": "midmarkcorporation",
-      "match_words": "midmark corporation midmark iqvitals zone, automatically and noninvasively measures systolic and diastolic blood pressure, pulse rate, temperature (temporal), and oxygen saturation (spo2) for adult and pediatric patients, model number: 1-200-0360 with kit number: 4-000-0724"
+      "match_words": "midmark corporation midmark iqvitals zone, automatically and noninvasively measures systolic and diastolic blood pressure, pulse rate, temperature (temporal), and oxygen saturation (spo2) for adult and pediatric patients, model number: 1-200-0360 with kit number: 4-000-0724",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -121971,7 +121992,8 @@
       "match_ndc": "",
       "match_squash": "draegerincventstarresusneoneonatal25unitsperboxpartnumbermp00310disposablebreathingcircuitforusewitharesuscitationmodule",
       "match_brand_squash": "draegerinc",
-      "match_words": "draeger, inc. ventstar resus neo. neonatal. 25 units per box. part number: mp00310 disposable breathing circuit for use with a resuscitation module."
+      "match_words": "draeger, inc. ventstar resus neo. neonatal. 25 units per box. part number: mp00310 disposable breathing circuit for use with a resuscitation module.",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -122075,7 +122097,8 @@
       "match_ndc": "",
       "match_squash": "ohmlaboratoriesincgoodneighborpharmacyloratadineorallydisintegratingtabletsusp10mgpackagedinaforkids10counttabletsperboxndc24385016152abc042226upc087701406508bforadults10counttabletsndc46122014052abc059535upc0877014065546distributedbyamerisourcebergen1300morrisdrivechesterbrookpa19087",
       "match_brand_squash": "ohmlaboratoriesinc",
-      "match_words": "ohm laboratories, inc. good neighbor pharmacy loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) for kids 10-count tablets per box, ndc 24385-0161-52, abc # 042-226, upc 0 8770140650 8; b) for adults 10-count tablets, ndc 46122-0140-52, abc# 059-535, upc 0877014065546, distributed by: amerisourcebergen, 1300 morris drive, chesterbrook, pa 19087"
+      "match_words": "ohm laboratories, inc. good neighbor pharmacy loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) for kids 10-count tablets per box, ndc 24385-0161-52, abc # 042-226, upc 0 8770140650 8; b) for adults 10-count tablets, ndc 46122-0140-52, abc# 059-535, upc 0877014065546, distributed by: amerisourcebergen, 1300 morris drive, chesterbrook, pa 19087",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -122127,7 +122150,8 @@
       "match_ndc": "",
       "match_squash": "ohmlaboratoriesinccareoneoriginalprescriptionstrengthallergyreliefloratadineorallydisintegratingtabletsusp10mgpackagedina10counttabletsperboxndc4152052569upc341520313462bchildrens10counttabletsperboxndc4152052769upc341520314551distributedbyamericansalescompany4201waldenavenuelancasterny14086",
       "match_brand_squash": "ohmlaboratoriesinc",
-      "match_words": "ohm laboratories, inc. careone original prescription strength, allergy relief, loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) 10-count tablets per box, ndc 41520-525-69, upc 3 41520 31346 2; b) children's 10-count tablets per box ndc 41520-527-69, upc 3 41520 31455 1; distributed by: american sales company, 4201 walden avenue, lancaster, ny 14086"
+      "match_words": "ohm laboratories, inc. careone original prescription strength, allergy relief, loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) 10-count tablets per box, ndc 41520-525-69, upc 3 41520 31346 2; b) children's 10-count tablets per box ndc 41520-527-69, upc 3 41520 31455 1; distributed by: american sales company, 4201 walden avenue, lancaster, ny 14086",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -122177,7 +122201,8 @@
       "match_ndc": "",
       "match_squash": "medtronicbatterypackusedwiththecapnostream20andcapnostream20ppatientmonitorbatterypacksmodelnumber016400010520batterypackusedwiththecapnostream20andcapnostream20ppatientmonitorthebatterypackpowersthemonitorwhenacpowerisnotavailableorwhenmonitoringisrequiredduringintrahospitaltransferofpatientsthecapnostream20andcapnostream20pisacombinedcapnographpulseoximetermonitoranditsaccessoriesareintendedtoprovideprofessionallytrainedhealthcareproviderswithcontinuousnoninvasivemeasurementandmonitoringofcarbondioxideconcentrationoftheexpiredandinspiredbreathandrespirationrateandwithcontinuousnoninvasivemonitoringoffunctionaloxygensaturationofarterialhemoglobinspo2andpulserateitisintendedforusewithneonatalpediatricandadultpatientsinhospitalshospitaltypefacilitiesandintrahospitaltransportenvironments",
       "match_brand_squash": "medtronic",
-      "match_words": "medtronic battery pack used with the capnostream\"20 and capnostream\"20p patient monitor, battery packs model number - 016400, 010520. battery pack used with the capnostream\"20 and capnostream\"20p patient monitor. the battery pack powers the monitor when ac power is not available or when monitoring is required during intra-hospital transfer of patients. the capnostream\"20 and capnostream\"20p is a combined capnograph/pulse oximeter monitor and its accessories are intended to provide professionally trained health care providers with continuous, non-invasive measurement and monitoring of carbon dioxide concentration of the expired and inspired breath and respiration rate, and with continuous non-invasive monitoring of functional oxygen saturation of arterial hemoglobin (spo2) and pulse rate. it is intended for use with neonatal, pediatric, and adult patients in hospitals, hospital-type facilities, and intra-hospital transport environments"
+      "match_words": "medtronic battery pack used with the capnostream\"20 and capnostream\"20p patient monitor, battery packs model number - 016400, 010520. battery pack used with the capnostream\"20 and capnostream\"20p patient monitor. the battery pack powers the monitor when ac power is not available or when monitoring is required during intra-hospital transfer of patients. the capnostream\"20 and capnostream\"20p is a combined capnograph/pulse oximeter monitor and its accessories are intended to provide professionally trained health care providers with continuous, non-invasive measurement and monitoring of carbon dioxide concentration of the expired and inspired breath and respiration rate, and with continuous non-invasive monitoring of functional oxygen saturation of arterial hemoglobin (spo2) and pulse rate. it is intended for use with neonatal, pediatric, and adult patients in hospitals, hospital-type facilities, and intra-hospital transport environments",
+      "enriched": true
     },
     {
       "source": "FDA",
@@ -122227,7 +122252,8 @@
       "match_ndc": "",
       "match_squash": "synthesusaproductsllcrapidsorbipsbatterypacksterileintendedforuseinnonloadbearingfracturerepairandreconstructiveproceduresofthecraniofacialskeletonexcludingtheupperandlowerjawinpediatricandadultpopulationspartnumber53055301s",
       "match_brand_squash": "synthesusaproductsllc",
-      "match_words": "synthes (usa) products llc rapidsorb ips battery pack, sterile-intended for use in non-load bearing fracture repair and reconstructive procedures of the craniofacial skeleton (excluding the upper and lower jaw) in pediatric and adult populations. part number: 530.553.01s"
+      "match_words": "synthes (usa) products llc rapidsorb ips battery pack, sterile-intended for use in non-load bearing fracture repair and reconstructive procedures of the craniofacial skeleton (excluding the upper and lower jaw) in pediatric and adult populations. part number: 530.553.01s",
+      "enriched": true
     }
   ],
   "categories": [
