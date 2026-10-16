@@ -1,6 +1,6 @@
 {
   "version": "5.0",
-  "updated": "2026-10-15T15:54:37.931098Z",
+  "updated": "2026-10-16T15:41:00.927090Z",
   "description": "TinySafe unified baby/kids recall DB — all categories (FDA drugs/sunscreen/skincare/oral/meds, food/formula, cosmetics + CPSC physical products). Comprehensive baby safety scope. Veterinary excluded.",
   "sources": [
     "CPSC",
@@ -122185,8 +122185,7 @@
       "match_ndc": "",
       "match_squash": "ohmlaboratoriesincgoodneighborpharmacyloratadineorallydisintegratingtabletsusp10mgpackagedinaforkids10counttabletsperboxndc24385016152abc042226upc087701406508bforadults10counttabletsndc46122014052abc059535upc0877014065546distributedbyamerisourcebergen1300morrisdrivechesterbrookpa19087",
       "match_brand_squash": "ohmlaboratoriesinc",
-      "match_words": "ohm laboratories, inc. good neighbor pharmacy loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) for kids 10-count tablets per box, ndc 24385-0161-52, abc # 042-226, upc 0 8770140650 8; b) for adults 10-count tablets, ndc 46122-0140-52, abc# 059-535, upc 0877014065546, distributed by: amerisourcebergen, 1300 morris drive, chesterbrook, pa 19087",
-      "enriched": true
+      "match_words": "ohm laboratories, inc. good neighbor pharmacy loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) for kids 10-count tablets per box, ndc 24385-0161-52, abc # 042-226, upc 0 8770140650 8; b) for adults 10-count tablets, ndc 46122-0140-52, abc# 059-535, upc 0877014065546, distributed by: amerisourcebergen, 1300 morris drive, chesterbrook, pa 19087"
     },
     {
       "source": "FDA",
@@ -122238,8 +122237,7 @@
       "match_ndc": "",
       "match_squash": "ohmlaboratoriesinccareoneoriginalprescriptionstrengthallergyreliefloratadineorallydisintegratingtabletsusp10mgpackagedina10counttabletsperboxndc4152052569upc341520313462bchildrens10counttabletsperboxndc4152052769upc341520314551distributedbyamericansalescompany4201waldenavenuelancasterny14086",
       "match_brand_squash": "ohmlaboratoriesinc",
-      "match_words": "ohm laboratories, inc. careone original prescription strength, allergy relief, loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) 10-count tablets per box, ndc 41520-525-69, upc 3 41520 31346 2; b) children's 10-count tablets per box ndc 41520-527-69, upc 3 41520 31455 1; distributed by: american sales company, 4201 walden avenue, lancaster, ny 14086",
-      "enriched": true
+      "match_words": "ohm laboratories, inc. careone original prescription strength, allergy relief, loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) 10-count tablets per box, ndc 41520-525-69, upc 3 41520 31346 2; b) children's 10-count tablets per box ndc 41520-527-69, upc 3 41520 31455 1; distributed by: american sales company, 4201 walden avenue, lancaster, ny 14086"
     },
     {
       "source": "FDA",
@@ -122289,8 +122287,7 @@
       "match_ndc": "",
       "match_squash": "medtronicbatterypackusedwiththecapnostream20andcapnostream20ppatientmonitorbatterypacksmodelnumber016400010520batterypackusedwiththecapnostream20andcapnostream20ppatientmonitorthebatterypackpowersthemonitorwhenacpowerisnotavailableorwhenmonitoringisrequiredduringintrahospitaltransferofpatientsthecapnostream20andcapnostream20pisacombinedcapnographpulseoximetermonitoranditsaccessoriesareintendedtoprovideprofessionallytrainedhealthcareproviderswithcontinuousnoninvasivemeasurementandmonitoringofcarbondioxideconcentrationoftheexpiredandinspiredbreathandrespirationrateandwithcontinuousnoninvasivemonitoringoffunctionaloxygensaturationofarterialhemoglobinspo2andpulserateitisintendedforusewithneonatalpediatricandadultpatientsinhospitalshospitaltypefacilitiesandintrahospitaltransportenvironments",
       "match_brand_squash": "medtronic",
-      "match_words": "medtronic battery pack used with the capnostream\"20 and capnostream\"20p patient monitor, battery packs model number - 016400, 010520. battery pack used with the capnostream\"20 and capnostream\"20p patient monitor. the battery pack powers the monitor when ac power is not available or when monitoring is required during intra-hospital transfer of patients. the capnostream\"20 and capnostream\"20p is a combined capnograph/pulse oximeter monitor and its accessories are intended to provide professionally trained health care providers with continuous, non-invasive measurement and monitoring of carbon dioxide concentration of the expired and inspired breath and respiration rate, and with continuous non-invasive monitoring of functional oxygen saturation of arterial hemoglobin (spo2) and pulse rate. it is intended for use with neonatal, pediatric, and adult patients in hospitals, hospital-type facilities, and intra-hospital transport environments",
-      "enriched": true
+      "match_words": "medtronic battery pack used with the capnostream\"20 and capnostream\"20p patient monitor, battery packs model number - 016400, 010520. battery pack used with the capnostream\"20 and capnostream\"20p patient monitor. the battery pack powers the monitor when ac power is not available or when monitoring is required during intra-hospital transfer of patients. the capnostream\"20 and capnostream\"20p is a combined capnograph/pulse oximeter monitor and its accessories are intended to provide professionally trained health care providers with continuous, non-invasive measurement and monitoring of carbon dioxide concentration of the expired and inspired breath and respiration rate, and with continuous non-invasive monitoring of functional oxygen saturation of arterial hemoglobin (spo2) and pulse rate. it is intended for use with neonatal, pediatric, and adult patients in hospitals, hospital-type facilities, and intra-hospital transport environments"
     },
     {
       "source": "FDA",
@@ -122340,8 +122337,7 @@
       "match_ndc": "",
       "match_squash": "synthesusaproductsllcrapidsorbipsbatterypacksterileintendedforuseinnonloadbearingfracturerepairandreconstructiveproceduresofthecraniofacialskeletonexcludingtheupperandlowerjawinpediatricandadultpopulationspartnumber53055301s",
       "match_brand_squash": "synthesusaproductsllc",
-      "match_words": "synthes (usa) products llc rapidsorb ips battery pack, sterile-intended for use in non-load bearing fracture repair and reconstructive procedures of the craniofacial skeleton (excluding the upper and lower jaw) in pediatric and adult populations. part number: 530.553.01s",
-      "enriched": true
+      "match_words": "synthes (usa) products llc rapidsorb ips battery pack, sterile-intended for use in non-load bearing fracture repair and reconstructive procedures of the craniofacial skeleton (excluding the upper and lower jaw) in pediatric and adult populations. part number: 530.553.01s"
     }
   ],
   "categories": [
