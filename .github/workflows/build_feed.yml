@@ -33,6 +33,11 @@ jobs:
             "https://raw.githubusercontent.com/arwfamily/tinysafe-dailymed-scraper-v2/main/data/canonical/us_sunscreens.jsonl"
           # ② 현재 앱 피드 = legacy (ndc/wearability/asin 복원용) + QA 비교 기준
           cp tinysafe_baby_sunscreens.json old_feed.json
+          # ②-b 검증된 미국 배포본 (향료·리콜은 이 값을 씀 — scripts/overlay_v4.py)
+          curl -sSf -o us_all.jsonl \
+            "https://raw.githubusercontent.com/arwfamily/tinysafe-dailymed-scraper-v2/main/data/releases/us/latest/us_all.jsonl"
+          curl -sSf -o manifest.json \
+            "https://raw.githubusercontent.com/arwfamily/tinysafe-dailymed-scraper-v2/main/data/releases/us/latest/manifest.json"
           # ③ 리콜 (같은 레포)
           cp recalls_unified.json recalls.json
           echo "canonical lines: $(wc -l < canonical.jsonl)"
@@ -46,6 +51,9 @@ jobs:
             --legacy old_feed.json \
             --recalls recalls.json \
             --out new_feed.json
+
+      - name: Overlay the verified US release (fragrance from the printed label, reviewed recalls)
+        run: python3 scripts/overlay_v4.py new_feed.json us_all.jsonl
 
       - name: QA gate (blocks bad data)
         id: qa
