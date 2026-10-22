@@ -60,7 +60,8 @@ def main():
     if isinstance(feed, dict):
         rid = None
         try:
-            rid = json.load(open(rel_p.rsplit("/", 1)[0] + "/manifest.json")).get("release_id")
+            import os
+            rid = json.load(open(os.path.join(os.path.dirname(rel_p) or ".", "manifest.json"))).get("release_id")
         except Exception:  # noqa: BLE001
             pass
         feed["us_release_id"] = rid
