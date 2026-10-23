@@ -1,8 +1,13 @@
 name: TinySafe Recall Sync (daily)
 
+concurrency:
+  group: recall-sync
+  cancel-in-progress: false
+
 on:
   schedule:
-    - cron: '0 12 * * *'      # 08:00 America/New_York
+    - cron: '0 12 * * *'      # 08:00 America/New_York (GitHub often starts it hours late)
+    - cron: '0 22 * * *'      # 18:00 America/New_York — catches same-day CPSC releases
   workflow_dispatch:
     inputs:
       test_push_uid:
