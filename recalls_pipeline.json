@@ -1,13 +1,13 @@
 {
   "version": "5.0",
-  "updated": "2026-10-22T16:14:29.709577Z",
+  "updated": "2026-10-23T13:50:02.328966Z",
   "description": "TinySafe unified baby/kids recall DB — all categories (FDA drugs/sunscreen/skincare/oral/meds, food/formula, cosmetics + CPSC physical products). Comprehensive baby safety scope. Veterinary excluded.",
   "sources": [
     "CPSC",
     "FDA",
     "FDA datatables (press releases)"
   ],
-  "total": 2521,
+  "total": 2524,
   "recalls": [
     {
       "source": "CPSC",
@@ -122084,6 +122084,138 @@
       "urgent_rank": 99
     },
     {
+      "source": "CPSC",
+      "category": "Baby & Kids",
+      "recall_id": "27-042",
+      "product_name": "BAMAMON Recalls LED Projecting Finger Light Toys Due to Risk of Serious Injury or Death from Battery Ingestion; Violate Mandatory Standard for Toys",
+      "brand": "",
+      "recall_date": "20261022",
+      "reason": "None reported.",
+      "classification": "",
+      "status": "Recalled",
+      "url": "https://www.cpsc.gov/Recalls/2027/BAMAMON-Recalls-LED-Projecting-Finger-Light-Toys-Due-to-Risk-of-Serious-Injury-or-Death-from-Battery-Ingestion-Violate-Mandatory-Standard-for-Toys",
+      "display_category": "Toys & Gear",
+      "display_name": "BAMAMON Recalls LED Projecting Finger Light Toys",
+      "hazard": "general",
+      "hazards": [
+        "general"
+      ],
+      "tier": 4,
+      "band": "ACT SOON",
+      "category_family": "Toys",
+      "category_group": "Play",
+      "record_type": "recall",
+      "in_feed_scope": true,
+      "curation_signals": [
+        "product",
+        "standard"
+      ],
+      "action": "Consumers should stop using the toys immediately and contact Bamamon. Consumers will be asked to email a photograph showing the product being properly disposed of in the trash to bamamonproductrecall@outlook.com.",
+      "product_count": 1,
+      "grouped_products": [],
+      "plain_reason": "Button or lithium battery can be accessed or ingested.",
+      "needs_review": false,
+      "is_enforced": true,
+      "inconjunction_urls": [],
+      "match_brand": "",
+      "match_text": "bamamon recalls led projecting finger light toys due to risk of serious injury or death from battery ingestion; violate mandatory standard for toys",
+      "match_ndc": "",
+      "match_squash": "bamamonrecallsledprojectingfingerlighttoysduetoriskofseriousinjuryordeathfrombatteryingestionviolatemandatorystandardfortoys",
+      "match_brand_squash": "",
+      "match_words": "bamamon recalls led projecting finger light toys due to risk of serious injury or death from battery ingestion; violate mandatory standard for toys",
+      "is_urgent": false,
+      "urgent_rank": 99
+    },
+    {
+      "source": "CPSC",
+      "category": "Baby & Kids",
+      "recall_id": "27-040",
+      "product_name": "Costway Recalls Convertible High Chairs Due to Risk of Serious Injury or Death from Entrapment and Fall Hazards; Violate Mandatory Standard for High Chairs",
+      "brand": "",
+      "recall_date": "20261022",
+      "reason": "The convertible high chairs violate the mandatory safety standard for high chairs because they do not contain a passive restraint system and a child can slip through the opening between the feeding tray and seat and become entrapped or fall, posing a risk of serious injury or death.",
+      "classification": "",
+      "status": "Recalled",
+      "url": "https://www.cpsc.gov/Recalls/2027/Costway-Recalls-Convertible-High-Chairs-Due-to-Risk-of-Serious-Injury-or-Death-from-Entrapment-and-Fall-Hazards-Violate-Mandatory-Standard-for-High-Chairs",
+      "display_category": "Toys & Gear",
+      "display_name": "Costway Recalls Convertible High Chairs",
+      "hazard": "entrapment",
+      "hazards": [
+        "entrapment",
+        "fall"
+      ],
+      "tier": 1,
+      "band": "ACT NOW",
+      "category_family": "Feeding & high chairs",
+      "category_group": "Feeding",
+      "record_type": "recall",
+      "in_feed_scope": true,
+      "curation_signals": [
+        "product",
+        "victim",
+        "standard"
+      ],
+      "action": "Consumers should immediately stop using the recalled high chairs and contact Costway for a free replacement high chair. Consumers will be asked to provide a receipt or a photo of the product and will receive a prepaid label to return the recalled product to Costway. Upon receipt of the recalled product, Costway will ship a replacement high chair free of charge.",
+      "product_count": 1,
+      "grouped_products": [],
+      "plain_reason": "Has been recalled for a safety risk.",
+      "needs_review": false,
+      "is_enforced": true,
+      "inconjunction_urls": [],
+      "match_brand": "",
+      "match_text": "costway recalls convertible high chairs due to risk of serious injury or death from entrapment and fall hazards; violate mandatory standard for high chairs",
+      "match_ndc": "",
+      "match_squash": "costwayrecallsconvertiblehighchairsduetoriskofseriousinjuryordeathfromentrapmentandfallhazardsviolatemandatorystandardforhighchairs",
+      "match_brand_squash": "",
+      "match_words": "costway recalls convertible high chairs due to risk of serious injury or death from entrapment and fall hazards; violate mandatory standard for high chairs",
+      "is_urgent": true,
+      "urgent_rank": 1
+    },
+    {
+      "source": "CPSC",
+      "category": "Baby & Kids",
+      "recall_id": "27-038",
+      "product_name": "FoShanShiNanHaiQuNuoAiTongZhuangShangHang Recalls CIYTI Light-Up Princess Costumes Due to Risk of Serious Injury or Death from Battery Ingestion; Violate Mandatory Standard for Toys",
+      "brand": "",
+      "recall_date": "20261022",
+      "reason": "The costumes violate the mandatory safety standard for toys because the button cell batteries can be accessed easily by children, posing a deadly ingestion hazard. If button cell or coin batteries are swallowed, the ingested batteries can cause serious injuries, including internal chemical burns, and death.",
+      "classification": "",
+      "status": "Recalled",
+      "url": "https://www.cpsc.gov/Recalls/2027/FoShanShiNanHaiQuNuoAiTongZhuangShangHang-Recalls-CIYTI-Light-Up-Princess-Costumes-Due-to-Risk-of-Serious-Injury-or-Death-from-Battery-Ingestion-Violate-Mandatory-Standard-for-Toys",
+      "display_category": "Toys & Gear",
+      "display_name": "FoShanShiNanHaiQuNuoAiTongZhuangShangHang Recalls CIYTI Light-Up Princess Costum",
+      "hazard": "battery",
+      "hazards": [
+        "battery",
+        "burn"
+      ],
+      "tier": 2,
+      "band": "ACT NOW",
+      "category_family": "Toys",
+      "category_group": "Play",
+      "record_type": "recall",
+      "in_feed_scope": true,
+      "curation_signals": [
+        "product",
+        "standard"
+      ],
+      "action": "Consumers should take the princess costumes away from children immediately, stop using them and contact FoShanShiNanHaiQuNuoAiTongZhuangShangHang for a full refund. Consumers will be asked to write “RECALLED” with permanent marker on the dress, crown, wand, and remote, then throw away the toys and submit a photo of the disposed toys to Norakid2026@outlook.com.  \n\nNote: Button cell batteries are hazardous. Batteries should be disposed of or recycled by following local hazardous waste procedures.",
+      "product_count": 1,
+      "grouped_products": [],
+      "plain_reason": "Button or lithium battery can be accessed or ingested.",
+      "needs_review": false,
+      "is_enforced": true,
+      "inconjunction_urls": [],
+      "match_brand": "",
+      "match_text": "foshanshinanhaiqunuoaitongzhuangshanghang recalls ciyti light-up princess costumes due to risk of serious injury or death from battery ingestion; violate mandatory standard for toys",
+      "match_ndc": "",
+      "match_squash": "foshanshinanhaiqunuoaitongzhuangshanghangrecallsciytilightupprincesscostumesduetoriskofseriousinjuryordeathfrombatteryingestionviolatemandatorystandardfortoys",
+      "match_brand_squash": "",
+      "match_words": "foshanshinanhaiqunuoaitongzhuangshanghang recalls ciyti light-up princess costumes due to risk of serious injury or death from battery ingestion; violate mandatory standard for toys",
+      "is_urgent": true,
+      "urgent_rank": 2
+    },
+    {
       "source": "FDA",
       "record_type": "recall",
       "in_feed_scope": true,
@@ -122185,8 +122317,7 @@
       "match_ndc": "",
       "match_squash": "ohmlaboratoriesincgoodneighborpharmacyloratadineorallydisintegratingtabletsusp10mgpackagedinaforkids10counttabletsperboxndc24385016152abc042226upc087701406508bforadults10counttabletsndc46122014052abc059535upc0877014065546distributedbyamerisourcebergen1300morrisdrivechesterbrookpa19087",
       "match_brand_squash": "ohmlaboratoriesinc",
-      "match_words": "ohm laboratories, inc. good neighbor pharmacy loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) for kids 10-count tablets per box, ndc 24385-0161-52, abc # 042-226, upc 0 8770140650 8; b) for adults 10-count tablets, ndc 46122-0140-52, abc# 059-535, upc 0877014065546, distributed by: amerisourcebergen, 1300 morris drive, chesterbrook, pa 19087",
-      "enriched": true
+      "match_words": "ohm laboratories, inc. good neighbor pharmacy loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) for kids 10-count tablets per box, ndc 24385-0161-52, abc # 042-226, upc 0 8770140650 8; b) for adults 10-count tablets, ndc 46122-0140-52, abc# 059-535, upc 0877014065546, distributed by: amerisourcebergen, 1300 morris drive, chesterbrook, pa 19087"
     },
     {
       "source": "FDA",
@@ -122238,8 +122369,7 @@
       "match_ndc": "",
       "match_squash": "ohmlaboratoriesinccareoneoriginalprescriptionstrengthallergyreliefloratadineorallydisintegratingtabletsusp10mgpackagedina10counttabletsperboxndc4152052569upc341520313462bchildrens10counttabletsperboxndc4152052769upc341520314551distributedbyamericansalescompany4201waldenavenuelancasterny14086",
       "match_brand_squash": "ohmlaboratoriesinc",
-      "match_words": "ohm laboratories, inc. careone original prescription strength, allergy relief, loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) 10-count tablets per box, ndc 41520-525-69, upc 3 41520 31346 2; b) children's 10-count tablets per box ndc 41520-527-69, upc 3 41520 31455 1; distributed by: american sales company, 4201 walden avenue, lancaster, ny 14086",
-      "enriched": true
+      "match_words": "ohm laboratories, inc. careone original prescription strength, allergy relief, loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) 10-count tablets per box, ndc 41520-525-69, upc 3 41520 31346 2; b) children's 10-count tablets per box ndc 41520-527-69, upc 3 41520 31455 1; distributed by: american sales company, 4201 walden avenue, lancaster, ny 14086"
     },
     {
       "source": "FDA",
@@ -122289,8 +122419,7 @@
       "match_ndc": "",
       "match_squash": "medtronicbatterypackusedwiththecapnostream20andcapnostream20ppatientmonitorbatterypacksmodelnumber016400010520batterypackusedwiththecapnostream20andcapnostream20ppatientmonitorthebatterypackpowersthemonitorwhenacpowerisnotavailableorwhenmonitoringisrequiredduringintrahospitaltransferofpatientsthecapnostream20andcapnostream20pisacombinedcapnographpulseoximetermonitoranditsaccessoriesareintendedtoprovideprofessionallytrainedhealthcareproviderswithcontinuousnoninvasivemeasurementandmonitoringofcarbondioxideconcentrationoftheexpiredandinspiredbreathandrespirationrateandwithcontinuousnoninvasivemonitoringoffunctionaloxygensaturationofarterialhemoglobinspo2andpulserateitisintendedforusewithneonatalpediatricandadultpatientsinhospitalshospitaltypefacilitiesandintrahospitaltransportenvironments",
       "match_brand_squash": "medtronic",
-      "match_words": "medtronic battery pack used with the capnostream\"20 and capnostream\"20p patient monitor, battery packs model number - 016400, 010520. battery pack used with the capnostream\"20 and capnostream\"20p patient monitor. the battery pack powers the monitor when ac power is not available or when monitoring is required during intra-hospital transfer of patients. the capnostream\"20 and capnostream\"20p is a combined capnograph/pulse oximeter monitor and its accessories are intended to provide professionally trained health care providers with continuous, non-invasive measurement and monitoring of carbon dioxide concentration of the expired and inspired breath and respiration rate, and with continuous non-invasive monitoring of functional oxygen saturation of arterial hemoglobin (spo2) and pulse rate. it is intended for use with neonatal, pediatric, and adult patients in hospitals, hospital-type facilities, and intra-hospital transport environments",
-      "enriched": true
+      "match_words": "medtronic battery pack used with the capnostream\"20 and capnostream\"20p patient monitor, battery packs model number - 016400, 010520. battery pack used with the capnostream\"20 and capnostream\"20p patient monitor. the battery pack powers the monitor when ac power is not available or when monitoring is required during intra-hospital transfer of patients. the capnostream\"20 and capnostream\"20p is a combined capnograph/pulse oximeter monitor and its accessories are intended to provide professionally trained health care providers with continuous, non-invasive measurement and monitoring of carbon dioxide concentration of the expired and inspired breath and respiration rate, and with continuous non-invasive monitoring of functional oxygen saturation of arterial hemoglobin (spo2) and pulse rate. it is intended for use with neonatal, pediatric, and adult patients in hospitals, hospital-type facilities, and intra-hospital transport environments"
     },
     {
       "source": "FDA",
@@ -122340,8 +122469,7 @@
       "match_ndc": "",
       "match_squash": "synthesusaproductsllcrapidsorbipsbatterypacksterileintendedforuseinnonloadbearingfracturerepairandreconstructiveproceduresofthecraniofacialskeletonexcludingtheupperandlowerjawinpediatricandadultpopulationspartnumber53055301s",
       "match_brand_squash": "synthesusaproductsllc",
-      "match_words": "synthes (usa) products llc rapidsorb ips battery pack, sterile-intended for use in non-load bearing fracture repair and reconstructive procedures of the craniofacial skeleton (excluding the upper and lower jaw) in pediatric and adult populations. part number: 530.553.01s",
-      "enriched": true
+      "match_words": "synthes (usa) products llc rapidsorb ips battery pack, sterile-intended for use in non-load bearing fracture repair and reconstructive procedures of the craniofacial skeleton (excluding the upper and lower jaw) in pediatric and adult populations. part number: 530.553.01s"
     }
   ],
   "categories": [
