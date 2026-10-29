@@ -1,13 +1,13 @@
 {
   "version": "5.0",
-  "updated": "2026-10-29T01:32:41.310266Z",
+  "updated": "2026-10-29T17:48:20.711885Z",
   "description": "TinySafe unified baby/kids recall DB — all categories (FDA drugs/sunscreen/skincare/oral/meds, food/formula, cosmetics + CPSC physical products). Comprehensive baby safety scope. Veterinary excluded.",
   "sources": [
     "CPSC",
     "FDA",
     "FDA datatables (press releases)"
   ],
-  "total": 2524,
+  "total": 2525,
   "recalls": [
     {
       "source": "CPSC",
@@ -122214,6 +122214,51 @@
       "match_words": "foshanshinanhaiqunuoaitongzhuangshanghang recalls ciyti light-up princess costumes due to risk of serious injury or death from battery ingestion; violate mandatory standard for toys",
       "is_urgent": true,
       "urgent_rank": 2
+    },
+    {
+      "source": "CPSC",
+      "category": "Baby & Kids",
+      "recall_id": "27-060",
+      "product_name": "Harkla Recalls Children’s Sensory Swings Due to Risk of Serious Injury from Fall Hazard",
+      "brand": "Base Products LLC",
+      "recall_date": "20261029",
+      "reason": "The recalled swings’ ceiling hook can separate from its plate, posing a risk of serious injury from a fall hazard.",
+      "classification": "",
+      "status": "Recalled",
+      "url": "https://cpsc.gov/Recalls/2027/Harkla-Recalls-Childrens-Sensory-Swings-Due-to-Risk-of-Serious-Injury-from-Fall-Hazard",
+      "display_category": "Toys & Gear",
+      "display_name": "Harkla Recalls Children’s Sensory Swings",
+      "hazard": "device_failure",
+      "hazards": [
+        "device_failure",
+        "fall"
+      ],
+      "tier": 3,
+      "band": "ACT NOW",
+      "category_family": "Walkers, swings & bouncers",
+      "category_group": "Play",
+      "record_type": "recall",
+      "in_feed_scope": true,
+      "curation_signals": [
+        "product"
+      ],
+      "action": "If this is in use for your child, speak to their care team before changing anything — do not stop or swap equipment on your own.",
+      "product_count": 1,
+      "grouped_products": [],
+      "plain_reason": "Has been recalled for a safety risk.",
+      "needs_review": false,
+      "is_enforced": true,
+      "inconjunction_urls": [
+        "https://recalls-rappels.canada.ca/en/alert-recall/harkla-children-s-compression-sensory-swings-recalled-due-fall-hazard"
+      ],
+      "match_brand": "base products llc",
+      "match_text": "base products llc harkla recalls children’s sensory swings due to risk of serious injury from fall hazard",
+      "match_ndc": "",
+      "match_squash": "baseproductsllcharklarecallschildrenssensoryswingsduetoriskofseriousinjuryfromfallhazard",
+      "match_brand_squash": "baseproductsllc",
+      "match_words": "base products llc harkla recalls children’s sensory swings due to risk of serious injury from fall hazard",
+      "is_urgent": true,
+      "urgent_rank": 3
     },
     {
       "source": "FDA",
