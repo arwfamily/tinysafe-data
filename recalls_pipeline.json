@@ -1,13 +1,13 @@
 {
   "version": "5.0",
-  "updated": "2026-10-29T17:48:20.711885Z",
+  "updated": "2026-10-30T01:33:32.987354Z",
   "description": "TinySafe unified baby/kids recall DB — all categories (FDA drugs/sunscreen/skincare/oral/meds, food/formula, cosmetics + CPSC physical products). Comprehensive baby safety scope. Veterinary excluded.",
   "sources": [
     "CPSC",
     "FDA",
     "FDA datatables (press releases)"
   ],
-  "total": 2525,
+  "total": 2528,
   "recalls": [
     {
       "source": "CPSC",
@@ -122261,6 +122261,136 @@
       "urgent_rank": 3
     },
     {
+      "source": "CPSC",
+      "category": "Baby & Kids",
+      "recall_id": "27-045",
+      "product_name": "Fashion Brand Apparel Recalls QZH.DUAO Pajama Sets Due to Risk of Serious Injury or Death from Burn Hazard; Violate Mandatory Standards for Children’s Sleepwear",
+      "brand": "",
+      "recall_date": "20261029",
+      "reason": "The recalled children’s pajama sets violate the mandatory safety standards for children’s sleepwear, posing a risk of serious burn injuries.",
+      "classification": "",
+      "status": "Recalled",
+      "url": "https://cpsc.gov/Recalls/2027/Fashion-Brand-Apparel-Recalls-QZH-DUAO-Pajama-Sets-Due-to-Risk-of-Serious-Injury-or-Death-from-Burn-Hazard-Violate-Mandatory-Standards-for-Childrens-Sleepwear",
+      "display_category": "Other",
+      "display_name": "Fashion Brand Apparel Recalls QZH.DUAO Pajama Sets",
+      "hazard": "burn",
+      "hazards": [
+        "burn"
+      ],
+      "tier": 3,
+      "band": "ACT NOW",
+      "category_family": "Sleepwear & apparel",
+      "category_group": "Wear",
+      "record_type": "recall",
+      "in_feed_scope": true,
+      "curation_signals": [
+        "product",
+        "victim",
+        "standard"
+      ],
+      "action": "Consumers should stop using the recalled pajama sets immediately and contact Fashion Brand Apparel for a full refund. Consumers will be asked to cut the pajamas in half and email a photo of the destroyed pajama set to qzh.duaoproductrecall@outlook.com to receive the refund. Consumers should then dispose of the destroyed product.",
+      "product_count": 1,
+      "grouped_products": [],
+      "plain_reason": "Has been recalled for a safety risk.",
+      "needs_review": false,
+      "is_enforced": true,
+      "inconjunction_urls": [],
+      "match_brand": "",
+      "match_text": "fashion brand apparel recalls qzh.duao pajama sets due to risk of serious injury or death from burn hazard; violate mandatory standards for children’s sleepwear",
+      "match_ndc": "",
+      "match_squash": "fashionbrandapparelrecallsqzhduaopajamasetsduetoriskofseriousinjuryordeathfromburnhazardviolatemandatorystandardsforchildrenssleepwear",
+      "match_brand_squash": "",
+      "match_words": "fashion brand apparel recalls qzh.duao pajama sets due to risk of serious injury or death from burn hazard; violate mandatory standards for children’s sleepwear",
+      "is_urgent": true,
+      "urgent_rank": 3
+    },
+    {
+      "source": "CPSC",
+      "category": "Baby & Kids",
+      "recall_id": "27-047",
+      "product_name": "PILLANI Recalls Nursing Pillows Due to Risk of Serious Injury or Death from Suffocation; Violate Mandatory Standards for Nursing Pillows",
+      "brand": "",
+      "recall_date": "20261029",
+      "reason": "The recalled nursing pillows violate the mandatory safety standards for nursing pillows because they can obstruct an infant’s breathing, posing a serious risk of injury or death from suffocation.",
+      "classification": "",
+      "status": "Recalled",
+      "url": "https://cpsc.gov/Recalls/2027/PILLANI-Recalls-Nursing-Pillows-Due-to-Risk-of-Serious-Injury-or-Death-from-Suffocation-Violate-Mandatory-Standards-for-Nursing-Pillows",
+      "display_category": "Toys & Gear",
+      "display_name": "PILLANI Recalls Nursing Pillows",
+      "hazard": "suffocation",
+      "hazards": [
+        "suffocation"
+      ],
+      "tier": 1,
+      "band": "ACT NOW",
+      "category_family": "Feeding & high chairs",
+      "category_group": "Feeding",
+      "record_type": "recall",
+      "in_feed_scope": true,
+      "curation_signals": [
+        "product"
+      ],
+      "action": "Consumers should stop using the nursing pillows immediately and contact PILLANI for a full refund. Consumers will be asked to send a photo of the product and be provided with disposal instructions. Consumers should then dispose of the recalled product.",
+      "product_count": 1,
+      "grouped_products": [],
+      "plain_reason": "Poses a suffocation or entrapment risk during sleep or play.",
+      "needs_review": false,
+      "is_enforced": true,
+      "inconjunction_urls": [],
+      "match_brand": "",
+      "match_text": "pillani recalls nursing pillows due to risk of serious injury or death from suffocation; violate mandatory standards for nursing pillows",
+      "match_ndc": "",
+      "match_squash": "pillanirecallsnursingpillowsduetoriskofseriousinjuryordeathfromsuffocationviolatemandatorystandardsfornursingpillows",
+      "match_brand_squash": "",
+      "match_words": "pillani recalls nursing pillows due to risk of serious injury or death from suffocation; violate mandatory standards for nursing pillows",
+      "is_urgent": true,
+      "urgent_rank": 1
+    },
+    {
+      "source": "CPSC",
+      "category": "Baby & Kids",
+      "recall_id": "27-049",
+      "product_name": "SOOWERY Recalls 8-Drawer Fabric Dressers Due to Risk of Serious Injury or Death from Tip-Over and Entrapment Hazards; Violate Mandatory Standard for Clothing Storage Units",
+      "brand": "",
+      "recall_date": "20261029",
+      "reason": "The recalled dressers are unstable if they are not anchored to the wall, posing tip-over and entrapment hazards that can result in risks of serious injuries or death to children. The dressers violate the mandatory safety standards as required by the STURDY Act.",
+      "classification": "",
+      "status": "Recalled",
+      "url": "https://cpsc.gov/Recalls/2027/SOOWERY-Recalls-8-Drawer-Fabric-Dressers-Due-to-Risk-of-Serious-Injury-or-Death-from-Tip-Over-and-Entrapment-Hazards-Violate-Mandatory-Standard-for-Clothing-Storage-Units",
+      "display_category": "Toys & Gear",
+      "display_name": "SOOWERY Recalls 8-Drawer Fabric Dressers",
+      "hazard": "entrapment",
+      "hazards": [
+        "entrapment",
+        "tipover"
+      ],
+      "tier": 1,
+      "band": "ACT NOW",
+      "category_family": "Nursery furniture & tip-over",
+      "category_group": "Around the home",
+      "record_type": "recall",
+      "in_feed_scope": false,
+      "curation_signals": [
+        "victim",
+        "standard"
+      ],
+      "action": "Consumers should stop using the recalled dressers immediately if they are not anchored to the wall, place them in an area that children cannot access and contact SOOWERY for a full refund. Consumers will be asked to write in permanent marker “RECALLED” on the top, front and sides of the dresser, remove all drawers and send photos of the marked and disassembled dresser to SOOWERYrecall@outlook.com. Consumers should then dispose of the product.",
+      "product_count": 1,
+      "grouped_products": [],
+      "plain_reason": "Has been recalled for a safety risk.",
+      "needs_review": false,
+      "is_enforced": true,
+      "inconjunction_urls": [],
+      "match_brand": "",
+      "match_text": "soowery recalls 8-drawer fabric dressers due to risk of serious injury or death from tip-over and entrapment hazards; violate mandatory standard for clothing storage units",
+      "match_ndc": "",
+      "match_squash": "sooweryrecalls8drawerfabricdressersduetoriskofseriousinjuryordeathfromtipoverandentrapmenthazardsviolatemandatorystandardforclothingstorageunits",
+      "match_brand_squash": "",
+      "match_words": "soowery recalls 8-drawer fabric dressers due to risk of serious injury or death from tip-over and entrapment hazards; violate mandatory standard for clothing storage units",
+      "is_urgent": true,
+      "urgent_rank": 1
+    },
+    {
       "source": "FDA",
       "record_type": "recall",
       "in_feed_scope": true,
@@ -122362,8 +122492,7 @@
       "match_ndc": "",
       "match_squash": "ohmlaboratoriesincgoodneighborpharmacyloratadineorallydisintegratingtabletsusp10mgpackagedinaforkids10counttabletsperboxndc24385016152abc042226upc087701406508bforadults10counttabletsndc46122014052abc059535upc0877014065546distributedbyamerisourcebergen1300morrisdrivechesterbrookpa19087",
       "match_brand_squash": "ohmlaboratoriesinc",
-      "match_words": "ohm laboratories, inc. good neighbor pharmacy loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) for kids 10-count tablets per box, ndc 24385-0161-52, abc # 042-226, upc 0 8770140650 8; b) for adults 10-count tablets, ndc 46122-0140-52, abc# 059-535, upc 0877014065546, distributed by: amerisourcebergen, 1300 morris drive, chesterbrook, pa 19087",
-      "enriched": true
+      "match_words": "ohm laboratories, inc. good neighbor pharmacy loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) for kids 10-count tablets per box, ndc 24385-0161-52, abc # 042-226, upc 0 8770140650 8; b) for adults 10-count tablets, ndc 46122-0140-52, abc# 059-535, upc 0877014065546, distributed by: amerisourcebergen, 1300 morris drive, chesterbrook, pa 19087"
     },
     {
       "source": "FDA",
@@ -122415,8 +122544,7 @@
       "match_ndc": "",
       "match_squash": "ohmlaboratoriesinccareoneoriginalprescriptionstrengthallergyreliefloratadineorallydisintegratingtabletsusp10mgpackagedina10counttabletsperboxndc4152052569upc341520313462bchildrens10counttabletsperboxndc4152052769upc341520314551distributedbyamericansalescompany4201waldenavenuelancasterny14086",
       "match_brand_squash": "ohmlaboratoriesinc",
-      "match_words": "ohm laboratories, inc. careone original prescription strength, allergy relief, loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) 10-count tablets per box, ndc 41520-525-69, upc 3 41520 31346 2; b) children's 10-count tablets per box ndc 41520-527-69, upc 3 41520 31455 1; distributed by: american sales company, 4201 walden avenue, lancaster, ny 14086",
-      "enriched": true
+      "match_words": "ohm laboratories, inc. careone original prescription strength, allergy relief, loratadine orally disintegrating tablets, usp, 10 mg, packaged in a) 10-count tablets per box, ndc 41520-525-69, upc 3 41520 31346 2; b) children's 10-count tablets per box ndc 41520-527-69, upc 3 41520 31455 1; distributed by: american sales company, 4201 walden avenue, lancaster, ny 14086"
     },
     {
       "source": "FDA",
@@ -122466,8 +122594,7 @@
       "match_ndc": "",
       "match_squash": "medtronicbatterypackusedwiththecapnostream20andcapnostream20ppatientmonitorbatterypacksmodelnumber016400010520batterypackusedwiththecapnostream20andcapnostream20ppatientmonitorthebatterypackpowersthemonitorwhenacpowerisnotavailableorwhenmonitoringisrequiredduringintrahospitaltransferofpatientsthecapnostream20andcapnostream20pisacombinedcapnographpulseoximetermonitoranditsaccessoriesareintendedtoprovideprofessionallytrainedhealthcareproviderswithcontinuousnoninvasivemeasurementandmonitoringofcarbondioxideconcentrationoftheexpiredandinspiredbreathandrespirationrateandwithcontinuousnoninvasivemonitoringoffunctionaloxygensaturationofarterialhemoglobinspo2andpulserateitisintendedforusewithneonatalpediatricandadultpatientsinhospitalshospitaltypefacilitiesandintrahospitaltransportenvironments",
       "match_brand_squash": "medtronic",
-      "match_words": "medtronic battery pack used with the capnostream\"20 and capnostream\"20p patient monitor, battery packs model number - 016400, 010520. battery pack used with the capnostream\"20 and capnostream\"20p patient monitor. the battery pack powers the monitor when ac power is not available or when monitoring is required during intra-hospital transfer of patients. the capnostream\"20 and capnostream\"20p is a combined capnograph/pulse oximeter monitor and its accessories are intended to provide professionally trained health care providers with continuous, non-invasive measurement and monitoring of carbon dioxide concentration of the expired and inspired breath and respiration rate, and with continuous non-invasive monitoring of functional oxygen saturation of arterial hemoglobin (spo2) and pulse rate. it is intended for use with neonatal, pediatric, and adult patients in hospitals, hospital-type facilities, and intra-hospital transport environments",
-      "enriched": true
+      "match_words": "medtronic battery pack used with the capnostream\"20 and capnostream\"20p patient monitor, battery packs model number - 016400, 010520. battery pack used with the capnostream\"20 and capnostream\"20p patient monitor. the battery pack powers the monitor when ac power is not available or when monitoring is required during intra-hospital transfer of patients. the capnostream\"20 and capnostream\"20p is a combined capnograph/pulse oximeter monitor and its accessories are intended to provide professionally trained health care providers with continuous, non-invasive measurement and monitoring of carbon dioxide concentration of the expired and inspired breath and respiration rate, and with continuous non-invasive monitoring of functional oxygen saturation of arterial hemoglobin (spo2) and pulse rate. it is intended for use with neonatal, pediatric, and adult patients in hospitals, hospital-type facilities, and intra-hospital transport environments"
     },
     {
       "source": "FDA",
@@ -122517,8 +122644,7 @@
       "match_ndc": "",
       "match_squash": "synthesusaproductsllcrapidsorbipsbatterypacksterileintendedforuseinnonloadbearingfracturerepairandreconstructiveproceduresofthecraniofacialskeletonexcludingtheupperandlowerjawinpediatricandadultpopulationspartnumber53055301s",
       "match_brand_squash": "synthesusaproductsllc",
-      "match_words": "synthes (usa) products llc rapidsorb ips battery pack, sterile-intended for use in non-load bearing fracture repair and reconstructive procedures of the craniofacial skeleton (excluding the upper and lower jaw) in pediatric and adult populations. part number: 530.553.01s",
-      "enriched": true
+      "match_words": "synthes (usa) products llc rapidsorb ips battery pack, sterile-intended for use in non-load bearing fracture repair and reconstructive procedures of the craniofacial skeleton (excluding the upper and lower jaw) in pediatric and adult populations. part number: 530.553.01s"
     }
   ],
   "categories": [
