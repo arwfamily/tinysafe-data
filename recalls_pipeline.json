@@ -1,13 +1,13 @@
 {
   "version": "5.0",
-  "updated": "2026-10-30T01:33:32.987354Z",
+  "updated": "2026-10-30T17:25:45.120574Z",
   "description": "TinySafe unified baby/kids recall DB — all categories (FDA drugs/sunscreen/skincare/oral/meds, food/formula, cosmetics + CPSC physical products). Comprehensive baby safety scope. Veterinary excluded.",
   "sources": [
     "CPSC",
     "FDA",
     "FDA datatables (press releases)"
   ],
-  "total": 2528,
+  "total": 2529,
   "recalls": [
     {
       "source": "CPSC",
@@ -122387,6 +122387,50 @@
       "match_squash": "sooweryrecalls8drawerfabricdressersduetoriskofseriousinjuryordeathfromtipoverandentrapmenthazardsviolatemandatorystandardforclothingstorageunits",
       "match_brand_squash": "",
       "match_words": "soowery recalls 8-drawer fabric dressers due to risk of serious injury or death from tip-over and entrapment hazards; violate mandatory standard for clothing storage units",
+      "is_urgent": true,
+      "urgent_rank": 1
+    },
+    {
+      "source": "CPSC",
+      "category": "Baby & Kids",
+      "recall_id": "27-059",
+      "product_name": "Yinklev Recalls Jocoevol 6-Drawer Dressers Due to Risk of Serious Injury or Death from Tip-Over and Entrapment Hazards; Violate Mandatory Standard for Clothing Storage Units",
+      "brand": "",
+      "recall_date": "20261029",
+      "reason": "The recalled dressers are unstable if they are not anchored to the wall, posing tip-over and entrapment hazards that can result in risks of serious injuries or death to children. The dressers violate the mandatory safety standards as required by the STURDY Act.",
+      "classification": "",
+      "status": "Recalled",
+      "url": "https://cpsc.gov/Recalls/2027/Yinklev-Recalls-Jocoevol-6-Drawer-Dressers-Due-to-Risk-of-Serious-Injury-or-Death-from-Tip-Over-and-Entrapment-Hazards-Violate-Mandatory-Standard-for-Clothing-Storage-Units",
+      "display_category": "Toys & Gear",
+      "display_name": "Yinklev Recalls Jocoevol 6-Drawer Dressers",
+      "hazard": "entrapment",
+      "hazards": [
+        "entrapment",
+        "tipover"
+      ],
+      "tier": 1,
+      "band": "ACT NOW",
+      "category_family": "Nursery furniture & tip-over",
+      "category_group": "Around the home",
+      "record_type": "recall",
+      "in_feed_scope": false,
+      "curation_signals": [
+        "victim",
+        "standard"
+      ],
+      "action": "Consumers should stop using the recalled dressers immediately if they are not anchored to the wall, place them in an area that children cannot access and contact Yinklev for a full refund. \nConsumers will be asked to write in permanent marker “RECALLED” on the dresser and send a photo of the marked dresser to Jocoevoldresserrecall@outlook.com. Consumers should then dispose of the recalled product.",
+      "product_count": 1,
+      "grouped_products": [],
+      "plain_reason": "Has been recalled for a safety risk.",
+      "needs_review": false,
+      "is_enforced": true,
+      "inconjunction_urls": [],
+      "match_brand": "",
+      "match_text": "yinklev recalls jocoevol 6-drawer dressers due to risk of serious injury or death from tip-over and entrapment hazards; violate mandatory standard for clothing storage units",
+      "match_ndc": "",
+      "match_squash": "yinklevrecallsjocoevol6drawerdressersduetoriskofseriousinjuryordeathfromtipoverandentrapmenthazardsviolatemandatorystandardforclothingstorageunits",
+      "match_brand_squash": "",
+      "match_words": "yinklev recalls jocoevol 6-drawer dressers due to risk of serious injury or death from tip-over and entrapment hazards; violate mandatory standard for clothing storage units",
       "is_urgent": true,
       "urgent_rank": 1
     },
